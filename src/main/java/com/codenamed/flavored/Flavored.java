@@ -1,8 +1,6 @@
 package com.codenamed.flavored;
 
-import com.codenamed.flavored.registry.FlavoredBlocks;
-import com.codenamed.flavored.registry.FlavoredCreativeTabs;
-import com.codenamed.flavored.registry.FlavoredItems;
+import com.codenamed.flavored.registry.*;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -38,10 +36,7 @@ public class Flavored
         FlavoredBlocks.init(modEventBus);
         FlavoredCreativeTabs.init(modEventBus);
 
-        modEventBus.addListener(this::addCreative);
-
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -65,6 +60,7 @@ public class Flavored
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+
         }
     }
 

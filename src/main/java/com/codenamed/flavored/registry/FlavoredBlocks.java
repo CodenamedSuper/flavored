@@ -1,6 +1,7 @@
 package com.codenamed.flavored.registry;
 
 import com.codenamed.flavored.Flavored;
+import com.codenamed.flavored.block.FermenterBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -17,8 +18,8 @@ public class FlavoredBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(Flavored.MOD_ID);
 
- //    public static final DeferredBlock<Block> TEMPLATE = registerBlock("understone",
- //           () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final DeferredBlock<Block> FERMENTER = registerBlock("fermenter",
+            () -> new FermenterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)));
 
     private static Block stair(DeferredBlock<Block> baseBlock) {
         return new StairBlock(baseBlock.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(baseBlock.get()));

@@ -20,7 +20,7 @@ public class FlavoredCreativeTabs {
                     .title(Component.translatable("creativetab.flavored.flavored"))
                     .displayItems((itemDisplayParameters, output) -> {
 
-                       // output.accept(FlavoredBlocks.X);
+                        output.accept(FlavoredBlocks.FERMENTER);
 
                     }).build());
 

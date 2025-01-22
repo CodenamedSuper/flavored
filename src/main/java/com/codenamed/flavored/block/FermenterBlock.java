@@ -1,5 +1,7 @@
 package com.codenamed.flavored.block;
 
+import com.codenamed.flavored.block_entity.FermenterBlockEntity;
+import com.codenamed.flavored.registry.FlavoredBlockEntities;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -10,6 +12,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -38,12 +42,6 @@ public class FermenterBlock extends BaseEntityBlock {
         return null;
     }
 
-    @Override
-    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return null;
-    }
-
-
     protected RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
@@ -60,6 +58,39 @@ public class FermenterBlock extends BaseEntityBlock {
         builder.add(new Property[]{FACING, FERMENTING});
     }
 
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        } else {
+            this.openContainer(level, pos, player);
+            return InteractionResult.CONSUME;
+        }
+    }
+
+    protected void openContainer(Level level, BlockPos pos, Player player) {
+        BlockEntity blockentity = level.getBlockEntity(pos);
+        if (blockentity instanceof FermenterBlockEntity) {
+            player.openMenu((MenuProvider)blockentity, pos);
+        }
+
+    }
+
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+        return new FermenterBlockEntity(pPos, pState);
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        if(level.isClientSide()) {
+            return null;
+        }
+
+        return createTickerHelper(blockEntityType, FlavoredBlockEntities.FERMENTER.get(),
+                (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
+    }
 
     static {
         FACING = HorizontalDirectionalBlock.FACING;

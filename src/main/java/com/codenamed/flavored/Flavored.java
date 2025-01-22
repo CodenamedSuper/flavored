@@ -1,6 +1,8 @@
 package com.codenamed.flavored;
 
 import com.codenamed.flavored.registry.*;
+import com.codenamed.flavored.screen.FermenterScreen;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -34,6 +36,8 @@ public class Flavored
 
         FlavoredItems.init(modEventBus);
         FlavoredBlocks.init(modEventBus);
+        FlavoredBlockEntities.init(modEventBus);
+        FlavoredMenus.init(modEventBus);
         FlavoredCreativeTabs.init(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -61,6 +65,11 @@ public class Flavored
         public static void onClientSetup(FMLClientSetupEvent event)
         {
 
+        }
+
+        @SubscribeEvent
+        public static void registerMenuScreens(RegisterMenuScreensEvent event) {
+            event.register(FlavoredMenus.FERMENTER.get(), FermenterScreen::new);
         }
     }
 

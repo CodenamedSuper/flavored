@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "flavored:fermenter"
+    "flavored:fermenter",
+    "flavored:chocolate_block"
 
   ]
 }

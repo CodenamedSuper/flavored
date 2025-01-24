@@ -40,7 +40,7 @@ public class FermenterScreen extends AbstractContainerScreen<FermenterMenu> {
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, x + 80, y + 36, 176, 0, menu.getScaledProgress(), 16);
+            guiGraphics.blit(TEXTURE, x + 80, y + 35, 176, 0, menu.getScaledProgress(), 16);
         }
     }
 

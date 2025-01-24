@@ -3,6 +3,7 @@ package com.codenamed.flavored.menu;
 import com.codenamed.flavored.block_entity.FermenterBlockEntity;
 import com.codenamed.flavored.registry.FlavoredBlocks;
 import com.codenamed.flavored.registry.FlavoredMenus;
+import com.codenamed.flavored.slot.FermenterResultSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -10,30 +11,35 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
 public class FermenterMenu extends AbstractContainerMenu {
     public final FermenterBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
+    private final ItemStackHandler inventory;
 
     public FermenterMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
 
-        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(3));
     }
 
     public FermenterMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(FlavoredMenus.FERMENTER.get(), pContainerId);
-        checkContainerSize(inv, 2);
+        checkContainerSize(inv, 3);
         blockEntity = ((FermenterBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
+        this.inventory = blockEntity.getInventory();
+
+        this.addSlot(new SlotItemHandler(this.inventory, 0, 56, 35));
+        this.addSlot(new SlotItemHandler(this.inventory, 1, 29, 35));
+        this.addSlot(new SlotItemHandler(this.inventory, 2, 116, 35));
+        //this.addSlot(new FermenterResultSlot(inv.player, blockEntity, inventory, 2, 116, 35));
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
-
-        this.addSlot(new Slot(inv, 0, 56, 35));
-        this.addSlot(new Slot(inv, 1, 116, 35));
 
         addDataSlots(data);
     }
@@ -66,7 +72,7 @@ public class FermenterMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);

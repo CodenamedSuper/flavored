@@ -21,6 +21,9 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> FERMENTER = registerBlock("fermenter",
             () -> new FermenterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)));
 
+    public static final DeferredBlock<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
+
     private static Block stair(DeferredBlock<Block> baseBlock) {
         return new StairBlock(baseBlock.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(baseBlock.get()));
     }

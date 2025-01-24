@@ -30,10 +30,12 @@ import org.jetbrains.annotations.Nullable;
 
 public class FermenterBlockEntity extends BlockEntity implements MenuProvider {
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2);
+    private final ItemStackHandler itemHandler = new ItemStackHandler(3);
 
     private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
+    private static final int FERMENTING_SLOT = 1;
+    private static final int OUTPUT_SLOT = 2;
+
 
     protected final ContainerData data;
     private int progress = 0;
@@ -61,7 +63,7 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider {
 
             @Override
             public int getCount() {
-                return 2;
+                return 3;
             }
         };
     }
@@ -122,13 +124,14 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider {
     private void fermentItem() {
         ItemStack result = new ItemStack(Items.FERMENTED_SPIDER_EYE, 1);
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
+        this.itemHandler.extractItem(FERMENTING_SLOT, 1, false);
 
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
     }
 
     private boolean hasRecipe() {
-        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == Items.SPIDER_EYE;
+        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == Items.SPIDER_EYE && this.itemHandler.getStackInSlot(FERMENTING_SLOT).getItem() == Items.SUGAR;
         ItemStack result = new ItemStack(Items.FERMENTED_SPIDER_EYE);
 
         return hasCraftingItem && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
@@ -148,5 +151,9 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider {
 
     private void increaseCraftingProgress() {
         progress++;
+    }
+
+    public  ItemStackHandler getInventory() {
+        return  this.itemHandler;
     }
 }

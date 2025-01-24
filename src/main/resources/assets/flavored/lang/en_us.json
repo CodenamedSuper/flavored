@@ -1,5 +1,8 @@
 {
   "creativetab.flavored.flavored": "Flavored",
 
-  "block.flavored.fermenter": "Fermenter"
+  "block.flavored.fermenter": "Fermenter",
+  "block.flavored.chocolate_block": "Block of Chocolate",
+
+  "item.flavored.chocolate": "Chocolate"
 }

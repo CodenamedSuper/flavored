@@ -23,6 +23,9 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredBlocks.CHOCOLATE_BLOCK);
                         output.accept(FlavoredBlocks.FERMENTER);
                         output.accept(FlavoredItems.CHOCOLATE);
+                        output.accept(FlavoredItems.PEPPER);
+                        output.accept(FlavoredItems.DRIED_PEPPER);
+                        output.accept(FlavoredItems.PEPPER_SEEDS);
 
                     }).build());
 

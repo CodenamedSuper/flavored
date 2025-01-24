@@ -4,5 +4,12 @@
   "block.flavored.fermenter": "Fermenter",
   "block.flavored.chocolate_block": "Block of Chocolate",
 
-  "item.flavored.chocolate": "Chocolate"
+  "item.flavored.chocolate": "Chocolate",
+
+  "item.flavored.pepper": "Pepper",
+  "item.flavored.dried_pepper": "Dried Pepper",
+  "item.flavored.pepper_seeds": "Pepper Seeds",
+  "block.flavored.pepper_bush": "Pepper Bush",
+  "block.flavored.wild_pepper": "Wild Pepper"
+
 }

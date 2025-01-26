@@ -26,6 +26,10 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.PEPPER);
                         output.accept(FlavoredItems.DRIED_PEPPER);
                         output.accept(FlavoredItems.PEPPER_SEEDS);
+                        output.accept(FlavoredBlocks.WILD_PEPPER);
+                        output.accept(FlavoredBlocks.RAW_CHEESE);
+                        output.accept(FlavoredBlocks.CHEESE);
+                        output.accept(FlavoredItems.CHEESE_SLICE);
 
                     }).build());
 

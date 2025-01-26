@@ -22,6 +22,9 @@ public class FlavoredItems {
     public static final DeferredItem<Item> PEPPER_SEEDS = ITEMS.register("pepper_seeds",
             () -> new ItemNameBlockItem(FlavoredBlocks.PEPPER_BUSH.get(), new Item.Properties()));
 
+    public static final DeferredItem<Item> CHEESE_SLICE = ITEMS.register("cheese_slice",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CHEESE_SLICE)));
+
     public static void init(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

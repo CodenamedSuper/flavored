@@ -1,9 +1,7 @@
 package com.codenamed.flavored.registry;
 
 import com.codenamed.flavored.Flavored;
-import com.codenamed.flavored.block.FermenterBlock;
-import com.codenamed.flavored.block.PepperBushBlock;
-import com.codenamed.flavored.block.WildPepperBlock;
+import com.codenamed.flavored.block.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -31,6 +29,12 @@ public class FlavoredBlocks {
 
     public static final DeferredBlock<Block> WILD_PEPPER = registerBlock("wild_pepper",
             () -> new WildPepperBlock(BlockBehaviour.Properties.ofFullCopy(PEPPER_BUSH.get())));
+
+    public static final DeferredBlock<Block> RAW_CHEESE = registerBlock("raw_cheese",
+            () -> new RawCheeseBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).randomTicks()));
+
+    public static final DeferredBlock<Block> CHEESE = registerBlock("cheese",
+            () -> new AgedCheeseBlock(BlockBehaviour.Properties.ofFullCopy(RAW_CHEESE.get())));
 
     private static Block stair(DeferredBlock<Block> baseBlock) {
         return new StairBlock(baseBlock.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(baseBlock.get()));

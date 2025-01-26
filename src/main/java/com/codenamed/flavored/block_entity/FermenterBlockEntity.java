@@ -2,6 +2,7 @@ package com.codenamed.flavored.block_entity;
 
 import com.codenamed.flavored.menu.FermenterMenu;
 import com.codenamed.flavored.registry.FlavoredBlockEntities;
+import com.codenamed.flavored.registry.FlavoredBlocks;
 import com.codenamed.flavored.registry.FlavoredItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -122,7 +123,7 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void fermentItem() {
-        ItemStack result = new ItemStack(Items.FERMENTED_SPIDER_EYE, 1);
+        ItemStack result = new ItemStack(FlavoredBlocks.RAW_CHEESE, 1);
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
         this.itemHandler.extractItem(FERMENTING_SLOT, 1, false);
 
@@ -131,8 +132,8 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private boolean hasRecipe() {
-        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == Items.SPIDER_EYE && this.itemHandler.getStackInSlot(FERMENTING_SLOT).getItem() == Items.SUGAR;
-        ItemStack result = new ItemStack(Items.FERMENTED_SPIDER_EYE);
+        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == Items.MILK_BUCKET && this.itemHandler.getStackInSlot(FERMENTING_SLOT).getItem() == Items.BROWN_MUSHROOM;
+        ItemStack result = new ItemStack(FlavoredBlocks.CHEESE);
 
         return hasCraftingItem && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
     }

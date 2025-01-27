@@ -1,9 +1,11 @@
 package com.codenamed.flavored.block;
 
 import com.codenamed.flavored.registry.FlavoredBlocks;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -41,10 +43,10 @@ public class RawCheeseBlock extends Block {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 
-
         if (stack.is(Items.HONEYCOMB) && !state.getValue(WAXED)) {
             level.setBlock(pos, state.setValue(WAXED, true), 2);
-            player.getInventory().removeItem(stack);
+            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, player.getUseItem());
+            player.getUseItem().shrink(1);
 
             return  ItemInteractionResult.SUCCESS;
         }

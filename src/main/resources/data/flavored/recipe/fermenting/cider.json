@@ -1,0 +1,13 @@
+{
+  "type": "flavored:fermenting",
+  "ingredient": {
+    "item": "flavored:apple_juice"
+  },
+  "fermenter": {
+    "item": "minecraft:sugar"
+  },
+  "result": {
+    "id": "flavored:cider",
+    "count": 1
+  }
+}

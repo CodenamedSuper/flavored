@@ -14,7 +14,14 @@
 
   "item.flavored.cheese_slice": "Cheese Slice",
   "block.flavored.cheese": "Cheese",
-  "block.flavored.raw_cheese": "Raw Cheese"
+  "block.flavored.raw_cheese": "Raw Cheese",
 
+  "item.flavored.sweet_berry_juice": "Sweet Berry Juice",
+  "item.flavored.glow_berry_juice": "Glow Berry Juice",
+  "item.flavored.apple juice": "Apple Juice",
+  "item.flavored.sweet_berry_wine": "Sweet Berry Wine",
+  "item.flavored.glow_berry_wine": "Glow Berry Wine",
+  "item.flavored.cider": "Cider",
+  "item.flavored.mead": "Mead"
 
 }

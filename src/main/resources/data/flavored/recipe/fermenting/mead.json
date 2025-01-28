@@ -1,0 +1,13 @@
+{
+  "type": "flavored:fermenting",
+  "ingredient": {
+    "item": "minecraft:honey_bottle"
+  },
+  "fermenter": {
+    "item": "minecraft:sugar"
+  },
+  "result": {
+    "id": "flavored:mead",
+    "count": 1
+  }
+}

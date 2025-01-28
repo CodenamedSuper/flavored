@@ -65,7 +65,9 @@ public class RawCheeseBlock extends Block {
 
         if (state.getValue(WAXED)) return;
 
-        level.setBlock(pos, FlavoredBlocks.CHEESE.get().defaultBlockState(), 2);
+        if (random.nextInt(0, 9) == 0) {
+            level.setBlock(pos, FlavoredBlocks.CHEESE.get().defaultBlockState(), 2);
+        }
 
         super.randomTick(state, level, pos, random);
     }

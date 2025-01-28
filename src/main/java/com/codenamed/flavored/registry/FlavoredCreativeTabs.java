@@ -30,6 +30,13 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredBlocks.RAW_CHEESE);
                         output.accept(FlavoredBlocks.CHEESE);
                         output.accept(FlavoredItems.CHEESE_SLICE);
+                        output.accept(FlavoredItems.SWEET_BERRY_JUICE);
+                        output.accept(FlavoredItems.GLOW_BERRY_JUICE);
+                        output.accept(FlavoredItems.APPLE_JUICE);
+                        output.accept(FlavoredItems.SWEET_BERRY_WINE);
+                        output.accept(FlavoredItems.GLOW_BERRY_WINE);
+                        output.accept(FlavoredItems.CIDER);
+                        output.accept(FlavoredItems.MEAD);
 
                     }).build());
 

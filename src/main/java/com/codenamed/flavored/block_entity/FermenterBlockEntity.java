@@ -1,9 +1,12 @@
 package com.codenamed.flavored.block_entity;
 
 import com.codenamed.flavored.menu.FermenterMenu;
+import com.codenamed.flavored.recipe.FermentingRecipe;
+import com.codenamed.flavored.recipe.FermentingRecipeInput;
 import com.codenamed.flavored.registry.FlavoredBlockEntities;
 import com.codenamed.flavored.registry.FlavoredBlocks;
 import com.codenamed.flavored.registry.FlavoredItems;
+import com.codenamed.flavored.registry.FlavoredRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -20,6 +23,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -27,6 +31,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 
 public class FermenterBlockEntity extends BlockEntity implements MenuProvider {
@@ -123,19 +129,29 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void fermentItem() {
-        ItemStack result = new ItemStack(FlavoredBlocks.RAW_CHEESE, 1);
+        Optional<RecipeHolder<FermentingRecipe>> recipe = getCurrentRecipe();
+        ItemStack output = recipe.get().value().output();
+
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
         this.itemHandler.extractItem(FERMENTING_SLOT, 1, false);
 
-        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
+        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
+                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
     }
 
     private boolean hasRecipe() {
-        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == Items.MILK_BUCKET && this.itemHandler.getStackInSlot(FERMENTING_SLOT).getItem() == Items.BROWN_MUSHROOM;
-        ItemStack result = new ItemStack(FlavoredBlocks.CHEESE);
+        Optional<RecipeHolder<FermentingRecipe>> recipe = getCurrentRecipe();
+        if(recipe.isEmpty()) {
+            return false;
+        }
 
-        return hasCraftingItem && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+        ItemStack output = recipe.get().value().getResultItem(null);
+        return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output.getItem());
+    }
+
+    private Optional<RecipeHolder<FermentingRecipe>> getCurrentRecipe() {
+        return this.level.getRecipeManager()
+                .getRecipeFor(FlavoredRecipes.FERMENTER_TYPE.get(), new FermentingRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT), itemHandler.getStackInSlot(FERMENTING_SLOT)), level);
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {

@@ -38,6 +38,7 @@ public class Flavored
         FlavoredBlocks.init(modEventBus);
         FlavoredBlockEntities.init(modEventBus);
         FlavoredMenus.init(modEventBus);
+        FlavoredRecipes.init(modEventBus);
         FlavoredCreativeTabs.init(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

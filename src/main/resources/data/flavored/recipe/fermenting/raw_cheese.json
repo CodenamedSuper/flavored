@@ -1,0 +1,13 @@
+{
+  "type": "flavored:fermenting",
+  "ingredient": {
+    "item": "minecraft:milk_bucket"
+  },
+  "fermenter": {
+    "item": "minecraft:glow_lichen"
+  },
+  "result": {
+    "id": "flavored:raw_cheese",
+    "count": 1
+  }
+}

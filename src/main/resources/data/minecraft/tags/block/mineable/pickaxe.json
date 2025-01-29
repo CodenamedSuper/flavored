@@ -2,7 +2,14 @@
   "replace": false,
   "values": [
     "flavored:fermenter",
-    "flavored:chocolate_block"
+    "flavored:chocolate_block",
+    "flavored:rock_salt",
+    "flavored:budding_rock_salt",
+    "flavored:salt_block",
+    "flavored:small_salt_bud",
+    "flavored:medium_salt_bud",
+    "flavored:large_salt_bud",
+    "flavored:salt_cluster"
 
   ]
 }

@@ -45,7 +45,6 @@ public class RawCheeseBlock extends Block {
 
         if (stack.is(Items.HONEYCOMB) && !state.getValue(WAXED)) {
             level.setBlock(pos, state.setValue(WAXED, true), 2);
-            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, player.getUseItem());
             player.getUseItem().shrink(1);
 
             return  ItemInteractionResult.SUCCESS;

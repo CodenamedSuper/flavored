@@ -18,10 +18,20 @@
 
   "item.flavored.sweet_berry_juice": "Sweet Berry Juice",
   "item.flavored.glow_berry_juice": "Glow Berry Juice",
-  "item.flavored.apple juice": "Apple Juice",
+  "item.flavored.apple_juice": "Apple Juice",
   "item.flavored.sweet_berry_wine": "Sweet Berry Wine",
   "item.flavored.glow_berry_wine": "Glow Berry Wine",
   "item.flavored.cider": "Cider",
-  "item.flavored.mead": "Mead"
+  "item.flavored.mead": "Mead",
+
+  "item.flavored.salt": "Salt",
+  "block.flavored.rock_salt": "Rock Salt",
+  "block.flavored.budding_rock_salt": "Budding Rock Salt",
+  "block.flavored.salt_block": "Block of Salt",
+  "block.flavored.small_salt_bud": "Small Salt Bud",
+  "block.flavored.medium_salt_bud": "Medium Salt Bud",
+  "block.flavored.large_salt_bud": "Large Salt Bud",
+  "block.flavored.salt_cluster": "Salt Cluster"
+
 
 }

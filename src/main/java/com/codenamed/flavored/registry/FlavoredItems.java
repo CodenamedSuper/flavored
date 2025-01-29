@@ -29,6 +29,9 @@ public class FlavoredItems {
     public static final DeferredItem<Item> CHEESE_SLICE = ITEMS.register("cheese_slice",
             () -> new Item(new Item.Properties().food(FlavoredFoods.CHEESE_SLICE)));
 
+    public static final DeferredItem<Item> SALT = ITEMS.register("salt",
+            () -> new Item(new Item.Properties()));
+
     // Drinks
 
     public static final DeferredItem<Item> SWEET_BERRY_JUICE = ITEMS.register("sweet_berry_juice",

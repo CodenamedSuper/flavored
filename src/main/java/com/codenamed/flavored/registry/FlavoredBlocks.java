@@ -36,6 +36,27 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> CHEESE = registerBlock("cheese",
             () -> new AgedCheeseBlock(BlockBehaviour.Properties.ofFullCopy(RAW_CHEESE.get())));
 
+    public static final DeferredBlock<Block> ROCK_SALT = registerBlock("rock_salt",
+            () -> new RockSaltBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK)));
+
+    public static final DeferredBlock<Block> BUDDING_ROCK_SALT = registerBlock("budding_rock_salt",
+            () -> new BuddingRockSaltBlock(BlockBehaviour.Properties.ofFullCopy(ROCK_SALT.get())));
+
+    public static final DeferredBlock<Block> SALT_CLUSTER = registerBlock("salt_cluster",
+            () -> new SaltClusterBlock(7.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER)));
+
+    public static final DeferredBlock<Block> SMALL_SALT_BUD = registerBlock("small_salt_bud",
+            () -> new SaltClusterBlock(5.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.SMALL_AMETHYST_BUD)));
+
+    public static final DeferredBlock<Block> MEDIUM_SALT_BUD = registerBlock("medium_salt_bud",
+            () -> new SaltClusterBlock(4.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.MEDIUM_AMETHYST_BUD)));
+
+    public static final DeferredBlock<Block> LARGE_SALT_BUD = registerBlock("large_salt_bud",
+            () -> new SaltClusterBlock(3.0F, 4.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER)));
+
+    public static final DeferredBlock<Block> SALT_BLOCK = registerBlock("salt_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(ROCK_SALT.get())));
+
     private static Block stair(DeferredBlock<Block> baseBlock) {
         return new StairBlock(baseBlock.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(baseBlock.get()));
     }

@@ -8,11 +8,14 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
 
 public class FlavoredBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
@@ -56,6 +59,16 @@ public class FlavoredBlocks {
 
     public static final DeferredBlock<Block> SALT_BLOCK = registerBlock("salt_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(ROCK_SALT.get())));
+
+    public static final DeferredBlock<Block> SALT_LAMP = registerBlock("salt_lamp",
+            () -> new SaltLampBlock(BlockBehaviour.Properties.ofFullCopy(ROCK_SALT.get()).lightLevel(litBlockEmission(12)).noOcclusion().forceSolidOn()));
+
+
+    private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
+        return (p_50763_) -> {
+            return (Boolean)p_50763_.getValue(BlockStateProperties.LIT) ? lightValue : 0;
+        };
+    }
 
     private static Block stair(DeferredBlock<Block> baseBlock) {
         return new StairBlock(baseBlock.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(baseBlock.get()));

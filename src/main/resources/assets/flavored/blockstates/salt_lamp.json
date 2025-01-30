@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "flavored:block/salt_lamp"
+    },
+    "lit=true": {
+      "model": "flavored:block/salt_lamp_on"
+    }
+  }
+}

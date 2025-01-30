@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "X": {
+      "item": "flavored:rock_salt"
+    }
+  },
+  "pattern": [
+    " X ",
+    "X X",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "flavored:salt_lamp"
+  }
+}

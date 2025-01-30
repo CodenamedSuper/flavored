@@ -24,6 +24,7 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredBlocks.BUDDING_ROCK_SALT);
                         output.accept(FlavoredBlocks.SALT_BLOCK);
                         output.accept(FlavoredBlocks.SALT_CLUSTER);
+                        output.accept(FlavoredBlocks.SALT_LAMP);
                         output.accept(FlavoredItems.SALT);
                         output.accept(FlavoredBlocks.CHOCOLATE_BLOCK);
                         output.accept(FlavoredBlocks.FERMENTER);

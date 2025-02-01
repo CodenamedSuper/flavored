@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+
+  "biomes": "minecraft:beach",
+
+  "features": "flavored:salt_pool",
+
+  "step": "top_layer_modification"
+}

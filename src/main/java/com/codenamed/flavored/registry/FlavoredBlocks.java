@@ -21,6 +21,9 @@ public class FlavoredBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(Flavored.MOD_ID);
 
+    public static final DeferredBlock<Block> DOUGH = registerBlock("dough",
+            () -> new DoughBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).forceSolidOn().noOcclusion()));
+
     public static final DeferredBlock<Block> FERMENTER = registerBlock("fermenter",
             () -> new FermenterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)));
 

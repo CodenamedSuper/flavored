@@ -43,6 +43,7 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.GLOW_BERRY_WINE);
                         output.accept(FlavoredItems.CIDER);
                         output.accept(FlavoredItems.MEAD);
+                        output.accept(FlavoredBlocks.DOUGH);
 
                     }).build());
 

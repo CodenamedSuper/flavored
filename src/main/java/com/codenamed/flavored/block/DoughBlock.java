@@ -34,11 +34,13 @@ public class DoughBlock extends Block {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
 
-        if (state.getValue(STAGE) < 2) {
-            level.setBlock(pos, state.setValue(STAGE, state.getValue(STAGE) + 1), 2);
-            level.playSound(player, pos, SoundEvents.WOOL_PLACE, SoundSource.BLOCKS, 0.3F, 0.5F);
+        if (level.isClientSide()) {
+            if (state.getValue(STAGE) < 2 && player.getUseItem().isEmpty()) {
+                level.setBlock(pos, state.setValue(STAGE, state.getValue(STAGE) + 1), 2);
+                level.playSound(player, pos, SoundEvents.WOOL_PLACE, SoundSource.BLOCKS, 0.3F, 0.5F);
 
-            return InteractionResult.SUCCESS;
+                return InteractionResult.SUCCESS;
+            }
         }
 
         return super.useWithoutItem(state, level, pos, player, hitResult);
@@ -53,7 +55,11 @@ public class DoughBlock extends Block {
     }
 
     static {
-        SHAPE_BY_STAGE = new VoxelShape[]{Block.box(4, 0, 4, 12, 4, 12), Block.box(3, 0, 3, 13, 3, 13), Block.box(2, 0, 2, 14, 2, 14)};
+
+        SHAPE_BY_STAGE = new VoxelShape[]{
+                Block.box(4, 0, 4, 12, 4, 12),
+                Block.box(3, 0, 3, 13, 3, 13),
+                Block.box(2, 0, 2, 14, 2, 14)};
 
     }
 }

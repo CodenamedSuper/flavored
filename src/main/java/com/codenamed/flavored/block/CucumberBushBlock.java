@@ -10,17 +10,16 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -28,30 +27,29 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
 
-public class PepperBushBlock extends BushBlock implements BonemealableBlock {
-    public static final MapCodec<PepperBushBlock> CODEC = simpleCodec(PepperBushBlock::new);
+public class CucumberBushBlock extends BushBlock implements BonemealableBlock {
+    public static final MapCodec<CucumberBushBlock> CODEC = simpleCodec(CucumberBushBlock::new);
     private static final float HURT_SPEED_THRESHOLD = 0.003F;
     public static final int MAX_AGE = 3;
     public static final IntegerProperty AGE;
     private static final VoxelShape SAPLING_SHAPE;
     private static final VoxelShape MID_GROWTH_SHAPE;
 
-    public MapCodec<PepperBushBlock> codec() {
+    public MapCodec<CucumberBushBlock> codec() {
         return CODEC;
     }
 
-    public PepperBushBlock(BlockBehaviour.Properties properties) {
+    public CucumberBushBlock(Properties properties) {
         super(properties);
         this.registerDefaultState((BlockState) ((BlockState) this.stateDefinition.any()).setValue(AGE, 0));
     }
 
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
-        return new ItemStack(FlavoredItems.PEPPER_SEEDS.get());
+        return new ItemStack(FlavoredItems.CUCUMBER_SEEDS.get());
     }
 
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
@@ -92,7 +90,7 @@ public class PepperBushBlock extends BushBlock implements BonemealableBlock {
         boolean flag = i == 3;
         if (i > 1) {
             int j = 1 + level.random.nextInt(2);
-            popResource(level, pos, new ItemStack(FlavoredItems.PEPPER.get(), j + (flag ? 1 : 0)));
+            popResource(level, pos, new ItemStack(FlavoredItems.CUCUMBER.get(), j + (flag ? 1 : 0)));
             level.playSound((Player) null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
             BlockState blockstate = (BlockState) state.setValue(AGE, 1);
             level.setBlock(pos, blockstate, 2);

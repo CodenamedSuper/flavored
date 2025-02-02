@@ -21,23 +21,13 @@ public class FlavoredBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(Flavored.MOD_ID);
 
-    public static final DeferredBlock<Block> FERMENTER = registerBlock("fermenter",
-            () -> new FermenterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)));
+    // Chocolate Blocks
 
     public static final DeferredBlock<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
 
-    public static final DeferredBlock<Block> PEPPER_BUSH = registerBlock("pepper_bush",
-            () -> new PepperBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
-    public static final DeferredBlock<Block> WILD_PEPPER = registerBlock("wild_pepper",
-            () -> new WildPepperBlock(BlockBehaviour.Properties.ofFullCopy(PEPPER_BUSH.get())));
-
-    public static final DeferredBlock<Block> RAW_CHEESE = registerBlock("raw_cheese",
-            () -> new RawCheeseBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).randomTicks()));
-
-    public static final DeferredBlock<Block> CHEESE = registerBlock("cheese",
-            () -> new AgedCheeseBlock(BlockBehaviour.Properties.ofFullCopy(RAW_CHEESE.get())));
+    // Salt Blocks
 
     public static final DeferredBlock<Block> ROCK_SALT = registerBlock("rock_salt",
             () -> new RockSaltBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK)));
@@ -60,8 +50,43 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> SALT_BLOCK = registerBlock("salt_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(ROCK_SALT.get())));
 
+    // Workstations
+
+    public static final DeferredBlock<Block> FERMENTER = registerBlock("fermenter",
+            () -> new FermenterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)));
+
+    // Functional Blocks
+
     public static final DeferredBlock<Block> SALT_LAMP = registerBlock("salt_lamp",
             () -> new SaltLampBlock(BlockBehaviour.Properties.ofFullCopy(ROCK_SALT.get()).lightLevel(litBlockEmission(12)).noOcclusion().forceSolidOn()));
+
+    // Crops
+
+    public static final DeferredBlock<Block> TOMATO_BUSH = registerBlock("tomato_bush",
+            () -> new TomatoBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+
+    public static final DeferredBlock<Block> PEPPER_BUSH = registerBlock("pepper_bush",
+            () -> new PepperBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+
+    public static final DeferredBlock<Block> CUCUMBER_BUSH = registerBlock("cucumber_bush",
+            () -> new CucumberBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+
+    public static final DeferredBlock<Block> GARLICS = registerBlock("garlics",
+            () -> new GarlicBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)));
+
+    // Wild Crops
+
+    public static final DeferredBlock<Block> WILD_PEPPER = registerBlock("wild_pepper",
+            () -> new WildPepperBlock(BlockBehaviour.Properties.ofFullCopy(PEPPER_BUSH.get())));
+
+    // Placeable Items
+
+    public static final DeferredBlock<Block> RAW_CHEESE = registerBlock("raw_cheese",
+            () -> new RawCheeseBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).randomTicks()));
+
+    public static final DeferredBlock<Block> CHEESE = registerBlock("cheese",
+            () -> new AgedCheeseBlock(BlockBehaviour.Properties.ofFullCopy(RAW_CHEESE.get())));
+
 
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {

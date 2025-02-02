@@ -29,9 +29,14 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredBlocks.CHOCOLATE_BLOCK);
                         output.accept(FlavoredBlocks.FERMENTER);
                         output.accept(FlavoredItems.CHOCOLATE);
+                        output.accept(FlavoredItems.TOMATO);
                         output.accept(FlavoredItems.PEPPER);
+                        output.accept(FlavoredItems.CUCUMBER);
+                        output.accept(FlavoredItems.GARLIC);
                         output.accept(FlavoredItems.DRIED_PEPPER);
+                        output.accept(FlavoredItems.TOMATO_SEEDS);
                         output.accept(FlavoredItems.PEPPER_SEEDS);
+                        output.accept(FlavoredItems.CUCUMBER_SEEDS);
                         output.accept(FlavoredBlocks.WILD_PEPPER);
                         output.accept(FlavoredBlocks.RAW_CHEESE);
                         output.accept(FlavoredBlocks.CHEESE);

@@ -12,6 +12,17 @@
   "block.flavored.pepper_bush": "Pepper Bush",
   "block.flavored.wild_pepper": "Wild Pepper",
 
+  "item.flavored.cucumber": "Cucumber",
+  "item.flavored.cucumber_seeds": "Cucumber Seeds",
+  "block.flavored.cucumber_bush": "Cucumber Bush",
+
+  "item.flavored.tomato": "Tomato",
+  "item.flavored.tomato_seeds": "Tomato Seeds",
+  "block.flavored.tomato_bush": "Tomato Bush",
+
+  "item.flavored.garlic": "Garlic",
+  "block.flavored.garlics": "Garlics",
+
   "item.flavored.cheese_slice": "Cheese Slice",
   "block.flavored.cheese": "Cheese",
   "block.flavored.raw_cheese": "Raw Cheese",

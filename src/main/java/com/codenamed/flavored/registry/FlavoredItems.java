@@ -14,17 +14,26 @@ public class FlavoredItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Flavored.MOD_ID);
 
 
-    public static final DeferredItem<Item> CHOCOLATE = ITEMS.register("chocolate",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.CHOCOLATE)));
+    // Crops
+
+    public static final DeferredItem<Item> TOMATO = ITEMS.register("tomato",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.TOMATO)));
 
     public static final DeferredItem<Item> PEPPER = ITEMS.register("pepper",
             () -> new Item(new Item.Properties().food(FlavoredFoods.PEPPER)));
 
+    public static final DeferredItem<Item> CUCUMBER = ITEMS.register("cucumber",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CUCUMBER)));
+
+    public static final DeferredItem<Item> GARLIC = ITEMS.register("garlic",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.GARLIC)));
+
+    // Enhanced Crops
+
     public static final DeferredItem<Item> DRIED_PEPPER = ITEMS.register("dried_pepper",
             () -> new Item(new Item.Properties().food(FlavoredFoods.DRIED_PEPPER)));
 
-    public static final DeferredItem<Item> PEPPER_SEEDS = ITEMS.register("pepper_seeds",
-            () -> new ItemNameBlockItem(FlavoredBlocks.PEPPER_BUSH.get(), new Item.Properties()));
+    // Ingredients
 
     public static final DeferredItem<Item> CHEESE_SLICE = ITEMS.register("cheese_slice",
             () -> new Item(new Item.Properties().food(FlavoredFoods.CHEESE_SLICE)));
@@ -32,7 +41,21 @@ public class FlavoredItems {
     public static final DeferredItem<Item> SALT = ITEMS.register("salt",
             () -> new Item(new Item.Properties()));
 
-    // Drinks
+    public static final DeferredItem<Item> CHOCOLATE = ITEMS.register("chocolate",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CHOCOLATE)));
+
+    // Seeds
+
+    public static final DeferredItem<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds",
+            () -> new ItemNameBlockItem(FlavoredBlocks.TOMATO_BUSH.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> PEPPER_SEEDS = ITEMS.register("pepper_seeds",
+            () -> new ItemNameBlockItem(FlavoredBlocks.PEPPER_BUSH.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> CUCUMBER_SEEDS = ITEMS.register("cucumber_seeds",
+            () -> new ItemNameBlockItem(FlavoredBlocks.CUCUMBER_BUSH.get(), new Item.Properties()));
+
+    // Juices
 
     public static final DeferredItem<Item> SWEET_BERRY_JUICE = ITEMS.register("sweet_berry_juice",
             () -> new JuiceItem(new Item.Properties().food(FlavoredFoods.SWEET_BERRY_JUICE).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)));
@@ -42,6 +65,8 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> APPLE_JUICE = ITEMS.register("apple_juice",
             () -> new JuiceItem(new Item.Properties().food(FlavoredFoods.APPLE_JUICE).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)));
+
+    // Beverages
 
     public static final DeferredItem<Item> SWEET_BERRY_WINE = ITEMS.register("sweet_berry_wine",
             () -> new BeverageItem(new Item.Properties().food(FlavoredFoods.SWEET_BERRY_WINE).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)));
@@ -54,6 +79,9 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> MEAD = ITEMS.register("mead",
             () -> new BeverageItem(new Item.Properties().food(FlavoredFoods.MEAD).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)));
+
+    // Misc
+
 
     public static void init(IEventBus eventBus) {
         ITEMS.register(eventBus);

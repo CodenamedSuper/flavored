@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "flavored:block/wild_pepper"
+    "layer0": "flavored:block/garlics"
   }
 }

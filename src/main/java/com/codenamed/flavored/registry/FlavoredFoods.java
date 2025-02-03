@@ -11,9 +11,18 @@ public class FlavoredFoods {
     public static FoodProperties CUCUMBER = new FoodProperties.Builder().nutrition(1).saturationModifier(0.1f).build();
     public static FoodProperties GARLIC = new FoodProperties.Builder().nutrition(1).saturationModifier(0.1f).build();
 
-    // Enhanced Crops
+    // Enhanced Foods
+
+    // Dried
 
     public static FoodProperties DRIED_PEPPER = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).build();
+
+    // Fermented
+
+    public static FoodProperties PICKLED_CUCUMBER = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3f).build();
+    public static FoodProperties PICKLED_BEETROOT = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3f).build();
+    public static FoodProperties PICKLED_EGG = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3f).build();
+
 
     // Ingredients
 

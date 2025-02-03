@@ -28,10 +28,23 @@ public class FlavoredItems {
     public static final DeferredItem<Item> GARLIC = ITEMS.register("garlic",
             () -> new Item(new Item.Properties().food(FlavoredFoods.GARLIC)));
 
-    // Enhanced Crops
+    // Enhanced Foods
+
+    // Dried
 
     public static final DeferredItem<Item> DRIED_PEPPER = ITEMS.register("dried_pepper",
             () -> new Item(new Item.Properties().food(FlavoredFoods.DRIED_PEPPER)));
+
+    // Fermented
+
+    public static final DeferredItem<Item> PICKLED_CUCUMBER = ITEMS.register("pickled_cucumber",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.PICKLED_CUCUMBER)));
+
+    public static final DeferredItem<Item> PICKLED_BEETROOT = ITEMS.register("dried_beetroot",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.PICKLED_BEETROOT)));
+
+    public static final DeferredItem<Item> PICKLED_EGG = ITEMS.register("dried_egg",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.PICKLED_EGG)));
 
     // Ingredients
 

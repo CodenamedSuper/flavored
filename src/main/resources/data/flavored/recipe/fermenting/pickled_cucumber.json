@@ -1,0 +1,13 @@
+{
+  "type": "flavored:fermenting",
+  "ingredient": {
+    "item": "flavored:cucumber"
+  },
+  "fermenter": {
+    "item": "flavored:salt"
+  },
+  "result": {
+    "id": "flavored:pickled_cucumbe",
+    "count": 1
+  }
+}

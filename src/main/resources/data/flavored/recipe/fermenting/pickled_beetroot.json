@@ -1,0 +1,13 @@
+{
+  "type": "flavored:fermenting",
+  "ingredient": {
+    "item": "minecraft:beetroot"
+  },
+  "fermenter": {
+    "item": "flavored:salt"
+  },
+  "result": {
+    "id": "flavored:pickled_beetroot",
+    "count": 1
+  }
+}

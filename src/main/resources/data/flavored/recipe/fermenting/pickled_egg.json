@@ -1,0 +1,13 @@
+{
+  "type": "flavored:fermenting",
+  "ingredient": {
+    "item": "minecraft:egg"
+  },
+  "fermenter": {
+    "item": "minecraft:salt"
+  },
+  "result": {
+    "id": "flavored:pickled_egg",
+    "count": 1
+  }
+}

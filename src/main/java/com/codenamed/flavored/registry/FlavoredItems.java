@@ -26,7 +26,7 @@ public class FlavoredItems {
             () -> new Item(new Item.Properties().food(FlavoredFoods.CUCUMBER)));
 
     public static final DeferredItem<Item> GARLIC = ITEMS.register("garlic",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.GARLIC)));
+            () -> new ItemNameBlockItem(FlavoredBlocks.GARLICS.get(), new Item.Properties().food(FlavoredFoods.GARLIC)));
 
     // Enhanced Foods
 
@@ -40,10 +40,10 @@ public class FlavoredItems {
     public static final DeferredItem<Item> PICKLED_CUCUMBER = ITEMS.register("pickled_cucumber",
             () -> new Item(new Item.Properties().food(FlavoredFoods.PICKLED_CUCUMBER)));
 
-    public static final DeferredItem<Item> PICKLED_BEETROOT = ITEMS.register("dried_beetroot",
+    public static final DeferredItem<Item> PICKLED_BEETROOT = ITEMS.register("pickled_beetroot",
             () -> new Item(new Item.Properties().food(FlavoredFoods.PICKLED_BEETROOT)));
 
-    public static final DeferredItem<Item> PICKLED_EGG = ITEMS.register("dried_egg",
+    public static final DeferredItem<Item> PICKLED_EGG = ITEMS.register("pickled_egg",
             () -> new Item(new Item.Properties().food(FlavoredFoods.PICKLED_EGG)));
 
     // Ingredients

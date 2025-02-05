@@ -4,7 +4,7 @@
     "item": "minecraft:egg"
   },
   "fermenter": {
-    "item": "minecraft:salt"
+    "item": "flavored:salt"
   },
   "result": {
     "id": "flavored:pickled_egg",

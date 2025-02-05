@@ -4,12 +4,24 @@
       "model": "flavored:block/garlics_stage0"
     },
     "age=1": {
-      "model": "flavored:block/garlics_stage1"
+      "model": "flavored:block/garlics_stage0"
     },
     "age=2": {
-      "model": "flavored:block/garlics_stage2"
+      "model": "flavored:block/garlics_stage1"
     },
     "age=3": {
+      "model": "flavored:block/garlics_stage1"
+    },
+    "age=4": {
+      "model": "flavored:block/garlics_stage2"
+    },
+    "age=5": {
+      "model": "flavored:block/garlics_stage2"
+    },
+    "age=6": {
+      "model": "flavored:block/garlics_stage2"
+    },
+    "age=7": {
       "model": "flavored:block/garlics_stage3"
     }
   }

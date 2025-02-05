@@ -20,37 +20,74 @@ public class FlavoredCreativeTabs {
                     .title(Component.translatable("creativetab.flavored.flavored"))
                     .displayItems((itemDisplayParameters, output) -> {
 
+
+                        //Building
+
                         output.accept(FlavoredBlocks.ROCK_SALT);
                         output.accept(FlavoredBlocks.BUDDING_ROCK_SALT);
-                        output.accept(FlavoredBlocks.SALT_BLOCK);
                         output.accept(FlavoredBlocks.SALT_CLUSTER);
-                        output.accept(FlavoredBlocks.SALT_LAMP);
-                        output.accept(FlavoredItems.SALT);
+                        output.accept(FlavoredBlocks.SALT_BLOCK);
                         output.accept(FlavoredBlocks.CHOCOLATE_BLOCK);
+
+                        //Functional
+
+                        //Workstations
+
                         output.accept(FlavoredBlocks.FERMENTER);
-                        output.accept(FlavoredItems.CHOCOLATE);
+
+                        //Misc
+
+                        output.accept(FlavoredBlocks.SALT_LAMP);
+
+                        //Ingredients
+
+                        //Crops
                         output.accept(FlavoredItems.TOMATO);
-                        output.accept(FlavoredItems.PEPPER);
                         output.accept(FlavoredItems.CUCUMBER);
+                        output.accept(FlavoredItems.PEPPER);
                         output.accept(FlavoredItems.GARLIC);
-                        output.accept(FlavoredItems.DRIED_PEPPER);
-                        output.accept(FlavoredItems.TOMATO_SEEDS);
-                        output.accept(FlavoredItems.PEPPER_SEEDS);
-                        output.accept(FlavoredItems.CUCUMBER_SEEDS);
-                        output.accept(FlavoredBlocks.WILD_PEPPER);
+
+                        //Misc
+
+                        output.accept(FlavoredItems.SALT);
+                        output.accept(FlavoredItems.CHOCOLATE);
                         output.accept(FlavoredBlocks.RAW_CHEESE);
                         output.accept(FlavoredBlocks.CHEESE);
                         output.accept(FlavoredItems.CHEESE_SLICE);
+
+                        //Seeds
+
+                        output.accept(FlavoredItems.TOMATO_SEEDS);
+                        output.accept(FlavoredItems.CUCUMBER_SEEDS);
+                        output.accept(FlavoredItems.PEPPER_SEEDS);
+
+
+                        //Foodstuffs
+
+                        //Enhanced
+
+                        output.accept(FlavoredItems.DRIED_PEPPER);
+                        output.accept(FlavoredItems.PICKLED_BEETROOT);
+                        output.accept(FlavoredItems.PICKLED_CUCUMBER);
+                        output.accept(FlavoredItems.PICKLED_EGG);
+
+                        //Normal
+
+                        //Snacks
+
+                        //Dishes
+
+                        //Placeables
+
+                        //Drinks
+
+                        output.accept(FlavoredItems.APPLE_JUICE);
                         output.accept(FlavoredItems.SWEET_BERRY_JUICE);
                         output.accept(FlavoredItems.GLOW_BERRY_JUICE);
-                        output.accept(FlavoredItems.APPLE_JUICE);
+                        output.accept(FlavoredItems.CIDER);
                         output.accept(FlavoredItems.SWEET_BERRY_WINE);
                         output.accept(FlavoredItems.GLOW_BERRY_WINE);
-                        output.accept(FlavoredItems.CIDER);
                         output.accept(FlavoredItems.MEAD);
-                        output.accept(FlavoredItems.PICKLED_CUCUMBER);
-                        output.accept(FlavoredItems.PICKLED_BEETROOT);
-                        output.accept(FlavoredItems.PICKLED_EGG);
 
 
                     }).build());

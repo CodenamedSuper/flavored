@@ -76,8 +76,6 @@ public class FlavoredBlocks {
 
     // Wild Crops
 
-    public static final DeferredBlock<Block> WILD_PEPPER = registerBlock("wild_pepper",
-            () -> new WildPepperBlock(BlockBehaviour.Properties.ofFullCopy(PEPPER_BUSH.get())));
 
     // Placeable Items
 

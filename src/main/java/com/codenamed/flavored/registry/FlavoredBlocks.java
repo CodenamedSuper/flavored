@@ -76,6 +76,15 @@ public class FlavoredBlocks {
 
     // Wild Crops
 
+    public static final DeferredBlock<Block> WILD_PEPPER = registerBlock("wild_pepper",
+            () -> new WildPepperBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DEAD_BUSH)));
+
+    public static final DeferredBlock<Block> WILD_CUCUMBER = registerBlock("wild_cucumber",
+            () -> new WildCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS)));
+
+    public static final DeferredBlock<Block> WILD_GARLIC = registerBlock("wild_garlic",
+            () -> new WildCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ALLIUM)));
+
 
     // Placeable Items
 

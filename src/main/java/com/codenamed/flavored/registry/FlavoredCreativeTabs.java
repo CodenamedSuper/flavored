@@ -39,6 +39,12 @@ public class FlavoredCreativeTabs {
 
                         output.accept(FlavoredBlocks.SALT_LAMP);
 
+                        //Wild Crops
+
+                        output.accept(FlavoredBlocks.WILD_CUCUMBER);
+                        output.accept(FlavoredBlocks.WILD_PEPPER);
+                        output.accept(FlavoredBlocks.WILD_GARLIC);
+
                         //Ingredients
 
                         //Crops

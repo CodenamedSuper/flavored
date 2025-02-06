@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+
+  "biomes": "#minecraft:is_taiga",
+
+  "features": "flavored:patch_wild_garlic",
+
+  "step": "vegetal_decoration"
+}

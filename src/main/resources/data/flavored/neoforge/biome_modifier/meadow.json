@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+
+  "biomes": "minecraft:meadow",
+
+  "features": "flavored:patch_wild_cucumber",
+
+  "step": "vegetal_decoration"
+}

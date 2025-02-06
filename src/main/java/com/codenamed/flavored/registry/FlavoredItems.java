@@ -57,7 +57,11 @@ public class FlavoredItems {
     public static final DeferredItem<Item> CHOCOLATE = ITEMS.register("chocolate",
             () -> new Item(new Item.Properties().food(FlavoredFoods.CHOCOLATE)));
 
-    // Seeds
+    public static final DeferredItem<Item> FRESH_PASTA = ITEMS.register("fresh_pasta",
+            () -> new Item(new Item.Properties()));
+
+
+            // Seeds
 
     public static final DeferredItem<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds",
             () -> new ItemNameBlockItem(FlavoredBlocks.TOMATO_BUSH.get(), new Item.Properties()));
@@ -67,6 +71,17 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> CUCUMBER_SEEDS = ITEMS.register("cucumber_seeds",
             () -> new ItemNameBlockItem(FlavoredBlocks.CUCUMBER_BUSH.get(), new Item.Properties()));
+
+    // Dishes
+
+    public static final DeferredItem<Item> TOMATO_SAUCE_PASTA = ITEMS.register("tomato_sauce_pasta",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.TOMATO_SAUCE_PASTA)));
+
+    public static final DeferredItem<Item> BOLOGNESE_PASTA = ITEMS.register("bolognese_pasta",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.BOLOGNESE_PASTA)));
+
+    public static final DeferredItem<Item> ALFREDO_PASTA = ITEMS.register("alfredo_pasta",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.ALFREDO_PASTA)));
 
     // Juices
 

@@ -55,6 +55,7 @@ public class FlavoredCreativeTabs {
 
                         //Misc
 
+                        output.accept(FlavoredItems.FRESH_PASTA);
                         output.accept(FlavoredItems.SALT);
                         output.accept(FlavoredItems.CHOCOLATE);
                         output.accept(FlavoredBlocks.RAW_CHEESE);
@@ -82,6 +83,11 @@ public class FlavoredCreativeTabs {
                         //Snacks
 
                         //Dishes
+
+                        output.accept(FlavoredItems.TOMATO_SAUCE_PASTA);
+                        output.accept(FlavoredItems.ALFREDO_PASTA);
+                        output.accept(FlavoredItems.BOLOGNESE_PASTA);
+
 
                         //Placeables
 

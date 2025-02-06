@@ -1,6 +1,7 @@
 package com.codenamed.flavored.registry;
 
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Items;
 
 public class FlavoredFoods {
 
@@ -11,7 +12,7 @@ public class FlavoredFoods {
     public static FoodProperties CUCUMBER = new FoodProperties.Builder().nutrition(1).saturationModifier(0.1f).build();
     public static FoodProperties GARLIC = new FoodProperties.Builder().nutrition(1).saturationModifier(0.1f).build();
 
-    // Enhanced Foods
+    // Enhanced
 
     // Dried
 
@@ -22,6 +23,13 @@ public class FlavoredFoods {
     public static FoodProperties PICKLED_CUCUMBER = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3f).build();
     public static FoodProperties PICKLED_BEETROOT = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3f).build();
     public static FoodProperties PICKLED_EGG = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3f).build();
+
+    // Dishes
+
+    public static FoodProperties TOMATO_SAUCE_PASTA = new FoodProperties.Builder().nutrition(7).saturationModifier(0.6f).usingConvertsTo(Items.BOWL).build();
+    public static FoodProperties BOLOGNESE_PASTA = new FoodProperties.Builder().nutrition(10).saturationModifier(0.9f).usingConvertsTo(Items.BOWL).build();
+    public static FoodProperties ALFREDO_PASTA = new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).usingConvertsTo(Items.BOWL).build();
+
 
 
     // Ingredients

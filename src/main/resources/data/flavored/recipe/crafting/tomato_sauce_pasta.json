@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "flavored:fresh_pasta"
+    },
+    {
+      "item": "flavored:tomato"
+    },
+    {
+      "item": "flavored:tomato"
+    },
+    {
+      "item": "flavored:tomato"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "flavored:tomato_sauce_pasta"
+  }
+}

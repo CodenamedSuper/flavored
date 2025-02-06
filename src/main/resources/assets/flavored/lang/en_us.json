@@ -50,5 +50,11 @@
 
   "item.flavored.pickled_cucumber": "Pickled Cucumber",
   "item.flavored.pickled_beetroot": "Pickled Beetroot",
-  "item.flavored.pickled_egg": "Pickled Egg"
+  "item.flavored.pickled_egg": "Pickled Egg",
+
+  "item.flavored.fresh_pasta": "Fresh Pasta",
+  "item.flavored.tomato_sauce_pasta": "Tomato Sauce Pasta",
+  "item.flavored.bolognese_pasta": "Bolognese Pasta",
+  "item.flavored.alfredo_pasta": "Alfredo Pasta"
+
 }

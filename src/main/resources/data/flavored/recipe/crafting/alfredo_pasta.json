@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "flavored:fresh_pasta"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "flavored:garlic"
+    },
+    {
+      "item": "flavored:cheese_slice"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "flavored:alfredo_pasta"
+  }
+}

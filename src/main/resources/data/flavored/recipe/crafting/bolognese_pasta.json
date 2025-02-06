@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "flavored:fresh_pasta"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    },
+    {
+      "item": "flavored:tomato"
+    },
+    {
+      "item": "flavored:carrot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "flavored:bolognese_pasta"
+  }
+}

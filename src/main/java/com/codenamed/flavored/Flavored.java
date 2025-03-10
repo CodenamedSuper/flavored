@@ -1,5 +1,8 @@
 package com.codenamed.flavored;
 
+import com.codenamed.flavored.registry.FlavoredBlocks;
+import com.codenamed.flavored.registry.FlavoredCreativeTabs;
+import com.codenamed.flavored.registry.FlavoredItems;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.slf4j.Logger;
 
@@ -30,6 +33,10 @@ public class Flavored
         modEventBus.addListener(this::commonSetup);
 
         NeoForge.EVENT_BUS.register(this);
+
+        FlavoredItems.init(modEventBus);
+        FlavoredBlocks.init(modEventBus);
+        FlavoredCreativeTabs.init(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

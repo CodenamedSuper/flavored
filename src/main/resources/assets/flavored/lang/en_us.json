@@ -1,4 +1,8 @@
 {
   "creativetab.flavored.flavored": "Flavored",
-  "block.flavored.wheatgrass": "Wheatgrass"
+  "block.flavored.wheatgrass": "Wheatgrass",
+
+  "item.flavored.flour": "Flour",
+  "item.flavored.dough": "Dough"
+
 }

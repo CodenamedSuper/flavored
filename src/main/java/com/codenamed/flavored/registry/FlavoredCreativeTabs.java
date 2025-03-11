@@ -22,6 +22,8 @@ public class FlavoredCreativeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(FlavoredBlocks.WHEATGRASS);
+                        output.accept(FlavoredItems.FLOUR);
+                        output.accept(FlavoredItems.DOUGH);
 
                     }).build());
 

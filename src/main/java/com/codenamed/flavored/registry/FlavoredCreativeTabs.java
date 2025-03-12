@@ -21,9 +21,9 @@ public class FlavoredCreativeTabs {
                     .title(Component.translatable("creativetab.flavored.flavored"))
                     .displayItems((itemDisplayParameters, output) -> {
 
-                        output.accept(FlavoredBlocks.WHEATGRASS);
                         output.accept(FlavoredItems.FLOUR);
                         output.accept(FlavoredItems.DOUGH);
+                        output.accept(FlavoredItems.BATTER);
 
                     }).build());
 

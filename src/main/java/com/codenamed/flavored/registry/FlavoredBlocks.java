@@ -1,6 +1,7 @@
 package com.codenamed.flavored.registry;
 
 import com.codenamed.flavored.Flavored;
+import com.codenamed.flavored.block.TomatoBushBlock;
 import com.codenamed.flavored.block.WheatgrassBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -23,6 +24,10 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> WHEATGRASS = registerBlock("wheatgrass", ()->
             new WheatgrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS)) {
             });
+
+
+    public static final DeferredBlock<Block> TOMATO_BUSH = registerBlock("tomato_bush",
+            () -> new TomatoBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return (p_50763_) -> {

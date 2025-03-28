@@ -20,11 +20,6 @@ public class FlavoredItems {
     public static final DeferredItem<Item> BATTER = ITEMS.register("batter", () ->
             new Item(new Item.Properties().stacksTo(1)));
 
-    public static final DeferredItem<Item> TOMATO = ITEMS.register("tomato",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.TOMATO)));
-
-    public static final DeferredItem<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds",
-            () -> new ItemNameBlockItem(FlavoredBlocks.TOMATO_BUSH.get(), new Item.Properties()));
 
     public static void init(IEventBus eventBus) {
         ITEMS.register(eventBus);

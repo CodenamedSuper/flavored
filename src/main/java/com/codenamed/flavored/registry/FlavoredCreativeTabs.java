@@ -24,6 +24,8 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.FLOUR);
                         output.accept(FlavoredItems.DOUGH);
                         output.accept(FlavoredItems.BATTER);
+                        output.accept(FlavoredItems.TOMATO);
+                        output.accept(FlavoredItems.TOMATO_SEEDS);
 
                     }).build());
 

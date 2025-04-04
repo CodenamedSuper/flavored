@@ -1,6 +1,8 @@
 package com.codenamed.flavored.registry;
 
 import com.codenamed.flavored.Flavored;
+import com.codenamed.flavored.block.AgedCheeseBlock;
+import com.codenamed.flavored.block.RawCheeseBlock;
 import com.codenamed.flavored.block.TomatoBushBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -22,6 +24,13 @@ public class FlavoredBlocks {
 
     public static final DeferredBlock<Block> TOMATO_BUSH = registerBlock("tomato_bush",
             () -> new TomatoBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+
+    public static final DeferredBlock<Block> RAW_CHEESE = registerBlock("raw_cheese",
+            () -> new RawCheeseBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).randomTicks()));
+
+    public static final DeferredBlock<Block> CHEESE = registerBlock("cheese",
+            () -> new AgedCheeseBlock(BlockBehaviour.Properties.ofFullCopy(RAW_CHEESE.get())));
+
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return (p_50763_) -> {

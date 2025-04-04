@@ -7,6 +7,11 @@
   "item.flavored.batter": "Batter",
 
   "item.flavored.tomato": "Tomato",
-  "item.flavored.tomato_seeds": "Tomato Seeds"
+  "item.flavored.tomato_seeds": "Tomato Seeds",
 
+  "item.flavored.cheese_slice": "Cheese Slice",
+  "item.flavored.cheese": "Cheese",
+  "item.flavored.raw_cheese": "Raw Cheese",
+  "block.flavored.cheese": "Cheese",
+  "block.flavored.raw_cheese": "Raw Cheese"
 }

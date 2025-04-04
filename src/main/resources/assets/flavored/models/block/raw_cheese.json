@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "flavored:block/raw_cheese",
+		"particle": "flavored:block/raw_cheese"
+	},
+	"elements": [
+		{
+			"from": [1, 0, 1],
+			"to": [15, 5, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [1, 0, 1]},
+			"faces": {
+				"north": {"uv": [0.5, 8, 7.5, 10.5], "texture": "#0"},
+				"east": {"uv": [0.5, 8, 7.5, 10.5], "texture": "#0"},
+				"south": {"uv": [0.5, 8, 7.5, 10.5], "texture": "#0"},
+				"west": {"uv": [0.5, 8, 7.5, 10.5], "texture": "#0"},
+				"up": {"uv": [0.5, 0.5, 7.5, 7.5], "texture": "#0"},
+				"down": {"uv": [8.5, 0.5, 15.5, 7.5], "texture": "#0"}
+			}
+		}
+	]
+}

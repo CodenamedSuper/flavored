@@ -2,7 +2,6 @@ package com.codenamed.flavored.registry;
 
 import com.codenamed.flavored.Flavored;
 import com.codenamed.flavored.block.TomatoBushBlock;
-import com.codenamed.flavored.block.WheatgrassBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -20,10 +19,6 @@ import java.util.function.ToIntFunction;
 public class FlavoredBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(Flavored.MOD_ID);
-
-    public static final DeferredBlock<Block> WHEATGRASS = registerBlock("wheatgrass", ()->
-            new WheatgrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS)) {
-            });
 
     public static final DeferredBlock<Block> TOMATO_BUSH = registerBlock("tomato_bush",
             () -> new TomatoBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));

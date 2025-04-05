@@ -24,6 +24,9 @@ public class FlavoredItems {
     public static final DeferredItem<Item> TOMATO = ITEMS.register("tomato",
             () -> new Item(new Item.Properties().food(FlavoredFoods.TOMATO)));
 
+    public static final DeferredItem<Item> GARLIC = ITEMS.register("garlic",
+            () -> new ItemNameBlockItem(FlavoredBlocks.GARLICS.get(), new Item.Properties().food(FlavoredFoods.GARLIC)));
+
     public static final DeferredItem<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds",
             () -> new ItemNameBlockItem(FlavoredBlocks.TOMATO_BUSH.get(), new Item.Properties()));
 

@@ -1,6 +1,7 @@
 {
   "creativetab.flavored.flavored": "Flavored",
   "block.flavored.tomato_bush": "Tomato Bush",
+  "block.flavored.garlics": "Garlics",
 
   "item.flavored.flour": "Flour",
   "item.flavored.dough": "Dough",
@@ -9,9 +10,13 @@
   "item.flavored.tomato": "Tomato",
   "item.flavored.tomato_seeds": "Tomato Seeds",
 
+  "item.flavored.garlic": "Garlic",
+
+
   "item.flavored.cheese_slice": "Cheese Slice",
   "item.flavored.cheese": "Cheese",
   "item.flavored.raw_cheese": "Raw Cheese",
   "block.flavored.cheese": "Cheese",
   "block.flavored.raw_cheese": "Raw Cheese"
+
 }

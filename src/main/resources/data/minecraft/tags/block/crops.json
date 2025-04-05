@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "flavored:tomato_bush"
+    "flavored:tomato_bush",
+    "flavored:garlics"
 
   ]
 }

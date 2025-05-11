@@ -1,0 +1,13 @@
+{
+  "type": "flavored:fermenting",
+  "ingredient": {
+    "item": "minecraft:spider_eye"
+  },
+  "fermenter": {
+    "item": "minecraft:sugar"
+  },
+  "result": {
+    "id": "minecraft:fermented_spider_eye",
+    "count": 1
+  }
+}

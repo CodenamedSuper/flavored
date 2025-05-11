@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "flavored:block/fermenter",
+    "side": "flavored:block/fermenter_side",
+    "top": "flavored:block/fermenter_top",
+    "bottom": "flavored:block/fermenter_bottom",
+    "particle": "flavored:block/fermenter_side"
+  }
+}

@@ -22,6 +22,8 @@ public class FlavoredCreativeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(FlavoredBlocks.FERMENTER);
+                        output.accept(FlavoredItems.CUCUMBER);
+                        output.accept(FlavoredItems.CUCUMBER_SEEDS);
 
                     }).build());
 

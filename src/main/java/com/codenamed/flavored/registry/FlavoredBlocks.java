@@ -1,6 +1,7 @@
 package com.codenamed.flavored.registry;
 
 import com.codenamed.flavored.Flavored;
+import com.codenamed.flavored.block.CucumberBushBlock;
 import com.codenamed.flavored.block.FermenterBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -22,6 +23,9 @@ public class FlavoredBlocks {
 
     public static final DeferredBlock<Block> FERMENTER = registerBlock("fermenter",
             () -> new FermenterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)));
+
+    public static final DeferredBlock<Block> CUCUMBER_BUSH = registerBlock("cucumber_bush",
+            () -> new CucumberBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return (p_50763_) -> {

@@ -12,6 +12,11 @@ public class FlavoredItems {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Flavored.MOD_ID);
 
+    public static final DeferredItem<Item> CUCUMBER_SEEDS = ITEMS.register("cucumber_seeds",
+            () -> new ItemNameBlockItem(FlavoredBlocks.CUCUMBER_BUSH.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> CUCUMBER = ITEMS.register("cucumber",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CUCUMBER)));
 
     public static void init(IEventBus eventBus) {
         ITEMS.register(eventBus);

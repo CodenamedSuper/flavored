@@ -1,5 +1,9 @@
 {
   "creativetab.flavored.flavored": "Flavored",
 
-  "block.flavored.fermenter": "Fermenter"
+  "block.flavored.fermenter": "Fermenter",
+
+  "item.flavored.cucumber": "Cucumber",
+  "item.flavored.cucumber_seeds": "Cucumber Seeds",
+  "block.flavored.cucumber_bush": "Cucumber Bush"
 }

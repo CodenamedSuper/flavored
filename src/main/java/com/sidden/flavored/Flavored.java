@@ -3,6 +3,7 @@ package com.sidden.flavored;
 import com.mojang.logging.LogUtils;
 import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredCreativeTabs;
+import com.sidden.flavored.registry.FlavoredEntities;
 import com.sidden.flavored.registry.FlavoredItems;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.slf4j.Logger;
@@ -34,6 +35,7 @@ public class Flavored
 
         FlavoredItems.init(modEventBus);
         FlavoredBlocks.init(modEventBus);
+        FlavoredEntities.init(modEventBus);
         FlavoredCreativeTabs.init(modEventBus);
 
         modEventBus.addListener(this::addCreative);

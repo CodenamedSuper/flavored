@@ -1,6 +1,7 @@
 package com.sidden.flavored.registry;
 
 import com.sidden.flavored.Flavored;
+import com.sidden.flavored.block.TomatoBushBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -15,6 +16,9 @@ import java.util.function.Supplier;
 public class FlavoredBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(Flavored.MOD_ID);
+
+    public static final DeferredBlock<Block> TOMATO_BUSH = registerBlock("tomato_bush",
+            () -> new TomatoBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
 
     private static Block stair(Block baseBlock) {

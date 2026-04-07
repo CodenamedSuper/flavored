@@ -16,10 +16,14 @@ public class FlavoredCreativeTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Flavored.MOD_ID);
 
     public static final Supplier<CreativeModeTab> FLAVORED = CREATIVE_MODE_TAB.register("flavored",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(Items.APPLE))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(FlavoredItems.RED_TOMATO.get()))
                     .title(Component.translatable("creativetab.flavored.flavored"))
                     .displayItems((itemDisplayParameters, output) -> {
 
+                        output.accept(FlavoredItems.GREEN_TOMATO);
+                        output.accept(FlavoredItems.YELLOW_TOMATO);
+                        output.accept(FlavoredItems.RED_TOMATO);
+                        output.accept(FlavoredItems.TOMATO_SEEDS);
 
                     }).build());
 

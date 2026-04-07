@@ -1,5 +1,11 @@
 {
-  "creativetab.flavored.flavored": "Flavored"
+  "creativetab.flavored.flavored": "Flavored",
 
+  "block.flavored.tomato_bush": "Tomato Bush",
 
+  "item.flavored.green_tomato": "Green Tomato",
+  "item.flavored.yellow_tomato": "Yellow Tomato",
+  "item.flavored.red_tomato": "Red Tomato",
+
+  "item.flavored.tomato_seeds": "Tomato Seeds"
 }

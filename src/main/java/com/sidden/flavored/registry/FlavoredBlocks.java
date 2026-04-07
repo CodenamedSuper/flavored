@@ -1,6 +1,8 @@
 package com.sidden.flavored.registry;
 
 import com.sidden.flavored.Flavored;
+import com.sidden.flavored.block.AgedCheeseBlock;
+import com.sidden.flavored.block.SoftCheeseBlock;
 import com.sidden.flavored.block.TomatoBushBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -22,6 +24,13 @@ public class FlavoredBlocks {
 
     public static final DeferredBlock<Block> TOMATO_BUSH = registerBlock("tomato_bush",
             () -> new TomatoBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+
+
+    public static final DeferredBlock<Block> SOFT_CHEESE = registerBlock("soft_cheese",
+            ()-> new SoftCheeseBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).randomTicks()));
+
+    public static final DeferredBlock<Block> AGED_CHEESE = registerBlock("aged_cheese",
+            ()-> new AgedCheeseBlock(BlockBehaviour.Properties.ofFullCopy(SOFT_CHEESE.get()).randomTicks()));
 
 
     private static Block stair(Block baseBlock) {

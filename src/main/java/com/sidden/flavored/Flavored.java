@@ -2,9 +2,11 @@ package com.sidden.flavored;
 
 import com.mojang.logging.LogUtils;
 import com.sidden.flavored.entity.client.renderer.ChockenRenderer;
+import com.sidden.flavored.particle.CheeseAgingParticle;
 import com.sidden.flavored.registry.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import org.slf4j.Logger;
 
 import net.neoforged.api.distmarker.Dist;
@@ -36,6 +38,7 @@ public class Flavored
         FlavoredBlocks.init(modEventBus);
         FlavoredEffects.init(modEventBus);
         FlavoredEntities.init(modEventBus);
+        FlavoredParticles.init(modEventBus);
         FlavoredCreativeTabs.init(modEventBus);
 
         modEventBus.addListener(this::addCreative);
@@ -68,6 +71,12 @@ public class Flavored
         @SubscribeEvent
         public static void registerMenuScreens(RegisterMenuScreensEvent event) {
         }
+
+        @SubscribeEvent
+        public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
+            event.registerSpriteSet(FlavoredParticles.CHEESE_AGING.get(), CheeseAgingParticle.Provider::new);
+        }
     }
+
 
 }

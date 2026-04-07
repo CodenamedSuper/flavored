@@ -25,6 +25,10 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.YELLOW_TOMATO);
                         output.accept(FlavoredItems.RED_TOMATO);
                         output.accept(FlavoredItems.TOMATO_SEEDS);
+                        output.accept(FlavoredItems.SOFT_CHEESE_SLICE);
+                        output.accept(FlavoredItems.AGED_CHEESE_SLICE);
+                        output.accept(FlavoredBlocks.SOFT_CHEESE);
+                        output.accept(FlavoredBlocks.AGED_CHEESE);
                         output.accept(FlavoredItems.CHOCOLATE);
                         output.accept(FlavoredItems.CHOCOLATE_EGG);
                         output.accept(FlavoredItems.CHOCKEN_SPAWN_EGG);

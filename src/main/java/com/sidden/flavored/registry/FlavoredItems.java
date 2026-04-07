@@ -1,7 +1,9 @@
 package com.sidden.flavored.registry;
 
 import com.sidden.flavored.Flavored;
+import com.sidden.flavored.item.CheesyItem;
 import com.sidden.flavored.item.ChocolateEggItem;
+import com.sidden.flavored.item.SoftCheeseSliceItem;
 import com.sidden.flavored.item.TomatoItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
@@ -29,6 +31,12 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> RED_TOMATO = ITEMS.register("red_tomato",
             () -> new TomatoItem(new Item.Properties().food(FlavoredFoods.RED_TOMATO)));
+
+    public static final DeferredItem<Item> SOFT_CHEESE_SLICE = ITEMS.register("soft_cheese_slice",
+            () -> new SoftCheeseSliceItem(new Item.Properties().food(FlavoredFoods.SOFT_CHEESE_SLICE)));
+
+    public static final DeferredItem<Item> AGED_CHEESE_SLICE = ITEMS.register("aged_cheese_slice",
+            () -> new CheesyItem(new Item.Properties().food(FlavoredFoods.AGED_CHEESE_SLICE)));
 
     public static final DeferredItem<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds",
             () -> new ItemNameBlockItem(FlavoredBlocks.TOMATO_BUSH.get(), new Item.Properties()));

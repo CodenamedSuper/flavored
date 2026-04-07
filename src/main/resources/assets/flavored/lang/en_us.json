@@ -17,5 +17,12 @@
   "entity.flavored.chocolate_egg": "Chocolate Egg",
 
   "effect.flavored.sugar_rush": "Sugar Rush",
-  "effect.flavored.sugar_crave": "Sugar Crave"
+  "effect.flavored.sugar_crave": "Sugar Crave",
+
+
+  "item.flavored.soft_cheese_slice": "Soft Cheese Slice",
+  "item.flavored.aged_cheese_slice": "Cheese Slice",
+
+  "block.flavored.soft_cheese": "Soft Cheese",
+  "block.flavored.aged_cheese": "Aged Cheese"
 }

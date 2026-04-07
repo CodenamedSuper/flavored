@@ -17,6 +17,9 @@ public class FlavoredBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(Flavored.MOD_ID);
 
+    public static final DeferredBlock<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
+
     public static final DeferredBlock<Block> TOMATO_BUSH = registerBlock("tomato_bush",
             () -> new TomatoBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 

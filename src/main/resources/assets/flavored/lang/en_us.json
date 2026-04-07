@@ -7,5 +7,15 @@
   "item.flavored.yellow_tomato": "Yellow Tomato",
   "item.flavored.red_tomato": "Red Tomato",
 
-  "item.flavored.tomato_seeds": "Tomato Seeds"
+  "item.flavored.tomato_seeds": "Tomato Seeds",
+
+  "block.flavored.chocolate_block": "Block of Chocolate",
+  "item.flavored.chocolate": "Chocolate",
+  "item.flavored.chocolate_egg": "Chocolate Egg",
+  "item.flavored.chocken_spawn_egg": "Chocken Spawn Egg",
+  "entity.flavored.chocken": "Chocken",
+  "entity.flavored.chocolate_egg": "Chocolate Egg",
+
+  "effect.flavored.sugar_rush": "Sugar Rush",
+  "effect.flavored.sugar_crave": "Sugar Crave"
 }

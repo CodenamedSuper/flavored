@@ -20,10 +20,15 @@ public class FlavoredCreativeTabs {
                     .title(Component.translatable("creativetab.flavored.flavored"))
                     .displayItems((itemDisplayParameters, output) -> {
 
+                        output.accept(FlavoredBlocks.CHOCOLATE_BLOCK);
                         output.accept(FlavoredItems.GREEN_TOMATO);
                         output.accept(FlavoredItems.YELLOW_TOMATO);
                         output.accept(FlavoredItems.RED_TOMATO);
                         output.accept(FlavoredItems.TOMATO_SEEDS);
+                        output.accept(FlavoredItems.CHOCOLATE);
+                        output.accept(FlavoredItems.CHOCOLATE_EGG);
+                        output.accept(FlavoredItems.CHOCKEN_SPAWN_EGG);
+
 
                     }).build());
 

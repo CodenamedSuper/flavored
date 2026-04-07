@@ -1,10 +1,9 @@
 package com.sidden.flavored;
 
 import com.mojang.logging.LogUtils;
-import com.sidden.flavored.registry.FlavoredBlocks;
-import com.sidden.flavored.registry.FlavoredCreativeTabs;
-import com.sidden.flavored.registry.FlavoredEntities;
-import com.sidden.flavored.registry.FlavoredItems;
+import com.sidden.flavored.entity.client.renderer.ChockenRenderer;
+import com.sidden.flavored.registry.*;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.slf4j.Logger;
 
@@ -35,6 +34,7 @@ public class Flavored
 
         FlavoredItems.init(modEventBus);
         FlavoredBlocks.init(modEventBus);
+        FlavoredEffects.init(modEventBus);
         FlavoredEntities.init(modEventBus);
         FlavoredCreativeTabs.init(modEventBus);
 
@@ -63,6 +63,7 @@ public class Flavored
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            EntityRenderers.register(FlavoredEntities.CHOCKEN.get(), ChockenRenderer::new);
         }
         @SubscribeEvent
         public static void registerMenuScreens(RegisterMenuScreensEvent event) {

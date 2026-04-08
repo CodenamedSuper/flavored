@@ -1,9 +1,7 @@
 package com.sidden.flavored.registry;
 
 import com.sidden.flavored.Flavored;
-import com.sidden.flavored.block.AgedCheeseBlock;
-import com.sidden.flavored.block.SoftCheeseBlock;
-import com.sidden.flavored.block.TomatoBushBlock;
+import com.sidden.flavored.block.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -18,6 +16,27 @@ import java.util.function.Supplier;
 public class FlavoredBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(Flavored.MOD_ID);
+
+    public static final DeferredBlock<Block> ROCK_SALT = registerBlock("rock_salt",
+            () -> new RockSaltBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK)));
+
+    public static final DeferredBlock<Block> BUDDING_ROCK_SALT = registerBlock("budding_rock_salt",
+            () -> new BuddingRockSaltBlock(BlockBehaviour.Properties.ofFullCopy(ROCK_SALT.get()).randomTicks()));
+
+    public static final DeferredBlock<Block> SALT_CLUSTER = registerBlock("salt_cluster",
+            () -> new SaltClusterBlock(7.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER)));
+
+    public static final DeferredBlock<Block> SMALL_SALT_BUD = registerBlock("small_salt_bud",
+            () -> new SaltClusterBlock(5.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.SMALL_AMETHYST_BUD)));
+
+    public static final DeferredBlock<Block> MEDIUM_SALT_BUD = registerBlock("medium_salt_bud",
+            () -> new SaltClusterBlock(4.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.MEDIUM_AMETHYST_BUD)));
+
+    public static final DeferredBlock<Block> LARGE_SALT_BUD = registerBlock("large_salt_bud",
+            () -> new SaltClusterBlock(3.0F, 4.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER)));
+
+    public static final DeferredBlock<Block> SALT_BLOCK = registerBlock("salt_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(ROCK_SALT.get())));
 
     public static final DeferredBlock<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));

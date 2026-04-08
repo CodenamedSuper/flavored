@@ -20,10 +20,18 @@ public class FlavoredCreativeTabs {
                     .title(Component.translatable("creativetab.flavored.flavored"))
                     .displayItems((itemDisplayParameters, output) -> {
 
+                        output.accept(FlavoredBlocks.ROCK_SALT);
+                        output.accept(FlavoredBlocks.BUDDING_ROCK_SALT);
+                        output.accept(FlavoredBlocks.SALT_BLOCK);
+                        output.accept(FlavoredBlocks.SMALL_SALT_BUD);
+                        output.accept(FlavoredBlocks.MEDIUM_SALT_BUD);
+                        output.accept(FlavoredBlocks.LARGE_SALT_BUD);
+                        output.accept(FlavoredBlocks.SALT_CLUSTER);
                         output.accept(FlavoredBlocks.CHOCOLATE_BLOCK);
                         output.accept(FlavoredItems.GREEN_TOMATO);
                         output.accept(FlavoredItems.YELLOW_TOMATO);
                         output.accept(FlavoredItems.RED_TOMATO);
+                        output.accept(FlavoredItems.SALT);
                         output.accept(FlavoredItems.TOMATO_SEEDS);
                         output.accept(FlavoredItems.SOFT_CHEESE_SLICE);
                         output.accept(FlavoredItems.AGED_CHEESE_SLICE);

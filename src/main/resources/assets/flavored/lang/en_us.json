@@ -1,6 +1,16 @@
 {
   "creativetab.flavored.flavored": "Flavored",
 
+  "item.flavored.salt": "Salt",
+  "block.flavored.rock_salt": "Rock Salt",
+  "block.flavored.budding_rock_salt": "Budding Rock Salt",
+  "block.flavored.salt_block": "Block of Salt",
+  "block.flavored.small_salt_bud": "Small Salt Bud",
+  "block.flavored.medium_salt_bud": "Medium Salt Bud",
+  "block.flavored.large_salt_bud": "Large Salt Bud",
+  "block.flavored.salt_cluster": "Salt Cluster",
+  "block.flavored.salt_lamp": "Salt Lamp",
+
   "block.flavored.tomato_bush": "Tomato Bush",
 
   "item.flavored.green_tomato": "Green Tomato",

@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "flavored:block/salt_cluster",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "flavored:block/salt_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "flavored:block/salt_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "flavored:block/salt_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "flavored:block/salt_cluster"
+    },
+    "facing=west": {
+      "model": "flavored:block/salt_cluster",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

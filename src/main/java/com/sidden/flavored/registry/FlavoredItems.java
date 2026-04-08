@@ -16,6 +16,8 @@ public class FlavoredItems {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Flavored.MOD_ID);
 
+    public static final DeferredItem<Item> SALT = ITEMS.register("salt",
+            () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> CHOCOLATE = ITEMS.register("chocolate",
             () -> new Item(new Item.Properties().food(FlavoredFoods.CHOCOLATE)));

@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.sidden.flavored.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "flavored.refmap.json",
+  "mixins": [
+    "ZombieVillagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -34,6 +34,9 @@ public class FlavoredItems {
     public static final DeferredItem<Item> RED_TOMATO = ITEMS.register("red_tomato",
             () -> new TomatoItem(new Item.Properties().food(FlavoredFoods.RED_TOMATO)));
 
+    public static final DeferredItem<Item> CUCUMBER = ITEMS.register("cucumber",
+            () -> new TomatoItem(new Item.Properties().food(FlavoredFoods.CUCUMBER)));
+
     public static final DeferredItem<Item> SOFT_CHEESE_SLICE = ITEMS.register("soft_cheese_slice",
             () -> new SoftCheeseSliceItem(new Item.Properties().food(FlavoredFoods.SOFT_CHEESE_SLICE)));
 
@@ -42,6 +45,12 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds",
             () -> new ItemNameBlockItem(FlavoredBlocks.TOMATO_BUSH.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> CUCUMBER_SEEDS = ITEMS.register("cucumber_seeds",
+            () -> new ItemNameBlockItem(FlavoredBlocks.CUCUMBER_VINE.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> CURED_APPLE = ITEMS.register("cured_apple",
+            () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> CHOCKEN_SPAWN_EGG = ITEMS.register("chocken_spawn_egg",
             () -> new DeferredSpawnEggItem(FlavoredEntities.CHOCKEN, 0x8f4e30, 0xdca37a,new Item.Properties()));

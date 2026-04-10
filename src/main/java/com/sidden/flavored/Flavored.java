@@ -38,6 +38,7 @@ public class Flavored
         FlavoredBlocks.init(modEventBus);
         FlavoredEffects.init(modEventBus);
         FlavoredEntities.init(modEventBus);
+        FlavoredAttachments.init(modEventBus);
         FlavoredParticles.init(modEventBus);
         FlavoredCreativeTabs.init(modEventBus);
 

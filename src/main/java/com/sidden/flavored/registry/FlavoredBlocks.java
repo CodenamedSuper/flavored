@@ -44,6 +44,9 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> TOMATO_BUSH = registerBlock("tomato_bush",
             () -> new TomatoBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
+    public static final DeferredBlock<Block> CUCUMBER_VINE = registerBlock("cucumber_vine",
+            () -> new CucumberVineBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.VINE)));
+
     public static final DeferredBlock<Block> SOFT_CHEESE = registerBlock("soft_cheese",
             ()-> new SoftCheeseBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).randomTicks()));
 

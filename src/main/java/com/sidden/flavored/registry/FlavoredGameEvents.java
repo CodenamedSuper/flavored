@@ -36,4 +36,5 @@ public class FlavoredGameEvents {
             SugarRushTracker.recordSugarRushUse(player);
         }
     }
+
 }

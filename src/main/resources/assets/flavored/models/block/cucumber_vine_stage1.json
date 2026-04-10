@@ -1,0 +1,51 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"0": "flavored:block/cucumber_vine_stage1",
+		"1": "flavored:block/cucumber_vine_leaves_stage1",
+		"particle": "flavored:block/cucumber_vine_stage1"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0.31075],
+			"to": [16, 16, 0.31075],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.96508, 1.65538]},
+			"faces": {
+				"north": {"uv": [15, 16, 16, 16], "texture": "#0"},
+				"east": {"uv": [2, 0, 2, 16], "texture": "#missing"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 16], "texture": "#missing"},
+				"up": {"uv": [0, 2, 16, 2], "rotation": 180, "texture": "#missing"},
+				"down": {"uv": [0, 0, 16, 0], "rotation": 180, "texture": "#missing"}
+			}
+		},
+		{
+			"from": [0, 8.71322, -1.44175],
+			"to": [16, 8.71322, 4.55825],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 4.96508, 1.65538]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 0], "texture": "#missing"},
+				"east": {"uv": [4, 0, 10, 0], "texture": "#missing"},
+				"south": {"uv": [0, 0, 16, 0], "texture": "#missing"},
+				"west": {"uv": [0, 0, 6, 0], "texture": "#missing"},
+				"up": {"uv": [0, 10, 16, 16], "rotation": 180, "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 6], "rotation": 180, "texture": "#1"}
+			}
+		},
+		{
+			"from": [0, 2.24607, 1.23704],
+			"to": [16, 2.24607, 7.23704],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 4.96508, 1.65538]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 0], "texture": "#missing"},
+				"east": {"uv": [4, 0, 10, 0], "texture": "#missing"},
+				"south": {"uv": [0, 0, 16, 0], "texture": "#missing"},
+				"west": {"uv": [0, 0, 6, 0], "texture": "#missing"},
+				"up": {"uv": [0, 10, 16, 16], "rotation": 180, "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 6], "rotation": 180, "texture": "#1"}
+			}
+		}
+	]
+}

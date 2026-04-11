@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+
+  "biomes": "#flavored:places_salt_geode",
+
+  "features": "flavored:salt_geode",
+
+  "step": "local_modifications"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+
+  "biomes": "#minecraft:is_jungle",
+
+  "features": "flavored:cinnamon_pillar",
+
+  "step": "vegetal_decoration"
+}

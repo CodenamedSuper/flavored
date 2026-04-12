@@ -38,6 +38,15 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> SALT_BLOCK = registerBlock("salt_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(ROCK_SALT.get())));
 
+    public static final DeferredBlock<Block> CINNAMON_STALK = registerBlock("cinnamon_stalk",
+            () -> new CinnamonStalkBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_LOG)));
+
+    public static final DeferredBlock<Block> STRIPPED_CINNAMON_STALK = registerBlock("stripped_cinnamon_stalk",
+            () -> new StrippedCinnamonStalkBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_JUNGLE_LOG)));
+
+    public static final DeferredBlock<Block> CINNAMON_SPROUT = registerBlock("cinnamon_sprout",
+            () -> new CinnamonSproutBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS)));
+
     public static final DeferredBlock<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
 

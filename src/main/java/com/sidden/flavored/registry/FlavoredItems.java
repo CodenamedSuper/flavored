@@ -22,6 +22,9 @@ public class FlavoredItems {
     public static final DeferredItem<Item> CHOCOLATE = ITEMS.register("chocolate",
             () -> new Item(new Item.Properties().food(FlavoredFoods.CHOCOLATE)));
 
+    public static final DeferredItem<Item> CINNAMON = ITEMS.register("cinnamon",
+            () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> CHOCOLATE_EGG = ITEMS.register("chocolate_egg",
             () -> new ChocolateEggItem(new Item.Properties().stacksTo(16).food(FlavoredFoods.CHOCOLATE_EGG)));
 

@@ -106,8 +106,8 @@ public class CucumberVineBlock extends VineBlock implements BonemealableBlock {
         int i = Math.min(MAX_AGE, (Integer) state.getValue(AGE) + 1);
         level.setBlock(pos, (BlockState) state.setValue(AGE, i), 2);
 
-        if (level.getBlockState(pos.above()).isEmpty()) {
-            level.setBlock(pos.above(), FlavoredBlocks.CUCUMBER_VINE.get().defaultBlockState(), 2);
+        if (level.getBlockState(pos.above()).isAir()) {
+            level.setBlock(pos.above(), state.setValue(AGE, 0), 2);
         }
     }
 

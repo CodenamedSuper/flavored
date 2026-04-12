@@ -27,12 +27,16 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredBlocks.MEDIUM_SALT_BUD);
                         output.accept(FlavoredBlocks.LARGE_SALT_BUD);
                         output.accept(FlavoredBlocks.SALT_CLUSTER);
+                        output.accept(FlavoredBlocks.CINNAMON_STALK);
+                        output.accept(FlavoredBlocks.STRIPPED_CINNAMON_STALK);
+                        output.accept(FlavoredBlocks.CINNAMON_SPROUT);
                         output.accept(FlavoredBlocks.CHOCOLATE_BLOCK);
                         output.accept(FlavoredItems.GREEN_TOMATO);
                         output.accept(FlavoredItems.YELLOW_TOMATO);
                         output.accept(FlavoredItems.RED_TOMATO);
                         output.accept(FlavoredItems.CUCUMBER);
                         output.accept(FlavoredItems.SALT);
+                        output.accept(FlavoredItems.CINNAMON);
                         output.accept(FlavoredItems.CURED_APPLE);
                         output.accept(FlavoredItems.TOMATO_SEEDS);
                         output.accept(FlavoredItems.CUCUMBER_SEEDS);

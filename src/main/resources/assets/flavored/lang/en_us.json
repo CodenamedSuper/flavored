@@ -9,9 +9,15 @@
   "block.flavored.medium_salt_bud": "Medium Salt Bud",
   "block.flavored.large_salt_bud": "Large Salt Bud",
   "block.flavored.salt_cluster": "Salt Cluster",
-  "block.flavored.cured_apple": "Cured Apple",
+  "item.flavored.cured_apple": "Cured Apple",
 
   "block.flavored.tomato_bush": "Tomato Bush",
+
+  "block.flavored.cinnamon_stalk": "Cinnamon Stalk",
+  "block.flavored.stripped_cinnamon_stalk": "Stripped Cinnamon Stalk",
+  "block.flavored.cinnamon_sprout": "Cinnamon Sprout",
+  "item.flavored.cinnamon": "Cinnamon",
+
 
   "item.flavored.green_tomato": "Green Tomato",
   "item.flavored.yellow_tomato": "Yellow Tomato",

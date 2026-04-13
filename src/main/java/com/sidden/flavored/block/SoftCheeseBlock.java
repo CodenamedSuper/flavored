@@ -21,13 +21,17 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.checkerframework.checker.units.qual.A;
 
 public class SoftCheeseBlock extends Block {
     public static final BooleanProperty WAXED = BooleanProperty.create("waxed");
+    public static final IntegerProperty AGE;
 
     public SoftCheeseBlock(Properties properties) {
         super(properties);
@@ -66,8 +70,17 @@ public class SoftCheeseBlock extends Block {
 
         if (state.getValue(WAXED)) return;
 
-        if (random.nextInt(0, 15) == 0) {
-            level.setBlock(pos, FlavoredBlocks.AGED_CHEESE.get().defaultBlockState(), 2);
+        if (random.nextInt(0, 10) == 0) {
+
+            if (state.getValue(AGE) >= 1) {
+
+                level.setBlock(pos, FlavoredBlocks.AGED_CHEESE.get().defaultBlockState(), 2);
+            }
+            else {
+                level.setBlock(pos, state.setValue(AGE, 1), 2);
+
+            }
+
             level.playSound((Player)null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
 
             ((ServerLevel) level).sendParticles(FlavoredParticles.CHEESE_AGING.get(),
@@ -84,8 +97,13 @@ public class SoftCheeseBlock extends Block {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 
         builder.add(WAXED);
+        builder.add(AGE);
 
         super.createBlockStateDefinition(builder);
+    }
+
+    static {
+        AGE = BlockStateProperties.AGE_1;
     }
 
 

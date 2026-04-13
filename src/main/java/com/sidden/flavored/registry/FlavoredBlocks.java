@@ -57,7 +57,7 @@ public class FlavoredBlocks {
             () -> new CucumberVineBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.VINE)));
 
     public static final DeferredBlock<Block> SOFT_CHEESE = registerBlock("soft_cheese",
-            ()-> new SoftCheeseBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).randomTicks()));
+            ()-> new SoftCheeseBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).randomTicks().strength(0.3f)));
 
     public static final DeferredBlock<Block> AGED_CHEESE = registerBlock("aged_cheese",
             ()-> new AgedCheeseBlock(BlockBehaviour.Properties.ofFullCopy(SOFT_CHEESE.get()).randomTicks()));

@@ -2,6 +2,7 @@ package com.sidden.flavored.registry;
 
 
 import com.sidden.flavored.Flavored;
+import com.sidden.flavored.client.hud.HudOverlays;
 import com.sidden.flavored.entity.Chocken;
 import com.sidden.flavored.entity.client.model.ChockenModel;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -20,6 +21,11 @@ public class FlavoredEventBusEvents {
     public  static  void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ChockenModel.LAYER_LOCATION, ChockenModel::createBodyLayer);
 
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public static void registerGuiLayers(RegisterGuiLayersEvent event) {
+        HudOverlays.register(event);
     }
 
 

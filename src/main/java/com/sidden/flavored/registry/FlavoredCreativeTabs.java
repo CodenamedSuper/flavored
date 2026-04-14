@@ -34,12 +34,10 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.GREEN_TOMATO);
                         output.accept(FlavoredItems.YELLOW_TOMATO);
                         output.accept(FlavoredItems.RED_TOMATO);
-                        output.accept(FlavoredItems.CUCUMBER);
                         output.accept(FlavoredItems.SALT);
                         output.accept(FlavoredItems.CINNAMON);
                         output.accept(FlavoredItems.CURED_APPLE);
                         output.accept(FlavoredItems.TOMATO_SEEDS);
-                        output.accept(FlavoredItems.CUCUMBER_SEEDS);
                         output.accept(FlavoredItems.SOFT_CHEESE_SLICE);
                         output.accept(FlavoredItems.AGED_CHEESE_SLICE);
                         output.accept(FlavoredBlocks.SOFT_CHEESE);

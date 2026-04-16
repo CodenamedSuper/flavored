@@ -1,6 +1,6 @@
 {
   "type": "minecraft:entity",
-  "random_sequence": "flavored:entities/chocken",
+  "random_sequence": "minecraft:entities/chicken",
   "pools": [
     {
       "rolls": 1.0,
@@ -161,8 +161,8 @@
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "min": 1.0,
-                "max": 3.0
+                "min": 2.0,
+                "max": 4.0
               }
             },
             {
@@ -226,8 +226,8 @@
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "min": 1.0,
-                "max": 3.0
+                "min": 2.0,
+                "max": 4.0
               }
             },
             {

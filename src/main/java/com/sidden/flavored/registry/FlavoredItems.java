@@ -1,10 +1,8 @@
 package com.sidden.flavored.registry;
 
 import com.sidden.flavored.Flavored;
-import com.sidden.flavored.item.CheesyItem;
-import com.sidden.flavored.item.ChocolateEggItem;
-import com.sidden.flavored.item.SoftCheeseSliceItem;
-import com.sidden.flavored.item.TomatoItem;
+import com.sidden.flavored.item.*;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.neoforged.bus.api.IEventBus;
@@ -57,6 +55,35 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> CHOCKEN_SPAWN_EGG = ITEMS.register("chocken_spawn_egg",
             () -> new DeferredSpawnEggItem(FlavoredEntities.CHOCKEN, 0x8f4e30, 0xdca37a,new Item.Properties()));
+
+    public static final DeferredItem<Item> KNIFE = ITEMS.register("knife", () ->
+            new KnifeItem((new Item.Properties()).durability(100).component(DataComponents.TOOL, KnifeItem.createToolProperties()).attributes(KnifeItem.createAttributes())));
+
+    public static final DeferredItem<Item> GROUND_BEEF = ITEMS.register("ground_beef",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.GROUND_BEEF)));
+
+    public static final DeferredItem<Item> COOKED_GROUND_BEEF = ITEMS.register("cooked_ground_beef",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.COOKED_GROUND_BEEF)));
+
+    public static final DeferredItem<Item> CHICKEN_DRUMSTICK = ITEMS.register("chicken_drumstick",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CHICKEN_DRUMSTICK)));
+
+    public static final DeferredItem<Item> COOKED_CHICKEN_DRUMSTICK = ITEMS.register("cooked_chicken_drumstick",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.COOKED_CHICKEN_DRUMSTICK)));
+
+    public static final DeferredItem<Item> MUTTON_SHANK = ITEMS.register("mutton_shank",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.MUTTON_SHANK)));
+
+    public static final DeferredItem<Item> COOKED_MUTTON_SHANK = ITEMS.register("cooked_mutton_shank",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.COOKED_MUTTON_SHANK)));
+
+    public static final DeferredItem<Item> PORK_JOWL = ITEMS.register("pork_jowl",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.PORK_JOWL)));
+
+    public static final DeferredItem<Item> COOKED_PORK_JOWL = ITEMS.register("cooked_pork_jowl",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.COOKED_PORK_JOWL)));
+
+
 
     public static void init(IEventBus eventBus) {
         ITEMS.register(eventBus);

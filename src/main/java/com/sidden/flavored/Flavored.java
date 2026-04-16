@@ -4,7 +4,6 @@ import com.mojang.logging.LogUtils;
 import com.sidden.flavored.entity.client.renderer.ChockenRenderer;
 import com.sidden.flavored.particle.CheeseAgingParticle;
 import com.sidden.flavored.registry.*;
-import com.sidden.flavored.worldgen.FlavoredWorldGeneration;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
@@ -47,7 +46,6 @@ public class Flavored
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
-        FlavoredWorldGeneration.generate();
 
     }
 

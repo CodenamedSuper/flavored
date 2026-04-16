@@ -87,7 +87,7 @@
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "flavored:cucumber_cine"
+          "block": "flavored:cucumber_vine"
         }
       ]
     }

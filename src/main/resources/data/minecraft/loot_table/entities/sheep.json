@@ -1,6 +1,6 @@
 {
   "type": "minecraft:entity",
-  "random_sequence": "flavored:entities/chocken",
+  "random_sequence": "minecraft:entities/sheep",
   "pools": [
     {
       "rolls": 1.0,
@@ -8,36 +8,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:feather",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0.0,
-                "max": 2.0
-              }
-            },
-            {
-              "function": "minecraft:enchanted_count_increase",
-              "enchantment": "minecraft:looting",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0.0,
-                "max": 1.0
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "rolls": 1.0,
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:chicken",
+          "name": "minecraft:mutton",
           "conditions": [
             {
               "condition": "minecraft:inverted",
@@ -56,6 +27,14 @@
           ],
           "functions": [
             {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 2.0
+              }
+            },
+            {
               "function": "minecraft:furnace_smelt",
               "conditions": [
                 {
@@ -65,9 +44,7 @@
                       "condition": "minecraft:entity_properties",
                       "entity": "this",
                       "predicate": {
-                        "flags": {
-                          "is_on_fire": true
-                        }
+                        "flags": { "is_on_fire": true }
                       }
                     },
                     {
@@ -78,9 +55,7 @@
                           "mainhand": {
                             "predicates": {
                               "minecraft:enchantments": [
-                                {
-                                  "enchantments": "#minecraft:smelts_loot"
-                                }
+                                { "enchantments": "#minecraft:smelts_loot" }
                               ]
                             }
                           }
@@ -110,7 +85,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "flavored:chicken_drumstick",
+          "name": "flavored:mutton_shank",
           "conditions": [
             {
               "condition": "minecraft:entity_properties",
@@ -143,9 +118,7 @@
                         "mainhand": {
                           "predicates": {
                             "minecraft:enchantments": [
-                              {
-                                "enchantments": "#minecraft:smelts_loot"
-                              }
+                              { "enchantments": "#minecraft:smelts_loot" }
                             ]
                           }
                         }
@@ -161,8 +134,8 @@
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "min": 1.0,
-                "max": 3.0
+                "min": 2.0,
+                "max": 4.0
               }
             },
             {
@@ -178,7 +151,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "flavored:cooked_chicken_drumstick",
+          "name": "flavored:cooked_mutton_shank",
           "conditions": [
             {
               "condition": "minecraft:entity_properties",
@@ -209,9 +182,7 @@
                       "mainhand": {
                         "predicates": {
                           "minecraft:enchantments": [
-                            {
-                              "enchantments": "#minecraft:smelts_loot"
-                            }
+                            { "enchantments": "#minecraft:smelts_loot" }
                           ]
                         }
                       }
@@ -226,8 +197,8 @@
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "min": 1.0,
-                "max": 3.0
+                "min": 2.0,
+                "max": 4.0
               }
             },
             {

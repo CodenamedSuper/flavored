@@ -23,11 +23,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:large_salt_bud"
+          "name": "flavored:large_salt_bud"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "minecraft:blocks/large_salt_bud"
+  "random_sequence": "flavored:blocks/large_salt_bud"
 }

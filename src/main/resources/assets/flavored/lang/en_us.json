@@ -44,5 +44,16 @@
   "item.flavored.aged_cheese_slice": "Cheese Slice",
 
   "block.flavored.soft_cheese": "Soft Cheese",
-  "block.flavored.aged_cheese": "Aged Cheese"
+  "block.flavored.aged_cheese": "Aged Cheese",
+
+  "item.flavored.ground_beef": "Ground Beef",
+  "item.flavored.cooked_ground_beef": "Cooked Ground Beef",
+  "item.flavored.chicken_drumstick": "Raw Chicken Drumstick",
+  "item.flavored.cooked_chicken_drumstick": "Cooked Chicken Drumstick",
+  "item.flavored.mutton_shank": "Raw Mutton Shanks",
+  "item.flavored.cooked_mutton_shank": "Cooked Mutton Shanks",
+  "item.flavored.pork_jowl": "Raw Pork Jowl",
+  "item.flavored.cooked_pork_jowl": "Cooked Pork Jowl",
+
+  "item.flavored.knife": "Knife"
 }

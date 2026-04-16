@@ -1,6 +1,6 @@
 {
   "type": "minecraft:entity",
-  "random_sequence": "flavored:entities/chocken",
+  "random_sequence": "minecraft:entities/mooshroom",
   "pools": [
     {
       "rolls": 1.0,
@@ -8,7 +8,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:feather",
+          "name": "minecraft:leather",
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -37,7 +37,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:chicken",
+          "name": "minecraft:beef",
           "conditions": [
             {
               "condition": "minecraft:inverted",
@@ -55,6 +55,14 @@
             }
           ],
           "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 3.0
+              }
+            },
             {
               "function": "minecraft:furnace_smelt",
               "conditions": [
@@ -110,7 +118,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "flavored:chicken_drumstick",
+          "name": "flavored:ground_beef",
           "conditions": [
             {
               "condition": "minecraft:entity_properties",
@@ -161,8 +169,8 @@
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "min": 1.0,
-                "max": 3.0
+                "min": 2.0,
+                "max": 4.0
               }
             },
             {
@@ -178,7 +186,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "flavored:cooked_chicken_drumstick",
+          "name": "flavored:cooked_ground_beef",
           "conditions": [
             {
               "condition": "minecraft:entity_properties",
@@ -226,8 +234,8 @@
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "min": 1.0,
-                "max": 3.0
+                "min": 2.0,
+                "max": 4.0
               }
             },
             {

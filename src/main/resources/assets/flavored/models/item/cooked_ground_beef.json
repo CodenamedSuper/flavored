@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "flavored:block/tomato_bush_stage4"
+    "layer0": "flavored:item/cooked_ground_beef"
   }
 }

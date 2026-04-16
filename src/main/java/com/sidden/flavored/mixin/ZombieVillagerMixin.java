@@ -3,6 +3,8 @@ package com.sidden.flavored.mixin;
 import com.sidden.flavored.registry.FlavoredItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.monster.ZombieVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -29,19 +31,25 @@ public abstract class ZombieVillagerMixin {
 
         if (zombieVillager.isConverting()) cir.setReturnValue(InteractionResult.FAIL);
 
-        if (itemstack.is(Items.GOLDEN_APPLE)) {
-            cir.setReturnValue(InteractionResult.FAIL);
-        }
+        if (zombieVillager.hasEffect(MobEffects.WEAKNESS)) {
 
-        if (itemstack.is(FlavoredItems.CURED_APPLE)) {
-            itemstack.consume(1, player);
-
-            if (!zombieVillager.level().isClientSide) {
-                this.startConverting(player.getUUID(), zombieVillager.getRandom().nextInt(2401) + 3600);
+            if (itemstack.is(Items.GOLDEN_APPLE)) {
+                cir.setReturnValue(InteractionResult.FAIL);
             }
 
-            cir.setReturnValue(InteractionResult.SUCCESS);
+            if (itemstack.is(FlavoredItems.CURED_APPLE)) {
+                itemstack.consume(1, player);
+
+                if (!zombieVillager.level().isClientSide) {
+                    this.startConverting(player.getUUID(), zombieVillager.getRandom().nextInt(2401) + 3600);
+                }
+
+                cir.setReturnValue(InteractionResult.SUCCESS);
+            }
+
         }
+
+        cir.setReturnValue(InteractionResult.FAIL);
 
 
     }

@@ -42,7 +42,7 @@ public class FlavoredBlocks {
             () -> new CinnamonStalkBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_LOG)));
 
     public static final DeferredBlock<Block> STRIPPED_CINNAMON_STALK = registerBlock("stripped_cinnamon_stalk",
-            () -> new StrippedCinnamonStalkBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_JUNGLE_LOG)));
+            () -> new StrippedCinnamonStalkBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_JUNGLE_LOG).randomTicks()));
 
     public static final DeferredBlock<Block> CINNAMON_SPROUT = registerBlock("cinnamon_sprout",
             () -> new CinnamonSproutBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS)));

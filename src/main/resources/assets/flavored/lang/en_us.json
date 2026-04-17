@@ -55,5 +55,9 @@
   "item.flavored.pork_jowl": "Raw Pork Jowl",
   "item.flavored.cooked_pork_jowl": "Cooked Pork Jowl",
 
-  "item.flavored.knife": "Knife"
+  "item.flavored.knife": "Knife",
+  "item.flavored.pickle": "Pickle",
+
+  "block.flavored.keg": "Keg"
+
 }

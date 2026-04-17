@@ -1,6 +1,7 @@
 package com.sidden.flavored;
 
 import com.mojang.logging.LogUtils;
+import com.sidden.flavored.client.screen.KegScreen;
 import com.sidden.flavored.entity.client.renderer.ChockenRenderer;
 import com.sidden.flavored.particle.CheeseAgingParticle;
 import com.sidden.flavored.registry.*;
@@ -36,8 +37,11 @@ public class Flavored
 
         FlavoredItems.init(modEventBus);
         FlavoredBlocks.init(modEventBus);
+        FlavoredBlockEntities.init(modEventBus);
         FlavoredEffects.init(modEventBus);
         FlavoredEntities.init(modEventBus);
+        FlavoredRecipes.init(modEventBus);
+        FlavoredMenus.init(modEventBus);
         FlavoredParticles.init(modEventBus);
         FlavoredFeatures.init(modEventBus);
         FlavoredCreativeTabs.init(modEventBus);
@@ -72,6 +76,7 @@ public class Flavored
         }
         @SubscribeEvent
         public static void registerMenuScreens(RegisterMenuScreensEvent event) {
+            event.register(FlavoredMenus.KEG.get(), KegScreen::new);
         }
 
         @SubscribeEvent

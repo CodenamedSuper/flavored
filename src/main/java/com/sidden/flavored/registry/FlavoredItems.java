@@ -83,7 +83,8 @@ public class FlavoredItems {
     public static final DeferredItem<Item> COOKED_PORK_JOWL = ITEMS.register("cooked_pork_jowl",
             () -> new Item(new Item.Properties().food(FlavoredFoods.COOKED_PORK_JOWL)));
 
-
+    public static final DeferredItem<Item> PICKLE = ITEMS.register("pickle",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.PICKLE)));
 
     public static void init(IEventBus eventBus) {
         ITEMS.register(eventBus);

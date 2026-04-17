@@ -30,6 +30,7 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredBlocks.CINNAMON_STALK);
                         output.accept(FlavoredBlocks.STRIPPED_CINNAMON_STALK);
                         output.accept(FlavoredBlocks.CINNAMON_SPROUT);
+                        output.accept(FlavoredBlocks.KEG);
                         output.accept(FlavoredItems.GROUND_BEEF);
                         output.accept(FlavoredItems.COOKED_GROUND_BEEF);
                         output.accept(FlavoredItems.CHICKEN_DRUMSTICK);

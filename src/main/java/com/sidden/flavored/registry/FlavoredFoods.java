@@ -27,5 +27,7 @@ public class FlavoredFoods {
     public static FoodProperties PORK_JOWL = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).build();
     public static FoodProperties COOKED_PORK_JOWL = new FoodProperties.Builder().nutrition(5).saturationModifier(0.9f).build();
 
+    public static FoodProperties PICKLE = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3f).build();
+
 
 }

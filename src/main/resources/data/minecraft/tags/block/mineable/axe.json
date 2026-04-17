@@ -2,7 +2,8 @@
   "replace": false,
   "values": [
     "flavored:cinnamon_stalk",
-    "flavored:stripped_cinnamon_stalk"
+    "flavored:stripped_cinnamon_stalk",
+    "flavored:keg"
 
   ]
 }

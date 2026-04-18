@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "flavored:block/medium_salt_bud"
+    "layer0": "flavored:block/large_salt_bud"
   }
 }

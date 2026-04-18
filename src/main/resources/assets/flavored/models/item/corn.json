@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "flavored:item/cooked_mutton_shank"
+    "layer0": "flavored:item/corn"
   }
 }

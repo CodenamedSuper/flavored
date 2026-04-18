@@ -14,6 +14,7 @@ public class FlavoredFoods {
     public static FoodProperties SOFT_CHEESE_SLICE = new FoodProperties.Builder().nutrition(2).saturationModifier(0.2f).alwaysEdible().build();
     public static FoodProperties AGED_CHEESE_SLICE = new FoodProperties.Builder().nutrition(5).saturationModifier(0.5f).alwaysEdible().build();
     public static FoodProperties CUCUMBER = new FoodProperties.Builder().nutrition(1).saturationModifier(0.1f).alwaysEdible().build();
+    public static FoodProperties CORN = new FoodProperties.Builder().nutrition(2).saturationModifier(0.2f).alwaysEdible().build();
 
     public static FoodProperties GROUND_BEEF = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).build();
     public static FoodProperties COOKED_GROUND_BEEF = new FoodProperties.Builder().nutrition(5).saturationModifier(0.9f).build();

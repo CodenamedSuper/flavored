@@ -36,7 +36,7 @@ public class FlavoredItems {
             () -> new TomatoItem(new Item.Properties().food(FlavoredFoods.RED_TOMATO)));
 
     public static final DeferredItem<Item> CUCUMBER = ITEMS.register("cucumber",
-            () -> new TomatoItem(new Item.Properties().food(FlavoredFoods.CUCUMBER)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CUCUMBER)));
 
     public static final DeferredItem<Item> SOFT_CHEESE_SLICE = ITEMS.register("soft_cheese_slice",
             () -> new SoftCheeseSliceItem(new Item.Properties().food(FlavoredFoods.SOFT_CHEESE_SLICE)));
@@ -85,6 +85,12 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> PICKLE = ITEMS.register("pickle",
             () -> new Item(new Item.Properties().food(FlavoredFoods.PICKLE)));
+
+    public static final DeferredItem<Item> CORN = ITEMS.register("corn",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CORN)));
+
+    public static final DeferredItem<Item> CORN_SEEDS = ITEMS.register("corn_seeds",
+            () -> new ItemNameBlockItem(FlavoredBlocks.CORN_BUSH.get(), new  Item.Properties()));
 
     public static void init(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -65,6 +65,8 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> KEG = registerBlock("keg",
             () -> new KegBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)));
 
+    public static final DeferredBlock<Block> CORN_BUSH = registerBlock("corn_bush",
+            () -> new CornBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
     private static Block stair(Block baseBlock) {
         return new StairBlock(baseBlock.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(baseBlock));

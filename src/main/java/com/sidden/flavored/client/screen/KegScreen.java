@@ -23,7 +23,7 @@ public class KegScreen extends AbstractContainerScreen<KegMenu> {
     protected void init() {
         super.init();
         this.inventoryLabelY = 10000;
-        this.titleLabelY = 10000;
+        this.titleLabelY = 10;
     }
 
     @Override

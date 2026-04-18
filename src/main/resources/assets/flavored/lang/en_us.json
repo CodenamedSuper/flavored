@@ -58,6 +58,11 @@
   "item.flavored.knife": "Knife",
   "item.flavored.pickle": "Pickle",
 
-  "block.flavored.keg": "Keg"
+  "block.flavored.keg": "Keg",
+
+  "block.flavored.corn_bush": "Corn Bush",
+  "item.flavored.corn": "Corn",
+  "item.flavored.corn_seeds": "Corn Seeds"
+
 
 }

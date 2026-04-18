@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 public class FlavoredItemTags {
 
     public static final TagKey<Item> CHOCOLATY = create("chocolaty");
+    public static final TagKey<Item> TOMATOES = create("tomatoes");
 
     private static TagKey<Item> create(String name) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, name));

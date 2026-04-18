@@ -15,7 +15,7 @@ public class FlavoredFeatures<FC extends FeatureConfiguration> {
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(Registries.FEATURE, Flavored.MOD_ID);
 
-    public static final DeferredHolder FALLEN_TREE = FEATURES.register("tipped_pillar", () ->
+    public static final DeferredHolder TIPPED_PILLAR = FEATURES.register("tipped_pillar", () ->
             new TippedPillarFeature(TippedPillarConfiguration.CODEC));
 
 

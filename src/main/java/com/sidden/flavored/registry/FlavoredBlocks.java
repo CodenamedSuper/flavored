@@ -17,6 +17,13 @@ public class FlavoredBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(Flavored.MOD_ID);
 
+    // Workstations
+
+    public static final DeferredBlock<Block> KEG = registerBlock("keg",
+            () -> new KegBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)));
+
+    // Salt Blocks
+
     public static final DeferredBlock<Block> ROCK_SALT = registerBlock("rock_salt",
             () -> new RockSaltBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).sound(SoundType.STONE)));
 
@@ -38,6 +45,8 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> SALT_BLOCK = registerBlock("salt_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(ROCK_SALT.get())));
 
+    // Cinnamon Blocks
+
     public static final DeferredBlock<Block> CINNAMON_STALK = registerBlock("cinnamon_stalk",
             () -> new CinnamonStalkBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_LOG)));
 
@@ -47,8 +56,7 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> CINNAMON_SPROUT = registerBlock("cinnamon_sprout",
             () -> new CinnamonSproutBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS)));
 
-    public static final DeferredBlock<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
+    // Crop Plants
 
     public static final DeferredBlock<Block> TOMATO_BUSH = registerBlock("tomato_bush",
             () -> new TomatoBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
@@ -56,17 +64,23 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> CUCUMBER_VINE = registerBlock("cucumber_vine",
             () -> new CucumberVineBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.VINE)));
 
+    public static final DeferredBlock<Block> CORN_BUSH = registerBlock("corn_bush",
+            () -> new CornBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+
+    // Item Blocks
+
     public static final DeferredBlock<Block> SOFT_CHEESE = registerBlock("soft_cheese",
             ()-> new SoftCheeseBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).randomTicks().strength(0.3f)));
 
     public static final DeferredBlock<Block> AGED_CHEESE = registerBlock("aged_cheese",
             ()-> new AgedCheeseBlock(BlockBehaviour.Properties.ofFullCopy(SOFT_CHEESE.get()).randomTicks()));
 
-    public static final DeferredBlock<Block> KEG = registerBlock("keg",
-            () -> new KegBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)));
 
-    public static final DeferredBlock<Block> CORN_BUSH = registerBlock("corn_bush",
-            () -> new CornBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+    // Other Blocks
+
+    public static final DeferredBlock<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
+
 
     private static Block stair(Block baseBlock) {
         return new StairBlock(baseBlock.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(baseBlock));

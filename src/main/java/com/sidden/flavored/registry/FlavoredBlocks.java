@@ -22,10 +22,13 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> KEG = registerBlock("keg",
             () -> new KegBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)));
 
+    public static final DeferredBlock<Block> MIXING_BOWL = registerBlock("mixing_bowl",
+            () -> new MixingBowlBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)));
+
     // Salt Blocks
 
     public static final DeferredBlock<Block> ROCK_SALT = registerBlock("rock_salt",
-            () -> new RockSaltBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).sound(SoundType.STONE)));
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).sound(SoundType.STONE)));
 
     public static final DeferredBlock<Block> BUDDING_ROCK_SALT = registerBlock("budding_rock_salt",
             () -> new BuddingRockSaltBlock(BlockBehaviour.Properties.ofFullCopy(ROCK_SALT.get()).randomTicks().sound(SoundType.STONE)));

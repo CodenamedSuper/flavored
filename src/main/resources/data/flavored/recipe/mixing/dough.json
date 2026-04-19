@@ -1,0 +1,16 @@
+{
+  "type": "flavored:mixing",
+  "ingredients": [
+    {
+      "item": "flavored:flour"
+    },
+    {
+      "item": "flavored:flour"
+    }
+  ],
+  "liquid": "water",
+  "result": {
+    "id": "flavored:dough",
+    "count": 1
+  }
+}

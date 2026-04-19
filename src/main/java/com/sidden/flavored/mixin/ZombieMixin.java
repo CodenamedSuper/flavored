@@ -36,7 +36,6 @@ public abstract class ZombieMixin extends Monster implements ZombieConversionAcc
     @Unique private int conversionTime;
     @Unique private UUID conversionStarter;
 
-    // register data
     @Inject(method = "defineSynchedData", at = @At("TAIL"))
     private void defineData(SynchedEntityData.Builder builder, CallbackInfo ci) {
         builder.define(DATA_CONVERTING, false);
@@ -60,7 +59,6 @@ public abstract class ZombieMixin extends Monster implements ZombieConversionAcc
         this.level().broadcastEntityEvent(this, (byte) 16);
     }
 
-    // ticking logic
     @Inject(method = "tick", at = @At("HEAD"))
     private void tickConversion(CallbackInfo ci) {
         if (!this.level().isClientSide && this.isAlive() && this.isConverting()) {

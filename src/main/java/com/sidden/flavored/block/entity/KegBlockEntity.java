@@ -75,7 +75,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
 
             @Override
             public int getCount() {
-                return 3;
+                return 2;
             }
         };
 
@@ -131,6 +131,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
         itemHandler.deserializeNBT(registries, tag.getCompound("inventory"));
+        progress = tag.getInt("keg.progress");
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {

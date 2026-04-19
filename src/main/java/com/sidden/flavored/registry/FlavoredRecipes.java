@@ -4,6 +4,7 @@ package com.sidden.flavored.registry;
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.client.recipe.FermentingRecipe;
 import com.sidden.flavored.Flavored;
+import com.sidden.flavored.client.recipe.MixingRecipe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -21,6 +22,9 @@ public class FlavoredRecipes {
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<FermentingRecipe>> KEG_SERIALIZER =
             SERIALIZERS.register("fermenting", FermentingRecipe.Serializer::new);
 
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<MixingRecipe>> MIXING_BOWL_SERIALIZER =
+            SERIALIZERS.register("mixing", MixingRecipe.Serializer::new);
+
     public static final DeferredHolder<RecipeType<?>, RecipeType<FermentingRecipe>> KEG_TYPE =
             TYPES.register("fermenting", () -> new RecipeType<FermentingRecipe>() {
                 @Override
@@ -29,6 +33,13 @@ public class FlavoredRecipes {
                 }
             });
 
+    public static final DeferredHolder<RecipeType<?>, RecipeType<MixingRecipe>> MIXING_BOWL_TYPE =
+            TYPES.register("mixing", () -> new RecipeType<MixingRecipe>() {
+                @Override
+                public String toString() {
+                    return "mixing";
+                }
+            });
 
     public static void init(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

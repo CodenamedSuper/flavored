@@ -62,7 +62,12 @@
 
   "block.flavored.corn_bush": "Corn Bush",
   "item.flavored.corn": "Corn",
-  "item.flavored.corn_seeds": "Corn Seeds"
+  "item.flavored.corn_seeds": "Corn Seeds",
+
+  "block.flavored.mixing_bowl": "Mixing Bowl",
+  "item.flavored.whisk": "Whisk",
+  "item.flavored.flour": "Flour",
+  "item.flavored.dough": "Dough"
 
 
 }

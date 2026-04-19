@@ -1,11 +1,16 @@
 package com.sidden.flavored;
 
 import com.mojang.logging.LogUtils;
+import com.sidden.flavored.block.entity.renderer.MixingBowlRenderer;
 import com.sidden.flavored.client.screen.KegScreen;
+import com.sidden.flavored.client.screen.MixingBowlScreen;
 import com.sidden.flavored.entity.client.renderer.ChockenRenderer;
 import com.sidden.flavored.particle.CheeseAgingParticle;
 import com.sidden.flavored.registry.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.Containers;
+import net.minecraft.world.SimpleContainer;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import org.slf4j.Logger;
@@ -77,7 +82,17 @@ public class Flavored
         @SubscribeEvent
         public static void registerMenuScreens(RegisterMenuScreensEvent event) {
             event.register(FlavoredMenus.KEG.get(), KegScreen::new);
+            event.register(FlavoredMenus.MIXING_BOWL.get(), MixingBowlScreen::new);
+
         }
+
+        @SubscribeEvent
+        public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(
+                    FlavoredBlockEntities.MIXING_BOWL.get(), MixingBowlRenderer::new
+            );
+        }
+
 
         @SubscribeEvent
         public static void registerParticleFactories(RegisterParticleProvidersEvent event) {

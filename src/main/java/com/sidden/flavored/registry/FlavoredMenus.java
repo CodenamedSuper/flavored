@@ -4,6 +4,7 @@ package com.sidden.flavored.registry;
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.client.menu.KegMenu;
 import com.sidden.flavored.Flavored;
+import com.sidden.flavored.client.menu.MixingBowlMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -20,6 +21,9 @@ public class FlavoredMenus {
 
     public static final Supplier<MenuType<KegMenu>> KEG =
             registerMenuType("keg", KegMenu::new);
+
+    public static final Supplier<MenuType<MixingBowlMenu>> MIXING_BOWL =
+            registerMenuType("mixing_bowl", MixingBowlMenu::new);
 
 
     private static <T extends AbstractContainerMenu>Supplier<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {

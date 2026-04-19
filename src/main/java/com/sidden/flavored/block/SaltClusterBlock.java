@@ -24,7 +24,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class SaltClusterBlock extends RockSaltBlock implements SimpleWaterloggedBlock {
+public class SaltClusterBlock extends Block implements SimpleWaterloggedBlock {
     public static final MapCodec<SaltClusterBlock> CODEC = RecordCodecBuilder.mapCodec((p_308798_) -> {
         return p_308798_.group(Codec.FLOAT.fieldOf("height").forGetter((p_304411_) -> {
             return p_304411_.height;

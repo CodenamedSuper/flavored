@@ -16,6 +16,12 @@ public class FlavoredItems {
 
     // Ingredients
 
+    public static final DeferredItem<Item> FLOUR = ITEMS.register("flour",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> DOUGH = ITEMS.register("dough",
+            () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> SALT = ITEMS.register("salt",
             () -> new Item(new Item.Properties()));
 
@@ -108,6 +114,9 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> KNIFE = ITEMS.register("knife", () ->
             new KnifeItem((new Item.Properties()).durability(100).component(DataComponents.TOOL, KnifeItem.createToolProperties()).attributes(KnifeItem.createAttributes())));
+
+    public static final DeferredItem<Item> WHISK = ITEMS.register("whisk", () ->
+            new WhiskItem((new Item.Properties()).durability(100).component(DataComponents.TOOL, WhiskItem.createToolProperties())));
 
 
     // Spawn Eggs

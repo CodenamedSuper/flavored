@@ -35,36 +35,27 @@ public class MixingBowlRenderer implements BlockEntityRenderer<MixingBowlBlockEn
                        PoseStack poseStack, MultiBufferSource bufferSource,
                        int packedLight, int packedOverlay) {
 
-        ItemStackHandler inv = blockEntity.getInventory();
+        ItemStackHandler inventory = blockEntity.getInventory();
 
-        int rendered = 0;
+        int index = 0;
 
         for (int i = 0; i < 6; i++) {
-            ItemStack stack = inv.getStackInSlot(i);
+            ItemStack stack = inventory.getStackInSlot(i);
             if (stack.isEmpty()) continue;
 
             poseStack.pushPose();
 
-            poseStack.translate(0.5, 0.2 + (rendered * 0.1), 0.5);
+            poseStack.translate(0.5, 0.2 + (index * 0.1), 0.5);
 
             poseStack.mulPose(Axis.XP.rotationDegrees(90));
 
             poseStack.scale(0.6f, 0.6f, 0.6f);
 
-            itemRenderer.renderStatic(
-                    stack,
-                    ItemDisplayContext.FIXED,
-                    packedLight,
-                    packedOverlay,
-                    poseStack,
-                    bufferSource,
-                    blockEntity.getLevel(),
-                    0
-            );
+            itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, packedLight, packedOverlay, poseStack, bufferSource, blockEntity.getLevel(), 0);
 
             poseStack.popPose();
 
-            rendered++;
+            index++;
         }
     }
 }

@@ -51,11 +51,11 @@ public class MixingBowlBlock extends BaseEntityBlock {
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return Stream.of(
-                Block.box(0, 0, 0, 16, 2, 16),
-                Block.box(14, 2, 0, 16, 9, 16),
-                Block.box(2, 2, 0, 14, 9, 2),
-                Block.box(2, 2, 14, 14, 9, 16),
-                Block.box(0, 2, 0, 2, 9, 16)
+                Block.box(1, 0, 1, 15, 2, 15),
+                Block.box(13, 2, 1, 15, 7, 15),
+                Block.box(3, 2, 1, 13, 7, 3),
+                Block.box(3, 2, 13, 13, 7, 15),
+                Block.box(1, 2, 1, 3, 7, 15)
         ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
     }
 
@@ -197,7 +197,6 @@ public class MixingBowlBlock extends BaseEntityBlock {
         }
 
     }
-
 
 
     static {

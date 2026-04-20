@@ -8,12 +8,18 @@
       "item": "flavored:flour"
     },
     {
-      "item": "flavored:flour"
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:sugar"
     }
   ],
-  "liquid": "water",
+  "vessel": {
+    "item": "minecraft:bowl"
+  },
+  "liquid": "milk",
   "result": {
-    "id": "flavored:dough",
+    "id": "flavored:batter",
     "count": 1
   }
 }

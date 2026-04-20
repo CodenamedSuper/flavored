@@ -9,6 +9,8 @@ import com.sidden.flavored.registry.FlavoredBlockEntities;
 import com.sidden.flavored.registry.FlavoredItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -84,6 +86,9 @@ public class MixingBowlBlock extends BaseEntityBlock {
                 player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
 
                 ItemStack result = ItemUtils.createFilledResult(stack, player, new ItemStack(Items.BUCKET));
+                level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0f);
+
+
                 player.setItemInHand(hand, result);
             }
 
@@ -95,6 +100,8 @@ public class MixingBowlBlock extends BaseEntityBlock {
                 player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
 
                 ItemStack result = ItemUtils.createFilledResult(stack, player, new ItemStack(Items.GLASS_BOTTLE));
+                level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0f);
+
                 player.setItemInHand(hand, result);
             }
 
@@ -106,6 +113,9 @@ public class MixingBowlBlock extends BaseEntityBlock {
                 player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
 
                 ItemStack result = ItemUtils.createFilledResult(stack, player, new ItemStack(Items.BUCKET));
+                level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0f);
+
+
                 player.setItemInHand(hand, result);
             }
 
@@ -113,6 +123,7 @@ public class MixingBowlBlock extends BaseEntityBlock {
         }
         else if (stack.is(Items.BUCKET)) {
 
+            level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0f);
             return takeLiquid(level, state, pos, player);
 
         }
@@ -120,6 +131,8 @@ public class MixingBowlBlock extends BaseEntityBlock {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof MixingBowlBlockEntity mixingBowlBlockEntity && mixingBowlBlockEntity.hasRecipe()) {
                 mixingBowlBlockEntity.mix(3);
+
+                level.playSound(null, pos, SoundEvents.COMPOSTER_FILL, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
 
                 return ItemInteractionResult.SUCCESS;
             }
@@ -196,6 +209,14 @@ public class MixingBowlBlock extends BaseEntityBlock {
             player.openMenu((MenuProvider)blockentity, pos);
         }
 
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(
+            Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+
+        return createTickerHelper(blockEntityType, FlavoredBlockEntities.MIXING_BOWL.get(),
+                (lvl, pos, st, be) -> be.tick(lvl, st, pos));
     }
 
 

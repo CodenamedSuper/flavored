@@ -16,6 +16,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -44,18 +47,28 @@ import java.util.Optional;
 
 public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(8);
+    private final ItemStackHandler itemHandler = new ItemStackHandler(7) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
 
+            if (level != null && !level.isClientSide) {
+                level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+            }
+        }
+    };
 
     private static final int[] INPUT_SLOTS = new int[6];
     private static final int VESSEL_SLOT = 6;
-    private static final int OUTPUT_SLOT = 7;
 
 
     protected final ContainerData data;
 
     private int progress = 0;
     private int maxProgress = 10;
+
+    public int wiggleTime = 0;
+
 
 
 
@@ -108,6 +121,7 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
 
         tag.put("inventory", itemHandler.serializeNBT(registries));
         tag.putInt("mixing_bowl.progress", progress);
+        tag.putInt("wiggle_time", wiggleTime);
 
         super.saveAdditional(tag, registries);
     }
@@ -117,32 +131,37 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
         super.loadAdditional(tag, registries);
         itemHandler.deserializeNBT(registries, tag.getCompound("inventory"));
         progress = tag.getInt("mixing_bowl.progress");
+        wiggleTime = tag.getInt("wiggle_time");
     }
+
 
     public void mix(int amount) {
         if (hasRecipe()) {
             increaseMixingProgress();
+            wiggleTime = 5;
+            setChanged();
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
         }
 
         if (hasProgressFinished()) {
             mixItem();
             resetProgress();
-            getLevel().playSound((Player)null, getBlockPos(), SoundEvents.COMPOSTER_FILL_SUCCESS, SoundSource.BLOCKS, 1.0F, 1.0F);
-
         }
     }
 
 
-    private void resetProgress() {
+    public void resetProgress() {
         progress = 0;
+        setChanged();
     }
-
     private void mixItem() {
         Optional<RecipeHolder<MixingRecipe>> recipeOpt = getCurrentRecipe();
         if (recipeOpt.isEmpty()) return;
 
         MixingRecipe recipe = recipeOpt.get().value();
-        ItemStack output = recipe.output();
+        ItemStack output = recipe.output().copy();
+
+        Containers.dropItemStack(level, worldPosition.getX(), worldPosition.getY(), worldPosition.getZ(), output.copy());
 
         for (int i = 0; i < INPUT_SLOTS.length; i++) {
             itemHandler.extractItem(i, 1, false);
@@ -152,18 +171,23 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
             itemHandler.extractItem(VESSEL_SLOT, 1, false);
         }
 
-        ItemStack currentOutput = itemHandler.getStackInSlot(OUTPUT_SLOT);
-        int newCount = currentOutput.getCount() + output.getCount();
+        setChanged();
+        level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
 
-        this.itemHandler.setStackInSlot(
-                OUTPUT_SLOT,
-                new ItemStack(output.getItem(), newCount)
-        );
+        getLevel().playSound(null, getBlockPos(), SoundEvents.BEEHIVE_ENTER, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+    }
 
-        getLevel().playSound(null, getBlockPos(),
-                SoundEvents.COMPOSTER_FILL,
-                SoundSource.BLOCKS,
-                1.0F, 1.0F);
+    public void tick(Level level, BlockState state, BlockPos pos) {
+
+        if (!level.isClientSide) {
+            if (!hasRecipe()) {
+                resetProgress();
+            }
+        }
+
+        if (wiggleTime > 0) {
+            wiggleTime--;
+        }
     }
 
     public boolean hasRecipe() {
@@ -172,8 +196,22 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
             return false;
         }
 
-        ItemStack output = recipe.get().value().getResultItem(null);
-        return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output.getItem());
+        return true;
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider registries) {
+        loadAdditional(tag, registries);
+    }
+
+    @Override
+    public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
     public Optional<RecipeHolder<MixingRecipe>> getCurrentRecipe() {
@@ -185,14 +223,6 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
         }
 
         return this.level.getRecipeManager().getRecipeFor(FlavoredRecipes.MIXING_BOWL_TYPE.get(), new MixingRecipeInput(ingredients, itemHandler.getStackInSlot(VESSEL_SLOT),level.getBlockState(getBlockPos()).getValue(MixingBowlBlock.LIQUID)), level);
-    }
-
-    private boolean canInsertItemIntoOutputSlot(Item item) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item);
-    }
-
-    private boolean canInsertAmountIntoOutputSlot(int count) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
 
     private boolean hasProgressFinished() {

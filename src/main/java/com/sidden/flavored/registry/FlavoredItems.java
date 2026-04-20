@@ -22,6 +22,9 @@ public class FlavoredItems {
     public static final DeferredItem<Item> DOUGH = ITEMS.register("dough",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> BATTER = ITEMS.register("batter",
+            () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> SALT = ITEMS.register("salt",
             () -> new Item(new Item.Properties()));
 

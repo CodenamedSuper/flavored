@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "flavored:item/mixing_bowl"
+    "layer0": "flavored:item/batter"
   }
 }

@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.CampfireBlock;
@@ -24,6 +25,7 @@ import java.util.List;
 
 @OnlyIn(Dist.CLIENT)
 public class MixingBowlRenderer implements BlockEntityRenderer<MixingBowlBlockEntity> {
+
     private final ItemRenderer itemRenderer;
 
     public MixingBowlRenderer(BlockEntityRendererProvider.Context context) {
@@ -36,7 +38,6 @@ public class MixingBowlRenderer implements BlockEntityRenderer<MixingBowlBlockEn
                        int packedLight, int packedOverlay) {
 
         ItemStackHandler inventory = blockEntity.getInventory();
-
         int index = 0;
 
         for (int i = 0; i < 6; i++) {
@@ -45,16 +46,37 @@ public class MixingBowlRenderer implements BlockEntityRenderer<MixingBowlBlockEn
 
             poseStack.pushPose();
 
-            poseStack.translate(0.5, 0.2 + (index * 0.1), 0.5);
+            RandomSource rand = RandomSource.create(blockEntity.getBlockPos().asLong() + i);
+
+            float offsetX = (rand.nextFloat() - 0.5f) * 0.3f;
+            float offsetZ = (rand.nextFloat() - 0.5f) * 0.3f;
+
+            poseStack.translate(
+                    0.5 + offsetX,
+                    0.2 + (index * 0.08),
+                    0.5 + offsetZ
+            );
+
+            int wiggle = blockEntity.wiggleTime;
+            if (wiggle > 0) {
+                float time = wiggle - partialTick;
+
+                float wiggleOffset = (float) Math.sin(time * 2.0f) * 0.05f;
+                float wiggleRot = (float) Math.sin(time * 3.0f) * 10f;
+                float bounce = (float) Math.sin(time * 4.0f) * 0.03f;
+
+                poseStack.translate(wiggleOffset, bounce, -wiggleOffset);
+                poseStack.mulPose(Axis.YP.rotationDegrees(wiggleRot));
+
+            }
 
             poseStack.mulPose(Axis.XP.rotationDegrees(90));
 
-            poseStack.scale(0.6f, 0.6f, 0.6f);
+            poseStack.scale(0.5f, 0.5f, 0.5f);
 
             itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, packedLight, packedOverlay, poseStack, bufferSource, blockEntity.getLevel(), 0);
 
             poseStack.popPose();
-
             index++;
         }
     }

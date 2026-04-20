@@ -65,8 +65,6 @@ public class MixingBowlScreen extends AbstractContainerScreen<MixingBowlMenu> {
     }
 
     private void renderMixable(GuiGraphics guiGraphics, int x, int y) {
-        System.out.println(menu.blockEntity.hasRecipe());
-
         if(menu.isCrafting()) {
             guiGraphics.blit(TEXTURE, x + 86, y + 64, 176, 17, 10, 10);
         }

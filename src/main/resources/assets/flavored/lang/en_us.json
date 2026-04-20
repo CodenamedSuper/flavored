@@ -67,7 +67,9 @@
   "block.flavored.mixing_bowl": "Mixing Bowl",
   "item.flavored.whisk": "Whisk",
   "item.flavored.flour": "Flour",
-  "item.flavored.dough": "Dough"
+  "item.flavored.dough": "Dough",
 
+  "block.flavored.oven": "Oven",
+  "item.flavored.batter": "Batter"
 
 }

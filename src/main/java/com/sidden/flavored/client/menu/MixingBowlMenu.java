@@ -1,9 +1,6 @@
 package com.sidden.flavored.client.menu;
 
-import com.sidden.flavored.block.entity.KegBlockEntity;
 import com.sidden.flavored.block.entity.MixingBowlBlockEntity;
-import com.sidden.flavored.client.slot.KegResultSlot;
-import com.sidden.flavored.client.slot.MixingBowlResultSlot;
 import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredMenus;
 import net.minecraft.network.FriendlyByteBuf;
@@ -25,12 +22,12 @@ public class MixingBowlMenu extends AbstractContainerMenu {
 
     public MixingBowlMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
 
-        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(8));
+        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(7));
     }
 
     public MixingBowlMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(FlavoredMenus.MIXING_BOWL.get(), pContainerId);
-        checkContainerSize(inv, 8);
+        checkContainerSize(inv, 7);
         blockEntity = ((MixingBowlBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
@@ -52,9 +49,7 @@ public class MixingBowlMenu extends AbstractContainerMenu {
             }
         }
 
-        this.addSlot(new SlotItemHandler(this.inventory, 6, 116, 55));
-
-        this.addSlot(new MixingBowlResultSlot(inv.player, blockEntity, inventory, 7, 116, 26));
+        this.addSlot(new SlotItemHandler(this.inventory, 6, 112, 25));
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
@@ -90,7 +85,7 @@ public class MixingBowlMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 8;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 7;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
@@ -121,6 +116,7 @@ public class MixingBowlMenu extends AbstractContainerMenu {
             sourceSlot.setChanged();
         }
         sourceSlot.onTake(playerIn, sourceStack);
+        blockEntity.resetProgress();
         return copyOfSourceStack;
     }
 

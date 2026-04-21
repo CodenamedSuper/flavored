@@ -19,7 +19,7 @@ public class TippedPillarFeature extends Feature<TippedPillarConfiguration> {
         WorldGenLevel level = featurePlaceContext.level();
         BlockPos pos = featurePlaceContext.origin();
 
-        if (!level.getBlockState(pos.below()).is(Blocks.DIRT) ) return false;
+        if (!level.getBlockState(pos.below()).is(Blocks.GRASS_BLOCK) ) return false;
 
         final int height = featurePlaceContext.config().height.sample(featurePlaceContext.random());
 

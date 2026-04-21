@@ -12,7 +12,7 @@ public class CheeseAgingParticle extends TextureSheetParticle {
 
         this.friction = 0.8f;
 
-        this.lifetime = 30;
+        this.lifetime = level.getRandom().nextInt(25, 35);
         this.setSpriteFromAge(spriteSet);
 
         this.scale(1.5f);

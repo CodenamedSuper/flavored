@@ -119,7 +119,7 @@ public class FlavoredItems {
             new KnifeItem((new Item.Properties()).durability(100).component(DataComponents.TOOL, KnifeItem.createToolProperties()).attributes(KnifeItem.createAttributes())));
 
     public static final DeferredItem<Item> WHISK = ITEMS.register("whisk", () ->
-            new WhiskItem((new Item.Properties()).durability(100).component(DataComponents.TOOL, WhiskItem.createToolProperties())));
+            new WhiskItem((new Item.Properties()).durability(2000).component(DataComponents.TOOL, WhiskItem.createToolProperties())));
 
 
     // Spawn Eggs

@@ -1,13 +1,11 @@
 package com.sidden.flavored.block.entity;
 
 
-import com.sidden.flavored.block.KegBlock;
 import com.sidden.flavored.client.menu.KegMenu;
 import com.sidden.flavored.client.recipe.FermentingRecipe;
-import com.sidden.flavored.client.recipe.FermentingRecipeInput;
+import com.sidden.flavored.client.recipe.input.FermentingRecipeInput;
 import com.sidden.flavored.itemhandler.KegItemHandler;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
-import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

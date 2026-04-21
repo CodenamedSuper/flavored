@@ -48,14 +48,8 @@ public class MixingBowlRenderer implements BlockEntityRenderer<MixingBowlBlockEn
 
             RandomSource rand = RandomSource.create(blockEntity.getBlockPos().asLong() + i);
 
-            float offsetX = (rand.nextFloat() - 0.5f) * 0.3f;
-            float offsetZ = (rand.nextFloat() - 0.5f) * 0.3f;
 
-            poseStack.translate(
-                    0.5 + offsetX,
-                    0.2 + (index * 0.08),
-                    0.5 + offsetZ
-            );
+            poseStack.translate(0.5, 0.2 + (index * 0.08), 0.5);
 
             int wiggle = blockEntity.wiggleTime;
             if (wiggle > 0) {

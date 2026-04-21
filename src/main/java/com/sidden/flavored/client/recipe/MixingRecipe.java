@@ -3,6 +3,7 @@ package com.sidden.flavored.client.recipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.sidden.flavored.block.property.MixingBowlLiquid;
+import com.sidden.flavored.client.recipe.input.MixingRecipeInput;
 import com.sidden.flavored.registry.FlavoredRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;

@@ -52,6 +52,7 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.FLOUR);
                         output.accept(FlavoredItems.SALT);
                         output.accept(FlavoredItems.DOUGH);
+                        output.accept(FlavoredItems.BATTER);
                         output.accept(FlavoredItems.CHOCOLATE);
                         output.accept(FlavoredItems.CURED_APPLE);
                         output.accept(FlavoredItems.TOMATO_SEEDS);

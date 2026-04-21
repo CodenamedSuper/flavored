@@ -6,6 +6,9 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -24,6 +27,9 @@ public class FlavoredBlocks {
 
     public static final DeferredBlock<Block> MIXING_BOWL = registerBlock("mixing_bowl",
             () -> new MixingBowlBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)));
+
+    public static final DeferredBlock<Block> OVEN = registerBlock("oven",
+            () -> new OvenBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).lightLevel(blockstate -> blockstate.getValue(BlockStateProperties.LIT) ? 13 : 0)));
 
     // Salt Blocks
 

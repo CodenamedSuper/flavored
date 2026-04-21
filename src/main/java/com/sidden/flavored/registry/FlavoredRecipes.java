@@ -2,6 +2,7 @@ package com.sidden.flavored.registry;
 
 
 import com.sidden.flavored.Flavored;
+import com.sidden.flavored.client.recipe.BakingRecipe;
 import com.sidden.flavored.client.recipe.FermentingRecipe;
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.client.recipe.MixingRecipe;
@@ -25,6 +26,8 @@ public class FlavoredRecipes {
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<MixingRecipe>> MIXING_BOWL_SERIALIZER =
             SERIALIZERS.register("mixing", MixingRecipe.Serializer::new);
 
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<BakingRecipe>> OVEN_SERIALIZER = SERIALIZERS.register("baking", BakingRecipe.Serializer::new);
+
     public static final DeferredHolder<RecipeType<?>, RecipeType<FermentingRecipe>> KEG_TYPE =
             TYPES.register("fermenting", () -> new RecipeType<FermentingRecipe>() {
                 @Override
@@ -40,6 +43,13 @@ public class FlavoredRecipes {
                     return "mixing";
                 }
             });
+
+    public static final DeferredHolder<RecipeType<?>, RecipeType<BakingRecipe>> OVEN_TYPE = TYPES.register("baking", () -> new RecipeType<>() {
+        @Override
+        public String toString() {
+            return "baking";
+        }
+    });
 
     public static void init(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

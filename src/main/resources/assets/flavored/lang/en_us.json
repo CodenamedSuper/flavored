@@ -70,6 +70,7 @@
   "item.flavored.dough": "Dough",
 
   "block.flavored.oven": "Oven",
-  "item.flavored.batter": "Batter"
-
+  "item.flavored.batter": "Batter",
+  "container.oven": "Oven",
+  "stat.flavored.interact_with_oven": "Interactions with Oven"
 }

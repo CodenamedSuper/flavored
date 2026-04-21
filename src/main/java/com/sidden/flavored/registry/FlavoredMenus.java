@@ -5,7 +5,9 @@ import com.sidden.flavored.Flavored;
 import com.sidden.flavored.client.menu.KegMenu;
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.client.menu.MixingBowlMenu;
+import com.sidden.flavored.client.menu.OvenMenu;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.bus.api.IEventBus;
@@ -25,6 +27,12 @@ public class FlavoredMenus {
     public static final Supplier<MenuType<MixingBowlMenu>> MIXING_BOWL =
             registerMenuType("mixing_bowl", MixingBowlMenu::new);
 
+    public static final Supplier<MenuType<OvenMenu>> OVEN =
+            registerMenuType("oven", () -> new MenuType<>(OvenMenu::new, FeatureFlags.DEFAULT_FLAGS));
+
+    private static <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenuType(String name, Supplier<MenuType<T>> supplier) {
+        return MENUS.register(name, supplier);
+    }
 
     private static <T extends AbstractContainerMenu>Supplier<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IMenuTypeExtension.create(factory));

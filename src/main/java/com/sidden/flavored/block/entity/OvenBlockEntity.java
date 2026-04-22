@@ -1,6 +1,7 @@
 package com.sidden.flavored.block.entity;
 
 import com.google.common.collect.Lists;
+import com.sidden.flavored.block.OvenBlock;
 import com.sidden.flavored.menu.OvenMenu;
 import com.sidden.flavored.recipe.BakingRecipe;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
@@ -28,7 +29,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -145,7 +145,7 @@ public class OvenBlockEntity extends BaseContainerBlockEntity implements Worldly
         boolean hasFuel = !fuelStack.isEmpty();
         if (!blockEntity.isLit() && (!hasFuel || input.isEmpty())) {
             if (blockEntity.bakingProgress > 0) {
-                blockEntity.bakingTotalTime = Mth.clamp(blockEntity.bakingProgress - BURN_COOL_SPEED, 0, blockEntity. bakingTotalTime);
+                blockEntity.bakingProgress = Mth.clamp(blockEntity.bakingProgress - BURN_COOL_SPEED, 0, blockEntity. bakingTotalTime);
             }
         } else {
             RecipeHolder<?> recipeholder;
@@ -190,7 +190,7 @@ public class OvenBlockEntity extends BaseContainerBlockEntity implements Worldly
 
         if (isLit != blockEntity.isLit()) {
             changed = true;
-            state = state.setValue(AbstractFurnaceBlock.LIT, blockEntity.isLit());
+            state = state.setValue(OvenBlock.LIT, blockEntity.isLit());
             level.setBlock(pos, state, Block.UPDATE_ALL);
         }
 
@@ -289,10 +289,10 @@ public class OvenBlockEntity extends BaseContainerBlockEntity implements Worldly
     @Override
     public void setItem(int index, ItemStack stack) {
         ItemStack itemstack = this.items.get(index);
-        boolean flag = !stack.isEmpty() && ItemStack.isSameItemSameComponents(itemstack, stack);
+        boolean sameItem = !stack.isEmpty() && ItemStack.isSameItemSameComponents(itemstack, stack);
         this.items.set(index, stack);
         stack.limitSize(this.getMaxStackSize(stack));
-        if (index == 0 && !flag) {
+        if (index < SLOT_INPUT_END && !sameItem) {
             this.bakingTotalTime = getTotalBakeTime(this.level, this);
             this.bakingProgress = 0;
             this.setChanged();

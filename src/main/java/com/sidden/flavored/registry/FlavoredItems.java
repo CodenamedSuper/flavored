@@ -22,7 +22,13 @@ public class FlavoredItems {
     public static final DeferredItem<Item> DOUGH = ITEMS.register("dough",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> PUFF = ITEMS.register("puff",
+            () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> BATTER = ITEMS.register("batter",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> BUTTER = ITEMS.register("butter",
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> SALT = ITEMS.register("salt",
@@ -55,6 +61,9 @@ public class FlavoredItems {
     public static final DeferredItem<Item> CORN = ITEMS.register("corn",
             () -> new Item(new Item.Properties().food(FlavoredFoods.CORN)));
 
+    public static final DeferredItem<Item> GARLIC = ITEMS.register("garlic",
+            () -> new ItemNameBlockItem(FlavoredBlocks.GARLICS.get(), new Item.Properties().food(FlavoredFoods.GARLIC)));
+
     public static final DeferredItem<Item> CINNAMON = ITEMS.register("cinnamon",
             () -> new Item(new Item.Properties()));
 
@@ -65,7 +74,6 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> CUCUMBER_SEEDS = ITEMS.register("cucumber_seeds",
             () -> new ItemNameBlockItem(FlavoredBlocks.CUCUMBER_VINE.get(), new Item.Properties()));
-
 
     public static final DeferredItem<Item> CORN_SEEDS = ITEMS.register("corn_seeds",
             () -> new ItemNameBlockItem(FlavoredBlocks.CORN_BUSH.get(), new  Item.Properties()));

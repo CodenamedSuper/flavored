@@ -1,4 +1,4 @@
-package com.sidden.flavored.client.recipe;
+package com.sidden.flavored.recipe;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;

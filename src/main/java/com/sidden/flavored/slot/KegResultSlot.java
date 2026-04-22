@@ -1,4 +1,4 @@
-package com.sidden.flavored.client.slot;
+package com.sidden.flavored.slot;
 
 import com.sidden.flavored.block.entity.KegBlockEntity;
 import net.minecraft.world.entity.player.Player;

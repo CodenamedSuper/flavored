@@ -1,6 +1,7 @@
-package com.sidden.flavored.client.menu;
+package com.sidden.flavored.menu;
 
-import com.sidden.flavored.block.entity.MixingBowlBlockEntity;
+import com.sidden.flavored.block.entity.KegBlockEntity;
+import com.sidden.flavored.slot.KegResultSlot;
 import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredMenus;
 import net.minecraft.network.FriendlyByteBuf;
@@ -10,46 +11,31 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.phys.Vec2;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
-public class MixingBowlMenu extends AbstractContainerMenu {
-    public final MixingBowlBlockEntity blockEntity;
+public class KegMenu extends AbstractContainerMenu {
+    public final KegBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
     private final ItemStackHandler inventory;
 
-    public MixingBowlMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
+    public KegMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
 
-        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(7));
+        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(3));
     }
 
-    public MixingBowlMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(FlavoredMenus.MIXING_BOWL.get(), pContainerId);
-        checkContainerSize(inv, 7);
-        blockEntity = ((MixingBowlBlockEntity) entity);
+    public KegMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
+        super(FlavoredMenus.KEG.get(), pContainerId);
+        checkContainerSize(inv, 3);
+        blockEntity = ((KegBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
         this.inventory = blockEntity.getInventory();
 
-        int x = 0;
-        int y = 0;
-        int step = 18;
-        Vec2 size = new Vec2(3,2);
-
-        for (int i = 0; i < 6; i++) {
-
-            this.addSlot(new SlotItemHandler(this.inventory, i, 21 + step * x, 18 + step * y));
-
-            x++;
-            if (x >= size.x) {
-                x = 0;
-                y++;
-            }
-        }
-
-        this.addSlot(new SlotItemHandler(this.inventory, 6, 112, 25));
+        this.addSlot(new SlotItemHandler(this.inventory, 0, 56, 35));
+        this.addSlot(new SlotItemHandler(this.inventory, 1, 29, 35));
+        this.addSlot(new KegResultSlot(inv.player, blockEntity, inventory, 2, 116, 35));
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
@@ -58,7 +44,7 @@ public class MixingBowlMenu extends AbstractContainerMenu {
     }
 
     public boolean isCrafting() {
-        return this.data.get(2) == 1;
+        return data.get(0) > 0;
     }
 
     public int getScaledProgress() {
@@ -85,7 +71,7 @@ public class MixingBowlMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 7;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
@@ -116,14 +102,13 @@ public class MixingBowlMenu extends AbstractContainerMenu {
             sourceSlot.setChanged();
         }
         sourceSlot.onTake(playerIn, sourceStack);
-        blockEntity.resetProgress();
         return copyOfSourceStack;
     }
 
     @Override
     public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                pPlayer, FlavoredBlocks.MIXING_BOWL.get());
+                pPlayer, FlavoredBlocks.KEG.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

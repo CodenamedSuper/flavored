@@ -2,9 +2,9 @@ package com.sidden.flavored.block.entity;
 
 import com.sidden.flavored.block.MixingBowlBlock;
 import com.sidden.flavored.block.property.MixingBowlLiquid;
-import com.sidden.flavored.client.menu.MixingBowlMenu;
-import com.sidden.flavored.client.recipe.MixingRecipe;
-import com.sidden.flavored.client.recipe.input.MixingRecipeInput;
+import com.sidden.flavored.menu.MixingBowlMenu;
+import com.sidden.flavored.recipe.MixingRecipe;
+import com.sidden.flavored.recipe.input.MixingRecipeInput;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
 import com.sidden.flavored.registry.FlavoredRecipes;
 import net.minecraft.core.BlockPos;

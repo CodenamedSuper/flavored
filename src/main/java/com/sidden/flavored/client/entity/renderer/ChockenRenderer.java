@@ -1,16 +1,13 @@
-package com.sidden.flavored.entity.client.renderer;
+package com.sidden.flavored.client.entity.renderer;
 
 
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.entity.Chocken;
-import com.sidden.flavored.entity.client.model.ChockenModel;
-import net.minecraft.client.model.ChickenModel;
-import net.minecraft.client.model.geom.ModelLayers;
+import com.sidden.flavored.client.entity.model.ChockenModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.Chicken;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 

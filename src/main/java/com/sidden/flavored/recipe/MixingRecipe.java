@@ -1,9 +1,9 @@
-package com.sidden.flavored.client.recipe;
+package com.sidden.flavored.recipe;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.sidden.flavored.block.property.MixingBowlLiquid;
-import com.sidden.flavored.client.recipe.input.MixingRecipeInput;
+import com.sidden.flavored.recipe.input.MixingRecipeInput;
 import com.sidden.flavored.registry.FlavoredRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -106,7 +106,7 @@ public record MixingRecipe(List<Ingredient> ingredientsInput, Ingredient vesselI
         public static final MapCodec<MixingRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
                 Ingredient.LIST_CODEC_NONEMPTY.fieldOf("ingredients").forGetter(MixingRecipe::ingredientsInput),
                 Ingredient.CODEC_NONEMPTY.optionalFieldOf("vessel", Ingredient.EMPTY).forGetter(MixingRecipe::vesselInput),
-                MixingBowlLiquid.CODEC.fieldOf("liquid").forGetter(MixingRecipe::liquidInput),
+                MixingBowlLiquid.CODEC.optionalFieldOf("liquid", MixingBowlLiquid.NONE).forGetter(MixingRecipe::liquidInput),
                 ItemStack.CODEC.fieldOf("result").forGetter(MixingRecipe::output)
         ).apply(inst, MixingRecipe::new));
 

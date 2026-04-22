@@ -1,6 +1,6 @@
-package com.sidden.flavored.client.slot;
+package com.sidden.flavored.slot;
 
-import com.sidden.flavored.client.menu.OvenMenu;
+import com.sidden.flavored.menu.OvenMenu;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;

@@ -1,9 +1,9 @@
 package com.sidden.flavored.block.entity;
 
 
-import com.sidden.flavored.client.menu.KegMenu;
-import com.sidden.flavored.client.recipe.FermentingRecipe;
-import com.sidden.flavored.client.recipe.input.FermentingRecipeInput;
+import com.sidden.flavored.menu.KegMenu;
+import com.sidden.flavored.recipe.FermentingRecipe;
+import com.sidden.flavored.recipe.input.FermentingRecipeInput;
 import com.sidden.flavored.itemhandler.KegItemHandler;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
 import com.sidden.flavored.registry.FlavoredRecipes;

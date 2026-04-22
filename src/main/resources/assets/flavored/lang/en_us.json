@@ -72,5 +72,10 @@
   "block.flavored.oven": "Oven",
   "item.flavored.batter": "Batter",
   "container.oven": "Oven",
-  "stat.flavored.interact_with_oven": "Interactions with Oven"
+  "stat.flavored.interact_with_oven": "Interactions with Oven",
+
+  "item.flavored.garlic": "Garlic",
+  "block.flavored.garlics": "Garlics"
+
+
 }

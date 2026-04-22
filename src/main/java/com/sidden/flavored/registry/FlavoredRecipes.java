@@ -2,10 +2,9 @@ package com.sidden.flavored.registry;
 
 
 import com.sidden.flavored.Flavored;
-import com.sidden.flavored.client.recipe.BakingRecipe;
-import com.sidden.flavored.client.recipe.FermentingRecipe;
-import com.sidden.flavored.Flavored;
-import com.sidden.flavored.client.recipe.MixingRecipe;
+import com.sidden.flavored.recipe.BakingRecipe;
+import com.sidden.flavored.recipe.FermentingRecipe;
+import com.sidden.flavored.recipe.MixingRecipe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;

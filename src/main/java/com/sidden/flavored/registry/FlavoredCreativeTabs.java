@@ -31,6 +31,7 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredBlocks.STRIPPED_CINNAMON_STALK);
                         output.accept(FlavoredBlocks.CINNAMON_SPROUT);
                         output.accept(FlavoredBlocks.KEG);
+                        output.accept(FlavoredBlocks.OVEN);
                         output.accept(FlavoredBlocks.MIXING_BOWL);
                         output.accept(FlavoredItems.KNIFE);
                         output.accept(FlavoredItems.WHISK);
@@ -47,11 +48,14 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.YELLOW_TOMATO);
                         output.accept(FlavoredItems.RED_TOMATO);
                         output.accept(FlavoredItems.CUCUMBER);
+                        output.accept(FlavoredItems.GARLIC);
                         output.accept(FlavoredItems.CORN);
                         output.accept(FlavoredItems.CINNAMON);
                         output.accept(FlavoredItems.FLOUR);
                         output.accept(FlavoredItems.SALT);
+                        output.accept(FlavoredItems.BUTTER);
                         output.accept(FlavoredItems.DOUGH);
+                        output.accept(FlavoredItems.PUFF);
                         output.accept(FlavoredItems.BATTER);
                         output.accept(FlavoredItems.CHOCOLATE);
                         output.accept(FlavoredItems.CURED_APPLE);

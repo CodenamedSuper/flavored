@@ -1,8 +1,8 @@
 package com.sidden.flavored.block.entity;
 
 import com.google.common.collect.Lists;
-import com.sidden.flavored.client.menu.OvenMenu;
-import com.sidden.flavored.client.recipe.BakingRecipe;
+import com.sidden.flavored.menu.OvenMenu;
+import com.sidden.flavored.recipe.BakingRecipe;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
 import com.sidden.flavored.registry.FlavoredRecipes;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;

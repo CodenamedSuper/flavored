@@ -1,4 +1,4 @@
-package com.sidden.flavored.entity.client.model;
+package com.sidden.flavored.client.entity.model;
 
 import com.google.common.collect.ImmutableList;
 import com.sidden.flavored.Flavored;

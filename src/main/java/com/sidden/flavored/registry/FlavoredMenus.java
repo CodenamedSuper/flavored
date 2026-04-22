@@ -2,10 +2,9 @@ package com.sidden.flavored.registry;
 
 
 import com.sidden.flavored.Flavored;
-import com.sidden.flavored.client.menu.KegMenu;
-import com.sidden.flavored.Flavored;
-import com.sidden.flavored.client.menu.MixingBowlMenu;
-import com.sidden.flavored.client.menu.OvenMenu;
+import com.sidden.flavored.menu.KegMenu;
+import com.sidden.flavored.menu.MixingBowlMenu;
+import com.sidden.flavored.menu.OvenMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;

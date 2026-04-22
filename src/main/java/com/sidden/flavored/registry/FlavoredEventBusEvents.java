@@ -4,7 +4,7 @@ package com.sidden.flavored.registry;
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.client.hud.HudOverlays;
 import com.sidden.flavored.entity.Chocken;
-import com.sidden.flavored.entity.client.model.ChockenModel;
+import com.sidden.flavored.client.entity.model.ChockenModel;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -12,7 +12,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 
 @EventBusSubscriber(modid = Flavored.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class FlavoredEventBusEvents {

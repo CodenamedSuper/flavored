@@ -1,7 +1,7 @@
 package com.sidden.flavored.client.screen;
 
 import com.sidden.flavored.Flavored;
-import com.sidden.flavored.client.menu.OvenMenu;
+import com.sidden.flavored.menu.OvenMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;

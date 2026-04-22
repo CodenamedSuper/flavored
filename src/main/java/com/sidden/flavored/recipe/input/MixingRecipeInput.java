@@ -1,4 +1,4 @@
-package com.sidden.flavored.client.recipe.input;
+package com.sidden.flavored.recipe.input;
 
 import com.sidden.flavored.block.property.MixingBowlLiquid;
 import net.minecraft.world.item.ItemStack;

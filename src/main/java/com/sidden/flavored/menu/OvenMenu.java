@@ -1,7 +1,7 @@
-package com.sidden.flavored.client.menu;
+package com.sidden.flavored.menu;
 
 import com.sidden.flavored.block.entity.OvenBlockEntity;
-import com.sidden.flavored.client.slot.OvenFuelSlot;
+import com.sidden.flavored.slot.OvenFuelSlot;
 import com.sidden.flavored.registry.FlavoredMenus;
 import com.sidden.flavored.registry.FlavoredRecipes;
 import net.minecraft.util.Mth;

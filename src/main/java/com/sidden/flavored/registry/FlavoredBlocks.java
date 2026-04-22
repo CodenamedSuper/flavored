@@ -1,5 +1,6 @@
 package com.sidden.flavored.registry;
 
+import com.mojang.serialization.MapCodec;
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.block.*;
 import net.minecraft.world.item.BlockItem;
@@ -75,6 +76,9 @@ public class FlavoredBlocks {
 
     public static final DeferredBlock<Block> CORN_BUSH = registerBlock("corn_bush",
             () -> new CornBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+
+    public static final DeferredBlock<Block> GARLICS = registerBlock("garlics",
+            () -> new CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)));
 
     // Item Blocks
 

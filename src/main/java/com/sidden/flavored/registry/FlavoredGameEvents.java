@@ -4,6 +4,9 @@ import com.sidden.flavored.Flavored;
 import com.sidden.flavored.util.SugarRushTracker;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -36,5 +39,6 @@ public class FlavoredGameEvents {
             SugarRushTracker.recordSugarRushUse(player);
         }
     }
+
 
 }

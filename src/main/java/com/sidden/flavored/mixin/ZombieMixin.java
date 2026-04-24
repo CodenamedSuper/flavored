@@ -1,5 +1,7 @@
 package com.sidden.flavored.mixin;
 
+import com.sidden.flavored.entity.Cured;
+import com.sidden.flavored.registry.FlavoredEntities;
 import com.sidden.flavored.util.ZombieConversionAccess;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -73,17 +75,12 @@ public abstract class ZombieMixin extends Monster implements ZombieConversionAcc
 
     @Unique
     private void finishConversion(ServerLevel level) {
-        Chicken chicken = ((Zombie)(Object)this).convertTo(EntityType.CHICKEN, false);
+        Cured cured = ((Zombie)(Object)this).convertTo(FlavoredEntities.CURED.get(), false);
 
-        if (chicken != null) {
-            chicken.finalizeSpawn(
-                    level,
-                    level.getCurrentDifficultyAt(chicken.blockPosition()),
-                    MobSpawnType.CONVERSION,
-                    null
-            );
+        if (cured != null) {
+            cured.finalizeSpawn(level, level.getCurrentDifficultyAt(cured.blockPosition()), MobSpawnType.CONVERSION, null);
 
-            chicken.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200));
+            cured.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200));
 
             if (!this.isSilent()) {
                 level.levelEvent(null, 1027, this.blockPosition(), 0);

@@ -10,6 +10,7 @@
   "block.flavored.large_salt_bud": "Large Salt Bud",
   "block.flavored.salt_cluster": "Salt Cluster",
   "item.flavored.cured_apple": "Cured Apple",
+  "entity.flavored.tomato": "Tomato",
 
   "block.flavored.tomato_bush": "Tomato Bush",
 
@@ -75,7 +76,9 @@
   "stat.flavored.interact_with_oven": "Interactions with Oven",
 
   "item.flavored.garlic": "Garlic",
-  "block.flavored.garlics": "Garlics"
+  "entity.flavored.cured": "Cured",
+  "item.flavored.cured_spawn_egg": "Cured Spawn Egg"
+
 
 
 }

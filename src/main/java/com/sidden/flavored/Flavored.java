@@ -2,6 +2,7 @@ package com.sidden.flavored;
 
 import com.mojang.logging.LogUtils;
 import com.sidden.flavored.block.entity.renderer.MixingBowlRenderer;
+import com.sidden.flavored.client.entity.renderer.CuredRenderer;
 import com.sidden.flavored.client.screen.KegScreen;
 import com.sidden.flavored.client.screen.MixingBowlScreen;
 import com.sidden.flavored.client.screen.OvenScreen;
@@ -78,6 +79,8 @@ public class Flavored
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(FlavoredEntities.CHOCKEN.get(), ChockenRenderer::new);
+            EntityRenderers.register(FlavoredEntities.CURED.get(), CuredRenderer::new);
+
         }
         @SubscribeEvent
         public static void registerMenuScreens(RegisterMenuScreensEvent event) {

@@ -135,6 +135,9 @@ public class FlavoredItems {
     public static final DeferredItem<Item> CHOCKEN_SPAWN_EGG = ITEMS.register("chocken_spawn_egg",
             () -> new DeferredSpawnEggItem(FlavoredEntities.CHOCKEN, 0x8f4e30, 0xdca37a,new Item.Properties()));
 
+    public static final DeferredItem<Item> CURED_SPAWN_EGG = ITEMS.register("cured_spawn_egg",
+            () -> new DeferredSpawnEggItem(FlavoredEntities.CURED, 0xf88867, 0x786e14,new Item.Properties()));
+
     // Other
 
     public static final DeferredItem<Item> CHOCOLATE_EGG = ITEMS.register("chocolate_egg",
@@ -142,6 +145,9 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> CURED_APPLE = ITEMS.register("cured_apple",
             () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> CURED_FLESH = ITEMS.register("cured_flesh",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CURED_FLESH)));
 
 
 

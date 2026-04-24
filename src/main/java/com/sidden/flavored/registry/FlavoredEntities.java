@@ -2,6 +2,7 @@ package com.sidden.flavored.registry;
 
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.entity.Chocken;
+import com.sidden.flavored.entity.Cured;
 import com.sidden.flavored.entity.ThrownChocolateEgg;
 import com.sidden.flavored.entity.ThrownTomato;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -19,6 +20,10 @@ public class FlavoredEntities {
     public static final Supplier<EntityType<Chocken>> CHOCKEN =
             ENTITY_TYPES.register("chocken", () -> EntityType.Builder.of(Chocken::new, MobCategory.CREATURE)
                     .sized(0.4F, 0.7F).eyeHeight(0.644F).build("chocken"));
+
+    public static final Supplier<EntityType<Cured>> CURED =
+            ENTITY_TYPES.register("cured", () -> EntityType.Builder.of(Cured::new, MobCategory.MONSTER)
+                    .sized(0.6F, 1.95F).eyeHeight(1.74F).passengerAttachments(2.0125F).ridingOffset(-0.7F).clientTrackingRange(8).build("cured"));
 
 
     public static final Supplier<EntityType<ThrownTomato>> TOMATO =

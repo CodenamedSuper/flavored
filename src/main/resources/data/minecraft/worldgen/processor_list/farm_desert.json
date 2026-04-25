@@ -45,7 +45,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "flavored:tomato_bush",
+            "Name": "flavored:pepper_bush",
             "Properties": {
               "age": "0"
             }

@@ -47,9 +47,11 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.GREEN_TOMATO);
                         output.accept(FlavoredItems.YELLOW_TOMATO);
                         output.accept(FlavoredItems.RED_TOMATO);
-                        output.accept(FlavoredItems.CUCUMBER);
                         output.accept(FlavoredItems.GARLIC);
                         output.accept(FlavoredItems.CORN);
+                        output.accept(FlavoredItems.PEPPER);
+                        output.accept(FlavoredItems.SPINACH);
+                        output.accept(FlavoredItems.CUCUMBER);
                         output.accept(FlavoredItems.CINNAMON);
                         output.accept(FlavoredItems.FLOUR);
                         output.accept(FlavoredItems.SALT);
@@ -66,6 +68,7 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.AGED_CHEESE_SLICE);
                         output.accept(FlavoredBlocks.SOFT_CHEESE);
                         output.accept(FlavoredBlocks.AGED_CHEESE);
+                        output.accept(FlavoredItems.DRIED_PEPPER);
                         output.accept(FlavoredItems.PICKLE);
                         output.accept(FlavoredItems.CURED_FLESH);
                         output.accept(FlavoredItems.CHOCOLATE_EGG);

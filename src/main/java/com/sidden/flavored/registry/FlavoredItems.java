@@ -64,6 +64,12 @@ public class FlavoredItems {
     public static final DeferredItem<Item> GARLIC = ITEMS.register("garlic",
             () -> new ItemNameBlockItem(FlavoredBlocks.GARLICS.get(), new Item.Properties().food(FlavoredFoods.GARLIC)));
 
+    public static final DeferredItem<Item> PEPPER = ITEMS.register("pepper",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.PEPPER)));
+
+    public static final DeferredItem<Item> SPINACH = ITEMS.register("spinach",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.SPINACH)));
+
     public static final DeferredItem<Item> CINNAMON = ITEMS.register("cinnamon",
             () -> new Item(new Item.Properties()));
 
@@ -77,6 +83,12 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> CORN_SEEDS = ITEMS.register("corn_seeds",
             () -> new ItemNameBlockItem(FlavoredBlocks.CORN_BUSH.get(), new  Item.Properties()));
+
+    public static final DeferredItem<Item> PEPPER_SEEDS = ITEMS.register("pepper_seeds",
+            () -> new ItemNameBlockItem(FlavoredBlocks.PEPPER_BUSH.get(), new  Item.Properties()));
+
+    public static final DeferredItem<Item> SPINACH_SEEDS = ITEMS.register("spinach_seeds",
+            () -> new ItemNameBlockItem(FlavoredBlocks.SPINACH_BUSH.get(), new  Item.Properties()));
 
 
     // Raw Cuts
@@ -142,6 +154,9 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> CHOCOLATE_EGG = ITEMS.register("chocolate_egg",
             () -> new ChocolateEggItem(new Item.Properties().stacksTo(16).food(FlavoredFoods.CHOCOLATE_EGG)));
+
+    public static final DeferredItem<Item> DRIED_PEPPER = ITEMS.register("dried_pepper",
+            () -> new ChocolateEggItem(new Item.Properties().food(FlavoredFoods.DRIED_PEPPER)));
 
     public static final DeferredItem<Item> CURED_APPLE = ITEMS.register("cured_apple",
             () -> new Item(new Item.Properties()));

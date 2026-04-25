@@ -72,13 +72,23 @@
 
   "block.flavored.oven": "Oven",
   "item.flavored.batter": "Batter",
+  "item.flavored.butter": "Butter",
+
   "container.oven": "Oven",
   "stat.flavored.interact_with_oven": "Interactions with Oven",
 
   "item.flavored.garlic": "Garlic",
+  "block.flavored.garlics": "Garlics",
+
   "entity.flavored.cured": "Cured",
-  "item.flavored.cured_spawn_egg": "Cured Spawn Egg"
+  "item.flavored.cured_spawn_egg": "Cured Spawn Egg",
+  "item.flavored.cured_flesh": "Cured Flesh",
 
-
+  "item.flavored.pepper": "Pepper",
+  "item.flavored.dried_pepper": "Dried Pepper",
+  "item.flavored.spinach": "Spinach",
+  "item.flavored.pepper_seeds": "Pepper Seeds",
+  "item.flavored.spinach_seeds": "Spinach Seeds",
+  "item.flavored.puff": "Puff"
 
 }

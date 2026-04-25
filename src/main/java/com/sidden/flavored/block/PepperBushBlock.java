@@ -31,25 +31,25 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
 
-public class TomatoBushBlock extends BushBlock implements BonemealableBlock {
-    public static final MapCodec<TomatoBushBlock> CODEC = simpleCodec(TomatoBushBlock::new);
+public class PepperBushBlock extends BushBlock implements BonemealableBlock {
+    public static final MapCodec<PepperBushBlock> CODEC = simpleCodec(PepperBushBlock::new);
     private static final float HURT_SPEED_THRESHOLD = 0.003F;
-    public static final int MAX_AGE = 4;
+    public static final int MAX_AGE = 3;
     public static final IntegerProperty AGE;
     private static final VoxelShape SAPLING_SHAPE;
     private static final VoxelShape MID_GROWTH_SHAPE;
 
-    public MapCodec<TomatoBushBlock> codec() {
+    public MapCodec<PepperBushBlock> codec() {
         return CODEC;
     }
 
-    public TomatoBushBlock(Properties properties) {
+    public PepperBushBlock(Properties properties) {
         super(properties);
         this.registerDefaultState((BlockState) ((BlockState) this.stateDefinition.any()).setValue(AGE, 0));
     }
 
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
-        return new ItemStack(FlavoredItems.TOMATO_SEEDS.get());
+        return new ItemStack(FlavoredItems.PEPPER_SEEDS.get());
     }
 
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
@@ -89,9 +89,9 @@ public class TomatoBushBlock extends BushBlock implements BonemealableBlock {
         int age = (Integer) state.getValue(AGE);
         boolean flag = age == MAX_AGE;
         if (age > 1) {
-            if (age == 2) popResource(level, pos, new ItemStack(FlavoredItems.GREEN_TOMATO.get(), 1));
-            else if (age == 3) popResource(level, pos, new ItemStack(FlavoredItems.YELLOW_TOMATO.get(), 1 + level.random.nextInt(2)));
-            else if (age == 4) popResource(level, pos, new ItemStack(FlavoredItems.RED_TOMATO.get(), 1 + level.random.nextInt(3)));
+            int drops = age - 1 + level.random.nextInt(2);
+
+            popResource(level, pos, new ItemStack(FlavoredItems.PEPPER.get(), drops));
 
             level.playSound((Player) null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
             BlockState blockstate = (BlockState) state.setValue(AGE, 1);
@@ -121,7 +121,7 @@ public class TomatoBushBlock extends BushBlock implements BonemealableBlock {
     }
 
     static {
-        AGE = BlockStateProperties.AGE_4;
+        AGE = BlockStateProperties.AGE_3;
         SAPLING_SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
         MID_GROWTH_SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
     }

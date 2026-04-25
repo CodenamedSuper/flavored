@@ -77,6 +77,12 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> CORN_BUSH = registerBlock("corn_bush",
             () -> new CornBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
+    public static final DeferredBlock<Block> PEPPER_BUSH = registerBlock("pepper_bush",
+            () -> new PepperBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+
+    public static final DeferredBlock<Block> SPINACH_BUSH = registerBlock("spinach_bush",
+            () -> new SpinachBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+
     public static final DeferredBlock<Block> GARLICS = registerBlock("garlics",
             () -> new CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)));
 

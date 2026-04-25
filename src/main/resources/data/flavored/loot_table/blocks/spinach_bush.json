@@ -7,15 +7,15 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "flavored:corn"
+          "name": "flavored:spinach"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "flavored:corn_bush",
+          "block": "flavored:spinach_bush",
           "properties": {
-            "age": "5"
+            "age": "3"
           }
         }
       ],
@@ -24,7 +24,7 @@
           "function": "minecraft:set_count",
           "count": {
             "min": 1.0,
-            "max": 4.0,
+            "max": 3.0,
             "type": "minecraft:uniform"
           }
         },
@@ -44,15 +44,15 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "flavored:corn"
+          "name": "flavored:spinach"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "flavored:corn_bush",
+          "block": "flavored:spinach_bush",
           "properties": {
-            "age": "4"
+            "age": "2"
           }
         }
       ],
@@ -81,13 +81,13 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "flavored:corn_seeds"
+          "name": "flavored:spinach_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "flavored:corn_bush"
+          "block": "flavored:spinach_bush"
         }
       ]
     }

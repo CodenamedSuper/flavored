@@ -1,6 +1,7 @@
 package com.sidden.flavored.registry;
 
 import com.sidden.flavored.Flavored;
+import com.sidden.flavored.effect.HeatEffect;
 import com.sidden.flavored.effect.SugarCraveEffect;
 import com.sidden.flavored.effect.SugarRushEffect;
 import net.minecraft.core.Holder;
@@ -28,6 +29,9 @@ public class FlavoredEffects {
 
     public static final Holder<MobEffect> SUGAR_CRAVE = MOB_EFFECTS.register("sugar_crave",
             () -> new SugarCraveEffect(MobEffectCategory.HARMFUL, 0x4e281d));
+
+    public static final Holder<MobEffect> HEAT = MOB_EFFECTS.register("heat",
+            () -> new HeatEffect(MobEffectCategory.NEUTRAL, 0xd72710));
 
 
     public static void init(IEventBus eventBus) {

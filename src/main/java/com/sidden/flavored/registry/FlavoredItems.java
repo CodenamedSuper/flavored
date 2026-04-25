@@ -22,8 +22,11 @@ public class FlavoredItems {
     public static final DeferredItem<Item> DOUGH = ITEMS.register("dough",
             () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> PUFF = ITEMS.register("puff",
+    public static final DeferredItem<Item> PASTRY_DOUGH = ITEMS.register("pastry_dough",
             () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> COOKIE_DOUGH = ITEMS.register("cookie_dough",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.COOKIE_DOUGH)));
 
     public static final DeferredItem<Item> BATTER = ITEMS.register("batter",
             () -> new Item(new Item.Properties()));
@@ -156,7 +159,7 @@ public class FlavoredItems {
             () -> new ChocolateEggItem(new Item.Properties().stacksTo(16).food(FlavoredFoods.CHOCOLATE_EGG)));
 
     public static final DeferredItem<Item> DRIED_PEPPER = ITEMS.register("dried_pepper",
-            () -> new ChocolateEggItem(new Item.Properties().food(FlavoredFoods.DRIED_PEPPER)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.DRIED_PEPPER)));
 
     public static final DeferredItem<Item> CURED_APPLE = ITEMS.register("cured_apple",
             () -> new Item(new Item.Properties()));

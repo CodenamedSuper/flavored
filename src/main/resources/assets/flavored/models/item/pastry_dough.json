@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "flavored:item/puff"
+    "layer0": "flavored:item/pastry_dough"
   }
 }

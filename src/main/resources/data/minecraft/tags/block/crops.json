@@ -3,7 +3,12 @@
   "values": [
 
     "flavored:tomato_bush",
-    "flavored:corn_bush"
+    "flavored:corn_bush",
+    "flavored:pepper_bush",
+    "flavored:garlics",
+    "flavored:spinach_bush"
+
+
 
   ]
 }

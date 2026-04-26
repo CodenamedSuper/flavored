@@ -90,6 +90,9 @@
   "item.flavored.pepper_seeds": "Pepper Seeds",
   "item.flavored.spinach_seeds": "Spinach Seeds",
   "item.flavored.pastry_dough": "Pastry Dough",
-  "item.flavored.cookie_dough": "Cookie Dough"
+  "item.flavored.cookie_dough": "Cookie Dough",
+
+  "enchantment.flavored.butchery": "Butchery"
+
 
 }

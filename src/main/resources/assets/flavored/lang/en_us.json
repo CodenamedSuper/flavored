@@ -92,7 +92,8 @@
   "item.flavored.pastry_dough": "Pastry Dough",
   "item.flavored.cookie_dough": "Cookie Dough",
 
-  "enchantment.flavored.butchery": "Butchery"
+  "enchantment.flavored.butchery": "Butchery",
+  "block.flavored.pudding": "Pudding"
 
 
 }

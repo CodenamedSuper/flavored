@@ -73,6 +73,7 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.PICKLE);
                         output.accept(FlavoredItems.CURED_FLESH);
                         output.accept(FlavoredItems.CHOCOLATE_EGG);
+                        output.accept(FlavoredBlocks.PUDDING);
                         output.accept(FlavoredItems.CHOCKEN_SPAWN_EGG);
                         output.accept(FlavoredItems.CURED_SPAWN_EGG);
 

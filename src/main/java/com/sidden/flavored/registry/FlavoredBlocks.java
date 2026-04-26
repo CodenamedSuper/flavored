@@ -94,6 +94,8 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> AGED_CHEESE = registerBlock("aged_cheese",
             ()-> new AgedCheeseBlock(BlockBehaviour.Properties.ofFullCopy(SOFT_CHEESE.get()).randomTicks()));
 
+    public static final DeferredBlock<Block> PUDDING = registerPuddingBlock("pudding",
+            ()-> new PuddingBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
 
     // Other Blocks
 

@@ -6,7 +6,7 @@ import com.sidden.flavored.recipe.FermentingRecipe;
 import com.sidden.flavored.recipe.input.FermentingRecipeInput;
 import com.sidden.flavored.itemhandler.KegItemHandler;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
-import com.sidden.flavored.registry.FlavoredRecipes;
+import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -177,7 +177,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
 
     private Optional<RecipeHolder<FermentingRecipe>> getCurrentRecipe() {
         return this.level.getRecipeManager()
-                .getRecipeFor(FlavoredRecipes.KEG_TYPE.get(), new FermentingRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT), itemHandler.getStackInSlot(FERMENTING_SLOT)), level);
+                .getRecipeFor(FlavoredRecipeTypes.KEG_TYPE.get(), new FermentingRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT), itemHandler.getStackInSlot(FERMENTING_SLOT)), level);
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {

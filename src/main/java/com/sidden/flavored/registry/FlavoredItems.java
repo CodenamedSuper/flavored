@@ -125,7 +125,13 @@ public class FlavoredItems {
     public static final DeferredItem<Item> COOKED_PORK_JOWL = ITEMS.register("cooked_pork_jowl",
             () -> new Item(new Item.Properties().food(FlavoredFoods.COOKED_PORK_JOWL)));
 
-    // Foodstuffs
+    // Normal Foodstuffs
+
+    public static final DeferredItem<Item> PIZZA_SLICE = ITEMS.register("pizza_slice",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.PIZZA_SLICE)));
+
+
+    // Dishes
 
     // Pickles
 
@@ -162,7 +168,7 @@ public class FlavoredItems {
             () -> new Item(new Item.Properties().food(FlavoredFoods.DRIED_PEPPER)));
 
     public static final DeferredItem<Item> CURED_APPLE = ITEMS.register("cured_apple",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CURED_APPLE)));
 
     public static final DeferredItem<Item> CURED_FLESH = ITEMS.register("cured_flesh",
             () -> new Item(new Item.Properties().food(FlavoredFoods.CURED_FLESH)));

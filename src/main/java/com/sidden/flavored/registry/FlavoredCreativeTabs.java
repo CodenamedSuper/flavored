@@ -4,8 +4,11 @@ import com.sidden.flavored.Flavored;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.function.Supplier;
@@ -27,6 +30,7 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredBlocks.MEDIUM_SALT_BUD);
                         output.accept(FlavoredBlocks.LARGE_SALT_BUD);
                         output.accept(FlavoredBlocks.SALT_CLUSTER);
+                        output.accept(FlavoredBlocks.CHOCOLATE_BLOCK);
                         output.accept(FlavoredBlocks.CINNAMON_STALK);
                         output.accept(FlavoredBlocks.STRIPPED_CINNAMON_STALK);
                         output.accept(FlavoredBlocks.CINNAMON_SPROUT);
@@ -43,7 +47,6 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.COOKED_MUTTON_SHANK);
                         output.accept(FlavoredItems.PORK_JOWL);
                         output.accept(FlavoredItems.COOKED_PORK_JOWL);
-                        output.accept(FlavoredBlocks.CHOCOLATE_BLOCK);
                         output.accept(FlavoredItems.GREEN_TOMATO);
                         output.accept(FlavoredItems.YELLOW_TOMATO);
                         output.accept(FlavoredItems.RED_TOMATO);
@@ -65,6 +68,8 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.TOMATO_SEEDS);
                         output.accept(FlavoredItems.CUCUMBER_SEEDS);
                         output.accept(FlavoredItems.CORN_SEEDS);
+                        output.accept(FlavoredItems.PEPPER_SEEDS);
+                        output.accept(FlavoredItems.SPINACH_SEEDS);
                         output.accept(FlavoredItems.SOFT_CHEESE_SLICE);
                         output.accept(FlavoredItems.AGED_CHEESE_SLICE);
                         output.accept(FlavoredBlocks.SOFT_CHEESE);
@@ -73,6 +78,8 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.PICKLE);
                         output.accept(FlavoredItems.CURED_FLESH);
                         output.accept(FlavoredItems.CHOCOLATE_EGG);
+                        output.accept(FlavoredBlocks.PIZZA);
+                        output.accept(FlavoredItems.PIZZA_SLICE);
                         output.accept(FlavoredBlocks.PUDDING);
                         output.accept(FlavoredItems.CHOCKEN_SPAWN_EGG);
                         output.accept(FlavoredItems.CURED_SPAWN_EGG);

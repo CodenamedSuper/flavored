@@ -5,7 +5,7 @@ import com.sidden.flavored.block.OvenBlock;
 import com.sidden.flavored.menu.OvenMenu;
 import com.sidden.flavored.recipe.BakingRecipe;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
-import com.sidden.flavored.registry.FlavoredRecipes;
+import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.*;
@@ -94,7 +94,7 @@ public class OvenBlockEntity extends BaseContainerBlockEntity implements Worldly
             }
         };
         this.recipesUsed = new Object2IntOpenHashMap<>();
-        this.quickCheck = RecipeManager.createCheck(FlavoredRecipes.OVEN_TYPE.get());
+        this.quickCheck = RecipeManager.createCheck(FlavoredRecipeTypes.OVEN_TYPE.get());
     }
 
     private boolean isLit() {
@@ -240,7 +240,7 @@ public class OvenBlockEntity extends BaseContainerBlockEntity implements Worldly
     }
 
     protected int getBurnDuration(ItemStack fuel) {
-        return fuel.isEmpty() ? 0 : fuel.getBurnTime(FlavoredRecipes.OVEN_TYPE.get());
+        return fuel.isEmpty() ? 0 : fuel.getBurnTime(FlavoredRecipeTypes.OVEN_TYPE.get());
     }
 
     private static int getTotalBakeTime(Level level, OvenBlockEntity blockEntity) {
@@ -308,7 +308,7 @@ public class OvenBlockEntity extends BaseContainerBlockEntity implements Worldly
     public boolean canPlaceItem(int index, ItemStack stack) {
         return switch (index) {
             case SLOT_RESULT -> false;
-            case SLOT_FUEL -> stack.getBurnTime(FlavoredRecipes.OVEN_TYPE.get()) > 0;
+            case SLOT_FUEL -> stack.getBurnTime(FlavoredRecipeTypes.OVEN_TYPE.get()) > 0;
             default -> true;
         };
     }

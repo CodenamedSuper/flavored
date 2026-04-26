@@ -75,7 +75,7 @@ public class CucumberVineBlock extends VineBlock implements BonemealableBlock {
         int age = (Integer) state.getValue(AGE);
         boolean flag = age == MAX_AGE;
         if (age > 1) {
-            if (age == 2) popResource(level, pos, new ItemStack(FlavoredItems.GREEN_TOMATO.get(), 1));
+            if (age == 2) popResource(level, pos, new ItemStack(FlavoredItems.CUCUMBER.get(), 1));
             else popResource(level, pos, new ItemStack(FlavoredItems.CUCUMBER.get(), 1 + age - 2));
 
             level.playSound((Player) null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);

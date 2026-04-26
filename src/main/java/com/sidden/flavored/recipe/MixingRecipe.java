@@ -4,7 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.sidden.flavored.block.property.MixingBowlLiquid;
 import com.sidden.flavored.recipe.input.MixingRecipeInput;
-import com.sidden.flavored.registry.FlavoredRecipes;
+import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -93,12 +93,12 @@ public record MixingRecipe(List<Ingredient> ingredientsInput, Ingredient vesselI
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return FlavoredRecipes.MIXING_BOWL_SERIALIZER.get();
+        return FlavoredRecipeTypes.MIXING_BOWL_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return FlavoredRecipes.MIXING_BOWL_TYPE.get();
+        return FlavoredRecipeTypes.MIXING_BOWL_TYPE.get();
     }
 
     public static class Serializer implements RecipeSerializer<MixingRecipe> {

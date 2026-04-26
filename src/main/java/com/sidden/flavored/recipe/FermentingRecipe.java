@@ -3,7 +3,7 @@ package com.sidden.flavored.recipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.sidden.flavored.recipe.input.FermentingRecipeInput;
-import com.sidden.flavored.registry.FlavoredRecipes;
+import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -47,12 +47,12 @@ public record FermentingRecipe(Ingredient mainInput, Ingredient fermentingInput,
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return FlavoredRecipes.KEG_SERIALIZER.get();
+        return FlavoredRecipeTypes.KEG_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return FlavoredRecipes.KEG_TYPE.get();
+        return FlavoredRecipeTypes.KEG_TYPE.get();
     }
 
     public static class Serializer implements RecipeSerializer<FermentingRecipe> {

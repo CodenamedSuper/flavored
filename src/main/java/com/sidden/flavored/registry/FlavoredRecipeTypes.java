@@ -12,7 +12,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class FlavoredRecipes {
+public class FlavoredRecipeTypes {
 
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS =
             DeferredRegister.create(Registries.RECIPE_SERIALIZER, Flavored.MOD_ID);

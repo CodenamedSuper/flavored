@@ -94,8 +94,11 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> AGED_CHEESE = registerBlock("aged_cheese",
             ()-> new AgedCheeseBlock(BlockBehaviour.Properties.ofFullCopy(SOFT_CHEESE.get()).randomTicks()));
 
-    public static final DeferredBlock<Block> PUDDING = registerPuddingBlock("pudding",
+    public static final DeferredBlock<Block> PUDDING = registerFoodBlock("pudding",
             ()-> new PuddingBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
+
+    public static final DeferredBlock<Block> PIZZA = registerFoodBlock("pizza",
+            ()-> new PizzaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
 
     // Other Blocks
 
@@ -117,9 +120,9 @@ public class FlavoredBlocks {
         return toReturn;
     }
 
-    private static <T extends Block> DeferredBlock<T> registerPuddingBlock(String name, Supplier<T> block) {
+    private static <T extends Block> DeferredBlock<T> registerFoodBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
-        registerPuddingBlockItem(name, toReturn);
+        registerFoodBlockItem(name, toReturn);
         return toReturn;
     }
 
@@ -129,8 +132,8 @@ public class FlavoredBlocks {
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
         FlavoredItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
-    private static <T extends Block> void registerPuddingBlockItem(String name, DeferredBlock<T> block) {
-        FlavoredItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().stacksTo(16)));
+    private static <T extends Block> void registerFoodBlockItem(String name, DeferredBlock<T> block) {
+        FlavoredItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().stacksTo(1)));
     }
     public static void init(IEventBus eventBus) {
         BLOCKS.register(eventBus);

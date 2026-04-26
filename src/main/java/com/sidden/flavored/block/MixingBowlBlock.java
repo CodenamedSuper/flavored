@@ -7,6 +7,7 @@ import com.sidden.flavored.block.entity.MixingBowlBlockEntity;
 import com.sidden.flavored.block.property.MixingBowlLiquid;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
 import com.sidden.flavored.registry.FlavoredItems;
+import com.sidden.flavored.registry.FlavoredStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
@@ -131,7 +132,7 @@ public class MixingBowlBlock extends BaseEntityBlock {
         else if (stack.is(FlavoredItems.WHISK)) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof MixingBowlBlockEntity mixingBowlBlockEntity && mixingBowlBlockEntity.hasRecipe()) {
-                mixingBowlBlockEntity.mix(3);
+                mixingBowlBlockEntity.mix(1, player);
 
                 stack.hurtAndBreak(1, player,  LivingEntity.getSlotForHand(hand));
 
@@ -209,6 +210,7 @@ public class MixingBowlBlock extends BaseEntityBlock {
 
         BlockEntity blockentity = level.getBlockEntity(pos);
         if (blockentity instanceof MixingBowlBlockEntity) {
+            player.awardStat(FlavoredStats.INTERACT_WITH_MIXING_BOWL.value());
             player.openMenu((MenuProvider)blockentity, pos);
         }
 

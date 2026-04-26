@@ -3,7 +3,7 @@ package com.sidden.flavored.recipe;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.sidden.flavored.registry.FlavoredRecipes;
+import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -63,7 +63,7 @@ public class BakingRecipe implements Recipe<CraftingInput> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return FlavoredRecipes.OVEN_SERIALIZER.value();
+        return FlavoredRecipeTypes.OVEN_SERIALIZER.value();
     }
 
     public int getBakingTime() {
@@ -72,7 +72,7 @@ public class BakingRecipe implements Recipe<CraftingInput> {
 
     @Override
     public RecipeType<?> getType() {
-        return FlavoredRecipes.OVEN_TYPE.get();
+        return FlavoredRecipeTypes.OVEN_TYPE.get();
     }
 
     public static class Serializer implements RecipeSerializer<BakingRecipe> {

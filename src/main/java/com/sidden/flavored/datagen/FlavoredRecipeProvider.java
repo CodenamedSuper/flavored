@@ -13,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class CustomRecipeProvider extends RecipeProvider {
-    public CustomRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+public class FlavoredRecipeProvider extends RecipeProvider {
+    public FlavoredRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
     }
 
@@ -24,7 +24,6 @@ public class CustomRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
-
 
     }
 }

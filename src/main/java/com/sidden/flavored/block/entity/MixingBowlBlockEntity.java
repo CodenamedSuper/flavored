@@ -6,7 +6,8 @@ import com.sidden.flavored.menu.MixingBowlMenu;
 import com.sidden.flavored.recipe.MixingRecipe;
 import com.sidden.flavored.recipe.input.MixingRecipeInput;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
-import com.sidden.flavored.registry.FlavoredRecipes;
+import com.sidden.flavored.registry.FlavoredRecipeTypes;
+import com.sidden.flavored.registry.FlavoredStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -125,9 +126,9 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
     }
 
 
-    public void mix(int amount) {
+    public void mix(int amount, Player player) {
         if (hasRecipe()) {
-            increaseMixingProgress();
+            increaseMixingProgress(amount);
             wiggleTime = 5;
             setChanged();
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
@@ -135,6 +136,7 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
 
         if (hasProgressFinished()) {
             mixItem();
+            player.awardStat(FlavoredStats.MIX_ITEM.value());
             resetProgress();
         }
     }
@@ -212,15 +214,15 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
             ingredients.add(itemHandler.getStackInSlot(i));
         }
 
-        return this.level.getRecipeManager().getRecipeFor(FlavoredRecipes.MIXING_BOWL_TYPE.get(), new MixingRecipeInput(ingredients, itemHandler.getStackInSlot(VESSEL_SLOT),level.getBlockState(getBlockPos()).getValue(MixingBowlBlock.LIQUID)), level);
+        return this.level.getRecipeManager().getRecipeFor(FlavoredRecipeTypes.MIXING_BOWL_TYPE.get(), new MixingRecipeInput(ingredients, itemHandler.getStackInSlot(VESSEL_SLOT),level.getBlockState(getBlockPos()).getValue(MixingBowlBlock.LIQUID)), level);
     }
 
     private boolean hasProgressFinished() {
         return progress >= maxProgress;
     }
 
-    private void increaseMixingProgress() {
-        progress++;
+    private void increaseMixingProgress(int amount) {
+        progress =+ amount;
     }
 
     @Nullable

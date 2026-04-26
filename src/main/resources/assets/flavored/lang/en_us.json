@@ -76,6 +76,11 @@
 
   "container.oven": "Oven",
   "stat.flavored.interact_with_oven": "Interactions with Oven",
+  "stat.flavored.interact_with_keg": "Interactions with Keg",
+  "stat.flavored.interact_with_mixing_bowl": "Interactions with Mixing Bowl",
+  "stat.flavored.mix_item": "Items Fully Mixed",
+  "stat.flavored.eat_pudding_slice": "Pudding Slices Eaten",
+  "stat.flavored.take_pizza_slice": "Pizza Slices Taken",
 
   "item.flavored.garlic": "Garlic",
   "block.flavored.garlics": "Garlics",
@@ -93,7 +98,9 @@
   "item.flavored.cookie_dough": "Cookie Dough",
 
   "enchantment.flavored.butchery": "Butchery",
-  "block.flavored.pudding": "Pudding"
+  "block.flavored.pudding": "Pudding",
+  "block.flavored.pizza": "Pizza",
+  "item.flavored.pizza_slice": "Pizza Slice"
 
 
 }

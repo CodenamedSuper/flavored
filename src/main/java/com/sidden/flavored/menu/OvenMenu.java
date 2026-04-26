@@ -3,7 +3,7 @@ package com.sidden.flavored.menu;
 import com.sidden.flavored.block.entity.OvenBlockEntity;
 import com.sidden.flavored.slot.OvenFuelSlot;
 import com.sidden.flavored.registry.FlavoredMenus;
-import com.sidden.flavored.registry.FlavoredRecipes;
+import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -112,7 +112,7 @@ public class OvenMenu extends AbstractContainerMenu {
     }
 
     public boolean isFuel(ItemStack stack) {
-        return stack.getBurnTime(FlavoredRecipes.OVEN_TYPE.get()) > 0;
+        return stack.getBurnTime(FlavoredRecipeTypes.OVEN_TYPE.get()) > 0;
     }
 
     public float getBurnProgress() {

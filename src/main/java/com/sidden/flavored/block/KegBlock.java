@@ -5,6 +5,7 @@ import com.sidden.flavored.block.entity.KegBlockEntity;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
 import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredParticles;
+import com.sidden.flavored.registry.FlavoredStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -92,6 +93,7 @@ public class KegBlock extends BaseEntityBlock {
     protected void openContainer(Level level, BlockPos pos, Player player) {
         BlockEntity blockentity = level.getBlockEntity(pos);
         if (blockentity instanceof KegBlockEntity) {
+            player.awardStat(FlavoredStats.INTERACT_WITH_KEG.value());
             player.openMenu((MenuProvider)blockentity, pos);
         }
 

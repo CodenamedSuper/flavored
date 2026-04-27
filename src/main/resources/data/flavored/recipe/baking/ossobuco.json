@@ -1,0 +1,26 @@
+{
+  "type": "flavored:baking",
+  "key": {
+    "#": {
+      "item": "minecraft:bowl"
+    },
+    "X": {
+      "tag": "flavored:wines"
+    },
+    "*": {
+      "item": "flavored:mutton_shank"
+    },
+    "C": {
+      "item": "minecraft:carrot"
+    }
+  },
+  "pattern": [
+    " X ",
+    "*C*",
+    " # "
+  ],
+  "result": {
+    "count": 2,
+    "id": "flavored:ossobuco"
+  }
+}

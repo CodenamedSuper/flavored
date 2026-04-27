@@ -1,0 +1,15 @@
+{
+  "type": "flavored:baking",
+  "key": {
+    "#": {
+      "item": "flavored:cookie_dough"
+    }
+  },
+  "pattern": [
+    "#"
+  ],
+  "result": {
+    "count": 8,
+    "id": "minecraft:cake"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "flavored:mixing",
+  "ingredients": [
+    {
+      "item": "flavored:aged_cheese_slice"
+    },
+    {
+      "item": "flavored:butter"
+    },
+    {
+      "item": "flavored:garlic"
+    },
+    {
+      "item": "flavored:pasta"
+    }
+  ],
+  "vessel": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "id": "flavored:cream_pasta",
+    "count": 1
+  }
+}

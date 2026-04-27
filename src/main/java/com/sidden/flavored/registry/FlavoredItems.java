@@ -29,7 +29,7 @@ public class FlavoredItems {
             () -> new Item(new Item.Properties().food(FlavoredFoods.COOKIE_DOUGH)));
 
     public static final DeferredItem<Item> BATTER = ITEMS.register("batter",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static final DeferredItem<Item> PASTA = ITEMS.register("pasta",
             () -> new Item(new Item.Properties()));
@@ -154,37 +154,37 @@ public class FlavoredItems {
     // Dishes
 
     public static final DeferredItem<Item> PORRIDGE = ITEMS.register("porridge",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.PORRIDGE)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.PORRIDGE).stacksTo(1)));
 
     public static final DeferredItem<Item> SHAKSHOUKA = ITEMS.register("shakshouka",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.SHAKSHOUKA)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.SHAKSHOUKA).stacksTo(1)));
 
     public static final DeferredItem<Item> TOMATO_PASTA = ITEMS.register("tomato_pasta",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.TOMATO_PASTA)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.TOMATO_PASTA).stacksTo(1)));
 
     public static final DeferredItem<Item> PESTO_PASTA = ITEMS.register("pesto_pasta",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.PESTO_PASTA)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.PESTO_PASTA).stacksTo(1)));
 
     public static final DeferredItem<Item> CREAM_PASTA = ITEMS.register("cream_pasta",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.CREAM_PASTA)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CREAM_PASTA).stacksTo(1)));
 
     public static final DeferredItem<Item> CARBONARA_PASTA = ITEMS.register("carbonara_pasta",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.CARBONARA_PASTA)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CARBONARA_PASTA).stacksTo(1)));
 
     public static final DeferredItem<Item> RAGU_PASTA = ITEMS.register("ragu_pasta",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.RAGU_PASTA)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.RAGU_PASTA).stacksTo(1)));
 
     public static final DeferredItem<Item> OSSOBUCO = ITEMS.register("ossobuco",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.OSSOBUCO)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.OSSOBUCO).stacksTo(1)));
 
     public static final DeferredItem<Item> SALAD = ITEMS.register("salad",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.SALAD)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.SALAD).stacksTo(1)));
 
     public static final DeferredItem<Item> CEREAL = ITEMS.register("cereal",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.CEREAL)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CEREAL).stacksTo(1)));
 
     public static final DeferredItem<Item> POLENTA = ITEMS.register("polenta",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.POLENTA)));
+            () -> new Item(new Item.Properties().food(FlavoredFoods.POLENTA).stacksTo(1)));
 
     // Drinks
 

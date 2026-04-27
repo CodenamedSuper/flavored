@@ -1,0 +1,25 @@
+{
+  "type": "flavored:mixing",
+  "ingredients": [
+    {
+      "item": "flavored:corn"
+    },
+    {
+      "item": "flavored:corn"
+    },
+    {
+      "item": "flavored:corn"
+    },
+    {
+      "item": "flavored:butter"
+    }
+  ],
+  "vessel": {
+    "item": "minecraft:bowl"
+  },
+  "liquid": "none",
+  "result": {
+    "id": "flavored:polenta",
+    "count": 1
+  }
+}

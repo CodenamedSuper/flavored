@@ -1,0 +1,22 @@
+{
+  "type": "flavored:baking",
+  "key": {
+    "#": {
+      "item": "flavored:batter"
+    },
+    "X": {
+      "item": "flavored:chocolate"
+    },
+    "*": {
+      "item": "minecraft:egg"
+    }
+  },
+  "pattern": [
+    "X*X",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "flavored:pudding"
+  }
+}

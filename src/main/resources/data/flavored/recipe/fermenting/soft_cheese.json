@@ -1,0 +1,13 @@
+{
+  "type": "flavored:fermenting",
+  "ingredient": {
+    "item": "minecraft:milk_bucket"
+  },
+  "fermenter": {
+    "tag": "flavored:fungi"
+  },
+  "result": {
+    "id": "flavored:soft_cheese",
+    "count": 1
+  }
+}

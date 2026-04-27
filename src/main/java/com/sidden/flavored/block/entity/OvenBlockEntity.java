@@ -5,6 +5,8 @@ import com.sidden.flavored.block.OvenBlock;
 import com.sidden.flavored.menu.OvenMenu;
 import com.sidden.flavored.recipe.BakingRecipe;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
+import com.sidden.flavored.registry.FlavoredItemTags;
+import com.sidden.flavored.registry.FlavoredItems;
 import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
@@ -228,6 +230,12 @@ public class OvenBlockEntity extends BaseContainerBlockEntity implements Worldly
                 inventory.set(SLOT_RESULT, resultStack.copy());
             } else if (ItemStack.isSameItemSameComponents(outputStack, resultStack)) {
                 outputStack.grow(resultStack.getCount());
+            }
+
+            for (int i = 0; i < SLOT_INPUT_END; i++) {
+                if (inventory.get(i).is(FlavoredItemTags.BOWLS)) {
+                    inventory.set(i, Items.BOWL.getDefaultInstance());
+                }
             }
 
             for (int slot = SLOT_INPUT_START; slot < SLOT_INPUT_END; slot++) {

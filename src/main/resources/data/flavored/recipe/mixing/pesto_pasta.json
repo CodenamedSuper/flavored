@@ -1,0 +1,24 @@
+{
+  "type": "flavored:mixing",
+  "ingredients": [
+    {
+      "item": "flavored:spinach"
+    },
+    {
+      "item": "flavored:spinach"
+    },
+    {
+      "item": "flavored:garlic"
+    },
+    {
+      "item": "flavored:pasta"
+    }
+  ],
+  "vessel": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "id": "flavored:pesto_pasta",
+    "count": 1
+  }
+}

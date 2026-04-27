@@ -1,0 +1,13 @@
+{
+  "type": "flavored:fermenting",
+  "ingredient": {
+    "item": "flavored:wort"
+  },
+  "fermenter": {
+    "item": "minecraft:sugar"
+  },
+  "result": {
+    "id": "flavored:beer",
+    "count": 1
+  }
+}

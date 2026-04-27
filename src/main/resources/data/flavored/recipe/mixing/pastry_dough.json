@@ -1,0 +1,22 @@
+{
+  "type": "flavored:mixing",
+  "ingredients": [
+    {
+      "item": "flavored:flour"
+    },
+    {
+      "item": "flavored:flour"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "flavored:butter"
+    }
+  ],
+  "liquid": "none",
+  "result": {
+    "id": "flavored:pastry_dough",
+    "count": 1
+  }
+}

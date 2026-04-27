@@ -1,0 +1,19 @@
+{
+  "type": "flavored:baking",
+  "key": {
+    "#": {
+      "item": "flavored:pastry_dough"
+    },
+    "X": {
+      "item": "flavored:chocolate"
+    }
+  },
+  "pattern": [
+    "XXX",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "flavored:chocolate_pastry"
+  }
+}

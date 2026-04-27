@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "flavored:mutton_shank"
+  },
+  "result": {
+    "id": "flavored:cooked_mutton_shank"
+  }
+}

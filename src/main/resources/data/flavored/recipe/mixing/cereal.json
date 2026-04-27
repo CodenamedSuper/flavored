@@ -1,0 +1,31 @@
+{
+  "type": "flavored:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "flavored:cinnamon"
+    },
+    {
+      "item": "flavored:cinnamon"
+    }
+  ],
+  "liquid": "milk",
+  "vessel": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "id": "flavored:salad",
+    "count": 1
+  }
+}

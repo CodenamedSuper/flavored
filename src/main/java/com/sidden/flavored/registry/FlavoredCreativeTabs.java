@@ -85,6 +85,9 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.OSSOBUCO);
                         output.accept(FlavoredItems.SHAKSHOUKA);
                         output.accept(FlavoredItems.CEREAL);
+                        output.accept(FlavoredBlocks.PIZZA);
+                        output.accept(FlavoredItems.PIZZA_SLICE);
+                        output.accept(FlavoredBlocks.PUDDING);
                         output.accept(FlavoredItems.SWEET_BERRY_JUICE);
                         output.accept(FlavoredItems.GLOW_BERRY_JUICE);
                         output.accept(FlavoredItems.APPLE_JUICE);
@@ -93,9 +96,6 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.GLOW_BERRY_WINE);
                         output.accept(FlavoredItems.CIDER);
                         output.accept(FlavoredItems.BEER);
-                        output.accept(FlavoredBlocks.PIZZA);
-                        output.accept(FlavoredItems.PIZZA_SLICE);
-                        output.accept(FlavoredBlocks.PUDDING);
                         output.accept(FlavoredItems.CHOCKEN_SPAWN_EGG);
 
 

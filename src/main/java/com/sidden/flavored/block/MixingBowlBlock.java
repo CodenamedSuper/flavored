@@ -6,6 +6,7 @@ import com.sidden.flavored.block.entity.KegBlockEntity;
 import com.sidden.flavored.block.entity.MixingBowlBlockEntity;
 import com.sidden.flavored.block.property.MixingBowlLiquid;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
+import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredItems;
 import com.sidden.flavored.registry.FlavoredStats;
 import net.minecraft.core.BlockPos;
@@ -150,6 +151,9 @@ public class MixingBowlBlock extends BaseEntityBlock {
 
 
     public void putLiquid(Level level, BlockState state, BlockPos pos, MixingBowlLiquid liquid) {
+
+        if (!state.is(FlavoredBlocks.MIXING_BOWL)) return;
+
         if (liquid == MixingBowlLiquid.WATER) {
             level.setBlock(pos, state.setValue(LIQUID, MixingBowlLiquid.WATER), 2);
 

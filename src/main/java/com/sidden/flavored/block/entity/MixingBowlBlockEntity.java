@@ -222,7 +222,7 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void increaseMixingProgress(int amount) {
-        progress =+ amount;
+        progress += amount;
     }
 
     @Nullable

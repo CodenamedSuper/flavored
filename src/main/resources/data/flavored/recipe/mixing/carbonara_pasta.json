@@ -1,0 +1,27 @@
+{
+  "type": "flavored:mixing",
+  "ingredients": [
+    {
+      "item": "flavored:aged_cheese_slice"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "flavored:cooked_pork_jowl"
+    },
+    {
+      "item": "flavored:pasta"
+    }
+  ],
+  "vessel": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "id": "flavored:carbonara_pasta",
+    "count": 1
+  }
+}

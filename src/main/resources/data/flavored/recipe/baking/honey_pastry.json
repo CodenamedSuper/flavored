@@ -1,0 +1,19 @@
+{
+  "type": "flavored:baking",
+  "key": {
+    "#": {
+      "item": "flavored:pastry_dough"
+    },
+    "X": {
+      "item": "minecraft:honeycomb"
+    }
+  },
+  "pattern": [
+    "XXX",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "flavored:honey_pastry"
+  }
+}

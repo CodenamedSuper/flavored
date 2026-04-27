@@ -1,0 +1,22 @@
+{
+  "type": "flavored:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    }
+  ],
+  "vessel": {
+    "item": "minecraft:bowl"
+  },
+  "liquid": "water",
+  "result": {
+    "id": "flavored:porridge",
+    "count": 1
+  }
+}

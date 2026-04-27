@@ -1,0 +1,13 @@
+{
+  "type": "flavored:fermenting",
+  "ingredient": {
+    "item": "flavored:sweet_berry_juice"
+  },
+  "fermenter": {
+    "item": "minecraft:sugar"
+  },
+  "result": {
+    "id": "flavored:sweet_berry_wine",
+    "count": 1
+  }
+}

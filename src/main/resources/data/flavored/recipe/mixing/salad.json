@@ -1,0 +1,24 @@
+{
+  "type": "flavored:mixing",
+  "ingredients": [
+    {
+      "tag": "flavored:tomatoes"
+    },
+    {
+      "item": "flavored:spinach"
+    },
+    {
+      "item": "flavored:spinach"
+    },
+    {
+      "tag": "flavored:salad_finishings"
+    }
+  ],
+  "vessel": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "id": "flavored:salad",
+    "count": 1
+  }
+}

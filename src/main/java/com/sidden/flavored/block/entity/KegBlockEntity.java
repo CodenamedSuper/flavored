@@ -21,8 +21,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -155,7 +154,14 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
         Optional<RecipeHolder<FermentingRecipe>> recipe = getCurrentRecipe();
         ItemStack output = recipe.get().value().output();
 
-        this.itemHandler.extractItem(INPUT_SLOT, 1, false);
+        if (this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() instanceof BucketItem || this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() instanceof MilkBucketItem) {
+            this.itemHandler.setStackInSlot(INPUT_SLOT, Items.BUCKET.getDefaultInstance());
+        }
+        else {
+            this.itemHandler.extractItem(INPUT_SLOT, 1, false);
+
+        }
+
         this.itemHandler.extractItem(FERMENTING_SLOT, 1, false);
 
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),

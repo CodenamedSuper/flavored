@@ -1,9 +1,0 @@
-{
-  "type": "neoforge:remove_features",
-
-  "biomes": "#flavored:places_salt_geode",
-
-  "features": "minecraft:amethyst_geode",
-
-  "step": "local_modifications"
-}

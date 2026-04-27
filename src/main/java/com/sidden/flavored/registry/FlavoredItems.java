@@ -31,10 +31,10 @@ public class FlavoredItems {
     public static final DeferredItem<Item> BATTER = ITEMS.register("batter",
             () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> BUTTER = ITEMS.register("butter",
+    public static final DeferredItem<Item> PASTA = ITEMS.register("pasta",
             () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> SALT = ITEMS.register("salt",
+    public static final DeferredItem<Item> BUTTER = ITEMS.register("butter",
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> CHOCOLATE = ITEMS.register("chocolate",
@@ -58,9 +58,6 @@ public class FlavoredItems {
     public static final DeferredItem<Item> RED_TOMATO = ITEMS.register("red_tomato",
             () -> new TomatoItem(new Item.Properties().food(FlavoredFoods.RED_TOMATO)));
 
-    public static final DeferredItem<Item> CUCUMBER = ITEMS.register("cucumber",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.CUCUMBER)));
-
     public static final DeferredItem<Item> CORN = ITEMS.register("corn",
             () -> new Item(new Item.Properties().food(FlavoredFoods.CORN)));
 
@@ -80,9 +77,6 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds",
             () -> new ItemNameBlockItem(FlavoredBlocks.TOMATO_BUSH.get(), new Item.Properties()));
-
-    public static final DeferredItem<Item> CUCUMBER_SEEDS = ITEMS.register("cucumber_seeds",
-            () -> new ItemNameBlockItem(FlavoredBlocks.CUCUMBER_VINE.get(), new Item.Properties()));
 
     public static final DeferredItem<Item> CORN_SEEDS = ITEMS.register("corn_seeds",
             () -> new ItemNameBlockItem(FlavoredBlocks.CORN_BUSH.get(), new  Item.Properties()));
@@ -130,17 +124,98 @@ public class FlavoredItems {
     public static final DeferredItem<Item> PIZZA_SLICE = ITEMS.register("pizza_slice",
             () -> new Item(new Item.Properties().food(FlavoredFoods.PIZZA_SLICE)));
 
+    public static final DeferredItem<Item> HAMBURGER = ITEMS.register("hamburger",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.HAMBURGER)));
+
+    public static final DeferredItem<Item> HAM_SANDWICH = ITEMS.register("ham_sandwich",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.HAM_SANDWICH)));
+
+    public static final DeferredItem<Item> CHEESE_SANDWICH = ITEMS.register("cheese_sandwich",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CHEESE_SANDWICH)));
+
+    public static final DeferredItem<Item> GRILLED_CORN = ITEMS.register("grilled_corn",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.GRILLED_CORN)));
+
+    public static final DeferredItem<Item> BUTTER_PASTRY = ITEMS.register("butter_pastry",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.BUTTER_PASTRY)));
+
+    public static final DeferredItem<Item> HONEY_PASTRY = ITEMS.register("honey_pastry",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.HONEY_PASTRY)));
+
+    public static final DeferredItem<Item> CHOCOLATE_PASTRY = ITEMS.register("chocolate_pastry",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CHOCOLATE_PASTRY)));
+
+    public static final DeferredItem<Item> CINNAMON_PASTRY = ITEMS.register("cinnamon_pastry",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CINNAMON_PASTRY)));
+
+    public static final DeferredItem<Item> GARLIC_BREAD = ITEMS.register("garlic_bread",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.GARLIC_BREAD)));
 
     // Dishes
 
-    // Pickles
+    public static final DeferredItem<Item> PORRIDGE = ITEMS.register("porridge",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.PORRIDGE)));
 
-    public static final DeferredItem<Item> PICKLE = ITEMS.register("pickle",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.PICKLE)));
+    public static final DeferredItem<Item> SHAKSHOUKA = ITEMS.register("shakshouka",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.SHAKSHOUKA)));
+
+    public static final DeferredItem<Item> TOMATO_PASTA = ITEMS.register("tomato_pasta",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.TOMATO_PASTA)));
+
+    public static final DeferredItem<Item> PESTO_PASTA = ITEMS.register("pesto_pasta",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.PESTO_PASTA)));
+
+    public static final DeferredItem<Item> CREAM_PASTA = ITEMS.register("cream_pasta",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CREAM_PASTA)));
+
+    public static final DeferredItem<Item> CARBONARA_PASTA = ITEMS.register("carbonara_pasta",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CARBONARA_PASTA)));
+
+    public static final DeferredItem<Item> RAGU_PASTA = ITEMS.register("ragu_pasta",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.RAGU_PASTA)));
+
+    public static final DeferredItem<Item> OSSOBUCO = ITEMS.register("ossobuco",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.OSSOBUCO)));
+
+    public static final DeferredItem<Item> SALAD = ITEMS.register("salad",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.SALAD)));
+
+    public static final DeferredItem<Item> CEREAL = ITEMS.register("cereal",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CEREAL)));
+
+    public static final DeferredItem<Item> POLENTA = ITEMS.register("polenta",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.POLENTA)));
 
     // Drinks
 
+    public static final DeferredItem<Item> SWEET_BERRY_JUICE = ITEMS.register("sweet_berry_juice",
+            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.SWEET_BERRY_JUICE)));
+
+    public static final DeferredItem<Item> GLOW_BERRY_JUICE = ITEMS.register("glow_berry_juice",
+            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.GLOW_BERRY_JUICE)));
+
+    public static final DeferredItem<Item> WORT = ITEMS.register("wort",
+            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.WORT)));
+
+    public static final DeferredItem<Item> APPLE_JUICE = ITEMS.register("apple_juice",
+            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.APPLE_JUICE)));
+
+
+
     // Beverages
+
+    public static final DeferredItem<Item> SWEET_BERRY_WINE = ITEMS.register("sweet_berry_wine",
+            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.SWEET_BERRY_WINE)));
+
+    public static final DeferredItem<Item> GLOW_BERRY_WINE = ITEMS.register("glow_berry_wine",
+            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.GLOW_BERRY_WINE)));
+
+    public static final DeferredItem<Item> BEER = ITEMS.register("beer",
+            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.BEER)));
+
+    public static final DeferredItem<Item> CIDER = ITEMS.register("cider",
+            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.CIDER)));
+
 
     // Tools
 
@@ -156,9 +231,6 @@ public class FlavoredItems {
     public static final DeferredItem<Item> CHOCKEN_SPAWN_EGG = ITEMS.register("chocken_spawn_egg",
             () -> new DeferredSpawnEggItem(FlavoredEntities.CHOCKEN, 0x8f4e30, 0xdca37a,new Item.Properties()));
 
-    public static final DeferredItem<Item> CURED_SPAWN_EGG = ITEMS.register("cured_spawn_egg",
-            () -> new DeferredSpawnEggItem(FlavoredEntities.CURED, 0xf88867, 0x786e14,new Item.Properties()));
-
     // Other
 
     public static final DeferredItem<Item> CHOCOLATE_EGG = ITEMS.register("chocolate_egg",
@@ -166,12 +238,6 @@ public class FlavoredItems {
 
     public static final DeferredItem<Item> DRIED_PEPPER = ITEMS.register("dried_pepper",
             () -> new Item(new Item.Properties().food(FlavoredFoods.DRIED_PEPPER)));
-
-    public static final DeferredItem<Item> CURED_APPLE = ITEMS.register("cured_apple",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.CURED_APPLE)));
-
-    public static final DeferredItem<Item> CURED_FLESH = ITEMS.register("cured_flesh",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.CURED_FLESH)));
 
 
 

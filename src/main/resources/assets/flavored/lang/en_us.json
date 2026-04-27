@@ -1,15 +1,6 @@
 {
   "creativetab.flavored.flavored": "Flavored",
 
-  "item.flavored.salt": "Salt",
-  "block.flavored.rock_salt": "Rock Salt",
-  "block.flavored.budding_rock_salt": "Budding Rock Salt",
-  "block.flavored.salt_block": "Block of Salt",
-  "block.flavored.small_salt_bud": "Small Salt Bud",
-  "block.flavored.medium_salt_bud": "Medium Salt Bud",
-  "block.flavored.large_salt_bud": "Large Salt Bud",
-  "block.flavored.salt_cluster": "Salt Cluster",
-  "item.flavored.cured_apple": "Cured Apple",
   "entity.flavored.tomato": "Tomato",
 
   "block.flavored.tomato_bush": "Tomato Bush",
@@ -19,16 +10,11 @@
   "block.flavored.cinnamon_sprout": "Cinnamon Sprout",
   "item.flavored.cinnamon": "Cinnamon",
 
-
   "item.flavored.green_tomato": "Green Tomato",
   "item.flavored.yellow_tomato": "Yellow Tomato",
   "item.flavored.red_tomato": "Red Tomato",
 
   "item.flavored.tomato_seeds": "Tomato Seeds",
-  "item.flavored.cucumber_seeds": "Cucumber Seeds",
-
-  "item.flavored.cucumber": "Cucumber",
-  "block.flavored.cucumber_vine": "Cucumber Vine",
 
   "block.flavored.chocolate_block": "Block of Chocolate",
   "item.flavored.chocolate": "Chocolate",
@@ -57,8 +43,6 @@
   "item.flavored.cooked_pork_jowl": "Cooked Pork Jowl",
 
   "item.flavored.knife": "Knife",
-  "item.flavored.pickle": "Pickle",
-
   "block.flavored.keg": "Keg",
 
   "block.flavored.corn_bush": "Corn Bush",
@@ -85,10 +69,6 @@
   "item.flavored.garlic": "Garlic",
   "block.flavored.garlics": "Garlics",
 
-  "entity.flavored.cured": "Cured",
-  "item.flavored.cured_spawn_egg": "Cured Spawn Egg",
-  "item.flavored.cured_flesh": "Cured Flesh",
-
   "item.flavored.pepper": "Pepper",
   "item.flavored.dried_pepper": "Dried Pepper",
   "item.flavored.spinach": "Spinach",
@@ -100,7 +80,38 @@
   "enchantment.flavored.butchery": "Butchery",
   "block.flavored.pudding": "Pudding",
   "block.flavored.pizza": "Pizza",
-  "item.flavored.pizza_slice": "Pizza Slice"
+  "item.flavored.pizza_slice": "Pizza Slice",
 
+  "item.flavored.cereal": "Cereal",
+  "item.flavored.salad": "Salad",
+  "item.flavored.polenta": "Polenta",
+  "item.flavored.porridge": "Porridge",
+  "item.flavored.tomato_pasta": "Tomato Pasta",
+  "item.flavored.pesto_pasta": "Pesto Pasta",
+  "item.flavored.carbonara_pasta": "Carbonara Pasta",
+  "item.flavored.cream_pasta": "Cream Pasta",
+  "item.flavored.ragu_pasta": "Ragu Pasta",
+  "item.flavored.shakshouka": "Shakshouka",
+  "item.flavored.ossobuco": "Ossobuco",
+  "item.flavored.hamburger": "Hamburger",
+  "item.flavored.cheese_sandwich": "Cheese Sandwich",
+  "item.flavored.ham_sandwich": "Ham Sandwich",
+  "item.flavored.butter_pastry": "Butter Pastry",
+  "item.flavored.cinnamon_pastry": "Cinnamon Pastry",
+  "item.flavored.honey_pastry": "Honey Pastry",
+  "item.flavored.chocolate_pastry": "Chocolate Pastry",
+  "item.flavored.garlic_bread": "Garlic Bread",
+  "item.flavored.grilled_corn": "Grilled Corn",
+
+  "item.flavored.sweet_berry_juice": "Sweet Berry Juice",
+  "item.flavored.glow_berry_juice": "Glow Berry Juice",
+  "item.flavored.wort": "Wort",
+  "item.flavored.apple_juice": "Apple Juice",
+  "item.flavored.sweet_berry_wine": "Sweet Berry Wine",
+  "item.flavored.glow_berry_wine": "Glow Berry Wine",
+  "item.flavored.beer": "Beer",
+  "item.flavored.cider": "Cider",
+
+  "item.flavored.pasta": "Pasta"
 
 }

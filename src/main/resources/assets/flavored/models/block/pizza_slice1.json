@@ -4,7 +4,7 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"0": "flavored:block/pizza",
-		"particle": "flavored:block/pizza"
+		"particle": "flavored:block/particle/pizza"
 	},
 	"elements": [
 		{

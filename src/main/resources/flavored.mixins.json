@@ -5,12 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "flavored.refmap.json",
   "mixins": [
-    "FurnaceResultSlotMixin",
-    "ZoglinMixin",
-    "ZombieHorseMixin",
-    "ZombieMixin",
-    "ZombieVillagerMixin",
-    "ZombifiedPiglinMixin"
+    "FurnaceResultSlotMixin"
   ],
   "injectors": {
     "defaultRequire": 1

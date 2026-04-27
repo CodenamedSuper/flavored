@@ -5,7 +5,6 @@ import com.sidden.flavored.Flavored;
 import com.sidden.flavored.client.hud.HudOverlays;
 import com.sidden.flavored.entity.Chocken;
 import com.sidden.flavored.client.entity.model.ChockenModel;
-import com.sidden.flavored.entity.Cured;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -39,7 +38,6 @@ public class FlavoredEventBusEvents {
     @SubscribeEvent
     public  static  void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(FlavoredEntities.CHOCKEN.get(), Chocken.createAttributes().build());
-        event.put(FlavoredEntities.CURED.get(), Cured.createAttributes().build());
 
 
     }

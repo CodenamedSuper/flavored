@@ -16,6 +16,15 @@ public class FlavoredParticles {
     public static final Supplier<SimpleParticleType> CHEESE_AGING =
             PARTICLE_TYPES.register("cheese_aging", () -> new SimpleParticleType(true));
 
+    public static final Supplier<SimpleParticleType> DRIPPING_CHOCOLATE =
+            PARTICLE_TYPES.register("dripping_chocolate", () -> new SimpleParticleType(true));
+
+    public static final Supplier<SimpleParticleType> FALLING_CHOCOLATE =
+            PARTICLE_TYPES.register("falling_chocolate", () -> new SimpleParticleType(true));
+
+    public static final Supplier<SimpleParticleType> LANDING_CHOCOLATE =
+            PARTICLE_TYPES.register("landing_chocolate", () -> new SimpleParticleType(true));
+
     public static void init(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }

@@ -7,6 +7,7 @@ import com.sidden.flavored.client.screen.MixingBowlScreen;
 import com.sidden.flavored.client.screen.OvenScreen;
 import com.sidden.flavored.client.entity.renderer.ChockenRenderer;
 import com.sidden.flavored.particle.CheeseAgingParticle;
+import com.sidden.flavored.particle.FlavoredDripParticle;
 import com.sidden.flavored.registry.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -100,6 +101,10 @@ public class Flavored
         @SubscribeEvent
         public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
             event.registerSpriteSet(FlavoredParticles.CHEESE_AGING.get(), CheeseAgingParticle.Provider::new);
+
+            event.registerSprite(FlavoredParticles.DRIPPING_CHOCOLATE.get(), FlavoredDripParticle::createChocolateHangParticle);
+            event.registerSprite(FlavoredParticles.FALLING_CHOCOLATE.get(), FlavoredDripParticle::createChocolateFallParticle);
+            event.registerSprite(FlavoredParticles.LANDING_CHOCOLATE.get(), FlavoredDripParticle::createChocolateLandParticle);
         }
     }
 

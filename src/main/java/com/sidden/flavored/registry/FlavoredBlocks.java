@@ -78,7 +78,7 @@ public class FlavoredBlocks {
     // Other Blocks
 
     public static final DeferredBlock<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
+            () -> new ChocolateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
 
 
     private static Block stair(Block baseBlock) {

@@ -1,22 +1,17 @@
 package com.sidden.flavored.registry;
 
 import com.sidden.flavored.Flavored;
-import com.sidden.flavored.util.SugarRushTracker;
+import com.sidden.flavored.util.ChocolateAddictionManager;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.EntityEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber(modid = Flavored.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class FlavoredGameEvents {
@@ -40,7 +35,7 @@ public class FlavoredGameEvents {
     @SubscribeEvent
     public static void onEffectAdded(MobEffectEvent.Added event) {
         if (event.getEffectInstance().getEffect() == FlavoredEffects.SUGAR_RUSH && event.getEntity() instanceof Player player) {
-            SugarRushTracker.recordSugarRushUse(player);
+            ChocolateAddictionManager.increaseAddiction(player);
         }
     }
 
@@ -51,5 +46,9 @@ public class FlavoredGameEvents {
         }
     }
 
+    @SubscribeEvent
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        ChocolateAddictionManager.tickAddiction(event.getEntity());
+    }
 
 }

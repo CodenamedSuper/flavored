@@ -17,6 +17,7 @@ public class FlavoredStats {
     public static final Holder<ResourceLocation> MIX_ITEM = registerCustomStat("mix_item");
     public static final Holder<ResourceLocation> EAT_PUDDING_SLICE = registerCustomStat("eat_pudding_slice");
     public static final Holder<ResourceLocation> TAKE_PIZZA_SLICE = registerCustomStat("take_pizza_slice");
+    public static final Holder<ResourceLocation> CRAVE_CHOCOLATE = registerCustomStat("crave_chocolate");
 
     private static Holder<ResourceLocation> registerCustomStat(String key) {
         ResourceLocation resourcelocation = ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, key);

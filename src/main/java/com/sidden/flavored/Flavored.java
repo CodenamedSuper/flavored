@@ -50,7 +50,7 @@ public class Flavored
         FlavoredParticles.init(modEventBus);
         FlavoredFeatures.init(modEventBus);
         FlavoredCreativeTabs.init(modEventBus);
-        FlavoredSounds.init(modEventBus);
+        FlavoredSoundEvents.init(modEventBus);
         FlavoredStats.init(modEventBus);
 
         modEventBus.addListener(this::addCreative);

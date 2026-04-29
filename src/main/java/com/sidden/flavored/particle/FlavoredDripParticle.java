@@ -28,7 +28,6 @@ public class FlavoredDripParticle extends TextureSheetParticle {
 
     public static TextureSheetParticle createChocolateHangParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
         FlavoredDripParticle dripHangParticle = new FlavoredDripHangParticle(level, x, y, z, Fluids.EMPTY, FlavoredParticles.FALLING_CHOCOLATE.get());
-        dripHangParticle.gravity *= 0.01F;
         dripHangParticle.lifetime = 100;
         dripHangParticle.setColor(0.416f, 0.239f, 0.169f);
         return dripHangParticle;
@@ -36,7 +35,7 @@ public class FlavoredDripParticle extends TextureSheetParticle {
 
     public static TextureSheetParticle createChocolateFallParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
         FlavoredDripParticle dripparticle = new FlavoredFallAndLandParticle(level, x, y, z, Fluids.EMPTY, ParticleTypes.LANDING_HONEY);
-        dripparticle.gravity = 0.01F;
+        dripparticle.gravity = 1F;
         dripparticle.setColor(0.416f, 0.239f, 0.169f);
         return dripparticle;
     }

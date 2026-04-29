@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "flavored:chocolate_block",
+    "flavored:chocolate_tiles",
+    "flavored:chocolate_tile_stairs",
+    "flavored:chocolate_tile_slab",
     "flavored:keg",
     "flavored:mixing_bowl",
     "flavored:oven"

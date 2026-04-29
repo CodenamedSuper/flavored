@@ -23,6 +23,9 @@ public class FlavoredCreativeTabs {
                     .title(Component.translatable("creativetab.flavored.flavored"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(FlavoredBlocks.CHOCOLATE_BLOCK);
+                        output.accept(FlavoredBlocks.CHOCOLATE_TILES);
+                        output.accept(FlavoredBlocks.CHOCOLATE_TILE_STAIRS);
+                        output.accept(FlavoredBlocks.CHOCOLATE_TILE_SLAB);
                         output.accept(FlavoredBlocks.CINNAMON_STALK);
                         output.accept(FlavoredBlocks.STRIPPED_CINNAMON_STALK);
                         output.accept(FlavoredBlocks.CINNAMON_SPROUT);

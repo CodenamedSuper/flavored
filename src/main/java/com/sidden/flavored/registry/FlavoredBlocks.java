@@ -1,6 +1,5 @@
 package com.sidden.flavored.registry;
 
-import com.mojang.serialization.MapCodec;
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.block.*;
 import net.minecraft.world.item.BlockItem;
@@ -32,6 +31,19 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> OVEN = registerBlock("oven",
             () -> new OvenBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).lightLevel(blockstate -> blockstate.getValue(BlockStateProperties.LIT) ? 13 : 0)));
 
+    // Chocolate Blocks
+
+    public static final DeferredBlock<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
+            () -> new ChocolateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
+
+    public static final DeferredBlock<Block> CHOCOLATE_TILES = registerBlock("chocolate_tiles",
+            () -> new ChocolateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
+
+    public static final DeferredBlock<Block> CHOCOLATE_TILE_STAIRS = registerBlock("chocolate_tile_stairs",
+            () -> new ChocolateStairBlock(Blocks.MUD_BRICK_STAIRS.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICK_STAIRS)));
+
+    public static final DeferredBlock<Block> CHOCOLATE_TILE_SLAB = registerBlock("chocolate_tile_slab",
+            () -> new ChocolateSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICK_SLAB)));
 
     // Cinnamon Blocks
 
@@ -77,8 +89,6 @@ public class FlavoredBlocks {
 
     // Other Blocks
 
-    public static final DeferredBlock<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
-            () -> new ChocolateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
 
 
     private static Block stair(Block baseBlock) {

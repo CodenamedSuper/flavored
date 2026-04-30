@@ -4,14 +4,23 @@ import com.sidden.flavored.Flavored;
 import com.sidden.flavored.util.ChocolateAddictionManager;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.trading.ItemCost;
+import net.minecraft.world.item.trading.MerchantOffer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.village.WandererTradesEvent;
+
+import java.util.List;
 
 @EventBusSubscriber(modid = Flavored.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class FlavoredGameEvents {
@@ -47,8 +56,32 @@ public class FlavoredGameEvents {
     }
 
     @SubscribeEvent
+    public static void onPlayerClone(PlayerEvent.Clone event) {
+        MobEffectInstance effect = event.getOriginal().getEffect(FlavoredEffects.SUGAR_CRAVE.getDelegate());
+
+        if (effect != null) {
+
+            event.getEntity().addEffect(new MobEffectInstance(effect));
+        }
+    }
+
+    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         ChocolateAddictionManager.tickAddiction(event.getEntity());
+    }
+
+    @SubscribeEvent
+    public static void addWanderingTrades(WandererTradesEvent event) {
+        List<VillagerTrades.ItemListing> genericTrades = event.getGenericTrades();
+        List<VillagerTrades.ItemListing> rareTrades = event.getRareTrades();
+
+        genericTrades.add((entity, randomSource) -> new MerchantOffer(
+                new ItemCost(Items.EMERALD, 16),
+                new ItemStack(FlavoredItems.CINNAMON.get(), 8), 1, 10, 0.2f));
+
+        rareTrades.add((entity, randomSource) -> new MerchantOffer(
+                new ItemCost(Items.EMERALD, 1),
+                new ItemStack(FlavoredBlocks.CINNAMON_SPROUT.get(), 1), 1, 10, 0.2f));
     }
 
 }

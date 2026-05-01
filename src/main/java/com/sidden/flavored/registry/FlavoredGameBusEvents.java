@@ -13,6 +13,7 @@ import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.EffectCures;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -23,7 +24,7 @@ import net.neoforged.neoforge.event.village.WandererTradesEvent;
 import java.util.List;
 
 @EventBusSubscriber(modid = Flavored.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
-public class FlavoredGameEvents {
+public class FlavoredGameBusEvents {
 
     @SubscribeEvent
     public static void onItemRightClick(PlayerInteractEvent.RightClickItem event) {
@@ -56,16 +57,6 @@ public class FlavoredGameEvents {
     }
 
     @SubscribeEvent
-    public static void onPlayerClone(PlayerEvent.Clone event) {
-        MobEffectInstance effect = event.getOriginal().getEffect(FlavoredEffects.SUGAR_CRAVE.getDelegate());
-
-        if (effect != null) {
-
-            event.getEntity().addEffect(new MobEffectInstance(effect));
-        }
-    }
-
-    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         ChocolateAddictionManager.tickAddiction(event.getEntity());
     }
@@ -82,6 +73,14 @@ public class FlavoredGameEvents {
         rareTrades.add((entity, randomSource) -> new MerchantOffer(
                 new ItemCost(Items.EMERALD, 1),
                 new ItemStack(FlavoredBlocks.CINNAMON_SPROUT.get(), 1), 1, 10, 0.2f));
+    }
+
+    @SubscribeEvent
+    public static void onEffectRemove(MobEffectEvent.Remove event) {
+
+        if (event.getEffectInstance().is(FlavoredEffects.SUGAR_CRAVE) && event.getCure() != null && event.getCure().name().equals(EffectCures.MILK.name())) {
+            event.setCanceled(true);
+        }
     }
 
 }

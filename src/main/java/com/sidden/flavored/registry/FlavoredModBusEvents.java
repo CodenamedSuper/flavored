@@ -14,7 +14,7 @@ import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 
 @EventBusSubscriber(modid = Flavored.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
-public class FlavoredEventBusEvents {
+public class FlavoredModBusEvents {
 
     @SubscribeEvent
     public  static  void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {

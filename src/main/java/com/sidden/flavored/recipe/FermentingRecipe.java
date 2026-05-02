@@ -1,5 +1,6 @@
 package com.sidden.flavored.recipe;
 
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.sidden.flavored.recipe.input.FermentingRecipeInput;
@@ -7,12 +8,13 @@ import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
-public record FermentingRecipe(Ingredient mainInput, Ingredient fermentingInput, ItemStack output) implements Recipe<FermentingRecipeInput> {
+public record FermentingRecipe(Ingredient mainInput, Ingredient fermentingInput, String particleColor, ItemStack output) implements Recipe<FermentingRecipeInput> {
 
 
     @Override
@@ -59,12 +61,14 @@ public record FermentingRecipe(Ingredient mainInput, Ingredient fermentingInput,
         public static final MapCodec<FermentingRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
                 Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(FermentingRecipe::mainInput),
                 Ingredient.CODEC_NONEMPTY.fieldOf("fermenter").forGetter(FermentingRecipe::fermentingInput),
+                Codec.STRING.optionalFieldOf("particle_color", "349ad6").forGetter(FermentingRecipe::particleColor),
                 ItemStack.CODEC.fieldOf("result").forGetter(FermentingRecipe::output)
         ).apply(inst, FermentingRecipe::new));
         public static final StreamCodec<RegistryFriendlyByteBuf, FermentingRecipe> STREAM_CODEC =
                 StreamCodec.composite(
                         Ingredient.CONTENTS_STREAM_CODEC, FermentingRecipe::mainInput,
                         Ingredient.CONTENTS_STREAM_CODEC, FermentingRecipe::fermentingInput,
+                        ByteBufCodecs.STRING_UTF8, FermentingRecipe::particleColor,
                         ItemStack.STREAM_CODEC, FermentingRecipe::output,
                         FermentingRecipe::new);
 

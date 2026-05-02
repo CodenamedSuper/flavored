@@ -21,6 +21,7 @@ public class FlavoredSoundEvents {
     public static final Supplier<SoundEvent> CHOCOLATE_HIT = register("block.chocolate.hit");
     public static final Supplier<SoundEvent> CHOCOLATE_FALL = register("block.chocolate.fall");
     public static final Supplier<SoundEvent> OVEN_BAKE = register("block.oven.bake");
+    public static final Supplier<SoundEvent> KEG_FERMENT = register("block.keg.ferment");
 
     public static final DeferredSoundType CHOCOLATE = new DeferredSoundType(1f, 1f,
             FlavoredSoundEvents.CHOCOLATE_BREAK, FlavoredSoundEvents.CHOCOLATE_STEP, FlavoredSoundEvents.CHOCOLATE_PLACE,

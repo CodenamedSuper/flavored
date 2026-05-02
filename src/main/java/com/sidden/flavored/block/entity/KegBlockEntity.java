@@ -1,17 +1,24 @@
 package com.sidden.flavored.block.entity;
 
 
+import com.sidden.flavored.block.KegBlock;
 import com.sidden.flavored.menu.KegMenu;
 import com.sidden.flavored.recipe.FermentingRecipe;
 import com.sidden.flavored.recipe.input.FermentingRecipeInput;
 import com.sidden.flavored.itemhandler.KegItemHandler;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
+import com.sidden.flavored.registry.FlavoredParticles;
 import com.sidden.flavored.registry.FlavoredRecipeTypes;
+import com.sidden.flavored.registry.FlavoredSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
@@ -49,6 +56,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 2496;
+    private int particleColor = 0xFFFFFF;
 
     public KegBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(FlavoredBlockEntities.KEG.get(), pPos, pBlockState);
@@ -120,6 +128,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
 
         tag.put("inventory", itemHandler.serializeNBT(registries));
         tag.putInt("keg.progress", progress);
+        tag.putInt("keg.particle_color", particleColor);
 
         super.saveAdditional(tag, registries);
     }
@@ -129,20 +138,43 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
         super.loadAdditional(tag, registries);
         itemHandler.deserializeNBT(registries, tag.getCompound("inventory"));
         progress = tag.getInt("keg.progress");
+        particleColor = tag.getInt("keg.particle_color");
     }
 
-    public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
+    public void tick(Level level, BlockPos pos, BlockState state) {
+        Optional<RecipeHolder<FermentingRecipe>> recipe = getCurrentRecipe();
+        boolean canFerment = hasRecipe();
 
-        if(hasRecipe()) {
+        if (canFerment && !state.getValue(KegBlock.FERMENTING)) {
+            this.particleColor = hexToRGB(recipe.get().value().particleColor());
+
+            level.setBlock(pos, state.setValue(KegBlock.FERMENTING, true), 3);
+            level.sendBlockUpdated(pos, state, state.setValue(KegBlock.FERMENTING, true), 3);
+            setChanged(level, pos, state);
+        }
+        else if (!canFerment && state.getValue(KegBlock.FERMENTING)) {
+            level.setBlock(pos, state.setValue(KegBlock.FERMENTING, false), 3);
+            level.sendBlockUpdated(pos, state, state.setValue(KegBlock.FERMENTING, false), 3);
+            setChanged(level, pos, state);
+        }
+
+        if(canFerment) {
             increaseCraftingProgress();
-            setChanged(pLevel, pPos, pState);
-
+            setChanged(level, pos, state);
             if(hasProgressFinished()) {
                 fermentItem();
                 resetProgress();
             }
         } else {
             resetProgress();
+        }
+    }
+
+    private int hexToRGB(String hex) {
+        try {
+            return Integer.parseInt(hex.replace("#", ""), 16);
+        } catch (NumberFormatException e) {
+            return 0xFFFFFF;
         }
     }
 
@@ -167,11 +199,26 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
 
-        getLevel().playSound((Player)null, getBlockPos(), SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 1.0F, 1.0F);
+        getLevel().playSound((Player)null, getBlockPos(), FlavoredSoundEvents.KEG_FERMENT.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 
     }
 
-    private boolean hasRecipe() {
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider registries) {
+        loadAdditional(tag, registries);
+    }
+
+    @Override
+    public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    public boolean hasRecipe() {
         Optional<RecipeHolder<FermentingRecipe>> recipe = getCurrentRecipe();
         if(recipe.isEmpty()) {
             return false;
@@ -181,7 +228,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
         return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output.getItem());
     }
 
-    private Optional<RecipeHolder<FermentingRecipe>> getCurrentRecipe() {
+    public Optional<RecipeHolder<FermentingRecipe>> getCurrentRecipe() {
         return this.level.getRecipeManager()
                 .getRecipeFor(FlavoredRecipeTypes.KEG_TYPE.get(), new FermentingRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT), itemHandler.getStackInSlot(FERMENTING_SLOT)), level);
     }
@@ -219,5 +266,9 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
 
     public  ItemStackHandler getInventory() {
         return  this.itemHandler;
+    }
+
+    public int getParticleColor() {
+        return particleColor;
     }
 }

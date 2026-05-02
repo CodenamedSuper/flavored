@@ -68,5 +68,13 @@
       "flavored:block/oven/oven5"
 
     ]
+  },
+  "block.keg.ferment": {
+    "subtitle": "subtitles.flavored.block.keg.ferment",
+    "sounds": [
+      "flavored:block/keg/ferment1",
+      "flavored:block/keg/ferment2"
+
+    ]
   }
 }

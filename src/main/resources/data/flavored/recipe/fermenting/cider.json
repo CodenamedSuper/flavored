@@ -6,6 +6,7 @@
   "fermenter": {
     "item": "minecraft:sugar"
   },
+  "particle_color": "da9a37",
   "result": {
     "id": "flavored:cider",
     "count": 1

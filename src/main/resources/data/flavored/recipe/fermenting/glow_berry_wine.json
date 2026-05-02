@@ -6,6 +6,7 @@
   "fermenter": {
     "item": "minecraft:sugar"
   },
+  "particle_color": "ff8316",
   "result": {
     "id": "flavored:glow_berry_wine",
     "count": 1

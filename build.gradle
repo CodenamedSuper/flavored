@@ -55,6 +55,7 @@ neoForge {
         client {
             client()
 
+            devLogin = true
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }

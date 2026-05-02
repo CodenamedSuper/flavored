@@ -3,10 +3,15 @@ package com.sidden.flavored.block;
 import com.mojang.serialization.MapCodec;
 import com.sidden.flavored.block.entity.OvenBlockEntity;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
+import com.sidden.flavored.registry.FlavoredSoundEvents;
 import com.sidden.flavored.registry.FlavoredStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -109,6 +114,20 @@ public class OvenBlock extends BaseEntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, LIT);
+    }
+
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if ((Boolean)state.getValue(LIT)) {
+            double d0 = (double)pos.getX() + (double)0.5F;
+            double d1 = (double)pos.getY();
+            double d2 = (double)pos.getZ() + (double)0.5F;
+            if (random.nextDouble() < 0.1) {
+                level.playLocalSound(d0, d1, d2, FlavoredSoundEvents.OVEN_BAKE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+            }
+
+            level.addParticle(ParticleTypes.SMOKE, d0, d1 + 1.1, d2, (double)0.0F, (double)0.0F, (double)0.0F);
+        }
+
     }
 
     @Nullable

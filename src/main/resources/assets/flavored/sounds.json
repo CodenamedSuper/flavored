@@ -57,5 +57,16 @@
       "flavored:block/chocolate/step6"
 
     ]
+  },
+  "block.oven.bake": {
+    "subtitle": "subtitles.flavored.block.oven.bake",
+    "sounds": [
+      "flavored:block/oven/oven1",
+      "flavored:block/oven/oven2",
+      "flavored:block/oven/oven3",
+      "flavored:block/oven/oven4",
+      "flavored:block/oven/oven5"
+
+    ]
   }
 }

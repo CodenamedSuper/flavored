@@ -1,0 +1,14 @@
+{
+  "type": "flavored:fermenting",
+  "ingredient": {
+    "item": "minecraft:spider_eye"
+  },
+  "fermenter": {
+    "tag": "#flavored:fungi"
+  },
+  "particle_color": "9d1e2d",
+  "result": {
+    "id": "minecraft:fermented_spider_eye",
+    "count": 1
+  }
+}

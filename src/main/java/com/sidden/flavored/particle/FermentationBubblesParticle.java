@@ -28,7 +28,6 @@ public class FermentationBubblesParticle extends TextureSheetParticle {
 
     @Override
     public void tick() {
-        System.out.println("Particle tick");
         super.tick();
     }
 

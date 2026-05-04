@@ -30,7 +30,7 @@ public class HeatEffect extends MobEffect {
         super.onEffectStarted(livingEntity, amplifier);
 
         if (!livingEntity.fireImmune()) {
-            float damage = (float) amplifier;
+            float damage = amplifier;
 
             if (livingEntity instanceof Player player) {
                 Random seed = new Random(player.getUUID().getLeastSignificantBits());

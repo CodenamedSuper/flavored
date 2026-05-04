@@ -34,11 +34,11 @@ public class HeatEffect extends MobEffect {
 
             if (livingEntity instanceof Player player) {
                 Random seed = new Random(player.getUUID().getLeastSignificantBits());
-                float spiceTolerance = seed.nextFloat() * MAX_DAMAGE;
+                float spiceSensitivity = seed.nextFloat() * MAX_DAMAGE;
 
                 float variance = (livingEntity.getRandom().nextFloat() * 2.0F) - 1.0F;
 
-                damage = spiceTolerance + variance;
+                damage = spiceSensitivity + variance;
 
             } else {
                 damage += 2.0F;

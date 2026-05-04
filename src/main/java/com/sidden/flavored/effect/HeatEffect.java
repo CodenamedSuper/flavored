@@ -7,7 +7,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.Random;
-import java.util.UUID;
 
 public class HeatEffect extends MobEffect {
 
@@ -34,13 +33,12 @@ public class HeatEffect extends MobEffect {
             float damage = (float) amplifier;
 
             if (livingEntity instanceof Player player) {
-                Random seed = new Random(UUID.fromString("3186d0b6-8633-46a1-a429-603d4f0ffe7a").getLeastSignificantBits());
+                Random seed = new Random(player.getUUID().getLeastSignificantBits());
                 float spiceTolerance = seed.nextFloat() * MAX_DAMAGE;
 
                 float variance = (livingEntity.getRandom().nextFloat() * 2.0F) - 1.0F;
 
                 damage = spiceTolerance + variance;
-
 
             } else {
                 damage += 2.0F;

@@ -2,10 +2,21 @@ package com.sidden.flavored.effect;
 
 import com.sidden.flavored.registry.FlavoredBlockTags;
 import com.sidden.flavored.registry.FlavoredBlocks;
+import com.sidden.flavored.registry.FlavoredParticles;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
+import org.apache.logging.log4j.core.jmx.Server;
+
+import java.util.Random;
 
 
 public class PoppedEffect extends MobEffect {
@@ -28,6 +39,22 @@ public class PoppedEffect extends MobEffect {
     public void pop(LivingEntity entity, int amount) {
         Vec3 vec3 = entity.getDeltaMovement();
         entity.setDeltaMovement(vec3.x, amount, vec3.z);
+        entity.extinguishFire();
+        Vec3 pos = entity.position();
+        Level level = entity.level();
+        RandomSource random = level.random;
+        int particleCount = 5;
+
+        for (int i  = 0; i < particleCount; i++) {
+
+            level.addParticle(FlavoredParticles.POPCORN_POPS.get(),
+                    pos.x + (double) random.nextInt(5) / 10,
+                    pos.y + 1.0,
+                    pos.z + (double) random.nextInt(5) / 10,
+                    random.nextInt(-5, 5), 0, random.nextInt(-5,5));
+        }
+
+        entity.playSound(SoundEvents.WIND_CHARGE_THROW);
 
     }
 

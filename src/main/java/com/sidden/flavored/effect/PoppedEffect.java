@@ -29,7 +29,7 @@ public class PoppedEffect extends MobEffect {
     @Override
     public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
 
-        if ((livingEntity.isOnFire() || livingEntity.getBlockStateOn().is(FlavoredBlockTags.HEAT_SOURCES) && !livingEntity.getBlockStateOn().isAir())) {
+        if (((livingEntity.isOnFire() || livingEntity.getBlockStateOn().is(FlavoredBlockTags.HEAT_SOURCES)) && !livingEntity.getBlockStateOn().isAir())) {
             pop(livingEntity, 1);
         }
 

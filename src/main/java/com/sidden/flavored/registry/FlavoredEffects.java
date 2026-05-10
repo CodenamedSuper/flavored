@@ -1,10 +1,7 @@
 package com.sidden.flavored.registry;
 
 import com.sidden.flavored.Flavored;
-import com.sidden.flavored.effect.HeatEffect;
-import com.sidden.flavored.effect.PoppedEffect;
-import com.sidden.flavored.effect.SugarCraveEffect;
-import com.sidden.flavored.effect.SugarRushEffect;
+import com.sidden.flavored.effect.*;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -20,12 +17,12 @@ public class FlavoredEffects {
             DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, Flavored.MOD_ID);
 
     public static final Holder<MobEffect> SUGAR_RUSH = MOB_EFFECTS.register("sugar_rush",
-            () -> new SugarRushEffect(MobEffectCategory.NEUTRAL, 0xffeadb)
+            () -> new SugarRushEffect(MobEffectCategory.BENEFICIAL, 0xffeadb)
                     .addAttributeModifier(Attributes.MOVEMENT_SPEED,
                             ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "sugar_rush"), 0.3f,
                             AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
                     .addAttributeModifier(Attributes.ATTACK_DAMAGE,
-                            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "sugar_rush"), 0.3f,
+                            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "sugar_rush"), 0.2f,
                             AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
     public static final Holder<MobEffect> SUGAR_CRAVE = MOB_EFFECTS.register("sugar_crave",
@@ -36,6 +33,21 @@ public class FlavoredEffects {
 
     public static final Holder<MobEffect> POPPED = MOB_EFFECTS.register("popped",
             () -> new PoppedEffect(MobEffectCategory.BENEFICIAL, 0xedc62e));
+
+    public static final Holder<MobEffect> BOOZED = MOB_EFFECTS.register("boozed",
+            () -> new BoozedEffect(MobEffectCategory.BENEFICIAL, 0xf02d74)
+                    .addAttributeModifier(Attributes.ATTACK_DAMAGE,
+                            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "boozed"), 0.4f,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+
+    public static final Holder<MobEffect> HANGOVER = MOB_EFFECTS.register("hangover",
+            () -> new HangoverEffect(MobEffectCategory.BENEFICIAL, 0xffeadb)
+                    .addAttributeModifier(Attributes.MOVEMENT_SPEED,
+                            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "hangover"), -0.3f,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
+                    .addAttributeModifier(Attributes.ATTACK_DAMAGE,
+                            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "hangover"), -0.2f,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
 
 

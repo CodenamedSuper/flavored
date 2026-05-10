@@ -76,9 +76,15 @@ public class FlavoredGameBusEvents {
     }
 
     @SubscribeEvent
-    public static void onEffectRemove(MobEffectEvent.Remove event) {
+    public static void onEventExpired(MobEffectEvent.Expired event) {
+        if (event.getEffectInstance().is(FlavoredEffects.BOOZED)) {
+            event.getEntity().addEffect(new MobEffectInstance(FlavoredEffects.HANGOVER, 20 * 60 * 2));
+        }
+    }
 
-        if (event.getEffectInstance().is(FlavoredEffects.SUGAR_CRAVE) && event.getCure() != null && event.getCure().name().equals(EffectCures.MILK.name())) {
+    @SubscribeEvent
+    public static void onEffectRemoved(MobEffectEvent.Remove event) {
+        if ((event.getEffectInstance().is(FlavoredEffects.SUGAR_CRAVE) || event.getEffectInstance().is(FlavoredEffects.BOOZED) || event.getEffectInstance().is(FlavoredEffects.HANGOVER)) && event.getCure() != null && event.getCure().name().equals(EffectCures.MILK.name())) {
             event.setCanceled(true);
         }
     }

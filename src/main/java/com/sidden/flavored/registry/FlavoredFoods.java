@@ -53,10 +53,10 @@ public class FlavoredFoods {
     public static FoodProperties GLOW_BERRY_JUICE = new FoodProperties.Builder().nutrition(4).saturationModifier(0.3f).usingConvertsTo(Items.GLASS_BOTTLE).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 300, 0), 1F).build();
     public static FoodProperties WORT = new FoodProperties.Builder().nutrition(1).saturationModifier(0.1f).usingConvertsTo(Items.GLASS_BOTTLE).build();
     public static FoodProperties APPLE_JUICE = new FoodProperties.Builder().nutrition(5).saturationModifier(0.3f).usingConvertsTo(Items.GLASS_BOTTLE).build();
-    public static FoodProperties SWEET_BERRY_WINE = new FoodProperties.Builder().nutrition(6).saturationModifier(0.3f).usingConvertsTo(Items.GLASS_BOTTLE).build();
-    public static FoodProperties GLOW_BERRY_WINE = new FoodProperties.Builder().nutrition(6).saturationModifier(0.3f).usingConvertsTo(Items.GLASS_BOTTLE).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 1200, 0), 1F).build();
-    public static FoodProperties BEER = new FoodProperties.Builder().nutrition(5).saturationModifier(0.3f).usingConvertsTo(Items.GLASS_BOTTLE).build();
-    public static FoodProperties CIDER = new FoodProperties.Builder().nutrition(7).saturationModifier(0.5f).usingConvertsTo(Items.GLASS_BOTTLE).build();
+    public static FoodProperties SWEET_BERRY_WINE = new FoodProperties.Builder().nutrition(6).saturationModifier(0.3f).usingConvertsTo(Items.GLASS_BOTTLE).effect(() -> new MobEffectInstance(FlavoredEffects.BOOZED, 2400, 0), 1F).build();
+    public static FoodProperties GLOW_BERRY_WINE = new FoodProperties.Builder().nutrition(6).saturationModifier(0.3f).usingConvertsTo(Items.GLASS_BOTTLE).effect(() -> new MobEffectInstance(FlavoredEffects.BOOZED, 2400, 0), 1F).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 1200, 0), 1F).build();
+    public static FoodProperties BEER = new FoodProperties.Builder().nutrition(5).saturationModifier(0.3f).usingConvertsTo(Items.GLASS_BOTTLE).effect(() -> new MobEffectInstance(FlavoredEffects.BOOZED, 2400, 0), 1F).build();
+    public static FoodProperties CIDER = new FoodProperties.Builder().nutrition(7).saturationModifier(0.5f).usingConvertsTo(Items.GLASS_BOTTLE).effect(() -> new MobEffectInstance(FlavoredEffects.BOOZED, 2400, 0), 1F).build();
 
 
 }

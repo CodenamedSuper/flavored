@@ -32,7 +32,9 @@ public class FlavoredFoods {
     public static FoodProperties GRILLED_CORN = new FoodProperties.Builder().nutrition(5).saturationModifier(0.7f).effect(() -> new MobEffectInstance(FlavoredEffects.POPPED, 2400, 0), 1F).build();
     public static FoodProperties HAMBURGER = new FoodProperties.Builder().nutrition(10).saturationModifier(0.9f).build();
     public static FoodProperties CHEESE_SANDWICH = new FoodProperties.Builder().nutrition(7).saturationModifier(0.9f).build();
-    public static FoodProperties HAM_SANDWICH = new FoodProperties.Builder().nutrition(7).saturationModifier(0.9f).build();
+    public static FoodProperties HAM_SANDWICH = new FoodProperties.Builder().nutrition(8).saturationModifier(0.9f).build();
+    public static FoodProperties CHICKEN_SANDWICH = new FoodProperties.Builder().nutrition(8).saturationModifier(0.9f).build();
+    public static FoodProperties SHAWARMA = new FoodProperties.Builder().nutrition(10).saturationModifier(0.9f).build();
     public static FoodProperties GARLIC_BREAD = new FoodProperties.Builder().nutrition(8).saturationModifier(0.7f).build();
     public static FoodProperties BUTTER_PASTRY = new FoodProperties.Builder().nutrition(6).saturationModifier(0.7f).build();
     public static FoodProperties CINNAMON_PASTRY = new FoodProperties.Builder().nutrition(6).saturationModifier(0.7f).build();

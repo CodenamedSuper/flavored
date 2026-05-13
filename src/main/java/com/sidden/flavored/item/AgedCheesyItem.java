@@ -1,6 +1,5 @@
 package com.sidden.flavored.item;
 
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -8,10 +7,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-import java.util.Random;
-
-public class SoftCheeseSliceItem extends Item {
-    public SoftCheeseSliceItem(Properties properties) {
+public class AgedCheesyItem extends Item {
+    public AgedCheesyItem(Properties properties) {
         super(properties);
     }
 
@@ -22,7 +19,7 @@ public class SoftCheeseSliceItem extends Item {
         if (!level.isClientSide) {
 
             for(MobEffectInstance effect : livingEntity.getActiveEffects()) {
-                if (effect.getEffect().value().getCategory() == MobEffectCategory.HARMFUL && livingEntity.getRandom().nextInt(5) == 0 ) {
+                if (effect.getEffect().value().getCategory() == MobEffectCategory.HARMFUL) {
                     livingEntity.removeEffect(effect.getEffect());
                 }
             }
@@ -30,5 +27,4 @@ public class SoftCheeseSliceItem extends Item {
 
         return result;
     }
-
 }

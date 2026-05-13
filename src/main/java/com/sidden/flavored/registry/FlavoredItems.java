@@ -41,10 +41,10 @@ public class FlavoredItems {
             () -> new Item(new Item.Properties().food(FlavoredFoods.CHOCOLATE)));
 
     public static final DeferredItem<Item> SOFT_CHEESE_SLICE = ITEMS.register("soft_cheese_slice",
-            () -> new SoftCheeseSliceItem(new Item.Properties().food(FlavoredFoods.SOFT_CHEESE_SLICE)));
+            () -> new SoftCheesyItem(new Item.Properties().food(FlavoredFoods.SOFT_CHEESE_SLICE)));
 
     public static final DeferredItem<Item> AGED_CHEESE_SLICE = ITEMS.register("aged_cheese_slice",
-            () -> new CheesyItem(new Item.Properties().food(FlavoredFoods.AGED_CHEESE_SLICE)));
+            () -> new AgedCheesyItem(new Item.Properties().food(FlavoredFoods.AGED_CHEESE_SLICE)));
 
 
     // Crops
@@ -107,14 +107,11 @@ public class FlavoredItems {
     public static final DeferredItem<Item> COOKED_GROUND_BEEF = ITEMS.register("cooked_ground_beef",
             () -> new Item(new Item.Properties().food(FlavoredFoods.COOKED_GROUND_BEEF)));
 
-
     public static final DeferredItem<Item> COOKED_CHICKEN_DRUMSTICK = ITEMS.register("cooked_chicken_drumstick",
             () -> new Item(new Item.Properties().food(FlavoredFoods.COOKED_CHICKEN_DRUMSTICK)));
 
-
     public static final DeferredItem<Item> COOKED_MUTTON_SHANK = ITEMS.register("cooked_mutton_shank",
             () -> new Item(new Item.Properties().food(FlavoredFoods.COOKED_MUTTON_SHANK)));
-
 
     public static final DeferredItem<Item> COOKED_PORK_JOWL = ITEMS.register("cooked_pork_jowl",
             () -> new Item(new Item.Properties().food(FlavoredFoods.COOKED_PORK_JOWL)));
@@ -122,13 +119,19 @@ public class FlavoredItems {
     // Normal Foodstuffs
 
     public static final DeferredItem<Item> PIZZA_SLICE = ITEMS.register("pizza_slice",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.PIZZA_SLICE)));
+            () -> new SoftCheesyItem(new Item.Properties().food(FlavoredFoods.PIZZA_SLICE)));
 
     public static final DeferredItem<Item> HAMBURGER = ITEMS.register("hamburger",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.HAMBURGER)));
+            () -> new AgedCheesyItem(new Item.Properties().food(FlavoredFoods.HAMBURGER)));
 
     public static final DeferredItem<Item> HAM_SANDWICH = ITEMS.register("ham_sandwich",
             () -> new Item(new Item.Properties().food(FlavoredFoods.HAM_SANDWICH)));
+
+    public static final DeferredItem<Item> CHICKEN_SANDWICH = ITEMS.register("chicken_sandwich",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.CHICKEN_SANDWICH)));
+
+    public static final DeferredItem<Item> SHAWARMA = ITEMS.register("shawarma",
+            () -> new Item(new Item.Properties().food(FlavoredFoods.SHAWARMA)));
 
     public static final DeferredItem<Item> CHEESE_SANDWICH = ITEMS.register("cheese_sandwich",
             () -> new Item(new Item.Properties().food(FlavoredFoods.CHEESE_SANDWICH)));
@@ -166,10 +169,10 @@ public class FlavoredItems {
             () -> new Item(new Item.Properties().food(FlavoredFoods.PESTO_PASTA).stacksTo(1)));
 
     public static final DeferredItem<Item> CREAM_PASTA = ITEMS.register("cream_pasta",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.CREAM_PASTA).stacksTo(1)));
+            () -> new AgedCheesyItem(new Item.Properties().food(FlavoredFoods.CREAM_PASTA).stacksTo(1)));
 
     public static final DeferredItem<Item> CARBONARA_PASTA = ITEMS.register("carbonara_pasta",
-            () -> new Item(new Item.Properties().food(FlavoredFoods.CARBONARA_PASTA).stacksTo(1)));
+            () -> new AgedCheesyItem(new Item.Properties().food(FlavoredFoods.CARBONARA_PASTA).stacksTo(1)));
 
     public static final DeferredItem<Item> RAGU_PASTA = ITEMS.register("ragu_pasta",
             () -> new Item(new Item.Properties().food(FlavoredFoods.RAGU_PASTA).stacksTo(1)));

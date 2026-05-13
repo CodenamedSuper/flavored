@@ -7,8 +7,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class CheesyItem extends Item {
-    public CheesyItem(Properties properties) {
+public class SoftCheesyItem extends Item {
+    public SoftCheesyItem(Properties properties) {
         super(properties);
     }
 
@@ -19,7 +19,7 @@ public class CheesyItem extends Item {
         if (!level.isClientSide) {
 
             for(MobEffectInstance effect : livingEntity.getActiveEffects()) {
-                if (effect.getEffect().value().getCategory() == MobEffectCategory.HARMFUL) {
+                if (effect.getEffect().value().getCategory() == MobEffectCategory.HARMFUL && livingEntity.getRandom().nextInt(5) == 0 ) {
                     livingEntity.removeEffect(effect.getEffect());
                 }
             }
@@ -27,4 +27,5 @@ public class CheesyItem extends Item {
 
         return result;
     }
+
 }

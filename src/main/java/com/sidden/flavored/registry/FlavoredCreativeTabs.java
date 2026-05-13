@@ -69,9 +69,12 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredItems.DRIED_PEPPER);
                         output.accept(FlavoredItems.CHOCOLATE_EGG);
                         output.accept(FlavoredItems.GRILLED_CORN);
+                        output.accept(FlavoredItems.HAMBURGER);
+                        output.accept(FlavoredItems.SHAWARMA);
+                        output.accept(FlavoredItems.HAM_SANDWICH);
+                        output.accept(FlavoredItems.CHICKEN_SANDWICH);
                         output.accept(FlavoredItems.HAM_SANDWICH);
                         output.accept(FlavoredItems.CHEESE_SANDWICH);
-                        output.accept(FlavoredItems.HAMBURGER);
                         output.accept(FlavoredItems.GARLIC_BREAD);
                         output.accept(FlavoredItems.BUTTER_PASTRY);
                         output.accept(FlavoredItems.CINNAMON_PASTRY);

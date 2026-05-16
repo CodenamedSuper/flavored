@@ -34,10 +34,7 @@ public class FlavoredGameBusEvents {
         if (player.hasEffect(FlavoredEffects.SUGAR_CRAVE)) {
             if (!stack.is(FlavoredItemTags.CHOCOLATY) && stack.has(DataComponents.FOOD)) {
                 event.setCanceled(true);
-                player.displayClientMessage(
-                        Component.literal("You crave only chocolaty foods right now..."),
-                        true
-                );
+                player.displayClientMessage(Component.literal("You crave only chocolaty foods right now..."), true);
             }
         }
     }
@@ -77,14 +74,14 @@ public class FlavoredGameBusEvents {
 
     @SubscribeEvent
     public static void onEventExpired(MobEffectEvent.Expired event) {
-        if (event.getEffectInstance().is(FlavoredEffects.BOOZED)) {
+        if (event.getEffectInstance() != null && event.getEffectInstance().is(FlavoredEffects.BOOZED)) {
             event.getEntity().addEffect(new MobEffectInstance(FlavoredEffects.HANGOVER, 20 * 60 * 2));
         }
     }
 
     @SubscribeEvent
     public static void onEffectRemoved(MobEffectEvent.Remove event) {
-        if ((event.getEffectInstance().is(FlavoredEffects.SUGAR_CRAVE) || event.getEffectInstance().is(FlavoredEffects.BOOZED) || event.getEffectInstance().is(FlavoredEffects.HANGOVER)) && event.getCure() != null && event.getCure().name().equals(EffectCures.MILK.name())) {
+        if (event.getEffectInstance() != null && ((event.getEffectInstance().is(FlavoredEffects.SUGAR_CRAVE) || event.getEffectInstance().is(FlavoredEffects.BOOZED) || event.getEffectInstance().is(FlavoredEffects.HANGOVER))) && event.getCure() != null && event.getCure().name().equals(EffectCures.MILK.name())) {
             event.setCanceled(true);
         }
     }

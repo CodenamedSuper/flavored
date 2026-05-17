@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "chocolate",
+  "ingredients": [
+    {
+      "item": "flavored:chocolate_egg"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "id": "flavored:chocolate"
+  }
+}

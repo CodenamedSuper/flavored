@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "flavored:spinach"
+    },
+    {
+      "item": "flavored:yellow_tomato"
+    },
+    {
+      "item": "flavored:cooked_chicken_drumstick"
+    },
+    {
+      "item": "flavored:cooked_chicken_drumstick"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "flavored:chicken_sandwich"
+  }
+}

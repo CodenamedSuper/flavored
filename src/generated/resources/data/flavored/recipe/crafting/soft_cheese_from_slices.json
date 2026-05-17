@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "soft_cheese",
+  "key": {
+    "#": {
+      "item": "flavored:soft_cheese_slice"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "flavored:soft_cheese"
+  }
+}

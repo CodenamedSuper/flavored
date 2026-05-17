@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "flavored:spinach"
+    },
+    {
+      "item": "flavored:red_tomato"
+    },
+    {
+      "item": "flavored:garlic"
+    },
+    {
+      "item": "flavored:cooked_mutton_shank"
+    },
+    {
+      "item": "flavored:cooked_mutton_shank"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "flavored:shawarma"
+  }
+}

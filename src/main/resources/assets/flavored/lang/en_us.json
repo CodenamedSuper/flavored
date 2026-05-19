@@ -31,7 +31,8 @@
   "effect.flavored.sugar_crave": "Sugar Crave",
   "effect.flavored.popped": "Popped!",
   "effect.flavored.heat": "Heat",
-
+  "effect.flavored.boozed": "Boozed",
+  "effect.flavored.hangover": "Hangover",
 
   "item.flavored.soft_cheese_slice": "Soft Cheese Slice",
   "item.flavored.aged_cheese_slice": "Cheese Slice",
@@ -124,6 +125,12 @@
   "item.flavored.pasta": "Pasta",
 
   "subtitles.flavored.block.oven.bake": "Oven baking",
-  "subtitles.flavored.block.keg.ferment": "Keg fermenting"
+  "subtitles.flavored.block.keg.ferment": "Keg fermenting",
 
+  "advancements.flavored.husbandry.obtain_pizza.title": "The Top of The Food Pyramid",
+  "advancements.flavored.husbandry.obtain_pizza.description": "Obtain pizza, the pinnacle of all foods",
+  "advancements.flavored.husbandry.obtain_oven.title": "Crafting and Smelting, Evolved",
+  "advancements.flavored.husbandry.obtain_oven.description": "Obtain an oven",
+  "advancements.flavored.husbandry.obtain_all_domestic_crops.title": "Domestication Nation",
+  "advancements.flavored.husbandry.obtain_all_domestic_crops.description": "Obtain every village-grown crop"
 }

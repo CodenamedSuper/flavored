@@ -1,9 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "chocolate_block",
   "key": {
     "#": {
-      "item": "flavored:chocolate"
+      "item": "flavored:chocolate_block"
     }
   },
   "pattern": [
@@ -11,7 +12,7 @@
     "##"
   ],
   "result": {
-    "count": 1,
-    "id": "flavored:chocolate_block"
+    "count": 4,
+    "id": "flavored:chocolate_tiles"
   }
 }

@@ -8,7 +8,7 @@
       "item": "flavored:red_tomato"
     },
     "*": {
-      "item": "flavored:aged_cheese_slice"
+      "item": "flavored:soft_cheese_slice"
     }
   },
   "pattern": [

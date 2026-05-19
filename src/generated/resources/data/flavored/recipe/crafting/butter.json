@@ -1,20 +1,13 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "soft_cheese",
   "ingredients": [
     {
       "item": "minecraft:milk_bucket"
-    },
-    {
-      "item": "minecraft:red_mushroom"
-    },
-    {
-      "item": "minecraft:brown_mushroom"
     }
   ],
   "result": {
     "count": 1,
-    "id": "flavored:soft_cheese"
+    "id": "flavored:butter"
   }
 }

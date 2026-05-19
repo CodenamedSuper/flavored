@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:glass_bottle"
+    },
+    "X": {
+      "item": "minecraft:sweet_berries"
+    }
+  },
+  "pattern": [
+    " X ",
+    "X#X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "flavored:sweet_berry_juice"
+  }
+}

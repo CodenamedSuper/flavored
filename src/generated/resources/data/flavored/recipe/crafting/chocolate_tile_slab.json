@@ -3,15 +3,14 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "flavored:chocolate"
+      "item": "flavored:chocolate_tiles"
     }
   },
   "pattern": [
-    "##",
-    "##"
+    "###"
   ],
   "result": {
-    "count": 1,
-    "id": "flavored:chocolate_block"
+    "count": 6,
+    "id": "flavored:chocolate_tile_slab"
   }
 }

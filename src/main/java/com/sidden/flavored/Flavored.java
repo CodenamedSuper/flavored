@@ -55,6 +55,7 @@ public class Flavored
         FlavoredSoundEvents.init(modEventBus);
         FlavoredDataAttachments.init(modEventBus);
         FlavoredStats.init(modEventBus);
+        FlavoredCriteriaTriggers.init(modEventBus);
 
         modEventBus.addListener(this::addCreative);
 

@@ -1,14 +1,13 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "chocolate",
   "ingredients": [
     {
-      "item": "flavored:chocolate_egg"
+      "item": "flavored:pepper"
     }
   ],
   "result": {
     "count": 1,
-    "id": "flavored:chocolate"
+    "id": "flavored:pepper_seeds"
   }
 }

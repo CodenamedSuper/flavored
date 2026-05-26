@@ -1,0 +1,22 @@
+{
+  "type": "flavored:mixing",
+  "ingredients": [
+    {
+      "item": "flavored:flour"
+    },
+    {
+      "item": "flavored:flour"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    }
+  ],
+  "liquid": "none",
+  "result": {
+    "id": "flavored:pasta",
+    "count": 1
+  }
+}

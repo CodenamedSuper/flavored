@@ -5,6 +5,7 @@ import com.sidden.flavored.registry.FlavoredBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -47,6 +48,11 @@ public class CinnamonSproutBlock extends BushBlock implements BonemealableBlock 
     @Override
     public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
         return randomSource.nextInt(4) == 0;
+    }
+
+    @Override
+    protected boolean canBeReplaced(BlockState state, BlockPlaceContext useContext) {
+        return false;
     }
 
     @Override

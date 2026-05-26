@@ -53,7 +53,7 @@ public class SpinachBushBlock extends BushBlock implements BonemealableBlock {
     }
 
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        if ((Integer) state.getValue(AGE) == 0) {
+        if ((Integer) state.getValue(AGE) == 0 || state.getValue(AGE) == 1) {
             return SAPLING_SHAPE;
         } else {
             return (Integer) state.getValue(AGE) < MAX_AGE ? MID_GROWTH_SHAPE : super.getShape(state, level, pos, context);
@@ -82,7 +82,7 @@ public class SpinachBushBlock extends BushBlock implements BonemealableBlock {
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         int age = (Integer) state.getValue(AGE);
         boolean flag = age == MAX_AGE;
-        if (age > 1 && stack.is(Items.SHEARS)) {
+        if (age > 2 && stack.is(Items.SHEARS)) {
             int drops = age - 1 + level.random.nextInt(2);
 
             popResource(level, pos, new ItemStack(FlavoredItems.SPINACH.get(), drops));
@@ -116,6 +116,6 @@ public class SpinachBushBlock extends BushBlock implements BonemealableBlock {
     static {
         AGE = BlockStateProperties.AGE_3;
         SAPLING_SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
-        MID_GROWTH_SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+        MID_GROWTH_SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
     }
 }

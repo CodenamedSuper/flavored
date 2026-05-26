@@ -223,7 +223,7 @@ public class FlavoredItems {
     // Tools
 
     public static final DeferredItem<Item> KNIFE = ITEMS.register("knife", () ->
-            new KnifeItem((new Item.Properties()).durability(100).component(DataComponents.TOOL, KnifeItem.createToolProperties()).attributes(KnifeItem.createAttributes())));
+            new KnifeItem((new Item.Properties()).durability(200).component(DataComponents.TOOL, KnifeItem.createToolProperties()).attributes(KnifeItem.createAttributes())));
 
     public static final DeferredItem<Item> WHISK = ITEMS.register("whisk", () ->
             new WhiskItem((new Item.Properties()).durability(2000).component(DataComponents.TOOL, WhiskItem.createToolProperties())));

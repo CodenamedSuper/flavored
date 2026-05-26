@@ -35,13 +35,13 @@ public class FlavoredEffects {
             () -> new PoppedEffect(MobEffectCategory.BENEFICIAL, 0xedc62e));
 
     public static final Holder<MobEffect> BOOZED = MOB_EFFECTS.register("boozed",
-            () -> new BoozedEffect(MobEffectCategory.BENEFICIAL, 0xf02d74)
+            () -> new BoozedEffect(MobEffectCategory.BENEFICIAL, 0xbd334a)
                     .addAttributeModifier(Attributes.ATTACK_DAMAGE,
                             ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "boozed"), 0.4f,
                             AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
     public static final Holder<MobEffect> HANGOVER = MOB_EFFECTS.register("hangover",
-            () -> new HangoverEffect(MobEffectCategory.BENEFICIAL, 0xffeadb)
+            () -> new HangoverEffect(MobEffectCategory.BENEFICIAL, 0x42222d)
                     .addAttributeModifier(Attributes.MOVEMENT_SPEED,
                             ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "hangover"), -0.3f,
                             AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)

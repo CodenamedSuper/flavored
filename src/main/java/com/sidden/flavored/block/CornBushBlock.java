@@ -95,7 +95,6 @@ public class CornBushBlock extends BushBlock implements BonemealableBlock {
     public void grow(Level level, BlockState state, BlockPos pos) {
         int age = state.getValue(AGE);
         if (age >= MAX_AGE) return;
-
         int newAge = age + 1;
 
         if (isLower(state)) {
@@ -103,19 +102,17 @@ public class CornBushBlock extends BushBlock implements BonemealableBlock {
 
             if (newAge >= 2) {
                 BlockPos above = pos.above();
-                BlockState upper = this.defaultBlockState()
-                        .setValue(HALF, DoubleBlockHalf.UPPER)
-                        .setValue(AGE, newAge);
+                BlockState upper = this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER).setValue(AGE, newAge);
 
                 level.setBlock(above, upper, 2);
             }
-        } else {
+        }
+        else {
             BlockPos below = pos.below();
             BlockState lower = level.getBlockState(below);
 
             if (lower.is(this)) {
-                level.setBlock(below, lower.setValue(AGE, newAge), 2);
-                level.setBlock(pos, state.setValue(AGE, newAge), 2);
+                level.setBlock(below, lower.setValue(AGE, newAge), 2);level.setBlock(pos, state.setValue(AGE, newAge), 2);
             }
         }
 
@@ -135,25 +132,21 @@ public class CornBushBlock extends BushBlock implements BonemealableBlock {
         if (age >= 4) {
             BlockPos basePos = isLower(state) ? pos : pos.below();
 
-            int drops = 1 + level.random.nextInt(2);
+            int drops = 1 + level.random.nextInt(2) + (age - 3);
 
             popResource(level, basePos, new ItemStack(FlavoredItems.CORN.get(), drops));
-
-            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES,
-                    SoundSource.BLOCKS, 1.0F,
-                    0.8F + level.random.nextFloat() * 0.4F);
-
+            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
             BlockState newState = state.setValue(AGE, 3);
 
             level.setBlock(basePos, newState.setValue(HALF, DoubleBlockHalf.LOWER), 2);
 
             if (level.getBlockState(basePos.above()).is(this)) {
-                level.setBlock(basePos.above(),
-                        newState.setValue(HALF, DoubleBlockHalf.UPPER), 2);
+                level.setBlock(basePos.above(), newState.setValue(HALF, DoubleBlockHalf.UPPER), 2);
             }
 
             return InteractionResult.sidedSuccess(level.isClientSide);
-        } else {
+        }
+        else {
             return super.useWithoutItem(state, level, pos, player, hitResult);
         }
     }

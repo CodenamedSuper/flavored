@@ -20,7 +20,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "minecraft:carrots",
+          "block": "flavored:garlics",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "7"

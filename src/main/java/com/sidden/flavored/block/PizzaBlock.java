@@ -69,30 +69,27 @@ public class PizzaBlock extends Block {
     }
 
     protected static InteractionResult eat(LevelAccessor level, BlockPos pos, BlockState state, Player player, InteractionHand hand) {
-        if (!player.canEat(false)) {
-            return InteractionResult.PASS;
+        player.awardStat(FlavoredStats.TAKE_PIZZA_SLICE.value());
+
+        ItemStack stack = FlavoredItems.PIZZA_SLICE.toStack();
+        if (player.getItemInHand(hand).isEmpty()) {
+            player.setItemInHand(hand, stack);
         } else {
-            player.awardStat(FlavoredStats.TAKE_PIZZA_SLICE.value());
-
-            ItemStack stack = FlavoredItems.PIZZA_SLICE.toStack();
-            if (player.getItemInHand(hand).isEmpty()) {
-                player.setItemInHand(hand, stack);
-            } else {
-                player.addItem(stack);
-            }
-
-            int i = state.getValue(BITES);
-            level.gameEvent(player, GameEvent.EAT, pos);
-
-            if (i < MAX_BITES) {
-                level.setBlock(pos, state.setValue(BITES, i + 1), 3);
-            } else {
-                level.removeBlock(pos, false);
-                level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
-            }
-
-            return InteractionResult.SUCCESS;
+            player.addItem(stack);
         }
+
+        int i = state.getValue(BITES);
+        level.gameEvent(player, GameEvent.EAT, pos);
+
+        if (i < MAX_BITES) {
+            level.setBlock(pos, state.setValue(BITES, i + 1), 3);
+        } else {
+            level.removeBlock(pos, false);
+            level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
+        }
+
+        return InteractionResult.SUCCESS;
+
     }
 
     protected BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {

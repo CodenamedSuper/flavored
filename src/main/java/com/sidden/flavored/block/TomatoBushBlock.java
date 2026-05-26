@@ -91,7 +91,7 @@ public class TomatoBushBlock extends BushBlock implements BonemealableBlock {
         if (age > 1) {
             if (age == 2) popResource(level, pos, new ItemStack(FlavoredItems.GREEN_TOMATO.get(), 1));
             else if (age == 3) popResource(level, pos, new ItemStack(FlavoredItems.YELLOW_TOMATO.get(), 1 + level.random.nextInt(2)));
-            else if (age == 4) popResource(level, pos, new ItemStack(FlavoredItems.RED_TOMATO.get(), 1 + level.random.nextInt(3)));
+            else if (age == 4) popResource(level, pos, new ItemStack(FlavoredItems.RED_TOMATO.get(), 2 + level.random.nextInt(3)));
 
             level.playSound((Player) null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
             BlockState blockstate = (BlockState) state.setValue(AGE, 1);

@@ -75,7 +75,7 @@ public class FlavoredGameBusEvents {
     @SubscribeEvent
     public static void onEventExpired(MobEffectEvent.Expired event) {
         if (event.getEffectInstance() != null && event.getEffectInstance().is(FlavoredEffects.BOOZED)) {
-            event.getEntity().addEffect(new MobEffectInstance(FlavoredEffects.HANGOVER, 20 * 60 * 2));
+            event.getEntity().addEffect(new MobEffectInstance(FlavoredEffects.HANGOVER, 20 * 60 * 1));
         }
     }
 

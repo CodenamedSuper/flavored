@@ -179,6 +179,8 @@ public class MixingBowlBlock extends BaseEntityBlock {
         }
 
         level.setBlock(pos, state.setValue(LIQUID, MixingBowlLiquid.NONE), 2);
+        ItemUtils.createFilledResult(result, player, new ItemStack(Items.BUCKET));
+
 
         return ItemInteractionResult.sidedSuccess(level.isClientSide);
 

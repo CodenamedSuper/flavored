@@ -9,7 +9,10 @@
       "item": "flavored:spinach"
     },
     {
-      "item": "minecraft:cooked_beef"
+      "item": "flavored:cooked_ground_beef"
+    },
+    {
+      "item": "flavored:cooked_ground_beef"
     },
     {
       "item": "flavored:red_tomato"

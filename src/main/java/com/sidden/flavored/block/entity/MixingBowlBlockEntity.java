@@ -6,6 +6,7 @@ import com.sidden.flavored.menu.MixingBowlMenu;
 import com.sidden.flavored.recipe.MixingRecipe;
 import com.sidden.flavored.recipe.input.MixingRecipeInput;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
+import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import com.sidden.flavored.registry.FlavoredStats;
 import net.minecraft.core.BlockPos;
@@ -208,13 +209,19 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
 
     public Optional<RecipeHolder<MixingRecipe>> getCurrentRecipe() {
 
+        MixingBowlLiquid liquid = level.getBlockState(getBlockPos()).getValue(MixingBowlBlock.LIQUID);
+
+        if (!this.level.getBlockState(getBlockPos()).is(FlavoredBlocks.MIXING_BOWL)) {
+            liquid = MixingBowlLiquid.NONE;
+        }
+
         List<ItemStack> ingredients = new ArrayList<>();
 
         for (int i = 0; i < INPUT_SLOTS.length; i++) {
             ingredients.add(itemHandler.getStackInSlot(i));
         }
 
-        return this.level.getRecipeManager().getRecipeFor(FlavoredRecipeTypes.MIXING_BOWL_TYPE.get(), new MixingRecipeInput(ingredients, itemHandler.getStackInSlot(VESSEL_SLOT),level.getBlockState(getBlockPos()).getValue(MixingBowlBlock.LIQUID)), level);
+        return this.level.getRecipeManager().getRecipeFor(FlavoredRecipeTypes.MIXING_BOWL_TYPE.get(), new MixingRecipeInput(ingredients, itemHandler.getStackInSlot(VESSEL_SLOT),liquid), level);
     }
 
     private boolean hasProgressFinished() {

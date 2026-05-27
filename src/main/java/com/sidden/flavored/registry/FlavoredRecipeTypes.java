@@ -5,9 +5,12 @@ import com.sidden.flavored.Flavored;
 import com.sidden.flavored.recipe.BakingRecipe;
 import com.sidden.flavored.recipe.FermentingRecipe;
 import com.sidden.flavored.recipe.MixingRecipe;
+import com.sidden.flavored.recipe.SpicyRecipe;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.crafting.FireworkRocketRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -25,7 +28,12 @@ public class FlavoredRecipeTypes {
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<MixingRecipe>> MIXING_BOWL_SERIALIZER =
             SERIALIZERS.register("mixing", MixingRecipe.Serializer::new);
 
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<BakingRecipe>> OVEN_SERIALIZER = SERIALIZERS.register("baking", BakingRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<BakingRecipe>> OVEN_SERIALIZER =
+            SERIALIZERS.register("baking", BakingRecipe.Serializer::new);
+
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<SpicyRecipe>> SPICING =
+            SERIALIZERS.register("spicing", () -> new SimpleCraftingRecipeSerializer<>(SpicyRecipe::new));
+
 
     public static final DeferredHolder<RecipeType<?>, RecipeType<FermentingRecipe>> KEG_TYPE =
             TYPES.register("fermenting", () -> new RecipeType<FermentingRecipe>() {

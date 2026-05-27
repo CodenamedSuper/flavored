@@ -4,26 +4,52 @@ package com.sidden.flavored.client.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.menu.KegMenu;
+import com.sidden.flavored.recipe.recipe_book.FermentingRecipeBookComponent;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
+import net.minecraft.client.gui.screens.recipebook.RecipeUpdateListener;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.ClickType;
+import net.minecraft.world.inventory.Slot;
 
-public class KegScreen extends AbstractContainerScreen<KegMenu> {
+public class KegScreen extends AbstractContainerScreen<KegMenu> implements RecipeUpdateListener {
     private static final ResourceLocation TEXTURE =
             ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "textures/gui/keg.png");
 
+    private final FermentingRecipeBookComponent recipeBookComponent;
+    private boolean widthTooNarrow;
+
     public KegScreen(KegMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
+        this.recipeBookComponent = new FermentingRecipeBookComponent();
     }
 
     @Override
     protected void init() {
         super.init();
+        this.widthTooNarrow = this.width < 379;
+
+        this.recipeBookComponent.init(this.width, this.height, this.minecraft, this.widthTooNarrow, this.menu);
+        this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
+        this.addRenderableWidget(new ImageButton(this.leftPos + 20, this.height / 2 - 49, 20, 18, RecipeBookComponent.RECIPE_BUTTON_SPRITES, p_313431_ -> {
+            this.recipeBookComponent.toggleVisibility();
+            this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
+            p_313431_.setPosition(this.leftPos + 20, this.height / 2 - 49);
+        }));
+
         this.inventoryLabelY = 10000;
         this.titleLabelY = 10;
+    }
+
+    @Override
+    public void containerTick() {
+        super.containerTick();
+        this.recipeBookComponent.tick();
     }
 
     @Override
@@ -40,15 +66,70 @@ public class KegScreen extends AbstractContainerScreen<KegMenu> {
     }
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
-        if(menu.isCrafting()) {
+        if (menu.isCrafting()) {
             guiGraphics.blit(TEXTURE, x + 80, y + 35, 176, 0, menu.getScaledProgress(), 16);
         }
     }
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
+        if (this.recipeBookComponent.isVisible() && this.widthTooNarrow) {
+            this.renderBackground(guiGraphics, mouseX, mouseY, delta);
+            this.recipeBookComponent.render(guiGraphics, mouseX, mouseY, delta);
+        } else {
+            super.render(guiGraphics, mouseX, mouseY, delta);
+            this.recipeBookComponent.render(guiGraphics, mouseX, mouseY, delta);
+            this.recipeBookComponent.renderGhostRecipe(guiGraphics, this.leftPos, this.topPos, true, delta);
+        }
+
+
         renderMenuBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, delta);
-        renderTooltip(guiGraphics, mouseX, mouseY);
+        this.renderTooltip(guiGraphics, mouseX, mouseY);
+        this.recipeBookComponent.renderTooltip(guiGraphics, this.leftPos, this.topPos, mouseX, mouseY);
+    }
+
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (this.recipeBookComponent.mouseClicked(mouseX, mouseY, button)) {
+            return true;
+        } else {
+            return this.widthTooNarrow && this.recipeBookComponent.isVisible() ? true : super.mouseClicked(mouseX, mouseY, button);
+        }
+    }
+
+    @Override
+    protected void slotClicked(Slot slot, int slotId, int mouseButton, ClickType type) {
+        super.slotClicked(slot, slotId, mouseButton, type);
+        this.recipeBookComponent.slotClicked(slot);
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        return this.recipeBookComponent.keyPressed(keyCode, scanCode, modifiers) ? true : super.keyPressed(keyCode, scanCode, modifiers);
+    }
+
+    @Override
+    protected boolean hasClickedOutside(double mouseX, double mouseY, int guiLeft, int guiTop, int mouseButton) {
+        boolean flag = mouseX < (double) guiLeft
+                || mouseY < (double) guiTop
+                || mouseX >= (double) (guiLeft + this.imageWidth)
+                || mouseY >= (double) (guiTop + this.imageHeight);
+        return this.recipeBookComponent.hasClickedOutside(mouseX, mouseY, this.leftPos, this.topPos, this.imageWidth, this.imageHeight, mouseButton) && flag;
+    }
+
+    @Override
+    public boolean charTyped(char codePoint, int modifiers) {
+        return this.recipeBookComponent.charTyped(codePoint, modifiers) ? true : super.charTyped(codePoint, modifiers);
+    }
+
+    @Override
+    public void recipesUpdated() {
+        this.recipeBookComponent.recipesUpdated();
+    }
+
+    @Override
+    public RecipeBookComponent getRecipeBookComponent() {
+        return this.recipeBookComponent;
     }
 }

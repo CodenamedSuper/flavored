@@ -132,5 +132,8 @@
   "advancements.flavored.husbandry.obtain_oven.title": "Crafting and Smelting, Evolved",
   "advancements.flavored.husbandry.obtain_oven.description": "Obtain an oven",
   "advancements.flavored.husbandry.obtain_all_domestic_crops.title": "Domestication Nation",
-  "advancements.flavored.husbandry.obtain_all_domestic_crops.description": "Obtain every village-grown crop"
+  "advancements.flavored.husbandry.obtain_all_domestic_crops.description": "Obtain every village-grown crop",
+
+
+  "gui.recipebook.toggleRecipes.fermentable": "Fermentable"
 }

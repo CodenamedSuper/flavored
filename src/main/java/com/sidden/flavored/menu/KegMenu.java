@@ -1,28 +1,35 @@
 package com.sidden.flavored.menu;
 
 import com.sidden.flavored.block.entity.KegBlockEntity;
-import com.sidden.flavored.slot.KegResultSlot;
+import com.sidden.flavored.recipe.FermentingRecipe;
+import com.sidden.flavored.recipe.input.FermentingRecipeInput;
+import com.sidden.flavored.recipe.recipe_book.FermentingRecipeBookComponent;
 import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredMenus;
+import com.sidden.flavored.slot.KegResultSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
-public class KegMenu extends AbstractContainerMenu {
+public class KegMenu extends RecipeBookMenu<FermentingRecipeInput, FermentingRecipe> {
     public final KegBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
     private final ItemStackHandler inventory;
+    private FermentingRecipeBookComponent recipeBook;
 
     public KegMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
 
         this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(3));
+        this.recipeBook = new FermentingRecipeBookComponent();
     }
 
     public KegMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -42,6 +49,7 @@ public class KegMenu extends AbstractContainerMenu {
 
         addDataSlots(data);
     }
+
 
     public boolean isCrafting() {
         return data.get(0) > 0;
@@ -72,6 +80,7 @@ public class KegMenu extends AbstractContainerMenu {
 
     // THIS YOU HAVE TO DEFINE!
     private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
+
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
@@ -123,5 +132,57 @@ public class KegMenu extends AbstractContainerMenu {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
+    }
+
+
+    @Override
+    public void fillCraftSlotsStackedContents(StackedContents itemHelper) {
+        if (this.inventory instanceof StackedContentsCompatible) {
+            ((StackedContentsCompatible) this.inventory).fillStackedContents(itemHelper);
+        }
+    }
+
+    @Override
+    public void clearCraftingContent() {
+        this.getSlot(0).set(ItemStack.EMPTY);
+        this.getSlot(1).set(ItemStack.EMPTY);
+        this.getSlot(2).set(ItemStack.EMPTY);
+    }
+
+    @Override
+    public boolean recipeMatches(RecipeHolder<FermentingRecipe> recipe) {
+        return recipe.value().matches(new FermentingRecipeInput(this.inventory.getStackInSlot(1), this.inventory.getStackInSlot(0)), this.level);
+    }
+
+    @Override
+    public int getResultSlotIndex() {
+        return 2;
+    }
+
+    @Override
+    public int getGridWidth() {
+        return 1;
+    }
+
+    @Override
+    public int getGridHeight() {
+        return 1;
+    }
+
+    @Override
+    public int getSize() {
+        return 3;
+    }
+
+
+    // MIGHT NEED CUSTOM BOOK TYPE
+    @Override
+    public RecipeBookType getRecipeBookType() {
+        return RecipeBookType.valueOf("FLAVORED_KEG");
+    }
+
+    @Override
+    public boolean shouldMoveToInventory(int slotIndex) {
+        return false;
     }
 }

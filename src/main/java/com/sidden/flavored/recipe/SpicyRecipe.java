@@ -4,6 +4,7 @@ import com.sidden.flavored.registry.FlavoredDataComponents;
 import com.sidden.flavored.registry.FlavoredItemTags;
 import com.sidden.flavored.registry.FlavoredItems;
 import com.sidden.flavored.registry.FlavoredRecipeTypes;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.crafting.*;
 
 import java.util.ArrayList;
@@ -62,9 +63,14 @@ public class SpicyRecipe extends CustomRecipe {
         }
 
         result.set(FlavoredDataComponents.SPICINESS, spiciness);
+        result.setCount(1);
         return result;
     }
 
+    @Override
+    public NonNullList<ItemStack> getRemainingItems(CraftingInput input) {
+        return super.getRemainingItems(input);
+    }
 
     public boolean canCraftInDimensions(int width, int height) {
         return width * height >= 2;

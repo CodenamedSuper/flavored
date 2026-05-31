@@ -175,10 +175,10 @@ public class KegMenu extends RecipeBookMenu<FermentingRecipeInput, FermentingRec
     }
 
 
-    // MIGHT NEED CUSTOM BOOK TYPE
     @Override
     public RecipeBookType getRecipeBookType() {
-        return RecipeBookType.valueOf("FLAVORED_KEG");
+//        return RecipeBookType.valueOf("FLAVORED_KEG");
+        return RecipeBookType.CRAFTING;
     }
 
     @Override

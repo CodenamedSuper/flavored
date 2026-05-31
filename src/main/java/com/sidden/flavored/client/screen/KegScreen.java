@@ -36,10 +36,10 @@ public class KegScreen extends AbstractContainerScreen<KegMenu> implements Recip
 
         this.recipeBookComponent.init(this.width, this.height, this.minecraft, this.widthTooNarrow, this.menu);
         this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
-        this.addRenderableWidget(new ImageButton(this.leftPos + 20, this.height / 2 - 49, 20, 18, RecipeBookComponent.RECIPE_BUTTON_SPRITES, p_313431_ -> {
+        this.addRenderableWidget(new ImageButton(this.leftPos + 5, this.height / 2 - 49, 20, 18, RecipeBookComponent.RECIPE_BUTTON_SPRITES, p_313431_ -> {
             this.recipeBookComponent.toggleVisibility();
             this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
-            p_313431_.setPosition(this.leftPos + 20, this.height / 2 - 49);
+            p_313431_.setPosition(this.leftPos + 5, this.height / 2 - 49);
         }));
 
         this.inventoryLabelY = 10000;
@@ -57,7 +57,7 @@ public class KegScreen extends AbstractContainerScreen<KegMenu> implements Recip
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        int x = (width - imageWidth) / 2;
+        int x = this.recipeBookComponent.isVisible() ? ((width - imageWidth) / 2) + 77 : (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
         guiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
@@ -82,9 +82,6 @@ public class KegScreen extends AbstractContainerScreen<KegMenu> implements Recip
             this.recipeBookComponent.renderGhostRecipe(guiGraphics, this.leftPos, this.topPos, true, delta);
         }
 
-
-        renderMenuBackground(guiGraphics);
-        super.render(guiGraphics, mouseX, mouseY, delta);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
         this.recipeBookComponent.renderTooltip(guiGraphics, this.leftPos, this.topPos, mouseX, mouseY);
     }

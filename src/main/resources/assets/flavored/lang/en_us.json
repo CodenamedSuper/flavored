@@ -133,6 +133,9 @@
   "advancements.flavored.husbandry.obtain_oven.description": "Obtain an oven",
   "advancements.flavored.husbandry.obtain_all_domestic_crops.title": "Domestication Nation",
   "advancements.flavored.husbandry.obtain_all_domestic_crops.description": "Obtain every village-grown crop",
+  "spiciness.flavored.level1": "Mild Spiciness",
+  "spiciness.flavored.level2": "Medium Spiciness",
+  "spiciness.flavored.level3": "Extreme Spiciness",
 
 
   "gui.recipebook.toggleRecipes.fermentable": "Fermentable"

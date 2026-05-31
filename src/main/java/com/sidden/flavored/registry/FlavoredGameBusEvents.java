@@ -2,6 +2,7 @@ package com.sidden.flavored.registry;
 
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.util.ChocolateAddictionManager;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -14,8 +15,11 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.EffectCures;
+import net.neoforged.neoforge.event.entity.EntityEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -36,6 +40,20 @@ public class FlavoredGameBusEvents {
                 event.setCanceled(true);
                 player.displayClientMessage(Component.literal("You crave only chocolaty foods right now..."), true);
             }
+        }
+
+    }
+
+    @SubscribeEvent
+    public static void onItemFinishUsing(LivingEntityUseItemEvent.Finish event) {
+
+        ItemStack stack = event.getItem();
+
+        if (stack.has(DataComponents.FOOD) && stack.has(FlavoredDataComponents.SPICINESS)) {
+            int spiciness = stack.get(FlavoredDataComponents.SPICINESS.get());
+
+            event.getEntity().addEffect(new MobEffectInstance(FlavoredEffects.HEAT, 20 * 30 * spiciness));
+
         }
     }
 
@@ -83,6 +101,22 @@ public class FlavoredGameBusEvents {
     public static void onEffectRemoved(MobEffectEvent.Remove event) {
         if (event.getEffectInstance() != null && ((event.getEffectInstance().is(FlavoredEffects.SUGAR_CRAVE) || event.getEffectInstance().is(FlavoredEffects.BOOZED) || event.getEffectInstance().is(FlavoredEffects.HANGOVER))) && event.getCure() != null && event.getCure().name().equals(EffectCures.MILK.name())) {
             event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onTooltip(ItemTooltipEvent event) {
+        if (event.getItemStack().has(FlavoredDataComponents.SPICINESS)) {
+
+            if (event.getItemStack().get(FlavoredDataComponents.SPICINESS) == 1) {
+                event.getToolTip().add(Component.translatable("spiciness.flavored.level1").copy().withStyle(ChatFormatting.DARK_RED));
+            }
+            if (event.getItemStack().get(FlavoredDataComponents.SPICINESS) == 2) {
+                event.getToolTip().add(Component.translatable("spiciness.flavored.level2").copy().withStyle(ChatFormatting.DARK_RED));
+            }
+            if (event.getItemStack().get(FlavoredDataComponents.SPICINESS) == 3) {
+                event.getToolTip().add(Component.translatable("spiciness.flavored.level3").copy().withStyle(ChatFormatting.DARK_RED));
+            }
         }
     }
 

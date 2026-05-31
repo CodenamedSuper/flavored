@@ -58,6 +58,42 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_potato": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:potato"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_carrot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:carrot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtain_beetroot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:beetroot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -88,6 +124,15 @@
     ],
     [
       "obtain_spinach"
+    ],
+    [
+      "obtain_beetroot"
+    ],
+    [
+      "obtain_carrot"
+    ],
+    [
+      "obtain_potato"
     ]
   ],
   "sends_telemetry_event": true

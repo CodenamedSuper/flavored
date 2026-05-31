@@ -34,16 +34,16 @@ public class FlavoredBlocks {
     // Chocolate Blocks
 
     public static final DeferredBlock<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
-            () -> new ChocolateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD).sound(FlavoredSoundEvents.CHOCOLATE)));
+            () -> new ChocolateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
 
     public static final DeferredBlock<Block> CHOCOLATE_TILES = registerBlock("chocolate_tiles",
-            () -> new ChocolateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD).sound(FlavoredSoundEvents.CHOCOLATE)));
+            () -> new ChocolateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD)));
 
     public static final DeferredBlock<Block> CHOCOLATE_TILE_STAIRS = registerBlock("chocolate_tile_stairs",
-            () -> new ChocolateStairBlock(Blocks.MUD_BRICK_STAIRS.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICK_STAIRS).sound(FlavoredSoundEvents.CHOCOLATE)));
+            () -> new ChocolateStairBlock(Blocks.MUD_BRICK_STAIRS.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICK_STAIRS)));
 
     public static final DeferredBlock<Block> CHOCOLATE_TILE_SLAB = registerBlock("chocolate_tile_slab",
-            () -> new ChocolateSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICK_SLAB).sound(FlavoredSoundEvents.CHOCOLATE)));
+            () -> new ChocolateSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICK_SLAB)));
 
     // Cinnamon Blocks
 

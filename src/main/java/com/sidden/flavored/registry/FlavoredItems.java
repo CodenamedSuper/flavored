@@ -208,16 +208,16 @@ public class FlavoredItems {
     // Beverages
 
     public static final DeferredItem<Item> SWEET_BERRY_WINE = ITEMS.register("sweet_berry_wine",
-            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.SWEET_BERRY_WINE)));
+            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.SWEET_BERRY_WINE).stacksTo(1)));
 
     public static final DeferredItem<Item> GLOW_BERRY_WINE = ITEMS.register("glow_berry_wine",
-            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.GLOW_BERRY_WINE)));
+            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.GLOW_BERRY_WINE).stacksTo(1)));
 
     public static final DeferredItem<Item> BEER = ITEMS.register("beer",
-            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.BEER)));
+            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.BEER).stacksTo(1)));
 
     public static final DeferredItem<Item> CIDER = ITEMS.register("cider",
-            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.CIDER)));
+            () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.CIDER).stacksTo(1)));
 
 
     // Tools

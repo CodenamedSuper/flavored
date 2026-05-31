@@ -28,7 +28,7 @@ public class FlavoredFoods {
     public static FoodProperties DRIED_PEPPER = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3f).effect(() -> new MobEffectInstance(FlavoredEffects.HEAT, 1200, 0), 1F).build();
     public static FoodProperties SPINACH = new FoodProperties.Builder().nutrition(1).saturationModifier(0.1f).build();
     public static FoodProperties COOKIE_DOUGH = new FoodProperties.Builder().nutrition(1).saturationModifier(0.1f).build();
-    public static FoodProperties PIZZA_SLICE = new FoodProperties.Builder().nutrition(7).saturationModifier(0.9f).build();
+    public static FoodProperties PIZZA_SLICE = new FoodProperties.Builder().nutrition(8).saturationModifier(0.9f).build();
     public static FoodProperties GRILLED_CORN = new FoodProperties.Builder().nutrition(5).saturationModifier(0.7f).effect(() -> new MobEffectInstance(FlavoredEffects.POPPED, 2400, 0), 1F).build();
     public static FoodProperties HAMBURGER = new FoodProperties.Builder().nutrition(10).saturationModifier(0.9f).build();
     public static FoodProperties CHEESE_SANDWICH = new FoodProperties.Builder().nutrition(7).saturationModifier(0.9f).build();

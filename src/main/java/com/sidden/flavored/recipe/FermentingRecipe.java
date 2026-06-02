@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.sidden.flavored.recipe.input.FermentingRecipeInput;
+import com.sidden.flavored.recipe.recipe_book.KegRecipeBookTab;
 import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -14,7 +15,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
+import javax.annotation.Nullable;
+
 public record FermentingRecipe(Ingredient mainInput, Ingredient fermentingInput, String particleColor, ItemStack output) implements Recipe<FermentingRecipeInput> {
+
 
 
     @Override
@@ -36,6 +40,7 @@ public record FermentingRecipe(Ingredient mainInput, Ingredient fermentingInput,
     public ItemStack assemble(FermentingRecipeInput fermentingRecipeInput, HolderLookup.Provider provider) {
         return output.copy();
     }
+
 
     @Override
     public boolean canCraftInDimensions(int i, int i1) {

@@ -87,7 +87,6 @@ public class KegMenu extends RecipeBookMenu<FermentingRecipeInput, FermentingRec
         if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
-
         // Check if the slot clicked is one of the vanilla container slots
         if (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
             // This is a vanilla container slot so merge the stack into the tile inventory
@@ -177,12 +176,12 @@ public class KegMenu extends RecipeBookMenu<FermentingRecipeInput, FermentingRec
 
     @Override
     public RecipeBookType getRecipeBookType() {
-//        return RecipeBookType.valueOf("FLAVORED_KEG");
-        return RecipeBookType.CRAFTING;
+        return RecipeBookType.valueOf("FLAVORED_KEG");
+//        return RecipeBookType.CRAFTING;
     }
 
     @Override
     public boolean shouldMoveToInventory(int slotIndex) {
-        return false;
+        return true;
     }
 }

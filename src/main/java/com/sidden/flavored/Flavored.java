@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
 import org.slf4j.Logger;
 
 import net.neoforged.api.distmarker.Dist;
@@ -86,6 +87,10 @@ public class Flavored
         {
             EntityRenderers.register(FlavoredEntities.CHOCKEN.get(), ChockenRenderer::new);
 
+        }
+        @SubscribeEvent
+        public static void registerRecipeBookCategories(RegisterRecipeBookCategoriesEvent event) {
+            FlavoredRecipeCategories.init(event);
         }
         @SubscribeEvent
         public static void registerMenuScreens(RegisterMenuScreensEvent event) {

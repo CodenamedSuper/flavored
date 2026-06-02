@@ -57,7 +57,7 @@ public class KegScreen extends AbstractContainerScreen<KegMenu> implements Recip
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        int x = this.recipeBookComponent.isVisible() ? ((width - imageWidth) / 2) + 77 : (width - imageWidth) / 2;
+        int x = this.recipeBookComponent.isVisible() ? ((width - imageWidth) / 2) + 77   : (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
         guiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);

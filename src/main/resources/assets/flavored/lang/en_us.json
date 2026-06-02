@@ -129,7 +129,7 @@
 
   "advancements.flavored.husbandry.obtain_pizza.title": "The Top of The Food Pyramid",
   "advancements.flavored.husbandry.obtain_pizza.description": "Obtain pizza, the pinnacle of all foods",
-  "advancements.flavored.husbandry.obtain_oven.title": "Crafting and Smelting, Evolved",
+  "advancements.flavored.husbandry.obtain_oven.title": "If a Crafter and a Smelter had a Child",
   "advancements.flavored.husbandry.obtain_oven.description": "Obtain an oven",
   "advancements.flavored.husbandry.obtain_all_domestic_crops.title": "Domestication Nation",
   "advancements.flavored.husbandry.obtain_all_domestic_crops.description": "Obtain every village-grown crop",
@@ -138,5 +138,6 @@
   "spiciness.flavored.level3": "Extreme Spiciness",
 
 
-  "gui.recipebook.toggleRecipes.fermentable": "Fermentable"
+  "gui.recipebook.toggleRecipes.fermentable": "Fermentable",
+  "gui.recipebook.toggleRecipes.mixable": "Mixable"
 }

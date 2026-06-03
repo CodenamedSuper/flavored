@@ -124,10 +124,10 @@ public class MixingBowlBlock extends BaseEntityBlock {
 
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
-        else if (stack.is(Items.BUCKET)) {
+        else if (stack.is(Items.BUCKET) && state.getValue(LIQUID) != MixingBowlLiquid.NONE) {
 
             level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0f);
-            return takeLiquid(level, state, pos, player);
+            return takeLiquid(level, state, pos, player, hand);
 
         }
         else if (stack.is(FlavoredItems.WHISK)) {
@@ -164,22 +164,22 @@ public class MixingBowlBlock extends BaseEntityBlock {
         }
     }
 
-    public ItemInteractionResult takeLiquid(Level level, BlockState state, BlockPos pos, Player player) {
+    public ItemInteractionResult takeLiquid(Level level, BlockState state, BlockPos pos, Player player, InteractionHand hand) {
 
         MixingBowlLiquid liquid = state.getValue(LIQUID);
-        ItemStack result = ItemStack.EMPTY;
+        ItemStack result = new ItemStack(Items.BUCKET);
 
         if (liquid == MixingBowlLiquid.NONE) return ItemInteractionResult.FAIL;
 
         if (liquid == MixingBowlLiquid.WATER) {
-            result = ItemUtils.createFilledResult(result, player, new ItemStack(Items.WATER_BUCKET));
+            result = new ItemStack(Items.WATER_BUCKET);
 
         } else if (liquid == MixingBowlLiquid.MILK) {
-            result = ItemUtils.createFilledResult(result, player, new ItemStack(Items.MILK_BUCKET));
+            result = new ItemStack(Items.MILK_BUCKET);
         }
 
         level.setBlock(pos, state.setValue(LIQUID, MixingBowlLiquid.NONE), 2);
-        ItemUtils.createFilledResult(result, player, new ItemStack(Items.BUCKET));
+        player.setItemInHand(hand, result);
 
 
         return ItemInteractionResult.sidedSuccess(level.isClientSide);

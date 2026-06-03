@@ -5,6 +5,24 @@
       "name": "FLAVORED_KEG",
       "constructor": "()V",
       "parameters": []
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "FLAVORED_KEG_SEARCH",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "com/sidden/flavored/EnumParameters",
+        "field": "FLAVORED_KEG_SEARCH"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "FLAVORED_KEG",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "com/sidden/flavored/EnumParameters",
+        "field": "FLAVORED_KEG"
+      }
     }
   ]
 }

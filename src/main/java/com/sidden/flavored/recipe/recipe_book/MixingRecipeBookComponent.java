@@ -14,14 +14,14 @@ import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
 
-public class FermentingRecipeBookComponent extends RecipeBookComponent {
+public class MixingRecipeBookComponent extends RecipeBookComponent {
     private static final WidgetSprites FILTER_SPRITES = new WidgetSprites(
             ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_enabled"),
             ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_disabled"),
             ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_enabled_highlighted"),
             ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_disabled_highlighted")
     );
-    private static final Component FILTER_NAME = Component.translatable("gui.recipebook.toggleRecipes.fermentable");
+    private static final Component FILTER_NAME = Component.translatable("gui.recipebook.toggleRecipes.mixable");
 
     @Override
     protected Component getRecipeFilterName() {
@@ -51,9 +51,7 @@ public class FermentingRecipeBookComponent extends RecipeBookComponent {
         NonNullList<Ingredient> nonnulllist = recipe.value().getIngredients();
         Iterator<Ingredient> iterator = nonnulllist.iterator();
 
-
-
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 7; i++) {
             if (!iterator.hasNext()) {
                 return;
             }

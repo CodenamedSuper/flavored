@@ -2,34 +2,51 @@ package com.sidden.flavored.block.entity.renderer;
 
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import com.sidden.flavored.Flavored;
 import com.sidden.flavored.block.entity.MixingBowlBlockEntity;
+import com.sidden.flavored.data.MixingBowlData;
+import com.sidden.flavored.registry.FlavoredDataMapTypes;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
-import net.minecraft.util.RandomSource;
+import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.entity.CampfireBlockEntity;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.items.ItemStackHandler;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @OnlyIn(Dist.CLIENT)
 public class MixingBowlRenderer implements BlockEntityRenderer<MixingBowlBlockEntity> {
 
     private final ItemRenderer itemRenderer;
+    private final ModelPart bone;
+    public ResourceLocation texture;
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "mixing_bowl_liquid"), "main");
 
     public MixingBowlRenderer(BlockEntityRendererProvider.Context context) {
         this.itemRenderer = context.getItemRenderer();
+        ModelPart modelPart = context.bakeLayer(LAYER_LOCATION);
+        this.bone = modelPart.getChild("bone");
+    }
+
+    public static LayerDefinition createBodyLayer() {
+        MeshDefinition meshdefinition = new MeshDefinition();
+        PartDefinition partdefinition = meshdefinition.getRoot();
+
+        PartDefinition bone = partdefinition.addOrReplaceChild("bone", CubeListBuilder.create().texOffs(-10, 0).addBox(-5, -19, 11, 10.0F, 0.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(8.0F, 24.0F, -8.0F));
+
+        return LayerDefinition.create(meshdefinition, 64, 64);
     }
 
     @Override
@@ -39,16 +56,21 @@ public class MixingBowlRenderer implements BlockEntityRenderer<MixingBowlBlockEn
 
         ItemStackHandler inventory = blockEntity.getInventory();
         int index = 0;
+        ItemStack itemStack = blockEntity.getInventory().getStackInSlot(7);
+        Holder<Item> holder = itemStack.getItemHolder();
+        MixingBowlData data = holder.getData(FlavoredDataMapTypes.MIXING_BOWL_DATA_MAP);
+        if (data != null) {
+            texture = data.textureLocation();
+            VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(texture));
+            bone.render(poseStack, vertexConsumer, packedLight+10, packedOverlay);
+        }
+
 
         for (int i = 0; i < 6; i++) {
             ItemStack stack = inventory.getStackInSlot(i);
             if (stack.isEmpty()) continue;
 
             poseStack.pushPose();
-
-            RandomSource rand = RandomSource.create(blockEntity.getBlockPos().asLong() + i);
-
-
             poseStack.translate(0.5, 0.2 + (index * 0.08), 0.5);
 
             int wiggle = blockEntity.wiggleTime;

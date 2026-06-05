@@ -1,13 +1,7 @@
 {
   "variants": {
-    "liquid=none": {
+    "": {
       "model": "flavored:block/mixing_bowl"
-    },
-    "liquid=water": {
-      "model": "flavored:block/mixing_bowl_water"
-    },
-    "liquid=milk": {
-      "model": "flavored:block/mixing_bowl_milk"
     }
   }
 }

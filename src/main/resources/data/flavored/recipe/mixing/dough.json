@@ -11,7 +11,9 @@
       "item": "flavored:flour"
     }
   ],
-  "liquid": "water",
+  "liquid": {
+    "item": "minecraft:water_bucket"
+  },
   "result": {
     "id": "flavored:dough",
     "count": 1

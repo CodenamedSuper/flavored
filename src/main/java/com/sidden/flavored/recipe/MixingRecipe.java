@@ -2,7 +2,6 @@ package com.sidden.flavored.recipe;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.sidden.flavored.block.property.MixingBowlLiquid;
 import com.sidden.flavored.recipe.input.MixingRecipeInput;
 import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import net.minecraft.core.HolderLookup;
@@ -21,7 +20,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public record MixingRecipe(List<Ingredient> ingredientsInput, Ingredient vesselInput, MixingBowlLiquid liquidInput, ItemStack output) implements Recipe<MixingRecipeInput> {
+public record MixingRecipe(List<Ingredient> ingredientsInput, Ingredient vesselInput, Ingredient liquidInput,
+                           ItemStack output) implements Recipe<MixingRecipeInput> {
 
 
     @Override
@@ -29,6 +29,7 @@ public record MixingRecipe(List<Ingredient> ingredientsInput, Ingredient vesselI
         NonNullList<Ingredient> list = NonNullList.create();
         list.addAll(ingredientsInput());
         list.add(vesselInput);
+        list.add(liquidInput);
         return list;
     }
 
@@ -61,15 +62,15 @@ public record MixingRecipe(List<Ingredient> ingredientsInput, Ingredient vesselI
             if (!stack.isEmpty()) {
                 return false;
             }
+
         }
 
-        if (!vesselInput().isEmpty()) {
-            if (!vesselInput().test(input.getVessel())) {
-                return false;
-            }
+        if (!vesselInput().isEmpty() && !vesselInput().test(input.getVessel())) {
+            return false;
         }
 
-        if (liquidInput() != input.getLiquid()) {
+
+        if (!liquidInput.isEmpty() && !liquidInput().test(input.liquid())) {
             return false;
         }
 
@@ -106,7 +107,7 @@ public record MixingRecipe(List<Ingredient> ingredientsInput, Ingredient vesselI
         public static final MapCodec<MixingRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
                 Ingredient.LIST_CODEC_NONEMPTY.fieldOf("ingredients").forGetter(MixingRecipe::ingredientsInput),
                 Ingredient.CODEC_NONEMPTY.optionalFieldOf("vessel", Ingredient.EMPTY).forGetter(MixingRecipe::vesselInput),
-                MixingBowlLiquid.CODEC.optionalFieldOf("liquid", MixingBowlLiquid.NONE).forGetter(MixingRecipe::liquidInput),
+                Ingredient.CODEC_NONEMPTY.optionalFieldOf("liquid", Ingredient.EMPTY).forGetter(MixingRecipe::liquidInput),
                 ItemStack.CODEC.fieldOf("result").forGetter(MixingRecipe::output)
         ).apply(inst, MixingRecipe::new));
 
@@ -118,7 +119,7 @@ public record MixingRecipe(List<Ingredient> ingredientsInput, Ingredient vesselI
                         Ingredient.CONTENTS_STREAM_CODEC,
                         MixingRecipe::vesselInput,
 
-                        MixingBowlLiquid.STREAM_CODEC,
+                        Ingredient.CONTENTS_STREAM_CODEC,
                         MixingRecipe::liquidInput,
 
                         ItemStack.STREAM_CODEC,

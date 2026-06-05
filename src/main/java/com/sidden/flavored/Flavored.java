@@ -2,22 +2,16 @@ package com.sidden.flavored;
 
 import com.mojang.logging.LogUtils;
 import com.sidden.flavored.block.entity.renderer.MixingBowlRenderer;
+import com.sidden.flavored.client.entity.renderer.ChockenRenderer;
 import com.sidden.flavored.client.screen.KegScreen;
 import com.sidden.flavored.client.screen.MixingBowlScreen;
 import com.sidden.flavored.client.screen.OvenScreen;
-import com.sidden.flavored.client.entity.renderer.ChockenRenderer;
 import com.sidden.flavored.particle.CheeseAgingParticle;
 import com.sidden.flavored.particle.FermentationBubblesParticle;
 import com.sidden.flavored.particle.FlavoredDripParticle;
 import com.sidden.flavored.particle.PopcornPopsParticle;
 import com.sidden.flavored.registry.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
-import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
-import org.slf4j.Logger;
-
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -27,18 +21,21 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import org.slf4j.Logger;
 
 @Mod(Flavored.MOD_ID)
-public class Flavored
-{
+public class Flavored {
     public static final String MOD_ID = "flavored";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public Flavored(IEventBus modEventBus, ModContainer modContainer)
-    {
+    public Flavored(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
 
         NeoForge.EVENT_BUS.register(this);
@@ -66,38 +63,40 @@ public class Flavored
 
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
+    private void commonSetup(final FMLCommonSetupEvent event) {
     }
 
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {
     }
 
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
+    public void onServerStarting(ServerStartingEvent event) {
     }
 
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
+    public static class ClientModEvents {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
+        public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(FlavoredEntities.CHOCKEN.get(), ChockenRenderer::new);
 
         }
+
         @SubscribeEvent
         public static void registerRecipeBookCategories(RegisterRecipeBookCategoriesEvent event) {
             FlavoredRecipeCategories.init(event);
         }
+
         @SubscribeEvent
         public static void registerMenuScreens(RegisterMenuScreensEvent event) {
             event.register(FlavoredMenus.KEG.get(), KegScreen::new);
             event.register(FlavoredMenus.MIXING_BOWL.get(), MixingBowlScreen::new);
             event.register(FlavoredMenus.OVEN.get(), OvenScreen::new);
 
+        }
+
+        @SubscribeEvent
+        private static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(MixingBowlRenderer.LAYER_LOCATION, MixingBowlRenderer::createBodyLayer);
         }
 
         @SubscribeEvent

@@ -1,12 +1,10 @@
 package com.sidden.flavored.block.entity;
 
-import com.sidden.flavored.block.MixingBowlBlock;
-import com.sidden.flavored.block.property.MixingBowlLiquid;
+import com.sidden.flavored.Flavored;
 import com.sidden.flavored.menu.MixingBowlMenu;
 import com.sidden.flavored.recipe.MixingRecipe;
 import com.sidden.flavored.recipe.input.MixingRecipeInput;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
-import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import com.sidden.flavored.registry.FlavoredStats;
 import net.minecraft.core.BlockPos;
@@ -16,6 +14,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
@@ -26,6 +25,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -34,12 +35,13 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(7) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(8) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -52,7 +54,7 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
 
     private static final int[] INPUT_SLOTS = new int[6];
     private static final int VESSEL_SLOT = 6;
-
+    private static final int LIQUID_SLOT = 7;
 
     protected final ContainerData data;
 
@@ -60,8 +62,6 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
     private int maxProgress = 10;
 
     public int wiggleTime = 0;
-
-
 
 
     public MixingBowlBlockEntity(BlockPos pos, BlockState blockState) {
@@ -95,10 +95,9 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
     }
 
 
-
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for(int i = 0; i < itemHandler.getSlots(); i++) {
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
         Containers.dropContents(this.level, this.worldPosition, inventory);
@@ -124,6 +123,10 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
         itemHandler.deserializeNBT(registries, tag.getCompound("inventory"));
         progress = tag.getInt("mixing_bowl.progress");
         wiggleTime = tag.getInt("wiggle_time");
+
+        if (itemHandler.getSlots() < 8) {
+            itemHandler.setSize(8);
+        }
     }
 
 
@@ -147,6 +150,7 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
         progress = 0;
         setChanged();
     }
+
     private void mixItem() {
         Optional<RecipeHolder<MixingRecipe>> recipeOpt = getCurrentRecipe();
         if (recipeOpt.isEmpty()) return;
@@ -164,6 +168,7 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
             itemHandler.extractItem(VESSEL_SLOT, 1, false);
         }
 
+
         setChanged();
         level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
 
@@ -171,7 +176,6 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public void tick(Level level, BlockState state, BlockPos pos) {
-
         if (!level.isClientSide) {
             if (!hasRecipe()) {
                 resetProgress();
@@ -185,7 +189,7 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
 
     public boolean hasRecipe() {
         Optional<RecipeHolder<MixingRecipe>> recipe = getCurrentRecipe();
-        if(recipe.isEmpty()) {
+        if (recipe.isEmpty()) {
             return false;
         }
 
@@ -208,20 +212,14 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public Optional<RecipeHolder<MixingRecipe>> getCurrentRecipe() {
-
-        MixingBowlLiquid liquid = level.getBlockState(getBlockPos()).getValue(MixingBowlBlock.LIQUID);
-
-        if (!this.level.getBlockState(getBlockPos()).is(FlavoredBlocks.MIXING_BOWL)) {
-            liquid = MixingBowlLiquid.NONE;
-        }
-
         List<ItemStack> ingredients = new ArrayList<>();
 
         for (int i = 0; i < INPUT_SLOTS.length; i++) {
             ingredients.add(itemHandler.getStackInSlot(i));
         }
 
-        return this.level.getRecipeManager().getRecipeFor(FlavoredRecipeTypes.MIXING_BOWL_TYPE.get(), new MixingRecipeInput(ingredients, itemHandler.getStackInSlot(VESSEL_SLOT),liquid), level);
+
+        return this.level.getRecipeManager().getRecipeFor(FlavoredRecipeTypes.MIXING_BOWL_TYPE.get(), new MixingRecipeInput(ingredients, itemHandler.getStackInSlot(VESSEL_SLOT), itemHandler.getStackInSlot(LIQUID_SLOT)), level);
     }
 
     private boolean hasProgressFinished() {
@@ -238,12 +236,8 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
         return new MixingBowlMenu(containerId, playerInventory, this, this.data);
     }
 
-    public  ItemStackHandler getInventory() {
-        return  this.itemHandler;
-    }
-
-    public MixingBowlLiquid getLiquid() {
-        return level.getBlockState(getBlockPos()).getValue(MixingBowlBlock.LIQUID);
+    public ItemStackHandler getInventory() {
+        return this.itemHandler;
     }
 
 

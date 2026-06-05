@@ -22,12 +22,12 @@ public class MixingBowlMenu extends AbstractContainerMenu {
 
     public MixingBowlMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
 
-        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(7));
+        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(8));
     }
 
     public MixingBowlMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(FlavoredMenus.MIXING_BOWL.get(), pContainerId);
-        checkContainerSize(inv, 7);
+        checkContainerSize(inv, 8);
         blockEntity = ((MixingBowlBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
@@ -36,11 +36,11 @@ public class MixingBowlMenu extends AbstractContainerMenu {
         int x = 0;
         int y = 0;
         int step = 18;
-        Vec2 size = new Vec2(3,2);
+        Vec2 size = new Vec2(3, 2);
 
         for (int i = 0; i < 6; i++) {
 
-            this.addSlot(new SlotItemHandler(this.inventory, i, 21 + step * x, 18 + step * y));
+            this.addSlot(new SlotItemHandler(this.inventory, i, 44 + step * x, 18 + step * y));
 
             x++;
             if (x >= size.x) {
@@ -49,7 +49,8 @@ public class MixingBowlMenu extends AbstractContainerMenu {
             }
         }
 
-        this.addSlot(new SlotItemHandler(this.inventory, 6, 112, 25));
+        this.addSlot(new SlotItemHandler(this.inventory, 6, 135, 25));
+        this.addSlot(new SlotItemHandler(this.inventory, 7, 62, 60));
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
@@ -85,7 +86,8 @@ public class MixingBowlMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 7;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 8;  // must be the number of slots you have!
+
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);

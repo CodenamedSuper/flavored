@@ -3,7 +3,6 @@ package com.sidden.flavored.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.sidden.flavored.Flavored;
-import com.sidden.flavored.block.property.MixingBowlLiquid;
 import com.sidden.flavored.menu.MixingBowlMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -39,7 +38,6 @@ public class MixingBowlScreen extends AbstractContainerScreen<MixingBowlMenu> {
         guiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
         renderProgressArrow(guiGraphics, x, y);
-        renderLiquid(guiGraphics, x, y);
         renderMixable(guiGraphics, x, y);
     }
 
@@ -48,24 +46,10 @@ public class MixingBowlScreen extends AbstractContainerScreen<MixingBowlMenu> {
 
     }
 
-    private void renderLiquid(GuiGraphics guiGraphics, int x, int y) {
-        if (menu.blockEntity.getLiquid() == MixingBowlLiquid.NONE) return;
-
-        if (menu.blockEntity.getLiquid() == MixingBowlLiquid.WATER) {
-
-            guiGraphics.blit(TEXTURE, x + 42, y + 63, 176, 28, 10, 10);
-
-        }
-        else if (menu.blockEntity.getLiquid() == MixingBowlLiquid.MILK) {
-
-            guiGraphics.blit(TEXTURE, x + 42, y + 63, 187, 28, 10, 10);
-
-        }
-    }
 
     private void renderMixable(GuiGraphics guiGraphics, int x, int y) {
-        if(menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, x + 86, y + 64, 176, 17, 10, 10);
+        if (menu.isCrafting()) {
+            guiGraphics.blit(TEXTURE, x + 109   , y + 64, 176, 17, 10, 10);
         }
     }
 

@@ -1,0 +1,10 @@
+{
+  "values": {
+    "minecraft:milk_bucket": {
+      "textureLocation": "flavored:textures/entity/mixing_liquid/milk.png"
+    },
+    "minecraft:water_bucket": {
+      "textureLocation": "flavored:textures/entity/mixing_liquid/water.png"
+    }
+  }
+}

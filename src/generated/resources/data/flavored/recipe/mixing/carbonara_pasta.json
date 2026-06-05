@@ -17,11 +17,11 @@
       "item": "flavored:pasta"
     }
   ],
+  "result": {
+    "count": 1,
+    "id": "flavored:carbonara_pasta"
+  },
   "vessel": {
     "item": "minecraft:bowl"
-  },
-  "result": {
-    "id": "flavored:carbonara_pasta",
-    "count": 1
   }
 }

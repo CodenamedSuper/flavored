@@ -9,16 +9,13 @@
     },
     {
       "item": "flavored:garlic"
-    },
-    {
-      "item": "flavored:pasta"
     }
   ],
+  "result": {
+    "count": 1,
+    "id": "flavored:cream_pasta"
+  },
   "vessel": {
     "item": "minecraft:bowl"
-  },
-  "result": {
-    "id": "flavored:cream_pasta",
-    "count": 1
   }
 }

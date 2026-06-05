@@ -11,12 +11,14 @@
       "item": "minecraft:wheat"
     }
   ],
+  "liquid": {
+    "item": "minecraft:water_bucket"
+  },
+  "result": {
+    "count": 1,
+    "id": "flavored:porridge"
+  },
   "vessel": {
     "item": "minecraft:bowl"
-  },
-  "liquid": "water",
-  "result": {
-    "id": "flavored:porridge",
-    "count": 1
   }
 }

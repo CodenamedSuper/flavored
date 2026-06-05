@@ -2,6 +2,9 @@
   "type": "flavored:mixing",
   "ingredients": [
     {
+      "item": "flavored:dried_pepper"
+    },
+    {
       "item": "flavored:red_tomato"
     },
     {
@@ -11,14 +14,14 @@
       "item": "flavored:garlic"
     },
     {
-      "item": "flavored:pasta"
+      "item": "minecraft:egg"
     }
   ],
+  "result": {
+    "count": 1,
+    "id": "flavored:shakshouka"
+  },
   "vessel": {
     "item": "minecraft:bowl"
-  },
-  "result": {
-    "id": "flavored:tomato_pasta",
-    "count": 1
   }
 }

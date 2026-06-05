@@ -1,0 +1,27 @@
+{
+  "type": "flavored:mixing",
+  "ingredients": [
+    {
+      "item": "flavored:red_tomato"
+    },
+    {
+      "item": "flavored:red_tomato"
+    },
+    {
+      "item": "flavored:cooked_ground_beef"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "flavored:pasta"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "flavored:ragu_pasta"
+  },
+  "vessel": {
+    "item": "minecraft:bowl"
+  }
+}

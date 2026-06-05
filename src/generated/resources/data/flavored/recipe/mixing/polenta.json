@@ -14,12 +14,14 @@
       "item": "flavored:butter"
     }
   ],
+  "liquid": {
+    "item": "minecraft:water_bucket"
+  },
+  "result": {
+    "count": 1,
+    "id": "flavored:polenta"
+  },
   "vessel": {
     "item": "minecraft:bowl"
-  },
-  "liquid": "none",
-  "result": {
-    "id": "flavored:polenta",
-    "count": 1
   }
 }

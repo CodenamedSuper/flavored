@@ -15,7 +15,7 @@
     "item": "minecraft:water_bucket"
   },
   "result": {
-    "id": "flavored:dough",
-    "count": 1
+    "count": 1,
+    "id": "flavored:dough"
   }
 }

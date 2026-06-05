@@ -2,6 +2,7 @@ package com.sidden.flavored.datagen;
 
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.recipe.builder.FermentingRecipeBuilder;
+import com.sidden.flavored.recipe.builder.MixingRecipeBuilder;
 import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredItemTags;
 import com.sidden.flavored.registry.FlavoredItems;
@@ -28,6 +29,10 @@ public class FlavoredRecipeProvider extends RecipeProvider {
 
     private static ResourceLocation fermenting(String path) {
         return ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "fermenting/" + path);
+    }
+
+    private static ResourceLocation mixing(String path) {
+        return ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "mixing/" + path);
     }
 
     @Override
@@ -80,7 +85,126 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                 Ingredient.of(Items.MILK_BUCKET),
                 FlavoredBlocks.SOFT_CHEESE, 1)
                 .unlockedBy(getItemName(Items.MILK_BUCKET),
-                        has(Items.MILK_BUCKET)).save(recipeOutput, fermenting(getItemName(FlavoredBlocks.SOFT_CHEESE)));
+                        has(Items.MILK_BUCKET))
+                .save(recipeOutput, fermenting(getItemName(FlavoredBlocks.SOFT_CHEESE)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.EMPTY, Ingredient.of(Items.WATER_BUCKET), FlavoredItems.DOUGH, 1)
+                .requires(Ingredient.of(FlavoredItems.FLOUR), 3)
+                .unlockedBy(getItemName(FlavoredItems.FLOUR.get()),
+                        has(FlavoredItems.FLOUR))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.DOUGH)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.MILK_BUCKET), FlavoredItems.BATTER, 1)
+                .requires(Ingredient.of(FlavoredItems.FLOUR), 2)
+                .requires(Ingredient.of(Items.EGG))
+                .requires(Ingredient.of(Items.SUGAR))
+                .unlockedBy(getItemName(FlavoredItems.FLOUR.get()),
+                        has(FlavoredItems.FLOUR))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.BATTER)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.EMPTY, FlavoredItems.CARBONARA_PASTA, 1)
+                .requires(Ingredient.of(FlavoredItems.AGED_CHEESE_SLICE))
+                .requires(Ingredient.of(Items.EGG), 2)
+                .requires(Ingredient.of(FlavoredItems.COOKED_PORK_JOWL))
+                .requires(Ingredient.of(FlavoredItems.PASTA))
+                .unlockedBy(getItemName(FlavoredItems.PASTA.get()),
+                        has(FlavoredItems.PASTA))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.CARBONARA_PASTA)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.EMPTY, FlavoredItems.CREAM_PASTA, 1)
+                .requires(Ingredient.of(FlavoredItems.AGED_CHEESE_SLICE))
+                .requires(Ingredient.of(FlavoredItems.BUTTER))
+                .requires(Ingredient.of(FlavoredItems.GARLIC))
+                .unlockedBy(getItemName(FlavoredItems.PASTA.get()),
+                        has(FlavoredItems.PASTA))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.CREAM_PASTA)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.EMPTY, FlavoredItems.PESTO_PASTA, 1)
+                .requires(Ingredient.of(FlavoredItems.SPINACH), 2)
+                .requires(Ingredient.of(FlavoredItems.GARLIC))
+                .unlockedBy(getItemName(FlavoredItems.PASTA.get()),
+                        has(FlavoredItems.PASTA))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.PESTO_PASTA)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.EMPTY, FlavoredItems.RAGU_PASTA, 1)
+                .requires(Ingredient.of(FlavoredItems.RED_TOMATO), 2)
+                .requires(Ingredient.of(FlavoredItems.COOKED_GROUND_BEEF))
+                .requires(Ingredient.of(Items.CARROT))
+                .requires(Ingredient.of(FlavoredItems.PASTA))
+                .unlockedBy(getItemName(FlavoredItems.PASTA.get()),
+                        has(FlavoredItems.PASTA))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.RAGU_PASTA)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.EMPTY, FlavoredItems.TOMATO_PASTA, 1)
+                .requires(Ingredient.of(FlavoredItems.RED_TOMATO), 2)
+                .requires(Ingredient.of(FlavoredItems.GARLIC))
+                .requires(Ingredient.of(FlavoredItems.PASTA))
+                .unlockedBy(getItemName(FlavoredItems.PASTA.get()),
+                        has(FlavoredItems.PASTA))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.TOMATO_PASTA)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.MILK_BUCKET), FlavoredItems.CEREAL, 1)
+                .requires(Ingredient.of(FlavoredItems.CINNAMON), 2)
+                .requires(Ingredient.of(Items.WHEAT), 3)
+                .requires(Ingredient.of(Items.SUGAR))
+                .unlockedBy(getItemName(Items.WHEAT),
+                        has(Items.WHEAT))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.CEREAL)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.EMPTY, Ingredient.EMPTY, FlavoredItems.COOKIE_DOUGH, 1)
+                .requires(Ingredient.of(FlavoredItems.FLOUR), 2)
+                .requires(Ingredient.of(FlavoredItems.CHOCOLATE))
+                .requires(Ingredient.of(FlavoredItems.BUTTER))
+                .requires(Ingredient.of(Items.SUGAR))
+                .unlockedBy(getItemName(FlavoredItems.FLOUR),
+                        has(FlavoredItems.FLOUR))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.COOKIE_DOUGH)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.EMPTY, Ingredient.EMPTY, FlavoredItems.PASTA, 1)
+                .requires(Ingredient.of(FlavoredItems.FLOUR), 2)
+                .requires(Ingredient.of(Items.EGG), 2)
+                .unlockedBy(getItemName(FlavoredItems.FLOUR),
+                        has(FlavoredItems.FLOUR))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.PASTA)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.EMPTY, Ingredient.EMPTY, FlavoredItems.PASTRY_DOUGH, 1)
+                .requires(Ingredient.of(FlavoredItems.FLOUR), 2)
+                .requires(Ingredient.of(Items.EGG))
+                .requires(Ingredient.of(FlavoredItems.BUTTER))
+                .unlockedBy(getItemName(FlavoredItems.FLOUR),
+                        has(FlavoredItems.FLOUR))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.PASTRY_DOUGH)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.WATER_BUCKET), FlavoredItems.POLENTA, 1)
+                .requires(Ingredient.of(FlavoredItems.CORN), 3)
+                .requires(Ingredient.of(FlavoredItems.BUTTER))
+                .unlockedBy(getItemName(FlavoredItems.CORN),
+                        has(FlavoredItems.CORN))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.POLENTA)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.WATER_BUCKET), FlavoredItems.PORRIDGE, 1)
+                .requires(Ingredient.of(Items.WHEAT), 3)
+                .unlockedBy(getItemName(Items.WHEAT),
+                        has(Items.WHEAT))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.PORRIDGE)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.EMPTY, FlavoredItems.SALAD, 1)
+                .requires(Ingredient.of(FlavoredItemTags.TOMATOES))
+                .requires(Ingredient.of(FlavoredItems.SPINACH),2)
+                .requires(Ingredient.of(FlavoredItemTags.SALAD_FINISHINGS))
+                .unlockedBy(getItemName(FlavoredItems.SPINACH),
+                        has(FlavoredItems.SPINACH))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.SPINACH)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.EMPTY, FlavoredItems.SHAKSHOUKA, 1)
+                .requires(Ingredient.of(FlavoredItems.DRIED_PEPPER))
+                .requires(Ingredient.of(FlavoredItems.RED_TOMATO),2)
+                .requires(Ingredient.of(FlavoredItems.GARLIC))
+                .requires(Ingredient.of(Items.EGG))
+                .unlockedBy(getItemName(FlavoredItems.RED_TOMATO),
+                        has(FlavoredItems.RED_TOMATO))
+                .save(recipeOutput, mixing(getItemName(FlavoredItems.SHAKSHOUKA)));
+
 
 
 

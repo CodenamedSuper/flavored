@@ -2,23 +2,23 @@
   "type": "flavored:mixing",
   "ingredients": [
     {
-      "item": "flavored:spinach"
+      "tag": "flavored:tomatoes"
     },
     {
       "item": "flavored:spinach"
     },
     {
-      "item": "flavored:garlic"
+      "item": "flavored:spinach"
     },
     {
-      "item": "flavored:pasta"
+      "tag": "flavored:salad_finishings"
     }
   ],
+  "result": {
+    "count": 1,
+    "id": "flavored:salad"
+  },
   "vessel": {
     "item": "minecraft:bowl"
-  },
-  "result": {
-    "id": "flavored:pesto_pasta",
-    "count": 1
   }
 }

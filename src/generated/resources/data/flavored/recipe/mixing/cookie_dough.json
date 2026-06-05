@@ -8,15 +8,17 @@
       "item": "flavored:flour"
     },
     {
-      "item": "minecraft:sugar"
+      "item": "flavored:chocolate"
     },
     {
       "item": "flavored:butter"
+    },
+    {
+      "item": "minecraft:sugar"
     }
   ],
-  "liquid": "none",
   "result": {
-    "id": "flavored:pastry_dough",
-    "count": 1
+    "count": 1,
+    "id": "flavored:cookie_dough"
   }
 }

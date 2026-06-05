@@ -11,12 +11,17 @@
       "item": "minecraft:egg"
     },
     {
-      "item": "minecraft:egg"
+      "item": "minecraft:sugar"
     }
   ],
-  "liquid": "none",
+  "liquid": {
+    "item": "minecraft:milk_bucket"
+  },
   "result": {
-    "id": "flavored:pasta",
-    "count": 1
+    "count": 1,
+    "id": "flavored:batter"
+  },
+  "vessel": {
+    "item": "minecraft:bowl"
   }
 }

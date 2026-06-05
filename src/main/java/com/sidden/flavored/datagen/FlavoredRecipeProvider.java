@@ -11,6 +11,7 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
@@ -25,10 +26,65 @@ public class FlavoredRecipeProvider extends RecipeProvider {
         return ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "crafting/" + path);
     }
 
+    private static ResourceLocation fermenting(String path) {
+        return ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "fermenting/" + path);
+    }
+
     @Override
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
 
-        FermentingRecipeBuilder.create(RecipeCategory.FOOD, FlavoredItems.BEER.get(), "c99f4e", 1).unlockedBy(getItemName(FlavoredItems.WORT.get()), has(FlavoredItems.WORT.get()));
+        new FermentingRecipeBuilder(RecipeCategory.FOOD,
+                "c99f4e",
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(FlavoredItems.WORT.get()),
+                FlavoredItems.BEER.get(), 1)
+                .unlockedBy(getItemName(FlavoredItems.WORT.get()),
+                        has(FlavoredItems.WORT.get())).save(recipeOutput, fermenting(getItemName(FlavoredItems.BEER.get())));
+
+        new FermentingRecipeBuilder(RecipeCategory.FOOD,
+                "da9a37",
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(FlavoredItems.APPLE_JUICE.get()),
+                FlavoredItems.CIDER.get(), 1)
+                .unlockedBy(getItemName(FlavoredItems.APPLE_JUICE.get()),
+                        has(FlavoredItems.APPLE_JUICE.get())).save(recipeOutput, fermenting(getItemName(FlavoredItems.CIDER.get())));
+
+        new FermentingRecipeBuilder(RecipeCategory.FOOD,
+                "9d1e2d",
+                Ingredient.of(FlavoredItemTags.FUNGI),
+                Ingredient.of(Items.SPIDER_EYE),
+                Items.FERMENTED_SPIDER_EYE, 1)
+                .unlockedBy(getItemName(Items.SPIDER_EYE),
+                        has(Items.SPIDER_EYE)).save(recipeOutput, fermenting(getItemName(Items.FERMENTED_SPIDER_EYE)));
+
+        new FermentingRecipeBuilder(RecipeCategory.FOOD,
+                "ffb034",
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(FlavoredItems.GLOW_BERRY_JUICE),
+                FlavoredItems.GLOW_BERRY_WINE, 1)
+                .unlockedBy(getItemName(FlavoredItems.GLOW_BERRY_JUICE),
+                        has(FlavoredItems.GLOW_BERRY_JUICE)).save(recipeOutput, fermenting(getItemName(FlavoredItems.GLOW_BERRY_WINE)));
+
+
+        new FermentingRecipeBuilder(RecipeCategory.FOOD,
+                "bd334a",
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(FlavoredItems.SWEET_BERRY_JUICE),
+                FlavoredItems.SWEET_BERRY_WINE, 1)
+                .unlockedBy(getItemName(FlavoredItems.SWEET_BERRY_JUICE),
+                        has(FlavoredItems.SWEET_BERRY_JUICE)).save(recipeOutput, fermenting(getItemName(FlavoredItems.SWEET_BERRY_WINE)));
+
+        new FermentingRecipeBuilder(RecipeCategory.FOOD,
+                "f6e5d3",
+                Ingredient.of(FlavoredItemTags.FUNGI),
+                Ingredient.of(Items.MILK_BUCKET),
+                FlavoredBlocks.SOFT_CHEESE, 1)
+                .unlockedBy(getItemName(Items.MILK_BUCKET),
+                        has(Items.MILK_BUCKET)).save(recipeOutput, fermenting(getItemName(FlavoredBlocks.SOFT_CHEESE)));
+
+
+
+
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FlavoredItems.CHOCOLATE, 2).requires(Items.COCOA_BEANS).requires(Items.COCOA_BEANS).requires(Items.COCOA_BEANS).requires(Items.SUGAR).group(getItemName(FlavoredItems.CHOCOLATE)).unlockedBy(getHasName(Items.COCOA_BEANS), has(Items.COCOA_BEANS)).save(recipeOutput, crafting(getItemName(FlavoredItems.CHOCOLATE)));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FlavoredItems.CHOCOLATE, 4).requires(FlavoredBlocks.CHOCOLATE_BLOCK).group(getItemName(FlavoredItems.CHOCOLATE)).unlockedBy(getHasName(FlavoredBlocks.CHOCOLATE_BLOCK), has(FlavoredBlocks.CHOCOLATE_BLOCK)).save(recipeOutput, crafting("chocolate_from_block"));

@@ -162,6 +162,10 @@ public class MixingBowlMenu extends RecipeBookMenu<MixingRecipeInput, MixingReci
         );
     }
 
+    public boolean shouldDisplayCheckmark() {
+        return this.data.get(1) == 1;
+    }
+
     @Override
     public void fillCraftSlotsStackedContents(StackedContents itemHelper) {
         if (this.container instanceof StackedContentsCompatible compatibleContainer) {

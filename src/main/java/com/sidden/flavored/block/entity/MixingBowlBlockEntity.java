@@ -223,6 +223,7 @@ public class MixingBowlBlockEntity extends BaseContainerBlockEntity implements S
 
         if (!sameItem) {
             this.mixProgress = 0;
+            this.wiggleTime = 0;
         }
 
         this.setChanged();

@@ -2,13 +2,9 @@ package com.sidden.flavored.menu;
 
 import com.sidden.flavored.block.entity.OvenBlockEntity;
 import com.sidden.flavored.recipe.BakingRecipe;
-import com.sidden.flavored.recipe.MixingRecipe;
-import com.sidden.flavored.recipe.input.MixingRecipeInput;
-import com.sidden.flavored.recipe.recipe_book.MixingRecipeBookComponent;
 import com.sidden.flavored.slot.OvenFuelSlot;
 import com.sidden.flavored.registry.FlavoredMenus;
 import com.sidden.flavored.registry.FlavoredRecipeTypes;
-import net.minecraft.core.NonNullList;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -23,7 +19,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class OvenMenu  extends RecipeBookMenu<CraftingInput, BakingRecipe>  {
+public class OvenMenu extends RecipeBookMenu<CraftingInput, BakingRecipe>  {
     public static final int INPUT_SLOT_START = 0;
     public static final int INPUT_SLOT_END = 9;
     public static final int FUEL_SLOT = 9;
@@ -37,11 +33,9 @@ public class OvenMenu  extends RecipeBookMenu<CraftingInput, BakingRecipe>  {
     private final Container container;
     private final ContainerData data;
     protected final Level level;
-    private MixingRecipeBookComponent recipeBook;
 
     public OvenMenu(int containerId, Inventory playerInventory) {
         this(containerId, playerInventory, new SimpleContainer(SLOT_COUNT), new SimpleContainerData(DATA_COUNT));
-        this.recipeBook = new MixingRecipeBookComponent();
     }
 
     public OvenMenu(int containerId, Inventory playerInventory, Container container, ContainerData data) {
@@ -54,10 +48,10 @@ public class OvenMenu  extends RecipeBookMenu<CraftingInput, BakingRecipe>  {
         for (int slot = INPUT_SLOT_START; slot < INPUT_SLOT_END; slot++) {
             int x = slot % 3;
             int y = slot / 3;
-            this.addSlot(new Slot(container, slot, 20 + 18 * x, 17 + 18 * y));
+            this.addSlot(new Slot(container, slot, 30 + 18 * x, 17 + 18 * y));
         }
-        this.addSlot(new OvenFuelSlot(this, container, FUEL_SLOT, 116, 57));
-        this.addSlot(new FurnaceResultSlot(playerInventory.player, container, RESULT_SLOT, 116, 17));
+        this.addSlot(new OvenFuelSlot(this, container, FUEL_SLOT, 126, 57));
+        this.addSlot(new FurnaceResultSlot(playerInventory.player, container, RESULT_SLOT, 126, 17));
 
         int i;
         for (i = 0; i < 3; ++i) {
@@ -146,10 +140,6 @@ public class OvenMenu  extends RecipeBookMenu<CraftingInput, BakingRecipe>  {
         return this.data.get(OvenBlockEntity.DATA_LIT_TIME) > 0;
     }
 
-
-
-
-
     @Override
     public void fillCraftSlotsStackedContents(StackedContents itemHelper) {
         for (int i = 0; i < INPUT_SLOT_END; i++) {
@@ -177,7 +167,6 @@ public class OvenMenu  extends RecipeBookMenu<CraftingInput, BakingRecipe>  {
         }
     }
 
-
     @Override
     public int getResultSlotIndex() {
         return 10;
@@ -185,19 +174,18 @@ public class OvenMenu  extends RecipeBookMenu<CraftingInput, BakingRecipe>  {
 
     @Override
     public int getGridWidth() {
-        return 1;
+        return 3;
     }
 
     @Override
     public int getGridHeight() {
-        return 1;
+        return 3;
     }
 
     @Override
     public int getSize() {
-        return 11   ;
+        return 11;
     }
-
 
     @Override
     public RecipeBookType getRecipeBookType() {

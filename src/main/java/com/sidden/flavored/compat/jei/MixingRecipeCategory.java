@@ -2,9 +2,10 @@ package com.sidden.flavored.compat.jei;
 
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.recipe.MixingRecipe;
-import com.sidden.flavored.registry.FlavoredItems;
+import com.sidden.flavored.registry.FlavoredBlocks;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -13,7 +14,6 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.phys.Vec2;
 import org.jetbrains.annotations.Nullable;
@@ -30,8 +30,8 @@ public class MixingRecipeCategory implements IRecipeCategory<MixingRecipe> {
     private final IDrawable icon;
 
     public MixingRecipeCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 85);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(FlavoredItems.PORRIDGE.get()));
+        this.background = helper.createDrawable(TEXTURE, 0, 0, 109, 60);
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, FlavoredBlocks.MIXING_BOWL.toStack());
     }
 
     @Override
@@ -41,7 +41,7 @@ public class MixingRecipeCategory implements IRecipeCategory<MixingRecipe> {
 
     @Override
     public Component getTitle() {
-        return Component.translatable("categories.flavored.mixing");
+        return Component.translatable("gui.jei.category.flavored.mixing");
     }
 
     @Override
@@ -56,30 +56,26 @@ public class MixingRecipeCategory implements IRecipeCategory<MixingRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, MixingRecipe recipe, IFocusGroup focuses) {
-
         int x = 0;
         int y = 0;
         int step = 18;
         Vec2 size = new Vec2(3, 2);
 
-        for (int i = 0; i < recipe.getIngredients().size(); i++) {
-
-            if (recipe.getIngredients().get(i) == recipe.liquidInput()) {
-                builder.addSlot(RecipeIngredientRole.INPUT, 62, 60).addIngredients(recipe.getIngredients().get(recipe.getIngredients().size() - 1));
-            } else if (recipe.getIngredients().get(i) == recipe.vesselInput()) {
-                builder.addSlot(RecipeIngredientRole.INPUT, 135, 25).addIngredients(recipe.getIngredients().get(recipe.getIngredients().size() - 2));
-            } else {
-                builder.addSlot(RecipeIngredientRole.INPUT, 44 + step * x, 18 + step * y).addIngredients(recipe.getIngredients().get(i));
-                x++;
+        int ingredientCount = recipe.getIngredients().size() - 2;
+        for (int i = 0; i < 6; i++) {
+            IRecipeSlotBuilder slot = builder.addSlot(RecipeIngredientRole.INPUT, 1 + step * x, 1 + step * y);
+            if (i < ingredientCount) {
+                slot.addIngredients(recipe.getIngredients().get(i));
             }
+            x++;
             if (x >= size.x) {
                 x = 0;
                 y++;
             }
         }
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 106, 60).addIngredients(Ingredient.of(recipe.getResultItem(null)));
-
-
+        builder.addSlot(RecipeIngredientRole.INPUT, 92, 8).addIngredients(recipe.vesselInput());
+        builder.addSlot(RecipeIngredientRole.INPUT, 19, 43).addIngredients(recipe.liquidInput());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 63, 43).addIngredients(Ingredient.of(recipe.getResultItem(null)));
     }
 }

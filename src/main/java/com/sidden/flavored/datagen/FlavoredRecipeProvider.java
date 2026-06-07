@@ -221,7 +221,6 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                 .define('*', Ingredient.of(FlavoredItems.SOFT_CHEESE_SLICE.get()))
                 .pattern("X*X")
                 .pattern(" # ")
-                .group("pizza")
                 .unlockedBy(getItemName(FlavoredItems.DOUGH),
                         has(FlavoredItems.DOUGH))
                 .save(recipeOutput, baking(getItemName(FlavoredBlocks.PIZZA)));
@@ -229,7 +228,6 @@ public class FlavoredRecipeProvider extends RecipeProvider {
         new BakeRecipeBuilder(RecipeCategory.FOOD, Items.BREAD, 2, 5, 20)
                 .define('#', Ingredient.of(FlavoredItems.DOUGH.get()))
                 .pattern(" # ")
-                .group("bread")
                 .unlockedBy(getItemName(FlavoredItems.DOUGH),
                         has(FlavoredItems.DOUGH))
                 .save(recipeOutput, baking(getItemName(Items.BREAD)));
@@ -240,7 +238,6 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                 .define('*', Ingredient.of(FlavoredItems.BUTTER.get()))
                 .pattern("X*X")
                 .pattern(" # ")
-                .group("bread")
                 .unlockedBy(getItemName(FlavoredItems.DOUGH),
                         has(FlavoredItems.DOUGH))
                 .save(recipeOutput, baking(getItemName(FlavoredItems.GARLIC_BREAD)));
@@ -248,7 +245,6 @@ public class FlavoredRecipeProvider extends RecipeProvider {
         new BakeRecipeBuilder(RecipeCategory.FOOD, Items.CAKE, 2, 5, 20)
                 .define('#', Ingredient.of(FlavoredItems.BATTER.get()))
                 .pattern(" # ")
-                .group("cake")
                 .unlockedBy(getItemName(FlavoredItems.BATTER),
                         has(FlavoredItems.BATTER))
                 .save(recipeOutput, baking(getItemName(Items.CAKE)));
@@ -259,7 +255,6 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                 .define('*', Ingredient.of(Items.EGG))
                 .pattern("X*X")
                 .pattern(" # ")
-                .group("cake")
                 .unlockedBy(getItemName(FlavoredItems.DOUGH),
                         has(FlavoredItems.DOUGH))
                 .save(recipeOutput, baking(getItemName(FlavoredBlocks.PUDDING)));
@@ -267,7 +262,6 @@ public class FlavoredRecipeProvider extends RecipeProvider {
         new BakeRecipeBuilder(RecipeCategory.FOOD, Items.COOKIE, 8, 5, 20)
                 .define('#', Ingredient.of(FlavoredItems.COOKIE_DOUGH.get()))
                 .pattern(" # ")
-                .group("cookie")
                 .unlockedBy(getItemName(FlavoredItems.COOKIE_DOUGH),
                         has(FlavoredItems.COOKIE_DOUGH))
                 .save(recipeOutput, baking(getItemName(Items.COOKIE)));
@@ -277,7 +271,6 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                 .define('#', Ingredient.of(FlavoredItems.PASTRY_DOUGH.get()))
                 .pattern("XXX")
                 .pattern(" # ")
-                .group("pastry")
                 .unlockedBy(getItemName(FlavoredItems.PASTRY_DOUGH),
                         has(FlavoredItems.PASTRY_DOUGH))
                 .save(recipeOutput, baking(getItemName(FlavoredItems.BUTTER_PASTRY)));
@@ -287,7 +280,6 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                 .define('#', Ingredient.of(FlavoredItems.PASTRY_DOUGH.get()))
                 .pattern("XXX")
                 .pattern(" # ")
-                .group("pastry")
                 .unlockedBy(getItemName(FlavoredItems.PASTRY_DOUGH),
                         has(FlavoredItems.PASTRY_DOUGH))
                 .save(recipeOutput, baking(getItemName(FlavoredItems.CHOCOLATE_PASTRY)));
@@ -297,7 +289,6 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                 .define('#', Ingredient.of(FlavoredItems.PASTRY_DOUGH.get()))
                 .pattern("XXX")
                 .pattern(" # ")
-                .group("pastry")
                 .unlockedBy(getItemName(FlavoredItems.PASTRY_DOUGH),
                         has(FlavoredItems.PASTRY_DOUGH))
                 .save(recipeOutput, baking(getItemName(FlavoredItems.CINNAMON_PASTRY)));
@@ -307,7 +298,6 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                 .define('#', Ingredient.of(FlavoredItems.PASTRY_DOUGH.get()))
                 .pattern("XXX")
                 .pattern(" # ")
-                .group("pastry")
                 .unlockedBy(getItemName(FlavoredItems.PASTRY_DOUGH),
                         has(FlavoredItems.PASTRY_DOUGH))
                 .save(recipeOutput, baking(getItemName(FlavoredItems.HONEY_PASTRY)));
@@ -319,7 +309,6 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                 .pattern(" X ")
                 .pattern("*#*")
                 .pattern(" C ")
-                .group("food")
                 .unlockedBy(getItemName(FlavoredItems.MUTTON_SHANK),
                         has(FlavoredItems.MUTTON_SHANK))
                 .save(recipeOutput, baking(getItemName(FlavoredItems.OSSOBUCO)));

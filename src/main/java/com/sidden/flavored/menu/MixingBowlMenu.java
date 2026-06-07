@@ -6,12 +6,8 @@ import com.sidden.flavored.recipe.input.MixingRecipeInput;
 import com.sidden.flavored.recipe.recipe_book.MixingRecipeBookComponent;
 import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredMenus;
-import com.sidden.flavored.registry.FlavoredRecipeTypes;
-import net.minecraft.core.Holder;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.Container;
-import net.minecraft.world.ContainerListener;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
@@ -24,9 +20,7 @@ import net.minecraft.world.phys.Vec2;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
-import java.util.List;
-
-public class MixingBowlMenu extends RecipeBookMenu<MixingRecipeInput, MixingRecipe> implements ContainerListener {
+public class MixingBowlMenu extends RecipeBookMenu<MixingRecipeInput, MixingRecipe> {
     public final MixingBowlBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
@@ -159,7 +153,6 @@ public class MixingBowlMenu extends RecipeBookMenu<MixingRecipeInput, MixingReci
     public void fillCraftSlotsStackedContents(StackedContents itemHelper) {
         for (int i = 0; i < this.inventory.getSlots(); i++) {
             ItemStack stack = this.inventory.getStackInSlot(i);
-            System.out.println("Slot " + i + ": " + stack);
             itemHelper.accountStack(stack);
         }
     }
@@ -183,18 +176,18 @@ public class MixingBowlMenu extends RecipeBookMenu<MixingRecipeInput, MixingReci
                 this.level
         );
     }
-//
-//    public boolean recipeMatches(MixingRecipe recipe) {
-//        NonNullList<ItemStack> ingredients = NonNullList.create();
-//        for (int i = 0; i < 9; i++) {
-//            ingredients.add(i, this.getSlot(i).getItem());
-//        }
-//
-//        return recipe.matches(
-//                new MixingRecipeInput(ingredients, this.getSlot(6).getItem(), this.getSlot(7).getItem()),
-//                this.level
-//        );
-//    }
+
+    public boolean recipeMatches(MixingRecipe recipe) {
+        NonNullList<ItemStack> ingredients = NonNullList.create();
+        for (int i = 0; i < 9; i++) {
+            ingredients.add(i, this.getSlot(i).getItem());
+        }
+
+        return recipe.matches(
+                new MixingRecipeInput(ingredients, this.getSlot(6).getItem(), this.getSlot(7).getItem()),
+                this.level
+        );
+    }
 
     @Override
     public int getResultSlotIndex() {
@@ -227,26 +220,4 @@ public class MixingBowlMenu extends RecipeBookMenu<MixingRecipeInput, MixingReci
         return true;
     }
 
-    @Override
-    public void containerChanged(Container container) {
-//        NonNullList<ItemStack> ingredients = NonNullList.create();
-//        ItemStack resultStack;
-//        for (int i = 0; i < 9; i++) {
-//            ingredients.add(i, this.getSlot(i).getItem());
-//        }
-//        resultStack=ItemStack.EMPTY;
-//        List<RecipeHolder<?>> list = this.level.getRecipeManager().getRecipes().stream().filter(recipeHolder -> recipeHolder.value() instanceof MixingRecipe).toList();
-//        for (RecipeHolder<?> holder : list) {
-//            if (holder.value() instanceof MixingRecipe recipe) {
-//                if (this.recipeMatches(recipe)){
-//                    resultStack = recipe.getResultItem(null);
-//                }
-//            }
-//        }
-//        if (this.isCrafting()) {
-//            System.out.println("aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAAAaa");
-//            this.resultContainer.setItem(0,resultStack);
-//
-//        }
-    }
 }

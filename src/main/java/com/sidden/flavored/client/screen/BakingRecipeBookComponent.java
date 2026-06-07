@@ -1,6 +1,6 @@
-package com.sidden.flavored.recipe.recipe_book;
+package com.sidden.flavored.client.screen;
 
-import com.sidden.flavored.block.entity.OvenBlockEntity;
+import com.sidden.flavored.Flavored;
 import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.core.NonNullList;
@@ -20,10 +20,10 @@ import java.util.Set;
 
 public class BakingRecipeBookComponent extends RecipeBookComponent {
     private static final WidgetSprites FILTER_SPRITES = new WidgetSprites(
-            ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_enabled"),
-            ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_disabled"),
-            ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_enabled_highlighted"),
-            ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_disabled_highlighted")
+            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "recipe_book/oven_filter_enabled"),
+            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "recipe_book/oven_filter_disabled"),
+            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "recipe_book/oven_filter_enabled_highlighted"),
+            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "recipe_book/oven_filter_disabled_highlighted")
     );
     private static final Component FILTER_NAME = Component.translatable("gui.recipebook.toggleRecipes.bakable");
 

@@ -3,7 +3,7 @@ package com.sidden.flavored.menu;
 import com.sidden.flavored.block.entity.MixingBowlBlockEntity;
 import com.sidden.flavored.recipe.MixingRecipe;
 import com.sidden.flavored.recipe.input.MixingRecipeInput;
-import com.sidden.flavored.recipe.recipe_book.MixingRecipeBookComponent;
+import com.sidden.flavored.client.screen.MixingRecipeBookComponent;
 import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredMenus;
 import net.minecraft.core.NonNullList;

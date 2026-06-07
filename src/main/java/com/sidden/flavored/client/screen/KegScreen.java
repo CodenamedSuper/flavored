@@ -3,7 +3,6 @@ package com.sidden.flavored.client.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.menu.KegMenu;
-import com.sidden.flavored.recipe.recipe_book.FermentingRecipeBookComponent;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;

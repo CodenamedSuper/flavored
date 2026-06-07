@@ -1,5 +1,7 @@
-package com.sidden.flavored.recipe.recipe_book;
+package com.sidden.flavored.client.screen;
 
+import com.sidden.flavored.Flavored;
+import com.sidden.flavored.recipe.MixingRecipe;
 import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.core.NonNullList;
@@ -14,14 +16,14 @@ import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
 
-public class FermentingRecipeBookComponent extends RecipeBookComponent {
+public class MixingRecipeBookComponent extends RecipeBookComponent {
     private static final WidgetSprites FILTER_SPRITES = new WidgetSprites(
-            ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_enabled"),
-            ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_disabled"),
-            ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_enabled_highlighted"),
-            ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_disabled_highlighted")
+            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "recipe_book/mixing_bowl_filter_enabled"),
+            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "recipe_book/mixing_bowl_filter_disabled"),
+            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "recipe_book/mixing_bowl_filter_enabled_highlighted"),
+            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "recipe_book/mixing_bowl_filter_disabled_highlighted")
     );
-    private static final Component FILTER_NAME = Component.translatable("gui.recipebook.toggleRecipes.fermentable");
+    private static final Component FILTER_NAME = Component.translatable("gui.recipebook.toggleRecipes.mixable");
 
     @Override
     protected Component getRecipeFilterName() {
@@ -46,26 +48,29 @@ public class FermentingRecipeBookComponent extends RecipeBookComponent {
     public void setupGhostRecipe(RecipeHolder<?> recipe, List<Slot> slots) {
         ItemStack itemstack = recipe.value().getResultItem(this.minecraft.level.registryAccess());
         this.ghostRecipe.setRecipe(recipe);
-        this.ghostRecipe.addIngredient(Ingredient.of(itemstack), slots.get(2).x, slots.get(2).y);
 
         NonNullList<Ingredient> nonnulllist = recipe.value().getIngredients();
         Iterator<Ingredient> iterator = nonnulllist.iterator();
 
-
-
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 8; i++) {
             if (!iterator.hasNext()) {
                 return;
             }
-
             Ingredient ingredient = iterator.next();
             if (!ingredient.isEmpty()) {
-                Slot slot1 = slots.get(i);
-                this.ghostRecipe.addIngredient(ingredient, slot1.x, slot1.y);
+                if (recipe.value() instanceof MixingRecipe mixingRecipe) {
+                    if (ingredient == mixingRecipe.liquidInput()) {
+                        Slot slot1 = slots.get(7);
+                        this.ghostRecipe.addIngredient(ingredient, slot1.x, slot1.y);
+                    } else if (ingredient == mixingRecipe.vesselInput()) {
+                        Slot slot1 = slots.get(6);
+                        this.ghostRecipe.addIngredient(ingredient, slot1.x, slot1.y);
+                    } else {
+                        Slot slot1 = slots.get(i);
+                        this.ghostRecipe.addIngredient(ingredient, slot1.x, slot1.y);
+                    }
+                }
             }
         }
     }
-
-
-
 }

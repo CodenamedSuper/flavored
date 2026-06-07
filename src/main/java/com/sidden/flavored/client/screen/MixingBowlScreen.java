@@ -67,7 +67,7 @@ public class MixingBowlScreen extends AbstractContainerScreen<MixingBowlMenu> im
         renderProgressArrow(guiGraphics, x, y);}
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
-        guiGraphics.blit(TEXTURE, x + 80, y + 26, 176, 0, menu.getScaledProgress(), 16);
+        guiGraphics.blit(TEXTURE, x + 100, y + 26, 176, 0, menu.getScaledProgress(), 16);
 
     }
 
@@ -83,7 +83,7 @@ public class MixingBowlScreen extends AbstractContainerScreen<MixingBowlMenu> im
         }
 
         this.renderTooltip(guiGraphics, mouseX, mouseY);
-        this.recipeBookComponent.renderTooltip(guiGraphics, this.leftPos, this.topPos, mouseX, mouseY);
+        this.recipeBookComponent.renderTooltip(guiGraphics, this.leftPos+20, this.topPos, mouseX, mouseY);
     }
 
 

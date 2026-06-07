@@ -2,24 +2,21 @@ package com.sidden.flavored.block.entity;
 
 
 import com.sidden.flavored.block.KegBlock;
+import com.sidden.flavored.itemhandler.KegItemHandler;
 import com.sidden.flavored.menu.KegMenu;
 import com.sidden.flavored.recipe.FermentingRecipe;
 import com.sidden.flavored.recipe.input.FermentingRecipeInput;
-import com.sidden.flavored.itemhandler.KegItemHandler;
 import com.sidden.flavored.registry.FlavoredBlockEntities;
-import com.sidden.flavored.registry.FlavoredParticles;
 import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import com.sidden.flavored.registry.FlavoredSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
@@ -106,7 +103,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
 
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for(int i = 0; i < itemHandler.getSlots(); i++) {
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
         Containers.dropContents(this.level, this.worldPosition, inventory);
@@ -151,17 +148,16 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
             level.setBlock(pos, state.setValue(KegBlock.FERMENTING, true), 3);
             level.sendBlockUpdated(pos, state, state.setValue(KegBlock.FERMENTING, true), 3);
             setChanged(level, pos, state);
-        }
-        else if (!canFerment && state.getValue(KegBlock.FERMENTING)) {
+        } else if (!canFerment && state.getValue(KegBlock.FERMENTING)) {
             level.setBlock(pos, state.setValue(KegBlock.FERMENTING, false), 3);
             level.sendBlockUpdated(pos, state, state.setValue(KegBlock.FERMENTING, false), 3);
             setChanged(level, pos, state);
         }
 
-        if(canFerment) {
+        if (canFerment) {
             increaseCraftingProgress();
             setChanged(level, pos, state);
-            if(hasProgressFinished()) {
+            if (hasProgressFinished()) {
                 fermentItem();
                 resetProgress();
             }
@@ -188,8 +184,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
 
         if (this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() instanceof BucketItem || this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() instanceof MilkBucketItem) {
             this.itemHandler.setStackInSlot(INPUT_SLOT, Items.BUCKET.getDefaultInstance());
-        }
-        else {
+        } else {
             this.itemHandler.extractItem(INPUT_SLOT, 1, false);
 
         }
@@ -199,7 +194,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
 
-        getLevel().playSound((Player)null, getBlockPos(), FlavoredSoundEvents.KEG_FERMENT.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        getLevel().playSound((Player) null, getBlockPos(), FlavoredSoundEvents.KEG_FERMENT.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 
     }
 
@@ -220,7 +215,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
 
     public boolean hasRecipe() {
         Optional<RecipeHolder<FermentingRecipe>> recipe = getCurrentRecipe();
-        if(recipe.isEmpty()) {
+        if (recipe.isEmpty()) {
             return false;
         }
 
@@ -250,7 +245,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
         Optional<RecipeHolder<FermentingRecipe>> recipe = getCurrentRecipe();
         if (recipe.isPresent()) {
             FermentingRecipe fermentingRecipe = recipe.get().value();
-            ItemStack fermenterStack  = itemHandler.getStackInSlot(FERMENTING_SLOT);
+            ItemStack fermenterStack = itemHandler.getStackInSlot(FERMENTING_SLOT);
 
             if (fermentingRecipe.fermentingInput().test(fermenterStack)) {
                 addition += 4;
@@ -264,8 +259,8 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
         progress += addition;
     }
 
-    public  ItemStackHandler getInventory() {
-        return  this.itemHandler;
+    public ItemStackHandler getInventory() {
+        return this.itemHandler;
     }
 
     public int getParticleColor() {

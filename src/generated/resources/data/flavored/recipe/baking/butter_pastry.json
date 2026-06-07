@@ -1,5 +1,8 @@
 {
   "type": "flavored:baking",
+  "bakingtime": 20,
+  "experience": 5.0,
+  "group": "pastry",
   "key": {
     "#": {
       "item": "flavored:pastry_dough"

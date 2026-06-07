@@ -75,7 +75,7 @@ public class MixingRecipeBuilder implements RecipeBuilder {
         Advancement.Builder advancement = output.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
                 .rewards(AdvancementRewards.Builder.recipe(id))
-                .requirements(AdvancementRequirements.Strategy.OR);
+                .requirements(AdvancementRequirements.Strategy.AND);
         this.criteria.forEach(advancement::addCriterion);
         MixingRecipe recipe = new MixingRecipe(ingredients, vessel, liquid, this.getResult().getDefaultInstance());
         output.accept(id, recipe, advancement.build(id.withPrefix("recipes/")));

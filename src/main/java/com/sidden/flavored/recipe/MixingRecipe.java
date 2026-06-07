@@ -35,7 +35,6 @@ public record MixingRecipe(List<Ingredient> ingredientsInput, Ingredient vesselI
 
     @Override
     public boolean matches(MixingRecipeInput input, Level level) {
-        if (level.isClientSide()) return false;
 
         List<ItemStack> remaining = new ArrayList<>(input.ingredientInputs());
 

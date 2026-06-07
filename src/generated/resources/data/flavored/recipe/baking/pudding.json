@@ -1,14 +1,17 @@
 {
   "type": "flavored:baking",
+  "bakingtime": 20,
+  "experience": 5.0,
+  "group": "cake",
   "key": {
     "#": {
       "item": "flavored:batter"
     },
-    "X": {
-      "item": "flavored:chocolate"
-    },
     "*": {
       "item": "minecraft:egg"
+    },
+    "X": {
+      "item": "flavored:chocolate"
     }
   },
   "pattern": [

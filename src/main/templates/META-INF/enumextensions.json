@@ -23,6 +23,56 @@
         "class": "com/sidden/flavored/EnumParameters",
         "field": "FLAVORED_KEG"
       }
+    },
+
+    {
+      "enum": "net/minecraft/world/inventory/RecipeBookType",
+      "name": "FLAVORED_MIXING_BOWL",
+      "constructor": "()V",
+      "parameters": []
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "FLAVORED_MIXING_BOWL_SEARCH",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "com/sidden/flavored/EnumParameters",
+        "field": "FLAVORED_MIXING_BOWL_SEARCH"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "FLAVORED_MIXING_BOWL",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "com/sidden/flavored/EnumParameters",
+        "field": "FLAVORED_MIXING_BOWL"
+      }
+    },
+
+    {
+      "enum": "net/minecraft/world/inventory/RecipeBookType",
+      "name": "FLAVORED_OVEN",
+      "constructor": "()V",
+      "parameters": []
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "FLAVORED_OVEN_SEARCH",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "com/sidden/flavored/EnumParameters",
+        "field": "FLAVORED_OVEN_SEARCH"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "FLAVORED_OVEN",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "com/sidden/flavored/EnumParameters",
+        "field": "FLAVORED_OVEN"
+      }
     }
   ]
 }

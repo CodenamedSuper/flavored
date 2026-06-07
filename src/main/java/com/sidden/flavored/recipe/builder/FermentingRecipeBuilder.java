@@ -63,7 +63,7 @@ public class FermentingRecipeBuilder implements RecipeBuilder {
         Advancement.Builder advancement = output.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
                 .rewards(AdvancementRewards.Builder.recipe(id))
-                .requirements(AdvancementRequirements.Strategy.OR);
+                .requirements(AdvancementRequirements.Strategy.AND);
         this.criteria.forEach(advancement::addCriterion);
         FermentingRecipe recipe = new FermentingRecipe(ingredients.get(0), ingredients.get(1), colorParticle, this.getResult().getDefaultInstance());
         output.accept(id, recipe, advancement.build(id.withPrefix("recipes/")));

@@ -1,26 +1,29 @@
 {
   "type": "flavored:baking",
+  "bakingtime": 20,
+  "experience": 5.0,
+  "group": "food",
   "key": {
     "#": {
       "item": "minecraft:bowl"
-    },
-    "X": {
-      "tag": "flavored:wines"
     },
     "*": {
       "item": "flavored:mutton_shank"
     },
     "C": {
+      "tag": "flavored:wines"
+    },
+    "X": {
       "item": "minecraft:carrot"
     }
   },
   "pattern": [
     " X ",
-    "*C*",
-    " # "
+    "*#*",
+    " C "
   ],
   "result": {
-    "count": 2,
+    "count": 1,
     "id": "flavored:ossobuco"
   }
 }

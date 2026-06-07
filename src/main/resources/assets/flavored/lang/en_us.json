@@ -139,5 +139,10 @@
 
 
   "gui.recipebook.toggleRecipes.fermentable": "Fermentable",
-  "gui.recipebook.toggleRecipes.mixable": "Mixable"
+  "gui.recipebook.toggleRecipes.mixable": "Mixable",
+  "gui.recipebook.toggleRecipes.bakable": "Bakable",
+  "block.flavored.baking": "Baking",
+  "categories.flavored.mixing": "Mixing",
+  "category.flavored.baking": "Baking",
+  "category.flavored.fermenting": "Fermenting"
 }

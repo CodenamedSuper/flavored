@@ -14,6 +14,20 @@ public class EnumParameters {
             RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(Items.COMPASS))
     );
     public static final EnumProxy<RecipeBookCategories> FLAVORED_KEG = new EnumProxy<>(
-            RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(FlavoredItems.PESTO_PASTA.get()))
+            RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(FlavoredItems.SWEET_BERRY_WINE.get()))
+    );
+
+    public static final EnumProxy<RecipeBookCategories> FLAVORED_MIXING_BOWL_SEARCH = new EnumProxy<>(
+            RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(Items.COMPASS))
+    );
+    public static final EnumProxy<RecipeBookCategories> FLAVORED_MIXING_BOWL = new EnumProxy<>(
+            RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(FlavoredItems.PORRIDGE.get()))
+    );
+
+    public static final EnumProxy<RecipeBookCategories> FLAVORED_OVEN_SEARCH = new EnumProxy<>(
+            RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(Items.COMPASS))
+    );
+    public static final EnumProxy<RecipeBookCategories> FLAVORED_OVEN = new EnumProxy<>(
+            RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(FlavoredItems.PIZZA_SLICE.get()))
     );
 }

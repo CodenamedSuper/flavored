@@ -1,14 +1,17 @@
 {
   "type": "flavored:baking",
+  "bakingtime": 20,
+  "experience": 5.0,
+  "group": "pizza",
   "key": {
     "#": {
       "item": "flavored:dough"
     },
-    "X": {
-      "item": "flavored:garlic"
-    },
     "*": {
-      "item": "flavored:butter"
+      "item": "flavored:soft_cheese_slice"
+    },
+    "X": {
+      "item": "flavored:red_tomato"
     }
   },
   "pattern": [
@@ -17,6 +20,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "flavored:garlic_bread"
+    "id": "flavored:pizza"
   }
 }

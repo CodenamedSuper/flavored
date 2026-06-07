@@ -1,15 +1,18 @@
 {
   "type": "flavored:baking",
+  "bakingtime": 20,
+  "experience": 5.0,
+  "group": "cookie",
   "key": {
     "#": {
       "item": "flavored:cookie_dough"
     }
   },
   "pattern": [
-    "#"
+    " # "
   ],
   "result": {
-    "count": 8,
-    "id": "minecraft:cake"
+    "count": 1,
+    "id": "minecraft:cookie"
   }
 }

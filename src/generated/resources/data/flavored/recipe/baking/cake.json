@@ -1,15 +1,18 @@
 {
   "type": "flavored:baking",
+  "bakingtime": 20,
+  "experience": 5.0,
+  "group": "cake",
   "key": {
     "#": {
       "item": "flavored:batter"
     }
   },
   "pattern": [
-    "#"
+    " # "
   ],
   "result": {
-    "count": 2,
+    "count": 1,
     "id": "minecraft:cake"
   }
 }

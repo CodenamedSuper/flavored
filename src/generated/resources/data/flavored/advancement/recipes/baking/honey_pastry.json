@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "flavored:baking/honey_pastry"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "pastry_dough": {
+      "conditions": {
+        "items": [
+          {
+            "items": "flavored:pastry_dough"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe"
+    ],
+    [
+      "pastry_dough"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "flavored:baking/honey_pastry"
+    ]
+  }
+}

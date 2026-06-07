@@ -1,6 +1,7 @@
 package com.sidden.flavored.datagen;
 
 import com.sidden.flavored.Flavored;
+import com.sidden.flavored.recipe.builder.BakeRecipeBuilder;
 import com.sidden.flavored.recipe.builder.FermentingRecipeBuilder;
 import com.sidden.flavored.recipe.builder.MixingRecipeBuilder;
 import com.sidden.flavored.registry.FlavoredBlocks;
@@ -11,6 +12,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -33,6 +35,10 @@ public class FlavoredRecipeProvider extends RecipeProvider {
 
     private static ResourceLocation mixing(String path) {
         return ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "mixing/" + path);
+    }
+
+    private static ResourceLocation baking(String path) {
+        return ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "baking/" + path);
     }
 
     @Override
@@ -115,6 +121,8 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                 .requires(Ingredient.of(FlavoredItems.AGED_CHEESE_SLICE))
                 .requires(Ingredient.of(FlavoredItems.BUTTER))
                 .requires(Ingredient.of(FlavoredItems.GARLIC))
+                .requires(Ingredient.of(FlavoredItems.PASTA))
+
                 .unlockedBy(getItemName(FlavoredItems.PASTA.get()),
                         has(FlavoredItems.PASTA))
                 .save(recipeOutput, mixing(getItemName(FlavoredItems.CREAM_PASTA)));
@@ -122,6 +130,8 @@ public class FlavoredRecipeProvider extends RecipeProvider {
         new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.EMPTY, FlavoredItems.PESTO_PASTA, 1)
                 .requires(Ingredient.of(FlavoredItems.SPINACH), 2)
                 .requires(Ingredient.of(FlavoredItems.GARLIC))
+                .requires(Ingredient.of(FlavoredItems.PASTA))
+
                 .unlockedBy(getItemName(FlavoredItems.PASTA.get()),
                         has(FlavoredItems.PASTA))
                 .save(recipeOutput, mixing(getItemName(FlavoredItems.PESTO_PASTA)));
@@ -190,7 +200,7 @@ public class FlavoredRecipeProvider extends RecipeProvider {
 
         new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.EMPTY, FlavoredItems.SALAD, 1)
                 .requires(Ingredient.of(FlavoredItemTags.TOMATOES))
-                .requires(Ingredient.of(FlavoredItems.SPINACH),2)
+                .requires(Ingredient.of(FlavoredItems.SPINACH), 2)
                 .requires(Ingredient.of(FlavoredItemTags.SALAD_FINISHINGS))
                 .unlockedBy(getItemName(FlavoredItems.SPINACH),
                         has(FlavoredItems.SPINACH))
@@ -198,16 +208,121 @@ public class FlavoredRecipeProvider extends RecipeProvider {
 
         new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.EMPTY, FlavoredItems.SHAKSHOUKA, 1)
                 .requires(Ingredient.of(FlavoredItems.DRIED_PEPPER))
-                .requires(Ingredient.of(FlavoredItems.RED_TOMATO),2)
+                .requires(Ingredient.of(FlavoredItems.RED_TOMATO), 2)
                 .requires(Ingredient.of(FlavoredItems.GARLIC))
                 .requires(Ingredient.of(Items.EGG))
                 .unlockedBy(getItemName(FlavoredItems.RED_TOMATO),
                         has(FlavoredItems.RED_TOMATO))
                 .save(recipeOutput, mixing(getItemName(FlavoredItems.SHAKSHOUKA)));
 
+        new BakeRecipeBuilder(RecipeCategory.FOOD, new ItemStack(FlavoredBlocks.PIZZA.asItem()), 5, 20)
+                .define('#', Ingredient.of(FlavoredItems.DOUGH.get()))
+                .define('X', Ingredient.of(FlavoredItems.RED_TOMATO.get()))
+                .define('*', Ingredient.of(FlavoredItems.SOFT_CHEESE_SLICE.get()))
+                .pattern("X*X")
+                .pattern(" # ")
+                .group("pizza")
+                .unlockedBy(getItemName(FlavoredItems.DOUGH),
+                        has(FlavoredItems.DOUGH))
+                .save(recipeOutput, baking(getItemName(FlavoredBlocks.PIZZA)));
 
+        new BakeRecipeBuilder(RecipeCategory.FOOD, Items.BREAD, 2, 5, 20)
+                .define('#', Ingredient.of(FlavoredItems.DOUGH.get()))
+                .pattern(" # ")
+                .group("bread")
+                .unlockedBy(getItemName(FlavoredItems.DOUGH),
+                        has(FlavoredItems.DOUGH))
+                .save(recipeOutput, baking(getItemName(Items.BREAD)));
 
+        new BakeRecipeBuilder(RecipeCategory.FOOD, new ItemStack(FlavoredItems.GARLIC_BREAD.asItem()), 5, 20)
+                .define('#', Ingredient.of(FlavoredItems.DOUGH.get()))
+                .define('X', Ingredient.of(FlavoredItems.GARLIC.get()))
+                .define('*', Ingredient.of(FlavoredItems.BUTTER.get()))
+                .pattern("X*X")
+                .pattern(" # ")
+                .group("bread")
+                .unlockedBy(getItemName(FlavoredItems.DOUGH),
+                        has(FlavoredItems.DOUGH))
+                .save(recipeOutput, baking(getItemName(FlavoredItems.GARLIC_BREAD)));
 
+        new BakeRecipeBuilder(RecipeCategory.FOOD, Items.CAKE, 2, 5, 20)
+                .define('#', Ingredient.of(FlavoredItems.BATTER.get()))
+                .pattern(" # ")
+                .group("cake")
+                .unlockedBy(getItemName(FlavoredItems.BATTER),
+                        has(FlavoredItems.BATTER))
+                .save(recipeOutput, baking(getItemName(Items.CAKE)));
+
+        new BakeRecipeBuilder(RecipeCategory.FOOD, new ItemStack(FlavoredBlocks.PUDDING.asItem()), 5, 20)
+                .define('#', Ingredient.of(FlavoredItems.BATTER.get()))
+                .define('X', Ingredient.of(FlavoredItems.CHOCOLATE.get()))
+                .define('*', Ingredient.of(Items.EGG))
+                .pattern("X*X")
+                .pattern(" # ")
+                .group("cake")
+                .unlockedBy(getItemName(FlavoredItems.DOUGH),
+                        has(FlavoredItems.DOUGH))
+                .save(recipeOutput, baking(getItemName(FlavoredBlocks.PUDDING)));
+
+        new BakeRecipeBuilder(RecipeCategory.FOOD, Items.COOKIE, 8, 5, 20)
+                .define('#', Ingredient.of(FlavoredItems.COOKIE_DOUGH.get()))
+                .pattern(" # ")
+                .group("cookie")
+                .unlockedBy(getItemName(FlavoredItems.COOKIE_DOUGH),
+                        has(FlavoredItems.COOKIE_DOUGH))
+                .save(recipeOutput, baking(getItemName(Items.COOKIE)));
+
+        new BakeRecipeBuilder(RecipeCategory.FOOD, FlavoredItems.BUTTER_PASTRY, 1, 5, 20)
+                .define('X', Ingredient.of(FlavoredItems.BUTTER.get()))
+                .define('#', Ingredient.of(FlavoredItems.PASTRY_DOUGH.get()))
+                .pattern("XXX")
+                .pattern(" # ")
+                .group("pastry")
+                .unlockedBy(getItemName(FlavoredItems.PASTRY_DOUGH),
+                        has(FlavoredItems.PASTRY_DOUGH))
+                .save(recipeOutput, baking(getItemName(FlavoredItems.BUTTER_PASTRY)));
+
+        new BakeRecipeBuilder(RecipeCategory.FOOD, FlavoredItems.CHOCOLATE_PASTRY, 1, 5, 20)
+                .define('X', Ingredient.of(FlavoredItems.CHOCOLATE.get()))
+                .define('#', Ingredient.of(FlavoredItems.PASTRY_DOUGH.get()))
+                .pattern("XXX")
+                .pattern(" # ")
+                .group("pastry")
+                .unlockedBy(getItemName(FlavoredItems.PASTRY_DOUGH),
+                        has(FlavoredItems.PASTRY_DOUGH))
+                .save(recipeOutput, baking(getItemName(FlavoredItems.CHOCOLATE_PASTRY)));
+
+        new BakeRecipeBuilder(RecipeCategory.FOOD, FlavoredItems.CINNAMON_PASTRY, 1, 5, 20)
+                .define('X', Ingredient.of(FlavoredItems.CINNAMON.get()))
+                .define('#', Ingredient.of(FlavoredItems.PASTRY_DOUGH.get()))
+                .pattern("XXX")
+                .pattern(" # ")
+                .group("pastry")
+                .unlockedBy(getItemName(FlavoredItems.PASTRY_DOUGH),
+                        has(FlavoredItems.PASTRY_DOUGH))
+                .save(recipeOutput, baking(getItemName(FlavoredItems.CINNAMON_PASTRY)));
+
+        new BakeRecipeBuilder(RecipeCategory.FOOD, FlavoredItems.HONEY_PASTRY, 1, 5, 20)
+                .define('X', Ingredient.of(Items.HONEYCOMB))
+                .define('#', Ingredient.of(FlavoredItems.PASTRY_DOUGH.get()))
+                .pattern("XXX")
+                .pattern(" # ")
+                .group("pastry")
+                .unlockedBy(getItemName(FlavoredItems.PASTRY_DOUGH),
+                        has(FlavoredItems.PASTRY_DOUGH))
+                .save(recipeOutput, baking(getItemName(FlavoredItems.HONEY_PASTRY)));
+        new BakeRecipeBuilder(RecipeCategory.FOOD, FlavoredItems.OSSOBUCO, 2, 5, 20)
+                .define('#', Ingredient.of(Items.BOWL))
+                .define('X', Ingredient.of(Items.CARROT))
+                .define('*', Ingredient.of(FlavoredItems.MUTTON_SHANK))
+                .define('C', Ingredient.of(FlavoredItemTags.WINES))
+                .pattern(" X ")
+                .pattern("*#*")
+                .pattern(" C ")
+                .group("food")
+                .unlockedBy(getItemName(FlavoredItems.MUTTON_SHANK),
+                        has(FlavoredItems.MUTTON_SHANK))
+                .save(recipeOutput, baking(getItemName(FlavoredItems.OSSOBUCO)));
 
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FlavoredItems.CHOCOLATE, 2).requires(Items.COCOA_BEANS).requires(Items.COCOA_BEANS).requires(Items.COCOA_BEANS).requires(Items.SUGAR).group(getItemName(FlavoredItems.CHOCOLATE)).unlockedBy(getHasName(Items.COCOA_BEANS), has(Items.COCOA_BEANS)).save(recipeOutput, crafting(getItemName(FlavoredItems.CHOCOLATE)));

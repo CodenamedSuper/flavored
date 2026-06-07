@@ -1,5 +1,6 @@
 package com.sidden.flavored.recipe.recipe_book;
 
+import com.sidden.flavored.recipe.MixingRecipe;
 import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.core.NonNullList;
@@ -46,24 +47,29 @@ public class MixingRecipeBookComponent extends RecipeBookComponent {
     public void setupGhostRecipe(RecipeHolder<?> recipe, List<Slot> slots) {
         ItemStack itemstack = recipe.value().getResultItem(this.minecraft.level.registryAccess());
         this.ghostRecipe.setRecipe(recipe);
-        this.ghostRecipe.addIngredient(Ingredient.of(itemstack), slots.get(2).x, slots.get(2).y);
 
         NonNullList<Ingredient> nonnulllist = recipe.value().getIngredients();
         Iterator<Ingredient> iterator = nonnulllist.iterator();
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 8; i++) {
             if (!iterator.hasNext()) {
                 return;
             }
-
             Ingredient ingredient = iterator.next();
             if (!ingredient.isEmpty()) {
-                Slot slot1 = slots.get(i);
-                this.ghostRecipe.addIngredient(ingredient, slot1.x, slot1.y);
+                if (recipe.value() instanceof MixingRecipe mixingRecipe) {
+                    if (ingredient == mixingRecipe.liquidInput()) {
+                        Slot slot1 = slots.get(7);
+                        this.ghostRecipe.addIngredient(ingredient, slot1.x, slot1.y);
+                    } else if (ingredient == mixingRecipe.vesselInput()) {
+                        Slot slot1 = slots.get(6);
+                        this.ghostRecipe.addIngredient(ingredient, slot1.x, slot1.y);
+                    } else {
+                        Slot slot1 = slots.get(i);
+                        this.ghostRecipe.addIngredient(ingredient, slot1.x, slot1.y);
+                    }
+                }
             }
         }
     }
-
-
-
 }

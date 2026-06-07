@@ -1,19 +1,29 @@
 package com.sidden.flavored.menu;
 
 import com.sidden.flavored.block.entity.OvenBlockEntity;
+import com.sidden.flavored.recipe.BakingRecipe;
+import com.sidden.flavored.recipe.MixingRecipe;
+import com.sidden.flavored.recipe.input.MixingRecipeInput;
+import com.sidden.flavored.recipe.recipe_book.MixingRecipeBookComponent;
 import com.sidden.flavored.slot.OvenFuelSlot;
 import com.sidden.flavored.registry.FlavoredMenus;
 import com.sidden.flavored.registry.FlavoredRecipeTypes;
+import net.minecraft.core.NonNullList;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 
-public class OvenMenu extends AbstractContainerMenu {
+import java.util.List;
+
+public class OvenMenu  extends RecipeBookMenu<CraftingInput, BakingRecipe>  {
     public static final int INPUT_SLOT_START = 0;
     public static final int INPUT_SLOT_END = 9;
     public static final int FUEL_SLOT = 9;
@@ -27,9 +37,11 @@ public class OvenMenu extends AbstractContainerMenu {
     private final Container container;
     private final ContainerData data;
     protected final Level level;
+    private MixingRecipeBookComponent recipeBook;
 
     public OvenMenu(int containerId, Inventory playerInventory) {
         this(containerId, playerInventory, new SimpleContainer(SLOT_COUNT), new SimpleContainerData(DATA_COUNT));
+        this.recipeBook = new MixingRecipeBookComponent();
     }
 
     public OvenMenu(int containerId, Inventory playerInventory, Container container, ContainerData data) {
@@ -132,5 +144,68 @@ public class OvenMenu extends AbstractContainerMenu {
 
     public boolean isLit() {
         return this.data.get(OvenBlockEntity.DATA_LIT_TIME) > 0;
+    }
+
+
+
+
+
+    @Override
+    public void fillCraftSlotsStackedContents(StackedContents itemHelper) {
+        for (int i = 0; i < INPUT_SLOT_END; i++) {
+            itemHelper.accountStack(this.container.getItem(i));
+        }
+    }
+
+    @Override
+    public boolean recipeMatches(RecipeHolder<BakingRecipe> recipe) {
+        return recipe.value().matches(
+                CraftingInput.of(3, 3,
+                        List.of(
+                                container.getItem(0), container.getItem(1), container.getItem(2),
+                                container.getItem(3), container.getItem(4), container.getItem(5),
+                                container.getItem(6), container.getItem(7), container.getItem(8)
+                        )
+                ), this.level
+        );
+    }
+
+    @Override
+    public void clearCraftingContent() {
+        for (int i = 0; i < 8; i++) {
+            this.getSlot(i).set(ItemStack.EMPTY);
+        }
+    }
+
+
+    @Override
+    public int getResultSlotIndex() {
+        return 10;
+    }
+
+    @Override
+    public int getGridWidth() {
+        return 1;
+    }
+
+    @Override
+    public int getGridHeight() {
+        return 1;
+    }
+
+    @Override
+    public int getSize() {
+        return 11   ;
+    }
+
+
+    @Override
+    public RecipeBookType getRecipeBookType() {
+        return RecipeBookType.valueOf("FLAVORED_OVEN");
+    }
+
+    @Override
+    public boolean shouldMoveToInventory(int slotIndex) {
+        return true;
     }
 }

@@ -2,7 +2,6 @@
   "type": "flavored:baking",
   "bakingtime": 20,
   "experience": 5.0,
-  "group": "cake",
   "key": {
     "#": {
       "item": "flavored:batter"

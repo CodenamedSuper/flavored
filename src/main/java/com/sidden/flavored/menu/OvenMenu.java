@@ -185,17 +185,17 @@ public class OvenMenu  extends RecipeBookMenu<CraftingInput, BakingRecipe>  {
 
     @Override
     public int getGridWidth() {
-        return 1;
+        return 3;
     }
 
     @Override
     public int getGridHeight() {
-        return 1;
+        return 3;
     }
 
     @Override
     public int getSize() {
-        return 11   ;
+        return 11;
     }
 
 

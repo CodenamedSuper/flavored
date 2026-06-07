@@ -38,6 +38,12 @@ public class BakingRecipe implements Recipe<CraftingInput> {
     }
 
     @Override
+    public boolean isIncomplete() {
+        NonNullList<Ingredient> ingredients = this.getIngredients();
+        return ingredients.isEmpty() || ingredients.stream().filter(ingredient -> !ingredient.isEmpty()).anyMatch(Ingredient::hasNoItems);
+    }
+
+    @Override
     public boolean canCraftInDimensions(int width, int height) {
         return width >= this.pattern.width() && height >= this.pattern.height();
     }

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class BakeRecipeBuilder implements RecipeBuilder {
     private final Item result;
@@ -110,7 +111,7 @@ public class BakeRecipeBuilder implements RecipeBuilder {
         ShapedRecipePattern shapedrecipepattern = this.ensureValid(id);
 
         this.criteria.forEach(advancement::addCriterion);
-        BakingRecipe recipe = new BakingRecipe(group, shapedrecipepattern, this.getResult().getDefaultInstance(), experience, bakingTime);
+        BakingRecipe recipe = new BakingRecipe(Objects.requireNonNullElse(group, ""), shapedrecipepattern, this.getResult().getDefaultInstance(), experience, bakingTime);
         output.accept(id, recipe, advancement.build(id.withPrefix("recipes/")));
     }
 }

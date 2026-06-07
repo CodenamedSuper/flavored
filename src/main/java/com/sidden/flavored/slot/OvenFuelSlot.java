@@ -8,8 +8,8 @@ import net.minecraft.world.item.ItemStack;
 public class OvenFuelSlot extends Slot {
     private final OvenMenu menu;
 
-    public OvenFuelSlot(OvenMenu menu, Container furnaceContainer, int slot, int xPosition, int yPosition) {
-        super(furnaceContainer, slot, xPosition, yPosition);
+    public OvenFuelSlot(OvenMenu menu, Container ovenContainer, int slot, int xPosition, int yPosition) {
+        super(ovenContainer, slot, xPosition, yPosition);
         this.menu = menu;
     }
 

@@ -7,7 +7,7 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "wort": {
+    "has_wort": {
       "conditions": {
         "items": [
           {
@@ -20,10 +20,8 @@
   },
   "requirements": [
     [
-      "has_the_recipe"
-    ],
-    [
-      "wort"
+      "has_the_recipe",
+      "has_wort"
     ]
   ],
   "rewards": {

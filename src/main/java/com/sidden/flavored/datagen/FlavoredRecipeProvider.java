@@ -29,10 +29,6 @@ public class FlavoredRecipeProvider extends RecipeProvider {
         return ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "crafting/" + path);
     }
 
-    private static ResourceLocation fermenting(String path) {
-        return ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "fermenting/" + path);
-    }
-
     private static ResourceLocation mixing(String path) {
         return ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "mixing/" + path);
     }
@@ -43,56 +39,30 @@ public class FlavoredRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
-
-        new FermentingRecipeBuilder(RecipeCategory.FOOD,
-                "c99f4e",
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(FlavoredItems.WORT.get()),
-                FlavoredItems.BEER.get(), 1)
-                .unlockedBy(getItemName(FlavoredItems.WORT.get()),
-                        has(FlavoredItems.WORT.get())).save(recipeOutput, fermenting(getItemName(FlavoredItems.BEER.get())));
-
-        new FermentingRecipeBuilder(RecipeCategory.FOOD,
-                "da9a37",
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(FlavoredItems.APPLE_JUICE.get()),
-                FlavoredItems.CIDER.get(), 1)
-                .unlockedBy(getItemName(FlavoredItems.APPLE_JUICE.get()),
-                        has(FlavoredItems.APPLE_JUICE.get())).save(recipeOutput, fermenting(getItemName(FlavoredItems.CIDER.get())));
-
-        new FermentingRecipeBuilder(RecipeCategory.FOOD,
-                "9d1e2d",
-                Ingredient.of(FlavoredItemTags.FUNGI),
-                Ingredient.of(Items.SPIDER_EYE),
-                Items.FERMENTED_SPIDER_EYE, 1)
-                .unlockedBy(getItemName(Items.SPIDER_EYE),
-                        has(Items.SPIDER_EYE)).save(recipeOutput, fermenting(getItemName(Items.FERMENTED_SPIDER_EYE)));
-
-        new FermentingRecipeBuilder(RecipeCategory.FOOD,
-                "ffb034",
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(FlavoredItems.GLOW_BERRY_JUICE),
-                FlavoredItems.GLOW_BERRY_WINE, 1)
-                .unlockedBy(getItemName(FlavoredItems.GLOW_BERRY_JUICE),
-                        has(FlavoredItems.GLOW_BERRY_JUICE)).save(recipeOutput, fermenting(getItemName(FlavoredItems.GLOW_BERRY_WINE)));
-
-
-        new FermentingRecipeBuilder(RecipeCategory.FOOD,
-                "bd334a",
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(FlavoredItems.SWEET_BERRY_JUICE),
-                FlavoredItems.SWEET_BERRY_WINE, 1)
-                .unlockedBy(getItemName(FlavoredItems.SWEET_BERRY_JUICE),
-                        has(FlavoredItems.SWEET_BERRY_JUICE)).save(recipeOutput, fermenting(getItemName(FlavoredItems.SWEET_BERRY_WINE)));
-
-        new FermentingRecipeBuilder(RecipeCategory.FOOD,
-                "f6e5d3",
-                Ingredient.of(FlavoredItemTags.FUNGI),
-                Ingredient.of(Items.MILK_BUCKET),
-                FlavoredBlocks.SOFT_CHEESE, 1)
-                .unlockedBy(getItemName(Items.MILK_BUCKET),
-                        has(Items.MILK_BUCKET))
-                .save(recipeOutput, fermenting(getItemName(FlavoredBlocks.SOFT_CHEESE)));
+        FermentingRecipeBuilder.fermenting(Ingredient.of(FlavoredItems.WORT), Ingredient.of(Items.SUGAR), RecipeCategory.FOOD, FlavoredItems.BEER)
+                .particleColor("c99f4e")
+                .unlockedBy("has_wort", has(FlavoredItems.WORT))
+                .save(recipeOutput);
+        FermentingRecipeBuilder.fermenting(Ingredient.of(FlavoredItems.APPLE_JUICE), Ingredient.of(Items.SUGAR), RecipeCategory.FOOD, FlavoredItems.CIDER)
+                .particleColor("da9a37")
+                .unlockedBy("has_apple_juice", has(FlavoredItems.APPLE_JUICE))
+                .save(recipeOutput);
+        FermentingRecipeBuilder.fermenting(Ingredient.of(Items.SPIDER_EYE), Ingredient.of(FlavoredItemTags.FUNGI), RecipeCategory.BREWING, Items.FERMENTED_SPIDER_EYE)
+                .particleColor("9d1e2d")
+                .unlockedBy("has_spider_eye", has(Items.SPIDER_EYE))
+                .save(recipeOutput);
+        FermentingRecipeBuilder.fermenting(Ingredient.of(FlavoredItems.GLOW_BERRY_JUICE), Ingredient.of(Items.SUGAR), RecipeCategory.FOOD, FlavoredItems.GLOW_BERRY_WINE)
+                .particleColor("ffb034")
+                .unlockedBy("has_glow_berry_juice", has(FlavoredItems.GLOW_BERRY_JUICE))
+                .save(recipeOutput);
+        FermentingRecipeBuilder.fermenting(Ingredient.of(FlavoredItems.SWEET_BERRY_JUICE), Ingredient.of(Items.SUGAR), RecipeCategory.FOOD, FlavoredItems.SWEET_BERRY_WINE)
+                .particleColor("bd334a")
+                .unlockedBy("has_sweet_berry_juice", has(FlavoredItems.SWEET_BERRY_JUICE))
+                .save(recipeOutput);
+        FermentingRecipeBuilder.fermenting(Ingredient.of(Items.MILK_BUCKET), Ingredient.of(FlavoredItemTags.FUNGI), RecipeCategory.FOOD, FlavoredBlocks.SOFT_CHEESE)
+                .particleColor("f6e5d3")
+                .unlockedBy("has_milk", has(Items.MILK_BUCKET))
+                .save(recipeOutput);
 
         new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.EMPTY, Ingredient.of(Items.WATER_BUCKET), FlavoredItems.DOUGH, 1)
                 .requires(Ingredient.of(FlavoredItems.FLOUR), 3)

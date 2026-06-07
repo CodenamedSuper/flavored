@@ -1,5 +1,6 @@
 {
   "type": "flavored:fermenting",
+  "category": "food",
   "fermenter": {
     "tag": "flavored:fungi"
   },

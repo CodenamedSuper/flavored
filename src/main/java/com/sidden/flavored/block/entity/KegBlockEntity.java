@@ -180,7 +180,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
 
     private void fermentItem() {
         Optional<RecipeHolder<FermentingRecipe>> recipe = getCurrentRecipe();
-        ItemStack output = recipe.get().value().output();
+        ItemStack output = recipe.get().value().result();
 
         if (this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() instanceof BucketItem || this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() instanceof MilkBucketItem) {
             this.itemHandler.setStackInSlot(INPUT_SLOT, Items.BUCKET.getDefaultInstance());
@@ -247,7 +247,7 @@ public class KegBlockEntity extends BlockEntity implements MenuProvider {
             FermentingRecipe fermentingRecipe = recipe.get().value();
             ItemStack fermenterStack = itemHandler.getStackInSlot(FERMENTING_SLOT);
 
-            if (fermentingRecipe.fermentingInput().test(fermenterStack)) {
+            if (fermentingRecipe.fermenter().test(fermenterStack)) {
                 addition += 4;
             } else {
                 addition += 1;

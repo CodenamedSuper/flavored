@@ -17,11 +17,20 @@
     },
     {
       "enum": "net/minecraft/client/RecipeBookCategories",
-      "name": "FLAVORED_KEG",
+      "name": "FLAVORED_KEG_FOOD",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
         "class": "com/sidden/flavored/EnumParameters",
-        "field": "FLAVORED_KEG"
+        "field": "FLAVORED_KEG_FOOD"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "FLAVORED_KEG_MISC",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "com/sidden/flavored/EnumParameters",
+        "field": "FLAVORED_KEG_MISC"
       }
     },
 

@@ -1,13 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "flavored:fermenting/soft_cheese"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "milk_bucket": {
+    "has_milk": {
       "conditions": {
         "items": [
           {
@@ -16,14 +10,18 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "flavored:fermenting/soft_cheese"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_the_recipe"
-    ],
-    [
-      "milk_bucket"
+      "has_the_recipe",
+      "has_milk"
     ]
   ],
   "rewards": {

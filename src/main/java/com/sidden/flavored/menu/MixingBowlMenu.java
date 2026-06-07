@@ -196,12 +196,12 @@ public class MixingBowlMenu extends RecipeBookMenu<MixingRecipeInput, MixingReci
 
     @Override
     public int getGridWidth() {
-        return 1;
+        return 4;
     }
 
     @Override
     public int getGridHeight() {
-        return 1;
+        return 2;
     }
 
     @Override

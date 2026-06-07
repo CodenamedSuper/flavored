@@ -32,6 +32,11 @@ public record MixingRecipe(List<Ingredient> ingredientsInput, Ingredient vesselI
         list.add(liquidInput);
         return list;
     }
+    @Override
+    public boolean isIncomplete() {
+        NonNullList<Ingredient> ingredients = this.getIngredients();
+        return ingredients.isEmpty() || ingredients.stream().filter(ingredient -> !ingredient.isEmpty()).anyMatch(Ingredient::hasNoItems);
+    }
 
     @Override
     public boolean matches(MixingRecipeInput input, Level level) {

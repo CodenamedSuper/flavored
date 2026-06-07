@@ -59,7 +59,7 @@ public class JEIFlavoredPlugin implements IModPlugin {
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
-        registration.addRecipeClickArea(KegScreen.class, 74, 30, 22, 20,
+        registration.addRecipeClickArea(KegScreen.class, 87, 33, 22, 20,
                 FermentingRecipeCategory.FERMENTING_RECIPE_RECIPE_TYPE);
         registration.addRecipeClickArea(MixingBowlScreen.class, 100, 25, 22, 20,
                 MixingRecipeCategory.MIXING_RECIPE_RECIPE_TYPE);

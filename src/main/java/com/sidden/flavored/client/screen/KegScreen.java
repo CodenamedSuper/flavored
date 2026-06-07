@@ -1,6 +1,5 @@
 package com.sidden.flavored.client.screen;
 
-
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.menu.KegMenu;
@@ -13,6 +12,7 @@ import net.minecraft.client.gui.screens.recipebook.RecipeUpdateListener;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
@@ -20,6 +20,8 @@ import net.minecraft.world.inventory.Slot;
 public class KegScreen extends AbstractContainerScreen<KegMenu> implements RecipeUpdateListener {
     private static final ResourceLocation TEXTURE =
             ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, "textures/gui/keg.png");
+    private static final ResourceLocation FERMENT_PROGRESS_SPRITE =
+            ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID,  "container/keg/ferment_progress");
 
     private final FermentingRecipeBookComponent recipeBookComponent;
     private boolean widthTooNarrow;
@@ -36,14 +38,12 @@ public class KegScreen extends AbstractContainerScreen<KegMenu> implements Recip
 
         this.recipeBookComponent.init(this.width, this.height, this.minecraft, this.widthTooNarrow, this.menu);
         this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
-        this.addRenderableWidget(new ImageButton(this.leftPos + 5, this.height / 2 - 49, 20, 18, RecipeBookComponent.RECIPE_BUTTON_SPRITES, p_313431_ -> {
+        this.addRenderableWidget(new ImageButton(this.leftPos + 7, this.height / 2 - 49, 20, 18, RecipeBookComponent.RECIPE_BUTTON_SPRITES, p_313431_ -> {
             this.recipeBookComponent.toggleVisibility();
             this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
-            p_313431_.setPosition(this.leftPos + 5, this.height / 2 - 49);
+            p_313431_.setPosition(this.leftPos + 7, this.height / 2 - 49);
         }));
-
-        this.inventoryLabelY = 10000;
-        this.titleLabelY = 10;
+        this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
     }
 
     @Override
@@ -62,13 +62,8 @@ public class KegScreen extends AbstractContainerScreen<KegMenu> implements Recip
 
         guiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
-        renderProgressArrow(guiGraphics, x, y);
-    }
-
-    private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
-        if (menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, x + 80, y + 35, 176, 0, menu.getScaledProgress(), 16);
-        }
+        int offset = Mth.ceil(this.menu.getProgress() * 24.0F);
+        guiGraphics.blitSprite(FERMENT_PROGRESS_SPRITE, 24, 16, 0, 0, this.leftPos + 86, this.topPos + 34, offset, 16);
     }
 
     @Override

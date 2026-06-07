@@ -3,11 +3,11 @@ package com.sidden.flavored.menu;
 import com.sidden.flavored.block.entity.KegBlockEntity;
 import com.sidden.flavored.recipe.FermentingRecipe;
 import com.sidden.flavored.recipe.input.FermentingRecipeInput;
-import com.sidden.flavored.recipe.recipe_book.FermentingRecipeBookComponent;
 import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredMenus;
 import com.sidden.flavored.slot.KegResultSlot;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
@@ -24,12 +24,9 @@ public class KegMenu extends RecipeBookMenu<FermentingRecipeInput, FermentingRec
     private final Level level;
     private final ContainerData data;
     private final ItemStackHandler inventory;
-    private FermentingRecipeBookComponent recipeBook;
 
     public KegMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-
         this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(3));
-        this.recipeBook = new FermentingRecipeBookComponent();
     }
 
     public KegMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -40,9 +37,9 @@ public class KegMenu extends RecipeBookMenu<FermentingRecipeInput, FermentingRec
         this.data = data;
         this.inventory = blockEntity.getInventory();
 
-        this.addSlot(new SlotItemHandler(this.inventory, 0, 56, 35));
-        this.addSlot(new SlotItemHandler(this.inventory, 1, 29, 35));
-        this.addSlot(new KegResultSlot(inv.player, blockEntity, inventory, 2, 116, 35));
+        this.addSlot(new SlotItemHandler(this.inventory, 0, 63, 35));
+        this.addSlot(new SlotItemHandler(this.inventory, 1, 36, 35));
+        this.addSlot(new KegResultSlot(inv.player, blockEntity, inventory, 2, 123, 35));
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
@@ -50,17 +47,14 @@ public class KegMenu extends RecipeBookMenu<FermentingRecipeInput, FermentingRec
         addDataSlots(data);
     }
 
-
     public boolean isCrafting() {
         return data.get(0) > 0;
     }
 
-    public int getScaledProgress() {
+    public float getProgress() {
         int progress = this.data.get(0);
-        int maxProgress = this.data.get(1);  // Max Progress
-        int progressArrowSize = 26; // This is the height in pixels of your arrow
-
-        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+        int totalTime = this.data.get(1);
+        return totalTime != 0 && progress != 0 ? Mth.clamp((float)progress / totalTime, 0.0F, 1.0F) : 0.0F;
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons

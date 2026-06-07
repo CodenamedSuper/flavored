@@ -8,10 +8,7 @@ import com.sidden.flavored.registry.FlavoredStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.MenuProvider;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -34,7 +31,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.stream.Stream;
 
 public class MixingBowlBlock extends BaseEntityBlock {
-
 
     public MixingBowlBlock(Properties properties) {
         super(properties);
@@ -68,10 +64,9 @@ public class MixingBowlBlock extends BaseEntityBlock {
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-
         if (stack.is(FlavoredItems.WHISK)) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof MixingBowlBlockEntity mixingBowlBlockEntity && mixingBowlBlockEntity.hasRecipe()) {
+            if (blockEntity instanceof MixingBowlBlockEntity mixingBowlBlockEntity && mixingBowlBlockEntity.hasValidRecipe()) {
                 mixingBowlBlockEntity.mix(1, player);
 
                 stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
@@ -81,8 +76,6 @@ public class MixingBowlBlock extends BaseEntityBlock {
                 return ItemInteractionResult.SUCCESS;
             }
         }
-
-
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
@@ -91,7 +84,7 @@ public class MixingBowlBlock extends BaseEntityBlock {
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (state.getBlock() != newState.getBlock()) {
             if (level.getBlockEntity(pos) instanceof MixingBowlBlockEntity mixingBowlBlockEntity) {
-                mixingBowlBlockEntity.drops();
+                Containers.dropContents(level, pos, mixingBowlBlockEntity);
                 level.updateNeighbourForOutputSignal(pos, this);
             }
         }
@@ -108,7 +101,6 @@ public class MixingBowlBlock extends BaseEntityBlock {
     }
 
     protected void openContainer(Level level, BlockPos pos, Player player) {
-
         if (player.getMainHandItem().is(FlavoredItems.WHISK)) return;
 
         BlockEntity blockentity = level.getBlockEntity(pos);
@@ -116,16 +108,10 @@ public class MixingBowlBlock extends BaseEntityBlock {
             player.awardStat(FlavoredStats.INTERACT_WITH_MIXING_BOWL.value());
             player.openMenu((MenuProvider) blockentity, pos);
         }
-
     }
 
     @Override
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(
-            Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-
-        return createTickerHelper(blockEntityType, FlavoredBlockEntities.MIXING_BOWL.get(),
-                (lvl, pos, st, be) -> be.tick(lvl, st, pos));
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        return createTickerHelper(blockEntityType, FlavoredBlockEntities.MIXING_BOWL.get(), MixingBowlBlockEntity::tick);
     }
-
-
 }

@@ -33,7 +33,7 @@ import org.slf4j.Logger;
 @Mod(Flavored.MOD_ID)
 public class Flavored {
     public static final String MOD_ID = "flavored";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public Flavored(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);

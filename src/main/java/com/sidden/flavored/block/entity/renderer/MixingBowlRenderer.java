@@ -18,6 +18,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.Holder;
+import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -54,9 +55,9 @@ public class MixingBowlRenderer implements BlockEntityRenderer<MixingBowlBlockEn
                        PoseStack poseStack, MultiBufferSource bufferSource,
                        int packedLight, int packedOverlay) {
 
-        ItemStackHandler inventory = blockEntity.getInventory();
+        NonNullList<ItemStack> items = blockEntity.getItems();
         int index = 0;
-        ItemStack itemStack = blockEntity.getInventory().getStackInSlot(7);
+        ItemStack itemStack = items.get(7);
         Holder<Item> holder = itemStack.getItemHolder();
         MixingBowlData data = holder.getData(FlavoredDataMapTypes.MIXING_BOWL_DATA_MAP);
         if (data != null) {
@@ -67,7 +68,7 @@ public class MixingBowlRenderer implements BlockEntityRenderer<MixingBowlBlockEn
 
 
         for (int i = 0; i < 6; i++) {
-            ItemStack stack = inventory.getStackInSlot(i);
+            ItemStack stack = items.get(i);
             if (stack.isEmpty()) continue;
 
             poseStack.pushPose();

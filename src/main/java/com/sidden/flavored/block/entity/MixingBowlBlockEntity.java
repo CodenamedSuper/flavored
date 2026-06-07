@@ -9,70 +9,55 @@ import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import com.sidden.flavored.registry.FlavoredStats;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Containers;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
+public class MixingBowlBlockEntity extends BaseContainerBlockEntity implements StackedContentsCompatible {
+    public static final int[] INGREDIENT_SLOTS = new int[]{ 0, 1, 2, 3, 4, 5 };
+    public static final int VESSEL_SLOT = 6;
+    public static final int LIQUID_SLOT = 7;
+    public static final int MAX_MIX_PROGRESS = 10;
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(8) {
-        @Override
-        protected void onContentsChanged(int slot) {
-            setChanged();
+    protected final ContainerData dataAccess;
 
-            if (level != null && !level.isClientSide) {
-                level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
-            }
-        }
-    };
-
-    private static final int[] INPUT_SLOTS = new int[6];
-    private static final int VESSEL_SLOT = 6;
-    private static final int LIQUID_SLOT = 7;
-
-    protected final ContainerData data;
-
-    private int progress = 0;
-    private int maxProgress = 10;
-
+    private NonNullList<ItemStack> items;
+    private int mixProgress = 0;
     public int wiggleTime = 0;
-
 
     public MixingBowlBlockEntity(BlockPos pos, BlockState blockState) {
         super(FlavoredBlockEntities.MIXING_BOWL.get(), pos, blockState);
-        this.data = new ContainerData() {
+
+        this.items = NonNullList.withSize(8, ItemStack.EMPTY);
+        this.dataAccess = new ContainerData() {
             @Override
             public int get(int pIndex) {
                 return switch (pIndex) {
-                    case 0 -> MixingBowlBlockEntity.this.progress;
-                    case 1 -> MixingBowlBlockEntity.this.maxProgress;
-                    case 2 -> MixingBowlBlockEntity.this.hasRecipe() ? 1 : 0;
+                    case 0 -> MixingBowlBlockEntity.this.mixProgress;
+                    case 1 -> MixingBowlBlockEntity.this.hasValidRecipe() ? 1 : 0;
                     default -> 0;
                 };
             }
@@ -80,61 +65,50 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
             @Override
             public void set(int pIndex, int pValue) {
                 switch (pIndex) {
-                    case 0 -> MixingBowlBlockEntity.this.progress = pValue;
-                    case 1 -> MixingBowlBlockEntity.this.maxProgress = pValue;
-
+                    case 0 -> MixingBowlBlockEntity.this.mixProgress = pValue;
                 }
             }
 
             @Override
             public int getCount() {
-                return 3;
+                return 2;
             }
         };
-
-    }
-
-
-    public void drops() {
-        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for (int i = 0; i < itemHandler.getSlots(); i++) {
-            inventory.setItem(i, itemHandler.getStackInSlot(i));
-        }
-        Containers.dropContents(this.level, this.worldPosition, inventory);
-    }
-
-    public Component getDisplayName() {
-        return Component.translatable("block.flavored.mixing_bowl");
-    }
-
-    @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-
-        tag.put("inventory", itemHandler.serializeNBT(registries));
-        tag.putInt("mixing_bowl.progress", progress);
-        tag.putInt("wiggle_time", wiggleTime);
-
-        super.saveAdditional(tag, registries);
     }
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
-        itemHandler.deserializeNBT(registries, tag.getCompound("inventory"));
-        progress = tag.getInt("mixing_bowl.progress");
-        wiggleTime = tag.getInt("wiggle_time");
 
-        if (itemHandler.getSlots() < 8) {
-            itemHandler.setSize(8);
+        this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
+        ContainerHelper.loadAllItems(tag, this.items, registries);
+
+        this.mixProgress = tag.getInt("mix_progress");
+        this.wiggleTime = tag.getInt("wiggle_time");
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
+
+        ContainerHelper.saveAllItems(tag, this.items, true, registries);
+        tag.putInt("mix_progress", mixProgress);
+        tag.putInt("wiggle_time", wiggleTime);
+    }
+
+    @Override
+    public void fillStackedContents(StackedContents contents) {
+        for (ItemStack stack : this.items) {
+            contents.accountStack(stack);
         }
     }
 
-
     public void mix(int amount, Player player) {
-        if (hasRecipe()) {
+        if (hasValidRecipe()) {
             increaseMixingProgress(amount);
             wiggleTime = 5;
-            setChanged();
+
+            this.setChanged();
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
         }
 
@@ -145,10 +119,9 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
         }
     }
 
-
     public void resetProgress() {
-        progress = 0;
-        setChanged();
+        this.mixProgress = 0;
+        this.setChanged();
     }
 
     private void mixItem() {
@@ -160,85 +133,123 @@ public class MixingBowlBlockEntity extends BlockEntity implements MenuProvider {
 
         Containers.dropItemStack(level, worldPosition.getX(), worldPosition.getY(), worldPosition.getZ(), output.copy());
 
-        for (int i = 0; i < INPUT_SLOTS.length; i++) {
-            itemHandler.extractItem(i, 1, false);
+        for (int i = 0; i < INGREDIENT_SLOTS.length; i++) {
+            ContainerHelper.removeItem(this.items, i, 1);
         }
 
         if (!recipe.vesselInput().isEmpty()) {
-            itemHandler.extractItem(VESSEL_SLOT, 1, false);
+            ContainerHelper.removeItem(this.items, VESSEL_SLOT, 1);
         }
 
+        this.setChanged();
 
-        setChanged();
         level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
-
-        getLevel().playSound(null, getBlockPos(), SoundEvents.BEEHIVE_ENTER, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+        level.playSound(null, getBlockPos(), SoundEvents.BEEHIVE_ENTER, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
     }
 
-    public void tick(Level level, BlockState state, BlockPos pos) {
+    public static void tick(Level level, BlockPos pos, BlockState state, MixingBowlBlockEntity blockEntity) {
         if (!level.isClientSide) {
-            if (!hasRecipe()) {
-                resetProgress();
+            if (!blockEntity.hasValidRecipe()) {
+                blockEntity.resetProgress();
             }
+            return;
         }
 
-        if (wiggleTime > 0) {
-            wiggleTime--;
+        if (blockEntity.wiggleTime > 0) {
+            blockEntity.wiggleTime--;
         }
     }
 
-    public boolean hasRecipe() {
-        Optional<RecipeHolder<MixingRecipe>> recipe = getCurrentRecipe();
-        if (recipe.isEmpty()) {
-            return false;
+    public boolean hasValidRecipe() {
+        return this.getCurrentRecipe().isPresent();
+    }
+
+    public Optional<RecipeHolder<MixingRecipe>> getCurrentRecipe() {
+        List<ItemStack> ingredients = new ArrayList<>();
+
+        for (int i = 0; i < INGREDIENT_SLOTS.length; i++) {
+            ingredients.add(this.items.get(i));
         }
 
-        return true;
+        RecipeManager recipeManager = this.level.getRecipeManager();
+        return recipeManager.getRecipeFor(
+                FlavoredRecipeTypes.MIXING_BOWL_TYPE.get(),
+                new MixingRecipeInput(
+                        ingredients,
+                        this.items.get(VESSEL_SLOT),
+                        this.items.get(LIQUID_SLOT)
+                ),
+                level
+        );
+    }
+
+    private boolean hasProgressFinished() {
+        return mixProgress >= MAX_MIX_PROGRESS;
+    }
+
+    private void increaseMixingProgress(int amount) {
+        mixProgress += amount;
+    }
+
+    @Override
+    protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
+        return new MixingBowlMenu(containerId, inventory, this, this.dataAccess);
+    }
+
+    @Override
+    protected Component getDefaultName() {
+        return Component.translatable("block.flavored.mixing_bowl");
+    }
+
+    @Override
+    public NonNullList<ItemStack> getItems() {
+        return this.items;
+    }
+
+    @Override
+    public void setItems(NonNullList<ItemStack> items) {
+        this.items = items;
+    }
+
+    @Override
+    public void setItem(int slot, ItemStack stack) {
+        ItemStack stackAtIndex = this.items.get(slot);
+        boolean sameItem = !stack.isEmpty() && ItemStack.isSameItemSameComponents(stackAtIndex, stack);
+
+        Flavored.LOGGER.info("Set Item");
+
+        this.items.set(slot, stack);
+        stack.limitSize(this.getMaxStackSize(stack));
+
+        if (!sameItem) {
+            this.mixProgress = 0;
+        }
+
+        this.setChanged();
+
+        if (level != null && !level.isClientSide) {
+            level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
+        }
+    }
+
+    @Override
+    public int getContainerSize() {
+        return 8;
     }
 
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
-        return saveWithoutMetadata(registries);
-    }
+        CompoundTag tag = super.getUpdateTag(registries);
 
-    @Override
-    public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider registries) {
-        loadAdditional(tag, registries);
+        ContainerHelper.saveAllItems(tag, this.items, true, registries);
+        tag.putInt("mix_progress", mixProgress);
+        tag.putInt("wiggle_time", wiggleTime);
+
+        return tag;
     }
 
     @Override
     public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
-
-    public Optional<RecipeHolder<MixingRecipe>> getCurrentRecipe() {
-        List<ItemStack> ingredients = new ArrayList<>();
-
-        for (int i = 0; i < INPUT_SLOTS.length; i++) {
-            ingredients.add(itemHandler.getStackInSlot(i));
-        }
-
-
-        return this.level.getRecipeManager().getRecipeFor(FlavoredRecipeTypes.MIXING_BOWL_TYPE.get(), new MixingRecipeInput(ingredients, itemHandler.getStackInSlot(VESSEL_SLOT), itemHandler.getStackInSlot(LIQUID_SLOT)), level);
-    }
-
-    private boolean hasProgressFinished() {
-        return progress >= maxProgress;
-    }
-
-    private void increaseMixingProgress(int amount) {
-        progress += amount;
-    }
-
-    @Nullable
-    @Override
-    public AbstractContainerMenu createMenu(int containerId, Inventory playerInventory, Player player) {
-        return new MixingBowlMenu(containerId, playerInventory, this, this.data);
-    }
-
-    public ItemStackHandler getInventory() {
-        return this.itemHandler;
-    }
-
-
 }

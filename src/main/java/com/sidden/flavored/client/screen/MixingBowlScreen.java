@@ -66,7 +66,7 @@ public class MixingBowlScreen extends AbstractContainerScreen<MixingBowlMenu> im
         renderProgressArrow(guiGraphics, x, y);}
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
-        guiGraphics.blit(TEXTURE, x + 100, y + 26, 176, 0, menu.getScaledProgress(), 16);
+        guiGraphics.blit(TEXTURE, x + 100, y + 26, 176, 0, menu.getMixProgress(), 16);
 
     }
 

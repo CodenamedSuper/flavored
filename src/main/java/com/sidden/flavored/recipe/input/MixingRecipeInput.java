@@ -5,8 +5,7 @@ import net.minecraft.world.item.crafting.RecipeInput;
 
 import java.util.List;
 
-public record MixingRecipeInput(List<ItemStack> ingredientInputs, ItemStack vesselInput,
-                                ItemStack liquid) implements RecipeInput {
+public record MixingRecipeInput(List<ItemStack> ingredientInputs, ItemStack vesselInput, ItemStack liquid) implements RecipeInput {
     @Override
     public ItemStack getItem(int i) {
 

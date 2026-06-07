@@ -24,7 +24,7 @@ public class FlavoredMenus {
             registerMenuType("keg", KegMenu::new);
 
     public static final Supplier<MenuType<MixingBowlMenu>> MIXING_BOWL =
-            registerMenuType("mixing_bowl", MixingBowlMenu::new);
+            registerMenuType("mixing_bowl", () -> new MenuType<>(MixingBowlMenu::new, FeatureFlags.DEFAULT_FLAGS));
 
     public static final Supplier<MenuType<OvenMenu>> OVEN =
             registerMenuType("oven", () -> new MenuType<>(OvenMenu::new, FeatureFlags.DEFAULT_FLAGS));
@@ -36,6 +36,7 @@ public class FlavoredMenus {
     private static <T extends AbstractContainerMenu>Supplier<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IMenuTypeExtension.create(factory));
     }
+
     public static void init(IEventBus eventBus) {
         MENUS.register(eventBus);
     }

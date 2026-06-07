@@ -3,10 +3,10 @@ package com.sidden.flavored.compat.jei;
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.recipe.FermentingRecipe;
 import com.sidden.flavored.registry.FlavoredBlocks;
-import com.sidden.flavored.registry.FlavoredItems;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -14,7 +14,6 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 public class FermentingRecipeCategory implements IRecipeCategory<FermentingRecipe> {
@@ -29,8 +28,8 @@ public class FermentingRecipeCategory implements IRecipeCategory<FermentingRecip
     private final IDrawable icon;
 
     public FermentingRecipeCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 85);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(FlavoredItems.SWEET_BERRY_WINE.get()));
+        this.background = helper.createDrawable(TEXTURE, 0, 0, 109, 26);
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, FlavoredBlocks.KEG.toStack());
     }
 
     @Override
@@ -40,7 +39,7 @@ public class FermentingRecipeCategory implements IRecipeCategory<FermentingRecip
 
     @Override
     public Component getTitle() {
-        return Component.translatable("category.flavored.fermenting");
+        return Component.translatable("gui.jei.category.flavored.fermenting");
     }
 
     @Override
@@ -55,9 +54,14 @@ public class FermentingRecipeCategory implements IRecipeCategory<FermentingRecip
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, FermentingRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 56, 35).addIngredients(recipe.getIngredients().get(0));
-        builder.addSlot(RecipeIngredientRole.INPUT, 29, 35).addIngredients(recipe.getIngredients().get(1));
+        builder.addSlot(RecipeIngredientRole.INPUT, 28, 5).addIngredients(recipe.getIngredients().get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 1, 5).addIngredients(recipe.getIngredients().get(1));
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 116, 35).addItemStack(recipe.getResultItem(null));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 88, 5).addItemStack(recipe.getResultItem(null));
+    }
+
+    @Override
+    public void createRecipeExtras(IRecipeExtrasBuilder builder, FermentingRecipe recipe, IFocusGroup focuses) {
+        builder.addAnimatedRecipeArrow(1248).setPosition(52, 4);
     }
 }

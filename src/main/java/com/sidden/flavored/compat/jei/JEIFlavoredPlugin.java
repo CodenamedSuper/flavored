@@ -11,6 +11,7 @@ import com.sidden.flavored.registry.FlavoredBlocks;
 import com.sidden.flavored.registry.FlavoredRecipeTypes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
@@ -62,7 +63,7 @@ public class JEIFlavoredPlugin implements IModPlugin {
                 FermentingRecipeCategory.FERMENTING_RECIPE_RECIPE_TYPE);
         registration.addRecipeClickArea(MixingBowlScreen.class, 100, 25, 22, 20,
                 MixingRecipeCategory.MIXING_RECIPE_RECIPE_TYPE);
-        registration.addRecipeClickArea(OvenScreen.class, 90, 10, 22, 20,
+        registration.addRecipeClickArea(OvenScreen.class, 90, 16, 22, 20,
                 BakingRecipeCategory.BAKING_RECIPE_RECIPE_TYPE);
     }
 
@@ -73,6 +74,6 @@ public class JEIFlavoredPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(FlavoredBlocks.MIXING_BOWL.get().asItem()),
                 MixingRecipeCategory.MIXING_RECIPE_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(FlavoredBlocks.OVEN.get().asItem()),
-                BakingRecipeCategory.BAKING_RECIPE_RECIPE_TYPE);
+                RecipeTypes.FUELING, BakingRecipeCategory.BAKING_RECIPE_RECIPE_TYPE);
     }
 }

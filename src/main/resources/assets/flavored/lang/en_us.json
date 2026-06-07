@@ -142,7 +142,7 @@
   "gui.recipebook.toggleRecipes.mixable": "Showing Mixable",
   "gui.recipebook.toggleRecipes.bakable": "Showing Bakeable",
   "block.flavored.baking": "Baking",
-  "categories.flavored.mixing": "Mixing",
-  "category.flavored.baking": "Baking",
-  "category.flavored.fermenting": "Fermenting"
+  "gui.jei.category.flavored.mixing": "Mixing",
+  "gui.jei.category.flavored.baking": "Baking",
+  "gui.jei.category.flavored.fermenting": "Fermenting"
 }

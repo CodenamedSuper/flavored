@@ -29,7 +29,7 @@ public class MixingBowlMenu extends RecipeBookMenu<MixingRecipeInput, MixingReci
     public static final int INV_SLOT_END = 35;
     public static final int USE_ROW_SLOT_START = 35;
     public static final int USE_ROW_SLOT_END = 44;
-    public static final int MIX_PROGRESS_ARROW_SIZE = 26;
+    public static final int MIX_PROGRESS_ARROW_SIZE = 27;
 
     private final Container container;
     private final ContainerData data;
@@ -55,14 +55,9 @@ public class MixingBowlMenu extends RecipeBookMenu<MixingRecipeInput, MixingReci
         this.level = playerInventory.player.level();
 
         // Adds the 3x2 grid
-        for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 2; y++) {
-                this.addSlot(new Slot(
-                        this.container,
-                        x + y * 3,
-                        44 + x * 18,
-                        18 + y * 18
-                ));
+        for (int y = 0; y < 2; y++) {
+            for (int x = 0; x < 3; x++) {
+                this.addSlot(new Slot(this.container, x + y * 3, 44 + x * 18, 18 + y * 18));
             }
         }
 
@@ -70,9 +65,9 @@ public class MixingBowlMenu extends RecipeBookMenu<MixingRecipeInput, MixingReci
         this.addSlot(new Slot(this.container, 7, 62, 60));
 
         // Adds the player inventory
-        for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 9; y++) {
-                this.addSlot(new Slot(playerInventory, y + x * 9 + 9, 8 + y * 18, 84 + x * 18));
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 9; x++) {
+                this.addSlot(new Slot(playerInventory, x + y * 9 + 9, 8 + x * 18, 84 + y * 18));
             }
         }
 

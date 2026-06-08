@@ -28,6 +28,7 @@ public class FlavoredCreativeTabs {
                         output.accept(FlavoredBlocks.CHOCOLATE_TILE_SLAB);
                         output.accept(FlavoredBlocks.CINNAMON_STALK);
                         output.accept(FlavoredBlocks.STRIPPED_CINNAMON_STALK);
+                        output.accept(FlavoredBlocks.WAXED_STRIPPED_CINNAMON_STALK);
                         output.accept(FlavoredBlocks.CINNAMON_SPROUT);
                         output.accept(FlavoredBlocks.KEG);
                         output.accept(FlavoredBlocks.OVEN);

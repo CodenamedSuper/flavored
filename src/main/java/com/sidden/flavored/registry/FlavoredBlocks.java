@@ -53,6 +53,10 @@ public class FlavoredBlocks {
     public static final DeferredBlock<Block> STRIPPED_CINNAMON_STALK = registerBlock("stripped_cinnamon_stalk",
             () -> new StrippedCinnamonStalkBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_JUNGLE_LOG).randomTicks()));
 
+    public static final DeferredBlock<Block> WAXED_STRIPPED_CINNAMON_STALK = registerBlock("waxed_stripped_cinnamon_stalk",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_JUNGLE_LOG))
+    );
+
     public static final DeferredBlock<Block> CINNAMON_SPROUT = registerBlock("cinnamon_sprout",
             () -> new CinnamonSproutBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS)));
 
@@ -88,8 +92,6 @@ public class FlavoredBlocks {
             ()-> new PizzaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
 
     // Other Blocks
-
-
 
     private static Block stair(Block baseBlock) {
         return new StairBlock(baseBlock.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(baseBlock));

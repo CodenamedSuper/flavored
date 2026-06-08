@@ -7,15 +7,15 @@
       "item": "flavored:pastry_dough"
     },
     "X": {
-      "item": "flavored:cinnamon"
+      "item": "minecraft:pumpkin"
     }
   },
   "pattern": [
-    "XXX",
+    " X ",
     " # "
   ],
   "result": {
     "count": 1,
-    "id": "flavored:cinnamon_pastry"
+    "id": "minecraft:pumpkin_pie"
   }
 }

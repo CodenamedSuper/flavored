@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "cookie_dough": {
+    "has_cookie_dough": {
       "conditions": {
         "items": [
           {
@@ -20,10 +20,8 @@
   },
   "requirements": [
     [
-      "has_the_recipe"
-    ],
-    [
-      "cookie_dough"
+      "has_the_recipe",
+      "has_cookie_dough"
     ]
   ],
   "rewards": {

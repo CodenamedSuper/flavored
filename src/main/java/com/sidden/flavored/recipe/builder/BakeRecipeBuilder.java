@@ -106,12 +106,12 @@ public class BakeRecipeBuilder implements RecipeBuilder {
         Advancement.Builder advancement = output.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
                 .rewards(AdvancementRewards.Builder.recipe(id))
-                .requirements(AdvancementRequirements.Strategy.AND);
+                .requirements(AdvancementRequirements.Strategy.OR);
 
         ShapedRecipePattern shapedrecipepattern = this.ensureValid(id);
 
         this.criteria.forEach(advancement::addCriterion);
-        BakingRecipe recipe = new BakingRecipe(Objects.requireNonNullElse(group, ""), shapedrecipepattern, this.getResult().getDefaultInstance(), experience, bakingTime);
+        BakingRecipe recipe = new BakingRecipe(Objects.requireNonNullElse(group, ""), shapedrecipepattern, new ItemStack(this.result, this.count), experience, bakingTime);
         output.accept(id, recipe, advancement.build(id.withPrefix("recipes/")));
     }
 }

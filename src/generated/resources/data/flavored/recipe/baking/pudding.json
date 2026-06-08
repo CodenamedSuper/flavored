@@ -1,7 +1,7 @@
 {
   "type": "flavored:baking",
-  "bakingtime": 20,
-  "experience": 5.0,
+  "bakingtime": 200,
+  "experience": 3.0,
   "key": {
     "#": {
       "item": "flavored:batter"

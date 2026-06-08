@@ -115,6 +115,28 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                         has(FlavoredItems.PASTA))
                 .save(recipeOutput, mixing(getItemName(FlavoredItems.RAGU_PASTA)));
 
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.WATER_BUCKET), Items.RABBIT_STEW, 1)
+                .requires(Ingredient.of(Items.BAKED_POTATO))
+                .requires(Ingredient.of(Items.COOKED_RABBIT))
+                .requires(Ingredient.of(Items.CARROT))
+                .requires(Ingredient.of(Items.BROWN_MUSHROOM))
+                .unlockedBy(getItemName(Items.COOKED_RABBIT),
+                        has(Items.COOKED_RABBIT))
+                .save(recipeOutput, mixing(getItemName(Items.RABBIT_STEW)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.WATER_BUCKET), Items.MUSHROOM_STEW, 1)
+                .requires(Ingredient.of(Items.RED_MUSHROOM))
+                .requires(Ingredient.of(Items.BROWN_MUSHROOM))
+                .unlockedBy(getItemName(Items.BROWN_MUSHROOM),
+                        has(Items.BROWN_MUSHROOM))
+                .save(recipeOutput, mixing(getItemName(Items.MUSHROOM_STEW)));
+
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.WATER_BUCKET), Items.BEETROOT_SOUP, 1)
+                .requires(Ingredient.of(Items.BEETROOT), 3)
+                .unlockedBy(getItemName(Items.BEETROOT),
+                        has(Items.BEETROOT))
+                .save(recipeOutput, mixing(getItemName(Items.BEETROOT_SOUP)));
+
         new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.EMPTY, FlavoredItems.TOMATO_PASTA, 1)
                 .requires(Ingredient.of(FlavoredItems.RED_TOMATO), 2)
                 .requires(Ingredient.of(FlavoredItems.GARLIC))
@@ -271,6 +293,17 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                 .unlockedBy(getItemName(FlavoredItems.PASTRY_DOUGH),
                         has(FlavoredItems.PASTRY_DOUGH))
                 .save(recipeOutput, baking(getItemName(FlavoredItems.HONEY_PASTRY)));
+
+        new BakeRecipeBuilder(RecipeCategory.FOOD, Items.PUMPKIN_PIE, 1, 5, 20)
+                .define('X', Ingredient.of(Items.PUMPKIN))
+                .define('#', Ingredient.of(FlavoredItems.PASTRY_DOUGH.get()))
+                .pattern(" X ")
+                .pattern(" # ")
+                .unlockedBy(getItemName(FlavoredItems.PASTRY_DOUGH),
+                        has(FlavoredItems.PASTRY_DOUGH))
+                .save(recipeOutput, baking(getItemName(Items.PUMPKIN_PIE)));
+
+
         new BakeRecipeBuilder(RecipeCategory.FOOD, FlavoredItems.OSSOBUCO, 2, 5, 20)
                 .define('#', Ingredient.of(Items.BOWL))
                 .define('X', Ingredient.of(Items.CARROT))

@@ -1,6 +1,5 @@
 package com.sidden.flavored.item;
 
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,9 +13,6 @@ import net.minecraft.world.item.component.Tool;
 import java.util.List;
 
 public class KnifeItem extends Item {
-
-    public static final ResourceLocation BASE_ENTITY_INTERACTION_RANGE_ID = ResourceLocation.withDefaultNamespace("base_entity_interaction_range");
-
     public KnifeItem(Properties properties) {
         super(properties);
     }
@@ -41,9 +37,12 @@ public class KnifeItem extends Item {
     }
 
     @Override
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        return true;
+    }
+
+    @Override
     public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         stack.hurtAndBreak(1, attacker, EquipmentSlot.MAINHAND);
     }
-
-
 }

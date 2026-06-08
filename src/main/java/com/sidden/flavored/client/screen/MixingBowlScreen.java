@@ -58,7 +58,7 @@ public class MixingBowlScreen extends AbstractContainerScreen<MixingBowlMenu> im
         } else {
             super.render(guiGraphics, mouseX, mouseY, partialTick);
             this.recipeBookComponent.render(guiGraphics, mouseX, mouseY, partialTick);
-            this.recipeBookComponent.renderGhostRecipe(guiGraphics, this.leftPos, this.topPos, true, partialTick);
+            this.recipeBookComponent.renderGhostRecipe(guiGraphics, this.leftPos, this.topPos, false, partialTick);
         }
 
         this.renderTooltip(guiGraphics, mouseX, mouseY);

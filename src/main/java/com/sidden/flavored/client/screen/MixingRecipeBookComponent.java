@@ -8,12 +8,10 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 
 import javax.annotation.Nullable;
-import java.util.Iterator;
 import java.util.List;
 
 public class MixingRecipeBookComponent extends RecipeBookComponent {
@@ -43,33 +41,25 @@ public class MixingRecipeBookComponent extends RecipeBookComponent {
         }
     }
 
-
     @Override
     public void setupGhostRecipe(RecipeHolder<?> recipe, List<Slot> slots) {
-        ItemStack itemstack = recipe.value().getResultItem(this.minecraft.level.registryAccess());
         this.ghostRecipe.setRecipe(recipe);
 
-        NonNullList<Ingredient> nonnulllist = recipe.value().getIngredients();
-        Iterator<Ingredient> iterator = nonnulllist.iterator();
-
-        for (int i = 0; i < 8; i++) {
-            if (!iterator.hasNext()) {
-                return;
-            }
-            Ingredient ingredient = iterator.next();
+        NonNullList<Ingredient> ingredients = recipe.value().getIngredients();
+        for (int i = 0; i < ingredients.size() - 2; i++) {
+            Ingredient ingredient = ingredients.get(i);
             if (!ingredient.isEmpty()) {
-                if (recipe.value() instanceof MixingRecipe mixingRecipe) {
-                    if (ingredient == mixingRecipe.liquidInput()) {
-                        Slot slot1 = slots.get(7);
-                        this.ghostRecipe.addIngredient(ingredient, slot1.x, slot1.y);
-                    } else if (ingredient == mixingRecipe.vesselInput()) {
-                        Slot slot1 = slots.get(6);
-                        this.ghostRecipe.addIngredient(ingredient, slot1.x, slot1.y);
-                    } else {
-                        Slot slot1 = slots.get(i);
-                        this.ghostRecipe.addIngredient(ingredient, slot1.x, slot1.y);
-                    }
-                }
+                Slot slot = slots.get(i);
+                this.ghostRecipe.addIngredient(ingredient, slot.x, slot.y);
+            }
+        }
+
+        if (recipe.value() instanceof MixingRecipe mixingRecipe) {
+            if (!mixingRecipe.vesselInput().isEmpty()) {
+                this.ghostRecipe.addIngredient(mixingRecipe.vesselInput(), slots.get(6).x, slots.get(6).y);
+            }
+            if (!mixingRecipe.liquidInput().isEmpty()) {
+                this.ghostRecipe.addIngredient(mixingRecipe.liquidInput(), slots.get(7).x, slots.get(7).y);
             }
         }
     }

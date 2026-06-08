@@ -46,6 +46,11 @@ public record FermentingRecipe(String group, FermentingBookCategory category, In
     }
 
     @Override
+    public String getGroup() {
+        return this.group;
+    }
+
+    @Override
     public ItemStack getToastSymbol() {
         return FlavoredBlocks.KEG.toStack();
     }

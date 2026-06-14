@@ -40,14 +40,13 @@ displayName="${mod_name}" #mandatory
 #logoFile="examplemod.png" #optional
 
 # A text field displayed in the mod UI
-#credits="" #optional
+#credits=""
 
-# The authors of the mod, displayed in the mod UI (optional)
-#authors=""
+authors="Sidden"
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Example mod description.
+A flavor-up to Minecraft's food features and content
 '''
 
 [[mixins]]

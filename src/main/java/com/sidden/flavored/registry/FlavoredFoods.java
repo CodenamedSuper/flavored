@@ -59,6 +59,7 @@ public class FlavoredFoods {
     public static FoodProperties GLOW_BERRY_WINE = new FoodProperties.Builder().nutrition(6).saturationModifier(0.3f).usingConvertsTo(Items.GLASS_BOTTLE).effect(() -> new MobEffectInstance(FlavoredEffects.BOOZED, 2400, 0), 1F).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 1200, 0), 1F).build();
     public static FoodProperties BEER = new FoodProperties.Builder().nutrition(5).saturationModifier(0.3f).usingConvertsTo(Items.GLASS_BOTTLE).effect(() -> new MobEffectInstance(FlavoredEffects.BOOZED, 2400, 0), 1F).build();
     public static FoodProperties CIDER = new FoodProperties.Builder().nutrition(7).saturationModifier(0.5f).usingConvertsTo(Items.GLASS_BOTTLE).effect(() -> new MobEffectInstance(FlavoredEffects.BOOZED, 2400, 0), 1F).build();
+    public static FoodProperties HOT_SAUCE = new FoodProperties.Builder().nutrition(2).saturationModifier(0.3f).usingConvertsTo(Items.GLASS_BOTTLE).effect(() -> new MobEffectInstance(FlavoredEffects.HEAT, 4800, 0), 1F).build();
 
 
 }

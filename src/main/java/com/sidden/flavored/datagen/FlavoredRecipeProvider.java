@@ -350,6 +350,7 @@ public class FlavoredRecipeProvider extends RecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, FlavoredItems.WORT).define('#', Items.GLASS_BOTTLE).define('X', Items.WHEAT).pattern(" X ").pattern("X#X").unlockedBy(getHasName(Items.WHEAT), has(Items.WHEAT)).save(recipeOutput, crafting(getItemName(FlavoredItems.WORT)));
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, FlavoredItems.APPLE_JUICE).define('#', Items.GLASS_BOTTLE).define('X', Items.APPLE).pattern("X#X").unlockedBy(getHasName(Items.APPLE), has(Items.APPLE)).save(recipeOutput, crafting(getItemName(FlavoredItems.APPLE_JUICE)));
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, FlavoredItems.HOT_SAUCE).define('#', Items.GLASS_BOTTLE).define('X', FlavoredItems.PEPPER).define('*', FlavoredItems.DRIED_PEPPER).pattern(" * ").pattern("X#X").pattern(" * ").unlockedBy(getHasName(FlavoredItems.DRIED_PEPPER), has(FlavoredItems.DRIED_PEPPER)).save(recipeOutput, crafting(getItemName(FlavoredItems.HOT_SAUCE)));
 
     }
 }

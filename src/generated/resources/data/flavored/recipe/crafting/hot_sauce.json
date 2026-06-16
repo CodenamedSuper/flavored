@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:glass_bottle"
+    },
+    "*": {
+      "item": "flavored:dried_pepper"
+    },
+    "X": {
+      "item": "flavored:pepper"
+    }
+  },
+  "pattern": [
+    " * ",
+    "X#X",
+    " * "
+  ],
+  "result": {
+    "count": 1,
+    "id": "flavored:hot_sauce"
+  }
+}

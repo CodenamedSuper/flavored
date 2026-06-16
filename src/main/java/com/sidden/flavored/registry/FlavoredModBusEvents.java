@@ -3,6 +3,7 @@ package com.sidden.flavored.registry;
 
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.client.entity.model.ChockenModel;
+import com.sidden.flavored.client.entity.renderer.ThrownHotSauceItemRenderer;
 import com.sidden.flavored.client.hud.HudOverlays;
 import com.sidden.flavored.entity.Chocken;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -37,6 +38,8 @@ public class FlavoredModBusEvents {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(FlavoredEntities.CHOCOLATE_EGG.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(FlavoredEntities.TOMATO.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(FlavoredEntities.HOT_SAUCE.get(), ThrownHotSauceItemRenderer::new);
+
 
     }
 

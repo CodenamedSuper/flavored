@@ -1,6 +1,7 @@
 package com.sidden.flavored.entity;
 
 import com.sidden.flavored.registry.FlavoredEntities;
+import com.sidden.flavored.registry.FlavoredItems;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityDimensions;
@@ -55,6 +56,6 @@ public class ThrownTomato extends ThrowableItemProjectile {
     }
 
     protected Item getDefaultItem() {
-        return Items.EGG;
+        return FlavoredItems.RED_TOMATO.get();
     }
 }

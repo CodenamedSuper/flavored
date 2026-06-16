@@ -34,6 +34,10 @@ public class FlavoredParticles {
     public static final Supplier<SimpleParticleType> POPCORN_POPS =
             PARTICLE_TYPES.register("popcorn_pops", () -> new SimpleParticleType(true));
 
+    public static final Supplier<SimpleParticleType> FLAME_BUNCH =
+            PARTICLE_TYPES.register("flame_bunch", () -> new SimpleParticleType(true));
+
+
     public static final DeferredHolder<ParticleType<?>, ParticleType<FlavoredColorParticleOption>> FERMENTATION_BUBBLES =
             PARTICLE_TYPES.register("fermentation_bubbles", () -> new ParticleType<FlavoredColorParticleOption>(true) {
                 @Override

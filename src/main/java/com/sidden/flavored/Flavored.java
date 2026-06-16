@@ -6,10 +6,7 @@ import com.sidden.flavored.client.entity.renderer.ChockenRenderer;
 import com.sidden.flavored.client.screen.KegScreen;
 import com.sidden.flavored.client.screen.MixingBowlScreen;
 import com.sidden.flavored.client.screen.OvenScreen;
-import com.sidden.flavored.particle.CheeseAgingParticle;
-import com.sidden.flavored.particle.FermentationBubblesParticle;
-import com.sidden.flavored.particle.FlavoredDripParticle;
-import com.sidden.flavored.particle.PopcornPopsParticle;
+import com.sidden.flavored.particle.*;
 import com.sidden.flavored.registry.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
@@ -112,6 +109,7 @@ public class Flavored {
             event.registerSpriteSet(FlavoredParticles.CHEESE_AGING.get(), CheeseAgingParticle.Provider::new);
             event.registerSpriteSet(FlavoredParticles.POPCORN_POPS.get(), PopcornPopsParticle.Provider::new);
             event.registerSpriteSet(FlavoredParticles.FERMENTATION_BUBBLES.get(), FermentationBubblesParticle.Provider::new);
+            event.registerSpriteSet(FlavoredParticles.FLAME_BUNCH.get(), FlameBunchParticle.Provider::new);
 
             event.registerSprite(FlavoredParticles.DRIPPING_CHOCOLATE.get(), FlavoredDripParticle::createChocolateHangParticle);
             event.registerSprite(FlavoredParticles.FALLING_CHOCOLATE.get(), FlavoredDripParticle::createChocolateFallParticle);

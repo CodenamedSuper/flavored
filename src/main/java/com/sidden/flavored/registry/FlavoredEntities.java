@@ -3,6 +3,7 @@ package com.sidden.flavored.registry;
 import com.sidden.flavored.Flavored;
 import com.sidden.flavored.entity.Chocken;
 import com.sidden.flavored.entity.ThrownChocolateEgg;
+import com.sidden.flavored.entity.ThrownHotSauce;
 import com.sidden.flavored.entity.ThrownTomato;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
@@ -38,6 +39,16 @@ public class FlavoredEntities {
                             .clientTrackingRange(4)
                             .updateInterval(10)
                             .build("chocolate_egg"));
+
+    public static final Supplier<EntityType<ThrownHotSauce>> HOT_SAUCE =
+            ENTITY_TYPES.register("hot_sauce",
+                    () -> EntityType.Builder
+                            .<ThrownHotSauce>of(ThrownHotSauce::new, MobCategory.MISC)
+                            .sized(0.25F, 0.25F)
+                            .clientTrackingRange(4)
+                            .updateInterval(10)
+                            .build("hot_sauce"));
+
 
 
     public static void init(IEventBus eventBus) {

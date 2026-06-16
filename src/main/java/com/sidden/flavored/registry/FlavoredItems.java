@@ -219,6 +219,10 @@ public class FlavoredItems {
     public static final DeferredItem<Item> CIDER = ITEMS.register("cider",
             () -> new DrinkItem(new Item.Properties().food(FlavoredFoods.CIDER).stacksTo(1)));
 
+    // Other Drinkables
+
+    public static final DeferredItem<Item> HOT_SAUCE = ITEMS.register("hot_sauce",
+            () -> new HotSauceItem(new Item.Properties().stacksTo(1).durability(16)));
 
     // Tools
 

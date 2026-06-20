@@ -24,7 +24,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 public class HotSauceItem extends Item {
-    private static final int DRINK_DURATION = 40;
 
     public HotSauceItem(Item.Properties properties) {
         super(properties);
@@ -40,7 +39,7 @@ public class HotSauceItem extends Item {
         if (livingEntity instanceof Player player) {
             int time = this.getUseDuration(stack, livingEntity) - timeCharged;
             if (time >= 5) {
-                SoundEvent soundEvent = SoundEvents.SNOWBALL_THROW;
+                SoundEvent soundEvent = SoundEvents.SPLASH_POTION_THROW;
                 if (!level.isClientSide) {
                     ThrownHotSauce thrownHotSauce = new ThrownHotSauce(level, player);
                     thrownHotSauce.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, (float) Math.clamp(time, 0, 12) / 10, 1.0F);
@@ -61,21 +60,9 @@ public class HotSauceItem extends Item {
     }
 
 
-
-    public int getUseDuration(ItemStack stack, LivingEntity entity) {
-        return DRINK_DURATION;
-    }
-
     public UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.SPEAR;
     }
 
-    public SoundEvent getDrinkingSound() {
-        return SoundEvents.GENERIC_DRINK;
-    }
-
-    public SoundEvent getEatingSound() {
-        return SoundEvents.GENERIC_DRINK;
-    }
 
 }

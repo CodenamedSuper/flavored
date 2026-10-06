@@ -1,2 +1,2 @@
-flavored by sidden
+flavored by codenamed
 epxzzy

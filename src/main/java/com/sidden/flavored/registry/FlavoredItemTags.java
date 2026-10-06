@@ -18,6 +18,8 @@ public class FlavoredItemTags {
     public static final TagKey<Item> DRINKS = create("drinks");
     public static final TagKey<Item> BEVERAGES = create("beverages");
     public static final TagKey<Item> NOT_SPICEABLE = create("not_spiceable");
+    public static final TagKey<Item> WATER_CONTAINER = create("water_container");
+    public static final TagKey<Item> MILK_CONTAINER = create("milk_container");
 
     private static TagKey<Item> create(String name) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Flavored.MOD_ID, name));

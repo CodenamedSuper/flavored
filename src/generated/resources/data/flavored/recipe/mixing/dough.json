@@ -12,7 +12,7 @@
     }
   ],
   "liquid": {
-    "item": "minecraft:water_bucket"
+    "tag": "flavored:water_container"
   },
   "result": {
     "count": 1,

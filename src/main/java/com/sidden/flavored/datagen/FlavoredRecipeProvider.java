@@ -64,13 +64,13 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_milk", has(Items.MILK_BUCKET))
                 .save(recipeOutput);
 
-        new MixingRecipeBuilder(RecipeCategory.MISC, Ingredient.EMPTY, Ingredient.of(Items.WATER_BUCKET), FlavoredItems.DOUGH, 1)
+        new MixingRecipeBuilder(RecipeCategory.MISC, Ingredient.EMPTY, Ingredient.of(FlavoredItemTags.WATER_CONTAINER), FlavoredItems.DOUGH, 1)
                 .requires(Ingredient.of(FlavoredItems.FLOUR), 3)
                 .unlockedBy(getItemName(FlavoredItems.FLOUR.get()),
                         has(FlavoredItems.FLOUR))
                 .save(recipeOutput, mixing(getItemName(FlavoredItems.DOUGH)));
 
-        new MixingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(Items.BOWL), Ingredient.of(Items.MILK_BUCKET), FlavoredItems.BATTER, 1)
+        new MixingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(Items.BOWL), Ingredient.of(FlavoredItemTags.MILK_CONTAINER), FlavoredItems.BATTER, 1)
                 .requires(Ingredient.of(FlavoredItems.FLOUR), 2)
                 .requires(Ingredient.of(Items.EGG))
                 .requires(Ingredient.of(Items.SUGAR))
@@ -115,7 +115,7 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                         has(FlavoredItems.PASTA))
                 .save(recipeOutput, mixing(getItemName(FlavoredItems.RAGU_PASTA)));
 
-        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.WATER_BUCKET), Items.RABBIT_STEW, 1)
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(FlavoredItemTags.WATER_CONTAINER), Items.RABBIT_STEW, 1)
                 .requires(Ingredient.of(Items.BAKED_POTATO))
                 .requires(Ingredient.of(Items.COOKED_RABBIT))
                 .requires(Ingredient.of(Items.CARROT))
@@ -124,14 +124,14 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                         has(Items.COOKED_RABBIT))
                 .save(recipeOutput, mixing(getItemName(Items.RABBIT_STEW)));
 
-        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.WATER_BUCKET), Items.MUSHROOM_STEW, 1)
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(FlavoredItemTags.WATER_CONTAINER), Items.MUSHROOM_STEW, 1)
                 .requires(Ingredient.of(Items.RED_MUSHROOM))
                 .requires(Ingredient.of(Items.BROWN_MUSHROOM))
                 .unlockedBy(getItemName(Items.BROWN_MUSHROOM),
                         has(Items.BROWN_MUSHROOM))
                 .save(recipeOutput, mixing(getItemName(Items.MUSHROOM_STEW)));
 
-        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.WATER_BUCKET), Items.BEETROOT_SOUP, 1)
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(FlavoredItemTags.WATER_CONTAINER), Items.BEETROOT_SOUP, 1)
                 .requires(Ingredient.of(Items.BEETROOT), 3)
                 .unlockedBy(getItemName(Items.BEETROOT),
                         has(Items.BEETROOT))
@@ -145,7 +145,7 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                         has(FlavoredItems.PASTA))
                 .save(recipeOutput, mixing(getItemName(FlavoredItems.TOMATO_PASTA)));
 
-        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.MILK_BUCKET), FlavoredItems.CEREAL, 1)
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(FlavoredItemTags.MILK_CONTAINER), FlavoredItems.CEREAL, 1)
                 .requires(Ingredient.of(FlavoredItems.CINNAMON), 2)
                 .requires(Ingredient.of(Items.WHEAT), 3)
                 .requires(Ingredient.of(Items.SUGAR))
@@ -177,14 +177,14 @@ public class FlavoredRecipeProvider extends RecipeProvider {
                         has(FlavoredItems.FLOUR))
                 .save(recipeOutput, mixing(getItemName(FlavoredItems.PASTRY_DOUGH)));
 
-        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.WATER_BUCKET), FlavoredItems.POLENTA, 1)
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(FlavoredItemTags.WATER_CONTAINER), FlavoredItems.POLENTA, 1)
                 .requires(Ingredient.of(FlavoredItems.CORN), 3)
                 .requires(Ingredient.of(FlavoredItems.BUTTER))
                 .unlockedBy(getItemName(FlavoredItems.CORN),
                         has(FlavoredItems.CORN))
                 .save(recipeOutput, mixing(getItemName(FlavoredItems.POLENTA)));
 
-        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(Items.WATER_BUCKET), FlavoredItems.PORRIDGE, 1)
+        new MixingRecipeBuilder(RecipeCategory.FOOD, Ingredient.of(Items.BOWL), Ingredient.of(FlavoredItemTags.WATER_CONTAINER), FlavoredItems.PORRIDGE, 1)
                 .requires(Ingredient.of(Items.WHEAT), 3)
                 .unlockedBy(getItemName(Items.WHEAT),
                         has(Items.WHEAT))
